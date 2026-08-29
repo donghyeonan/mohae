@@ -3,7 +3,7 @@
 ## Overview
 
 - Target: `apps/life-lab/index.html`, `styles.css`, `app.js`
-- Screenshot: `docs/references/explore/tinder-card-flow.png`
+- Screenshot: `docs/references/explore/tinder-card-flow.png` (local-only; intentionally excluded from Git)
 - Source URL: https://dribbble.com/shots/21761565-Tinder-App-UI-Redesign
 - Interaction model: click/touch with fixed chrome
 

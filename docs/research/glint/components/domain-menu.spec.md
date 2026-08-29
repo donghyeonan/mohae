@@ -1,7 +1,7 @@
 # Overview
 
 - Target: `prototypes/glint/index.html`, `styles.css`, `app.js`.
-- Screenshot: `.superloopy/evidence/website-clone/glint-menu/source-contact-sheet.png`.
+- Screenshot: `.superloopy/evidence/website-clone/glint-menu/source-contact-sheet.png` (local-only; intentionally excluded from Git).
 - Source: supplied local MOV; no URL.
 - Root: `.menu-plane`.
 - Interaction: hover, focus, click-pin, Escape.

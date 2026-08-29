@@ -1,5 +1,7 @@
 # Asset inventory
 
+> Reference screenshots are local-only and intentionally excluded from Git; these paths document their expected workspace locations.
+
 ## Source references
 
 - `docs/references/explore/tinder-overview.png`

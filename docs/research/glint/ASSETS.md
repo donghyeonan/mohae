@@ -1,5 +1,7 @@
 # Assets
 
+> `.superloopy` captures are local-only and intentionally excluded from Git; the paths below preserve the evidence map.
+
 - `source-contact-sheet.png`: 2fps source overview under `.superloopy/evidence/website-clone/glint-menu/`.
 - `source-frames/frame-01.png` through `frame-07.png`: one frame per second.
 - `prototypes/glint/assets/sleep.png`: source menu plane cropped from the Sleep-corresponding hover frame.
