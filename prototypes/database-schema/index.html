@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life Lab DB — Whole Product Schema</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #212529;
+      --muted: #868e96;
+      --line: #e9ecef;
+      --soft: #f8f9fa;
+      --green: #12b886;
+      --green-dark: #087f5b;
+      --green-soft: #e6fcf5;
+      --blue: #4c6ef5;
+      --blue-soft: #edf2ff;
+      --orange: #f08c00;
+      --orange-soft: #fff4e6;
+      --purple: #7950f2;
+      --purple-soft: #f3f0ff;
+      --red: #e03131;
+      --code: #212529;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+    button { font: inherit; }
+    a { color: inherit; }
+    code { padding: .12em .32em; color: #c2255c; background: #f8f0fc; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; }
+
+    .site-header { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 32px; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.03em; }
+    .logo-mark { width: 24px; height: 24px; border-radius: 7px; background: var(--green); box-shadow: inset 0 0 0 6px #c3fae8; }
+    .header-meta { color: var(--muted); font-size: 13px; }
+
+    .page { display: grid; grid-template-columns: minmax(0, 920px) 160px; gap: 48px; width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 76px 0 120px; }
+    article { min-width: 0; }
+    .toc { position: sticky; top: 96px; align-self: start; padding-left: 16px; border-left: 1px solid var(--line); }
+    .toc strong { display: block; margin-bottom: 12px; font-size: 12px; }
+    .toc a { display: block; padding: 4px 0; color: #adb5bd; text-decoration: none; font-size: 12px; line-height: 1.45; }
+    .toc a:hover { color: var(--green); }
+
+    .tag { display: inline-block; margin-bottom: 18px; padding: 4px 10px; color: var(--green-dark); background: var(--green-soft); border-radius: 999px; font-size: 12px; font-weight: 700; }
+    h1 { margin: 0; max-width: 880px; font-size: clamp(38px, 5.1vw, 61px); line-height: 1.12; letter-spacing: -.055em; }
+    .subtitle { margin: 24px 0 0; color: #495057; font-size: 18px; line-height: 1.75; }
+    .byline { display: flex; gap: 9px; align-items: center; margin-top: 24px; color: var(--muted); font-size: 13px; }
+    .byline b { color: var(--ink); }
+    .dot { width: 3px; height: 3px; border-radius: 50%; background: #ced4da; }
+    .divider { height: 1px; margin: 48px 0; background: var(--line); }
+    h2 { margin: 72px 0 20px; font-size: 30px; line-height: 1.3; letter-spacing: -.04em; }
+    h3 { margin: 42px 0 12px; font-size: 21px; line-height: 1.4; letter-spacing: -.025em; }
+    p { margin: 14px 0; }
+    .lead { font-size: 18px; }
+    .muted { color: var(--muted); }
+
+    .correction { margin: 30px 0; padding: 24px 26px; background: var(--orange-soft); border-left: 5px solid var(--orange); border-radius: 5px; }
+    .correction b { display: block; margin-bottom: 5px; }
+    .correction p { margin: 0; color: #7c4a03; font-size: 14px; }
+    .principle { margin: 24px 0; padding: 20px 22px; color: #343a40; background: var(--soft); border-radius: 6px; font-size: 15px; }
+    .principle b { color: var(--green-dark); }
+    .boundary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+    .boundary-card { padding: 24px; border: 1px solid var(--line); border-top: 5px solid var(--boundary-color); border-radius: 8px; }
+    .boundary-card strong { display: block; margin-bottom: 8px; color: var(--boundary-color); font-size: 20px; }
+    .boundary-card p { margin: 0; color: #5f6b76; font-size: 13px; }
+
+    .system-map-wrap { margin: 30px 0; overflow-x: auto; border: 1px solid #dee2e6; border-radius: 9px; background: #fbfcfd; }
+    .system-map { position: relative; width: 100%; min-width: 900px; height: 520px; overflow: hidden; }
+    .system-lines { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; }
+    .system-lines path { fill: none; stroke: #adb5bd; stroke-width: 1.6; }
+    .system-lines text { fill: #868e96; font: 10px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .module-box { position: absolute; z-index: 1; width: 29%; padding: 17px 18px; background: #fff; border: 1px solid #ced4da; border-top: 5px solid var(--module); border-radius: 7px; box-shadow: 0 7px 22px rgba(33,37,41,.07); }
+    .module-box header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+    .module-box h3 { margin: 0; font-size: 19px; }
+    .module-box header span { color: var(--module); font: 700 10px ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+    .module-box p { min-height: 40px; margin: 0 0 10px; color: #66717c; font-size: 11px; line-height: 1.5; }
+    .module-box ul { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; padding: 0; list-style: none; }
+    .module-box li { padding: 3px 6px; color: #495057; background: var(--module-soft); border-radius: 4px; font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .module-me { --module: var(--blue); --module-soft: var(--blue-soft); left: 4%; top: 42px; }
+    .module-world { --module: var(--purple); --module-soft: var(--purple-soft); left: 4%; top: 288px; }
+    .module-delivery { --module: var(--green); --module-soft: var(--green-soft); left: 38%; top: 151px; width: 25%; }
+    .module-learning { --module: var(--orange); --module-soft: var(--orange-soft); right: 4%; top: 151px; }
+    .projection-strip { position: absolute; z-index: 1; left: 38%; bottom: 34px; width: 58%; padding: 11px 14px; background: #fff; border: 1px dashed #adb5bd; border-radius: 6px; }
+    .projection-strip b { display: block; margin-bottom: 5px; color: #495057; font-size: 11px; }
+    .projection-strip span { display: inline-block; margin-right: 10px; color: var(--muted); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .module-counts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0; }
+    .count-card { padding: 17px; border: 1px solid var(--line); border-top: 4px solid var(--count-color); border-radius: 6px; }
+    .count-card strong { display: block; color: var(--count-color); font-size: 26px; line-height: 1; }
+    .count-card b { display: block; margin-top: 8px; font-size: 13px; }
+    .count-card span { display: block; color: var(--muted); font-size: 11px; }
+
+    .schema-group { margin: 24px 0 42px; border-top: 3px solid var(--group-color); }
+    .group-title { display: flex; justify-content: space-between; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .group-title b { color: var(--group-color); font-size: 15px; }
+    .group-title span { color: var(--muted); font-size: 12px; }
+    .schema-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 28px; padding: 19px 0; border-bottom: 1px solid var(--line); }
+    .schema-name b { display: block; font: 700 13px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .schema-name span { color: var(--muted); font-size: 11px; }
+    .schema-body p { margin: 0 0 8px; font-size: 13px; }
+    .field-list { display: flex; flex-wrap: wrap; gap: 5px; }
+    .field-list code { color: #495057; background: var(--soft); font-size: 10px; }
+
+    .strategy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px; margin: 24px 0; }
+    .strategy { padding: 19px; border: 1px solid var(--line); border-radius: 6px; }
+    .strategy strong { display: block; margin-bottom: 6px; color: var(--strategy-color); font: 800 12px ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+    .strategy p { margin: 0; color: #5f6b76; font-size: 12px; line-height: 1.6; }
+
+    table { width: 100%; margin: 22px 0; border-collapse: collapse; font-size: 13px; }
+    th { padding: 10px 12px; color: #495057; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; }
+    td { padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    td:first-child { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+    .order-box { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 24px; margin: 25px 0; padding: 24px; color: #fff; background: var(--code); border-radius: 7px; }
+    .order-box .order-key { align-self: center; color: #96f2d7; font: 800 24px/1.25 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .order-box .order-key small { display: block; margin-top: 7px; color: #adb5bd; font-size: 9px; line-height: 1.5; text-transform: uppercase; }
+    .order-box ol { margin: 0; padding-left: 20px; color: #dee2e6; font-size: 12px; }
+    .order-box li { padding: 3px 0; }
+    .order-box code { color: #96f2d7; background: #343a40; }
+
+    .trace { margin: 24px 0; border-left: 3px solid var(--green); }
+    .trace-row { display: grid; grid-template-columns: 125px minmax(0,1fr); gap: 18px; padding: 13px 16px; border-bottom: 1px solid var(--line); }
+    .trace-row b { color: var(--green-dark); font: 700 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .trace-row span { font-size: 13px; }
+
+    .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+    .scope-card { padding: 19px; border: 1px solid var(--line); border-radius: 6px; }
+    .scope-card h3 { margin: 0 0 10px; font-size: 16px; }
+    .scope-card ul { margin: 0; padding-left: 18px; color: #66717c; font-size: 12px; }
+    .scope-card.now { border-top: 4px solid var(--green); }
+    .scope-card.later { border-top: 4px solid var(--muted); }
+
+    details { margin: 28px 0; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+    summary { padding: 14px 16px; background: var(--soft); cursor: pointer; font-weight: 700; font-size: 13px; }
+    .code-toolbar { display: flex; justify-content: flex-end; padding: 9px 12px; background: var(--code); border-bottom: 1px solid #343a40; }
+    .copy-button { padding: 5px 9px; color: #ced4da; background: transparent; border: 1px solid #495057; border-radius: 4px; cursor: pointer; font-size: 11px; }
+    pre { max-height: 700px; margin: 0; padding: 18px; overflow: auto; color: #e9ecef; background: var(--code); font: 11px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; }
+    pre code { padding: 0; color: inherit; background: transparent; font: inherit; }
+    .closing { margin-top: 64px; padding: 26px 0 0; border-top: 3px solid var(--ink); }
+    .closing strong { font-size: 21px; letter-spacing: -.03em; }
+    .closing p { color: #495057; }
+
+    @media (max-width: 1120px) {
+      .page { grid-template-columns: minmax(0,920px); justify-content: center; }
+      .toc { display: none; }
+    }
+    @media (max-width: 720px) {
+      .site-header { height: 56px; padding: 0 18px; }
+      .header-meta { display: none; }
+      .page { width: min(100% - 32px, 920px); padding-top: 48px; }
+      h1 { font-size: 40px; }
+      .subtitle { font-size: 16px; }
+      .module-counts, .strategy-grid, .scope-grid, .boundary-grid { grid-template-columns: 1fr; }
+      .schema-row, .order-box { grid-template-columns: 1fr; gap: 8px; }
+      .trace-row { grid-template-columns: 1fr; gap: 4px; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span>Life Lab</div>
+    <div class="header-meta">Me + Explore · separate contexts</div>
+  </header>
+
+  <div class="page">
+    <article>
+      <header>
+        <span class="tag">Database Design · Reconstructed</span>
+        <h1>Life Lab은 두 독립 도구를 한 앱에 둔다</h1>
+        <p class="subtitle">Me는 측정과 시간 이해를, Explore는 세상의 가능성 발견과 경험 기록을 담당한다. 현재 두 데이터 흐름은 서로를 읽거나 갱신하지 않는다.</p>
+        <div class="byline"><b>Life Lab</b><span class="dot"></span><span>2026. 08. 29</span><span class="dot"></span><span>whole MVP v3</span></div>
+      </header>
+
+      <div class="correction">
+        <b>경계 교정</b>
+        <p>이전 문서는 Me와 Explore를 하나의 폐쇄 루프로 연결해 현재 구현보다 앞선 인과관계를 주장했다. 둘은 같은 앱과 사용자 계정에 있을 뿐, 현재는 독립된 bounded context다.</p>
+      </div>
+
+      <section id="loop">
+        <h2>현재 제품 경계</h2>
+        <p class="lead">Life Lab은 <b>독립적으로 쓸 수 있는 두 도구</b>를 하나의 앱과 계정 안에 배치한다.</p>
+        <div class="boundary-grid">
+          <div class="boundary-card" style="--boundary-color:var(--blue)"><strong>Me</strong><p>사용자가 원하는 측정 항목을 정의하고 명시적으로 기록한다. 실제 시간 사용을 보며 시간의 희소성을 이해한다.</p></div>
+          <div class="boundary-card" style="--boundary-color:var(--purple)"><strong>Explore</strong><p>현실의 장소·상품·행사를 Random 또는 Preference로 발견하고, 앱 반응과 실제 경험을 별도로 기록한다.</p></div>
+        </div>
+        <div class="principle"><b>현재 계약</b> — 두 context는 앱 껍데기의 <code>auth.users</code>와 <code>user_profiles</code>만 공유한다. Me 측정과 Explore 활동은 상호 참조하지 않으며, 연결점은 실제 사용 중 구체적인 필요가 발견될 때 별도 계약으로 추가한다.</div>
+      </section>
+
+      <section id="map">
+        <h2>한 화면 전체 지도</h2>
+        <p>아래 네 상자는 하나의 순환이 아니다. Me는 독립 모듈이고, World·Delivery·History는 Explore 내부의 세 책임이다.</p>
+        <div class="system-map-wrap">
+          <div class="system-map">
+            <svg class="system-lines" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
+              <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="#adb5bd"></path></marker></defs>
+              <path d="M330 366 H355 V245 H380" marker-end="url(#arrow)"></path><text x="335" y="351">eligible world</text>
+              <path d="M630 230 H710" marker-end="url(#arrow)"></path><text x="644" y="218">issued</text>
+            </svg>
+            <section class="module-box module-me"><header><h3>Me</h3><span>independent · 6 tables</span></header><p>사용자 정의 측정과 시간 사용을 확인하는 독립 원본. Explore가 읽지 않는다.</p><ul><li>user_profiles</li><li>metric_definitions</li><li>measurements</li><li>user_goals</li><li>plans</li><li>plan_items</li></ul></section>
+            <section class="module-box module-world"><header><h3>Explore · World</h3><span>7 tables</span></header><p>Radar와 운영자가 채우는 현실의 가능성. 장소·상품·행사의 서로 다른 수명을 보존한다.</p><ul><li>discoveries</li><li>opportunity_cards</li><li>places</li><li>products</li><li>product_offers</li><li>events</li><li>event_occurrences</li></ul></section>
+            <section class="module-box module-delivery"><header><h3>Explore · Delivery</h3><span>2 tables</span></header><p>Random 또는 Preference로 몇 개 후보 중 무엇을 어떤 확률로 뽑았는지 보존한다.</p><ul><li>recommendation_batches</li><li>recommendation_instances</li></ul></section>
+            <section class="module-box module-learning"><header><h3>Explore · History</h3><span>3 tables</span></header><p>Explore 안의 앱 반응과 현실 경험을 분리한다. Me를 갱신하지 않는다.</p><ul><li>recommendation_events</li><li>experiences</li><li>experience_outcomes</li></ul></section>
+            <div class="projection-strip"><b>현재 context 경계</b><span>shared app profile</span><span>no domain cross-context FK</span><span>no Me input to Explore</span></div>
+          </div>
+        </div>
+        <div class="module-counts">
+          <div class="count-card" style="--count-color:var(--blue)"><strong>6</strong><b>Me</b><span>독립 측정·시간 도구</span></div>
+          <div class="count-card" style="--count-color:var(--purple)"><strong>7</strong><b>Explore · World</b><span>현실의 대상과 카드</span></div>
+          <div class="count-card" style="--count-color:var(--green)"><strong>2</strong><b>Explore · Delivery</b><span>사용자별 추천 사실</span></div>
+          <div class="count-card" style="--count-color:var(--orange)"><strong>3</strong><b>Explore · History</b><span>행동·경험·결과</span></div>
+        </div>
+      </section>
+
+      <section id="me">
+        <h2>01. Me — 측정과 시간 이해</h2>
+        <p>사람 아이콘 화면의 독립 원본이다. 사용자는 측정의 의미와 단위를 직접 구성한다. Explore 추천은 이 값을 읽지 않는다.</p>
+        <div class="schema-group" style="--group-color:var(--blue)">
+          <div class="group-title"><b>ME · SOURCE OF TRUTH</b><span>측정값과 계획을 하나의 status row에 덮어쓰지 않는다.</span></div>
+          <div class="schema-row"><div class="schema-name"><b>user_profiles</b><span>공통 앱 설정</span></div><div class="schema-body"><p>같은 앱의 날짜·표시·기본 지역 설정. 현재 Explore 추천의 후보나 weight를 결정하는 입력은 아니다.</p><div class="field-list"><code>user_id</code><code>timezone</code><code>locale</code><code>home_region</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>metric_definitions</b><span>기본·custom metric</span></div><div class="schema-body"><p>수면시간, 에너지, 기분, 실제 시간 사용과 자연어로 만든 사용자 지표의 의미·단위·집계 규칙.</p><div class="field-list"><code>user_id</code><code>key</code><code>name</code><code>value_type</code><code>unit</code><code>aggregation</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>measurements</b><span>실제 관찰값</span></div><div class="schema-body"><p>특정 시점·기간에 관찰한 값. 미기록은 0이 아니며 row가 없는 unknown이다.</p><div class="field-list"><code>user_id</code><code>metric_definition_id</code><code>plan_item_id?</code><code>value_*</code><code>measured_at</code><code>local_date</code><code>source</code><code>recorded_at</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>user_goals</b><span>측정·시간의 방향</span></div><div class="schema-body"><p>어떤 측정과 시간 사용을 중요하게 보는지 사용자가 이름 붙이는 선택적 방향. Explore 추천 이유로 사용하지 않는다.</p><div class="field-list"><code>user_id</code><code>title</code><code>status</code><code>starts_on</code><code>archived_at?</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>plans</b><span>계획의 묶음</span></div><div class="schema-body"><p>하루·주간 계획의 정체성과 유효 기간. 실제 수행값을 계획 위에 덮어쓰지 않는다.</p><div class="field-list"><code>user_id</code><code>goal_id?</code><code>title</code><code>starts_at</code><code>ends_at</code><code>status</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>plan_items</b><span>계획 속 행동</span></div><div class="schema-body"><p>계획된 시간 블록·행동·목표값. 실제 측정값은 연결된 measurement가 소유한다.</p><div class="field-list"><code>user_id</code><code>plan_id</code><code>metric_definition_id?</code><code>title</code><code>planned_start</code><code>planned_end</code><code>target_value?</code></div></div></div>
+        </div>
+      </section>
+
+      <section id="world">
+        <h2>02. Explore / World — Opportunity catalog</h2>
+        <p>이전 9-table 문서가 설명한 영역이다. 다만 <code>recommendation_items</code>는 현실의 대상도 사용자별 추천도 아니었기 때문에 <code>opportunity_cards</code>로 이름을 좁혔다. 추천 전략 lane도 여기서 제거했다.</p>
+        <div class="schema-group" style="--group-color:var(--purple)">
+          <div class="group-title"><b>WORLD · SOURCE OF TRUTH</b><span>발견 원문 → 편집 카드 → 현실의 정체성</span></div>
+          <div class="schema-row"><div class="schema-name"><b>discoveries</b><span>Radar·수동 수집</span></div><div class="schema-body"><p>원문과 검토 상태. reject해도 삭제하지 않으며 quality/freshness 사유를 보존한다.</p><div class="field-list"><code>source</code><code>source_key</code><code>source_url</code><code>source_data</code><code>review_status</code><code>reject_reason</code><code>opportunity_card_id?</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>opportunity_cards</b><span>발행 가능한 표현</span></div><div class="schema-body"><p>사용자에게 보여줄 제목·요약·사진·CTA. place, product offer, event occurrence 중 정확히 하나를 가리킨다.</p><div class="field-list"><code>type</code><code>title</code><code>summary</code><code>tags</code><code>status</code><code>place_id?</code><code>product_offer_id?</code><code>event_occurrence_id?</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>places</b><span>지속 장소 정체성</span></div><div class="schema-body"><p>카페·식당·공간의 실제 지점. 재방문은 같은 place_id로 집계한다.</p><div class="field-list"><code>place_key</code><code>name</code><code>address</code><code>lat</code><code>lng</code><code>status</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>products</b><span>상품 정체성</span></div><div class="schema-body"><p>판매처·기간과 분리된 상품 자체. GS25 판매가 끝나도 믿음사 빵의 정체성은 남는다.</p><div class="field-list"><code>product_key</code><code>brand</code><code>name</code><code>category</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>product_offers</b><span>상품 판매 수명</span></div><div class="schema-body"><p>특정 판매처·지역·기간의 이용 가능성. 추천 만료는 offer, 재구매는 product 기준이다.</p><div class="field-list"><code>product_id</code><code>seller</code><code>area</code><code>available_until</code><code>status</code><code>checked_at</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>events</b><span>반복 행사 정체성</span></div><div class="schema-body"><p>Lunit 해커톤처럼 여러 회차를 묶는 상위 정체성.</p><div class="field-list"><code>event_key</code><code>name</code><code>organizer</code><code>category</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>event_occurrences</b><span>특정 개최 회차</span></div><div class="schema-body"><p>신청 마감·시작·종료가 있는 회차. 참여는 occurrence, 반복 참여는 event 기준이다.</p><div class="field-list"><code>event_id</code><code>place_id?</code><code>starts_at</code><code>ends_at</code><code>registration_deadline</code><code>status</code></div></div></div>
+        </div>
+      </section>
+
+      <section id="delivery">
+        <h2>03. Explore / Delivery — 두 모드만 시작한다</h2>
+        <p>v0는 복잡한 개인화 모델 없이 같은 추출기의 가중치만 바꾼다. 여기서 ‘유효한 catalog’는 폐점·종료·잘못된 정보가 아닌 현실의 후보 전체이며, Random에는 지역·목표·취향 gate를 적용하지 않는다.</p>
+        <div class="strategy-grid">
+          <div class="strategy" style="--strategy-color:var(--purple)"><strong>random</strong><p>모든 유효 후보의 weight를 동일하게 둔다. 서울 사용자에게 제주 쉐어하우스가 나오는 것도 의도된 동작이다.</p></div>
+          <div class="strategy" style="--strategy-color:var(--green)"><strong>preference</strong><p>저장·실제 경험한 카드와 공통 tags가 있으면 weight를 올린다. 일치하지 않는 후보도 0으로 만들지 않는다.</p></div>
+        </div>
+        <div class="principle"><b>최소 알고리즘</b> — Random은 균등 추출, Preference는 Explore 내부 저장·경험만 사용하는 단순 weighted random이다. Me 데이터, collaborative filtering, embedding, ML ranker는 현재 계약에 없다.</div>
+        <div class="schema-group" style="--group-color:var(--green)">
+          <div class="group-title"><b>DELIVERY · SOURCE OF TRUTH</b><span>추천 후보가 아니라 실제 발행 사실</span></div>
+          <div class="schema-row"><div class="schema-name"><b>recommendation_batches</b><span>기간별 사용자 덱</span></div><div class="schema-body"><p>Random 또는 Preference 모드, 선택 시점, 유효 후보 수를 보존한다. policy_version이 유효성 규칙을 식별한다. 정확한 후보 목록 재현은 temporal catalog가 필요한 후속 요구로 남긴다.</p><div class="field-list"><code>user_id</code><code>mode</code><code>eligible_count</code><code>catalog_as_of</code><code>starts_at</code><code>ends_at</code><code>policy_version</code><code>issued_at</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>recommendation_instances</b><span>사용자별 추천 사실</span></div><div class="schema-body"><p>몇 번째 추출에서 어떤 카드가 선택됐는지와 그 순간의 조건부 선택 확률을 남긴다. Random 데이터가 Preference의 자기강화 편향을 비교하는 기준이 된다.</p><div class="field-list"><code>batch_id</code><code>user_id</code><code>opportunity_card_id</code><code>rank</code><code>selection_probability</code><code>reason_summary</code><code>card_snapshot</code><code>issued_at</code></div></div></div>
+        </div>
+      </section>
+
+      <section id="learning">
+        <h2>04. Explore / History — 행동, 현실, 결과</h2>
+        <div class="schema-group" style="--group-color:var(--orange)">
+          <div class="group-title"><b>EXPLORE HISTORY · SOURCE OF TRUTH</b><span>무응답은 row가 없으며 부정 신호가 아니다.</span></div>
+          <div class="schema-row"><div class="schema-name"><b>recommendation_events</b><span>앱 안의 ordered event</span></div><div class="schema-body"><p>노출·넘김·저장·해제·연장·지도·길찾기·예약 이동을 append-only로 기록한다. 추천 이유와 사용자 feedback 이유는 다른 컬럼이다.</p><div class="field-list"><code>recommendation_instance_id</code><code>event_type</code><code>feedback_reason?</code><code>effective_until?</code><code>occurred_at</code><code>recorded_at</code><code>event_seq</code><code>client_event_id</code><code>request_hash</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>experiences</b><span>현실의 경험</span></div><div class="schema-body"><p>실제 방문·구매·참여마다 새 row. 추천 없이 직접 기록할 수도 있어 recommendation_instance_id는 선택적이다.</p><div class="field-list"><code>user_id</code><code>opportunity_card_id</code><code>recommendation_instance_id?</code><code>occurred_at</code><code>recorded_at</code><code>invalidated_at?</code></div></div></div>
+          <div class="schema-row"><div class="schema-name"><b>experience_outcomes</b><span>선택적 결과</span></div><div class="schema-body"><p>다녀온 뒤 원할 때만 남기는 worth-it·재방문 의향·동행·짧은 기록. outcome row가 없으면 unknown이다.</p><div class="field-list"><code>experience_id</code><code>worth_it?</code><code>repeat_intent?</code><code>companions?</code><code>note?</code><code>recorded_at</code></div></div></div>
+        </div>
+        <table>
+          <thead><tr><th>원본 신호</th><th>학습 의미</th></tr></thead>
+          <tbody>
+            <tr><td>saved</td><td>시도 의도 · 중간 양성</td></tr>
+            <tr><td>passed · not_now</td><td>현재 맥락의 선택 · 영구 비선호 아님</td></tr>
+            <tr><td>removed · not_for_me</td><td>명시적 개인 비선호 · 약한 음성</td></tr>
+            <tr><td>removed · duplicate</td><td>추천·중복 품질 · taste에 사용하지 않음</td></tr>
+            <tr><td>removed · expired</td><td>freshness 문제 · taste에 사용하지 않음</td></tr>
+            <tr><td>experience</td><td>실제 행동 · 강한 양성</td></tr>
+            <tr><td>repeat experience</td><td>같은 canonical 대상의 반복 · 가장 강한 행동 신호</td></tr>
+            <tr><td>outcome 없음</td><td>unknown · 불만족으로 해석하지 않음</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="ordering">
+        <h2>Event 순서는 서버가 결정한다</h2>
+        <p><code>occurred_at</code>은 기기 시각이며 현실에서 행동한 때를 표시할 뿐이다. clock skew·오프라인 전송·동시 입력 때문에 현재 상태 replay 순서로 사용할 수 없다.</p>
+        <div class="order-box">
+          <div class="order-key">event_seq<small>canonical replay order<br>server assigned</small></div>
+          <ol>
+            <li>클라이언트가 안정적인 <code>client_event_id</code>와 행동 시각 <code>occurred_at</code>을 보낸다.</li>
+            <li>PostgreSQL RPC가 인증·불변식을 검증한다.</li>
+            <li>서버 sequence가 단조 증가 <code>event_seq</code>를 부여한다.</li>
+            <li>서버가 <code>recorded_at = clock_timestamp()</code>를 기록한다.</li>
+            <li><code>(user_id, client_event_id)</code>가 같으면 같은 요청은 기존 event를 반환하고, payload가 다르면 거부한다.</li>
+            <li>현재 저장·숨김 상태는 <code>event_seq</code> 순서로만 계산한다.</li>
+          </ol>
+        </div>
+        <p class="muted"><b>구분:</b> occurred_at = 사용자가 행동했다고 주장한 현실 시각, recorded_at = DB 수락 시각, event_seq = 상태 전이의 유일한 총순서. sequence gap은 rollback 때문에 허용한다.</p>
+      </section>
+
+      <section id="ownership">
+        <h2>Tenant 소유권도 DB가 강제한다</h2>
+        <p><code>user_id</code>를 중복 저장하는 이유는 직접 RLS와 인덱스를 적용하기 위해서다. 하지만 복제값을 신뢰하지 않고, 모든 user_id는 auth.users를 참조하며 아래 composite FK로 부모와 같은 사용자인지 다시 강제한다.</p>
+        <table>
+          <thead><tr><th>Child FK</th><th>반드시 일치할 Parent key</th></tr></thead>
+          <tbody>
+            <tr><td>measurements.(metric_definition_id, user_id)</td><td>metric_definitions.(id, user_id)</td></tr>
+            <tr><td>measurements.(plan_item_id, user_id)</td><td>plan_items.(id, user_id)</td></tr>
+            <tr><td>plans.(goal_id, user_id)</td><td>user_goals.(id, user_id)</td></tr>
+            <tr><td>plan_items.(plan_id, user_id)</td><td>plans.(id, user_id)</td></tr>
+            <tr><td>plan_items.(metric_definition_id, user_id)</td><td>metric_definitions.(id, user_id)</td></tr>
+            <tr><td>recommendation_instances.(batch_id, user_id)</td><td>recommendation_batches.(id, user_id)</td></tr>
+            <tr><td>recommendation_events.(recommendation_instance_id, user_id)</td><td>recommendation_instances.(id, user_id)</td></tr>
+            <tr><td>experiences.(recommendation_instance_id, user_id, opportunity_card_id)</td><td>recommendation_instances.(id, user_id, opportunity_card_id)</td></tr>
+          </tbody>
+        </table>
+        <p class="muted">추천 없이 직접 기록한 experience는 instance_id가 NULL이므로 마지막 composite FK를 건너뛰되, opportunity_card_id와 user_id는 그대로 필수다.</p>
+      </section>
+
+      <section id="trace">
+        <h2>같은 사용자, 독립된 두 trace</h2>
+        <div class="trace">
+          <div class="trace-row"><b>ME</b><span>수면·에너지·실제 시간 사용을 기록하고 Me 안에서만 조회·집계</span></div>
+          <div class="trace-row"><b>BOUNDARY</b><span>이 측정값은 아래 Explore batch의 후보·weight·선택 확률에 영향을 주지 않음</span></div>
+          <div class="trace-row"><b>EXPLORE WORLD</b><span>성수 Vinyl 카페, Lunit 해커톤, GS25 믿음사 빵, 제주 쉐어하우스가 모두 유효</span></div>
+          <div class="trace-row"><b>RANDOM BATCH</b><span>네 후보의 weight가 같고 eligible_count=4를 기록. 제주 후보도 동일 확률</span></div>
+          <div class="trace-row"><b>PREFERENCE BATCH</b><span>과거 저장·경험의 music·quiet tags와 겹치는 Vinyl의 weight만 상승. 다른 후보도 선택 가능</span></div>
+          <div class="trace-row"><b>INSTANCE</b><span>각 draw의 selection_probability와 rank를 기록해 어떤 정책이 만든 데이터인지 보존</span></div>
+          <div class="trace-row"><b>EVENT #1842</b><span>saved · 서버 recorded_at과 event_seq로 순서 확정</span></div>
+          <div class="trace-row"><b>EXPERIENCE</b><span>실제로 다녀온 row가 생기고 같은 canonical 대상의 두 번째 row가 재경험</span></div>
+          <div class="trace-row"><b>EXPLORE HISTORY</b><span>저장·경험은 Explore 내부 Preference에만 쓰이며 Me 측정을 자동 생성하거나 수정하지 않음</span></div>
+        </div>
+      </section>
+
+      <section id="scope">
+        <h2>넓게 보되, 현재 제품 밖까지 섞지 않는다</h2>
+        <div class="scope-grid">
+          <div class="scope-card now"><h3>Whole MVP에 포함</h3><ul><li>Explore 카드 덱과 Me list/grid의 원본</li><li>기본·custom metric, 목표, 계획 대비 실제</li><li>Radar 수집과 장소·상품·행사 identity</li><li>Random·Preference 두 추천 모드와 선택 확률</li><li>노출부터 저장·방문·선택 outcome·재경험</li></ul></div>
+          <div class="scope-card later"><h3>실제 요구 전까지 보류</h3><ul><li>검색·vector ranking·A/B experiment table</li><li>GPS 출석, 자체 예약·결제, 공급자 등록</li><li>ML feature store와 materialized taste table</li><li>정확한 후보 집합 ledger와 temporal catalog</li><li>폐기된 Orange Life Graph UI용 assertion graph</li><li>후순위 Reference library와 Knowledge collector schema</li></ul></div>
+        </div>
+      </section>
+
+      <section id="dbml">
+        <h2>두 context의 18개 source table DBML</h2>
+        <p>관계 검토용 초안이다. PostgreSQL migration에서는 typed-value CHECK, subject XOR CHECK, append-only 권한, RLS, server event RPC를 추가해야 한다.</p>
+        <details>
+          <summary>Me + Explore DBML 펼치기</summary>
+          <div class="code-toolbar"><button class="copy-button" id="copyDbml" type="button">DBML 복사</button></div>
+          <pre><code id="dbmlCode">Enum opportunity_type {
+  place
+  product
+  event
+}
+
+Table user_profiles {
+  user_id uuid [pk, note: 'references auth.users']
+  timezone text [not null]
+  locale text [not null]
+  home_region text
+}
+
+Table metric_definitions {
+  id uuid [pk]
+  user_id uuid [not null]
+  key text [not null]
+  name text [not null]
+  value_type text [not null, note: 'number | boolean | text | json']
+  unit text
+  aggregation text
+  archived_at timestamptz
+
+  indexes { (id, user_id) [unique] }
+}
+
+Table measurements {
+  id uuid [pk]
+  user_id uuid [not null]
+  metric_definition_id uuid [not null]
+  plan_item_id uuid
+  value_number numeric
+  value_boolean boolean
+  value_text text
+  value_json jsonb
+  measured_at timestamptz [not null]
+  local_date date [not null]
+  timezone text [not null]
+  source text [not null, note: 'manual | integration | agent_estimate | correction']
+  recorded_at timestamptz [not null]
+
+  Note: 'metric value type에 맞는 값 컬럼 정확히 하나를 사용한다.'
+}
+
+Table user_goals {
+  id uuid [pk]
+  user_id uuid [not null]
+  title text [not null]
+  status text [not null, note: 'active | paused | achieved | archived']
+  starts_on date
+  archived_at timestamptz
+
+  indexes { (id, user_id) [unique] }
+}
+
+Table plans {
+  id uuid [pk]
+  user_id uuid [not null]
+  goal_id uuid
+  title text [not null]
+  starts_at timestamptz [not null]
+  ends_at timestamptz
+  status text [not null]
+
+  indexes { (id, user_id) [unique] }
+}
+
+Table plan_items {
+  id uuid [pk]
+  user_id uuid [not null]
+  plan_id uuid [not null]
+  metric_definition_id uuid
+  title text [not null]
+  planned_start timestamptz
+  planned_end timestamptz
+  target_value jsonb
+
+  indexes { (id, user_id) [unique] }
+}
+
+Table discoveries {
+  id uuid [pk]
+  source text [not null, note: 'radar | manual']
+  source_key text [not null]
+  source_url text
+  source_language text
+  source_data jsonb [not null]
+  review_status text [not null, note: 'pending | approved | rejected']
+  reject_reason text
+  opportunity_card_id uuid [ref: > opportunity_cards.id]
+  found_at timestamptz [not null]
+  checked_at timestamptz [not null]
+
+  indexes { (source, source_key) [unique] }
+}
+
+Table opportunity_cards {
+  id uuid [pk]
+  type opportunity_type [not null]
+  title text [not null]
+  summary text [not null]
+  tags text[] [not null]
+  status text [not null, note: 'draft | published | withdrawn']
+  place_id uuid [ref: > places.id]
+  product_offer_id uuid [ref: > product_offers.id]
+  event_occurrence_id uuid [ref: > event_occurrences.id]
+  cta_url text
+  checked_at timestamptz [not null]
+
+  Note: 'type과 일치하는 subject FK를 정확히 하나만 가진다.'
+}
+
+Table places {
+  id uuid [pk]
+  place_key text [not null, unique]
+  name text [not null]
+  address text
+  latitude numeric
+  longitude numeric
+  status text [not null]
+  checked_at timestamptz [not null]
+}
+
+Table products {
+  id uuid [pk]
+  product_key text [not null, unique]
+  brand text
+  name text [not null]
+  category text
+}
+
+Table product_offers {
+  id uuid [pk]
+  product_id uuid [not null, ref: > products.id]
+  seller text [not null]
+  area text
+  available_from timestamptz
+  available_until timestamptz
+  status text [not null]
+  checked_at timestamptz [not null]
+}
+
+Table events {
+  id uuid [pk]
+  event_key text [not null, unique]
+  name text [not null]
+  organizer text
+  category text
+}
+
+Table event_occurrences {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  place_id uuid [ref: > places.id]
+  starts_at timestamptz
+  ends_at timestamptz
+  registration_deadline timestamptz
+  status text [not null]
+}
+
+Table recommendation_batches {
+  id uuid [pk]
+  user_id uuid [not null]
+  mode text [not null, note: 'random | preference']
+  eligible_count integer [not null]
+  catalog_as_of timestamptz [not null]
+  starts_at timestamptz [not null]
+  ends_at timestamptz
+  policy_version text [not null]
+  issued_at timestamptz [not null]
+
+  indexes { (id, user_id) [unique] }
+}
+
+Table recommendation_instances {
+  id uuid [pk]
+  batch_id uuid [not null]
+  user_id uuid [not null]
+  opportunity_card_id uuid [not null, ref: > opportunity_cards.id]
+  rank integer [not null]
+  selection_probability numeric [not null, note: 'conditional probability at this draw']
+  reason_summary text [not null]
+  card_snapshot jsonb [not null]
+  issued_at timestamptz [not null]
+
+  indexes {
+    (batch_id, rank) [unique]
+    (id, user_id) [unique]
+    (id, user_id, opportunity_card_id) [unique]
+  }
+}
+
+Table recommendation_events {
+  id uuid [pk]
+  user_id uuid [not null]
+  recommendation_instance_id uuid [not null]
+  event_type text [not null, note: 'exposed | passed | saved | unsaved | extended | removed | map_opened | route_opened | booking_opened']
+  feedback_reason text [note: 'not_for_me | not_now | duplicate | expired | wrong_information']
+  effective_until timestamptz
+  occurred_at timestamptz
+  recorded_at timestamptz [not null, note: 'server clock_timestamp()']
+  event_seq bigint [not null, unique, note: 'server sequence; canonical replay order']
+  client_event_id uuid [not null]
+  request_hash bytea [not null, note: 'reject reused id with different payload']
+
+  indexes { (user_id, client_event_id) [unique] }
+}
+
+Table experiences {
+  id uuid [pk]
+  user_id uuid [not null]
+  opportunity_card_id uuid [not null, ref: > opportunity_cards.id]
+  recommendation_instance_id uuid
+  occurred_at timestamptz [not null]
+  recorded_at timestamptz [not null]
+  invalidated_at timestamptz
+  invalidated_reason text
+}
+
+Table experience_outcomes {
+  id uuid [pk]
+  experience_id uuid [not null, unique, ref: > experiences.id]
+  worth_it boolean
+  repeat_intent boolean
+  companions text
+  note text
+  recorded_at timestamptz [not null]
+}
+
+Ref: measurements.(metric_definition_id, user_id) > metric_definitions.(id, user_id)
+Ref: measurements.(plan_item_id, user_id) > plan_items.(id, user_id)
+Ref: plans.(goal_id, user_id) > user_goals.(id, user_id)
+Ref: plan_items.(plan_id, user_id) > plans.(id, user_id)
+Ref: plan_items.(metric_definition_id, user_id) > metric_definitions.(id, user_id)
+Ref: recommendation_instances.(batch_id, user_id) > recommendation_batches.(id, user_id)
+Ref: recommendation_events.(recommendation_instance_id, user_id) > recommendation_instances.(id, user_id)
+Ref: experiences.(recommendation_instance_id, user_id, opportunity_card_id) > recommendation_instances.(id, user_id, opportunity_card_id)</code></pre>
+        </details>
+      </section>
+
+      <footer class="closing">
+        <strong>같은 제품은 같은 데이터 흐름을 뜻하지 않는다.</strong>
+        <p>현재 Life Lab은 Me와 Explore를 편의를 위해 한 앱에 둔다. 둘 사이의 연결은 가정하지 않으며, 실제 사용에서 구체적인 필요가 관찰될 때만 새로운 계약을 추가한다.</p>
+      </footer>
+    </article>
+
+    <aside class="toc" aria-label="목차">
+      <strong>목차</strong>
+      <a href="#loop">현재 제품 경계</a>
+      <a href="#map">한 화면 전체 지도</a>
+      <a href="#me">01. Me</a>
+      <a href="#world">02. Explore / World</a>
+      <a href="#delivery">03. Explore / Delivery</a>
+      <a href="#learning">04. Explore / History</a>
+      <a href="#ordering">Event 순서</a>
+      <a href="#ownership">Tenant 소유권</a>
+      <a href="#trace">사용자 trace</a>
+      <a href="#scope">현재 범위</a>
+      <a href="#dbml">DBML</a>
+    </aside>
+  </div>
+
+  <script>
+    const copyButton = document.getElementById("copyDbml");
+    copyButton.addEventListener("click", async () => {
+      const text = document.getElementById("dbmlCode").textContent;
+      await navigator.clipboard.writeText(text);
+      copyButton.textContent = "복사됨";
+      window.setTimeout(() => { copyButton.textContent = "DBML 복사"; }, 1200);
+    });
+  </script>
+</body>
+</html>

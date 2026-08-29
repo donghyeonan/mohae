@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Life Lab</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="stage" aria-label="Life Lab concept menu">
+      <section class="plane" aria-label="Life axes">
+        <header class="bar" aria-label="Menu controls">
+          <button class="chrome" type="button" aria-label="Close menu">× Menu</button>
+          <div class="brand">glint</div>
+          <nav class="toplinks" aria-label="Secondary">
+            <a href="#cart">Cart(0)</a>
+            <a href="#account">Account</a>
+          </nav>
+        </header>
+
+        <div class="fields" aria-label="Life axes">
+          <button class="field sleep" type="button" aria-pressed="false">
+            <span class="label">Sleep</span>
+            <span class="visual bar-visual">
+              <span class="visual-head">
+                <span><small>결정한 수면</small><strong>8h 00m</strong></span>
+                <span><small>어제 수면</small><strong>7h 18m</strong></span>
+              </span>
+              <span class="bar-chart" style="--target: 80%; --actual: 73%;">
+                <span class="target-rule"><i>8h 기준</i></span>
+                <span class="bar-column"><i class="bar-fill target-fill"></i><em>목표</em></span>
+                <span class="bar-column"><i class="bar-fill actual-fill"></i><em>어제</em></span>
+              </span>
+              <span class="result result-under">기준선 미달 · −42분</span>
+            </span>
+          </button>
+
+          <button class="field diet" type="button" aria-pressed="false">
+            <span class="label">Diet</span>
+            <span class="visual bar-visual">
+              <span class="visual-head">
+                <span><small>목표 섭취</small><strong>2,100</strong></span>
+                <span><small>어제 섭취</small><strong>1,960</strong></span>
+              </span>
+              <span class="bar-chart" style="--target: 87.5%; --actual: 81.7%;">
+                <span class="target-rule"><i>2,100 kcal</i></span>
+                <span class="bar-column"><i class="bar-fill target-fill"></i><em>목표</em></span>
+                <span class="bar-column"><i class="bar-fill actual-fill"></i><em>어제</em></span>
+              </span>
+              <span class="result result-under">목표보다 적음 · −140 kcal</span>
+            </span>
+          </button>
+
+          <button class="field exercise" type="button" aria-pressed="false">
+            <span class="label">Exercise</span>
+            <span class="visual exercise-visual">
+              <span class="section-title">TODAY · A ROUTINE · 18:30 · 65 MIN</span>
+              <span class="workout-list" role="list">
+                <span role="listitem"><b>01</b><i>Warm-up</i><em>bike 5 min · mobility 5 min</em></span>
+                <span role="listitem"><b>02</b><i>Back squat</i><em>80kg · 5×5</em></span>
+                <span role="listitem"><b>03</b><i>Bench press</i><em>55kg · 5×5</em></span>
+                <span role="listitem"><b>04</b><i>Barbell row</i><em>50kg · 5×5</em></span>
+                <span role="listitem"><b>05</b><i>Plank</i><em>60s · 3 sets</em></span>
+                <span role="listitem"><b>06</b><i>Cooldown</i><em>walk · stretch · 10 min</em></span>
+              </span>
+            </span>
+          </button>
+
+          <button class="field time" type="button" aria-pressed="false">
+            <span class="label">Time Management</span>
+            <span class="visual time-visual">
+              <span class="earnings">
+                <small>₩32,000 × <span id="liveHours">0.00h</span></small>
+                <strong id="liveEarnings">₩0</strong>
+                <i>오늘 실시간 노동 가치</i>
+              </span>
+              <span class="day-track" aria-label="오늘 24시간 계획">
+                <span class="time-block sleep-block" style="--top: 0%; --height: 29.17%;"><b>00:00</b><i>수면</i></span>
+                <span class="time-block" style="--top: 29.17%; --height: 4.17%;"><b>07:00</b><i>기상</i></span>
+                <span class="time-block" style="--top: 33.34%; --height: 4.16%;"><b>08:00</b><i>아침</i></span>
+                <span class="time-block work-block" style="--top: 37.5%; --height: 12.5%;"><b>09:00</b><i>Deep work</i></span>
+                <span class="time-block" style="--top: 50%; --height: 4.17%;"><b>12:00</b><i>점심</i></span>
+                <span class="time-block work-block" style="--top: 54.17%; --height: 20.83%;"><b>13:00</b><i>Work</i></span>
+                <span class="time-block" style="--top: 75%; --height: 4.17%;"><b>18:00</b><i>운동</i></span>
+                <span class="time-block" style="--top: 79.17%; --height: 4.16%;"><b>19:00</b><i>저녁</i></span>
+                <span class="time-block" style="--top: 83.33%; --height: 8.34%;"><b>20:00</b><i>개인 프로젝트</i></span>
+                <span class="time-block" style="--top: 91.67%; --height: 8.33%;"><b>22:00</b><i>정리 · 취침 준비</i></span>
+                <span id="nowMarker" class="now-marker"><i></i><b id="nowTime">00:00</b></span>
+              </span>
+            </span>
+          </button>
+
+          <button class="field exploration" type="button" aria-pressed="false">
+            <span class="label">Exploration</span>
+            <span class="visual exploration-visual">
+              <span class="section-title">CURRENT HABITS</span>
+              <span class="habit-list" role="list">
+                <span role="listitem"><i>07:00 기상</i><b>5 / 7</b><em><u style="width: 71%"></u></em></span>
+                <span role="listitem"><i>30분 읽기</i><b>4 / 7</b><em><u style="width: 57%"></u></em></span>
+                <span role="listitem"><i>운동 루틴</i><b>3 / 4</b><em><u style="width: 75%"></u></em></span>
+              </span>
+              <span class="section-title idea-title">TRY NEXT</span>
+              <span class="idea-list" role="list">
+                <span role="listitem"><b>GOAL</b><i>공유오피스에서 같은 작업 3시간</i><em>장소와 interruption 분리</em></span>
+                <span role="listitem"><b>ADJACENT</b><i>도예 원데이 클래스</i><em>새로운 감각·몰입 방식</em></span>
+                <span role="listitem"><b>RANDOM</b><i>낯선 동네 60분 산책</i><em>개인화 없는 발견</em></span>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <footer class="foot">glint@email.com</footer>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

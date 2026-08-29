@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+.vercel/
+*.log
+
+# Local design evidence: useful for research, unnecessary for source/deploy history.
+.superloopy/
+docs/references/**/*.gif
+docs/references/**/*.jpeg
+docs/references/**/*.jpg
+docs/references/**/*.png
+docs/references/**/*.webp
