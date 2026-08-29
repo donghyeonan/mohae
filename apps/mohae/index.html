@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#fffafb">
-    <title>Life Lab · Explore</title>
+    <meta name="description" content="한국에서 다음에 할 경험을 스와이프로 고르는 MOHAE 프로토타입">
+    <title>MOHAE · Explore Korea</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <main class="stage">
-      <section class="phone" aria-label="Life Lab 모바일 프로토타입">
+      <section class="phone" aria-label="MOHAE 모바일 프로토타입">
         <div id="app" class="app"></div>
         <svg class="gradient-defs" aria-hidden="true" width="0" height="0">
           <defs>
@@ -23,13 +24,13 @@
           <button class="tab-button is-active" type="button" data-tab="explore" aria-label="탐색" aria-current="page">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/></svg>
           </button>
-          <button class="tab-button" type="button" data-tab="status" aria-label="내 상태">
+          <button class="tab-button" type="button" data-tab="profile" aria-label="내 프로필">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
           </button>
         </nav>
         <div id="toast" class="toast" role="status" aria-live="polite"></div>
       </section>
     </main>
-    <script src="./app.js"></script>
+    <script type="module" src="./src/app.js"></script>
   </body>
 </html>

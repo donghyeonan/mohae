@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Target: `apps/life-lab/index.html`, `styles.css`, `app.js`
+- Target: `apps/mohae/index.html`, `styles.css`, `src/app.js`, `src/profile.js`
 - Screenshot: `docs/references/explore/tinder-card-flow.png` (local-only; intentionally excluded from Git)
 - Source URL: https://dribbble.com/shots/21761565-Tinder-App-UI-Redesign
 - Interaction model: click/touch with fixed chrome
@@ -24,7 +24,7 @@ N/A: source is a static rendered board. Image-derived values are in `DESIGN_TOKE
 
 ## Per-State Content
 
-Explore and profile/status only. Map and detail are child views, not bottom tabs.
+Explore and profile only. Map and detail are child views, not bottom tabs.
 
 ## Assets
 
@@ -32,7 +32,7 @@ Inline Lucide-derived `Compass` and `UserRound` SVG.
 
 ## Text Content
 
-No tab labels. `aria-label` remains `탐색` and `내 상태`.
+No tab labels. `aria-label` remains `탐색` and `내 프로필`.
 
 ## Responsive Behavior
 

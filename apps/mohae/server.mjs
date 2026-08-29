@@ -36,6 +36,6 @@ const server = createServer(async (request, response) => {
 server.listen(process.env.PORT ?? 4177, () => {
   const address = server.address();
   if (typeof address === "object" && address) {
-    console.log(`Life Lab Tinder clone: http://localhost:${address.port}`);
+    console.log(`MOHAE prototype: http://localhost:${address.port}`);
   }
 });

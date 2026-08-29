@@ -14,7 +14,7 @@ The mobile Dribbble page did not render usable content during capture; `source-p
 
 ## Prototype photos
 
-Local files under `apps/life-lab/assets/`:
+Local files under `apps/mohae/assets/`:
 
 - `pottery-1.jpg`, `pottery-2.jpg`, `pottery-3.jpg`
 - `jazz-1.jpg`, `jazz-2.jpg`

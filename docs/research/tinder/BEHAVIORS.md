@@ -12,7 +12,7 @@ Sources:
 - https://www.tinderpressroom.com/tap-into-a-new-look-on-tinder
 - https://tinder.com/faq/
 
-Life Lab adapts those actions to opportunities.
+MOHAE adapts those actions to real-world opportunities.
 
 ## Explore deck
 
@@ -31,21 +31,23 @@ Life Lab adapts those actions to opportunities.
 - Back returns to the same deck item without consuming it.
 - Save CTA writes the same state as right swipe.
 
-## Saved map
+## Shared map
 
-- Contains saved items only.
+- Contains saved opportunities and user/Agent-added plan stops.
 - Event visibility expires at `event_end_at`.
 - Place visibility expires seven days after save.
 - A place can be extended seven days before expiry.
 - Expiry removes active UI visibility but does not delete recommendation or experience events.
+- A plan stop can represent accommodation, airport, attraction, restaurant, or another anchor.
+- A place can become the center of a distance-filtered Explore deck.
 - `다녀왔어요` records attendance with one tap.
 - Review controls appear only after the user explicitly asks to add a review.
 
-## Status
+## Profile
 
-- Bottom profile icon opens personal state.
-- List/grid controls change presentation only; both use the same measurements.
-- No aggregate wellness score.
+- Bottom profile icon opens account and preference state.
+- The screen shows login, locale, base region, and privacy state.
+- Personal measurement dashboards are outside MOHAE.
 
 ## Responsive sweep
 

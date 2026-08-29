@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Target: `apps/life-lab/index.html`, `styles.css`, `app.js`
+- Target: `apps/mohae/index.html`, `styles.css`, `src/explore.js`
 - Screenshots: `tinder-card-flow.png`, `tinder-detail-screens.png`
 - Interaction model: mixed tap, horizontal drag, vertical reveal
 

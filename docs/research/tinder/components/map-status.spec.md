@@ -1,14 +1,15 @@
-# Saved map and status component spec
+# Saved map and historical status component spec
 
 ## Overview
 
-- Target: `apps/life-lab/index.html`, `styles.css`, `app.js`
-- Interaction model: click/touch, horizontal saved-card rail, list/grid toggle
+- Current target: `apps/mohae/index.html`, `styles.css`, `src/explore.js`, `src/profile.js`
+- Interaction model: click/touch and a horizontal map-place rail
+- Status measurement UI was removed when MOHAE split from Life Lab.
 
 ## DOM Structure
 
-Map: `map-view > map-canvas/pins + saved-sheet/cards`.
-Status: `status-view > toolbar/toggle + metric-content/cards`.
+Map: `map-view > map-canvas/saved-or-plan-pins + saved-sheet/cards`.
+Profile: `profile-view > account + settings`.
 
 ## Computed Styles
 
@@ -16,15 +17,15 @@ N/A: these are product adaptations using the Tinder visual grammar rather than s
 
 ## States and Behaviors
 
-- map includes saved opportunities only
+- map includes saved opportunities and user/Agent-added plan stops
 - event expires at event end; place expires seven days after save
 - place can extend seven days
 - attendance is one tap; optional review appears afterward
-- status list/grid switch changes layout only
+- Profile contains account and preference state, not personal measurements
 
 ## Per-State Content
 
-Map saved cards show title, category, expiry, attendance, and extension when applicable. Status shows sleep, activity, focus, free time, energy, and recent experiences without an aggregate score.
+Map cards show title, type, timing, order, expiry, attendance, and extension where applicable. Profile shows account state, locale, region, and privacy state.
 
 ## Assets
 
@@ -40,7 +41,7 @@ Full mobile view at 390px; fixed phone plane on tablet/desktop.
 
 ## Original Implementation Inventory
 
-N/A: map and status are explicit Life Lab adaptations.
+N/A: map and the superseded status screen were explicit product adaptations.
 
 ## Parity Decision
 

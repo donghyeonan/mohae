@@ -2,9 +2,9 @@
 
 > 이미지·영상 원본은 로컬 전용이며 Git에 포함하지 않는다. 아래 경로는 로컬 workspace의 예상 위치와 출처 기록이다.
 
-제품 구조: **Explore / Map / Status**
+현재 제품 구조: **Explore / Map / Profile**
 
-레퍼런스는 화면을 복제하기 위한 것이 아니라, 현재 제품 개념에 맞는 상호작용과 정보 구조를 추출하기 위한 자료다.
+레퍼런스는 화면을 복제하기 위한 것이 아니라 상호작용과 정보 구조를 추출하기 위한 자료다. `Status`와 custom metric 자료는 분리 전 Life Lab의 역사적 reference이며 현재 MOHAE 구현 근거가 아니다.
 
 ## 1. Explore
 
@@ -48,7 +48,9 @@
 - 상세 정보는 위로 끌어올리는 bottom sheet에서 제공한다.
 - 지도 자체는 별도 추천 엔진이 아니라 Explore 결과의 공간 보기다.
 
-## 3. Status
+## 3. Status — historical Life Lab reference
+
+현재 MOHAE에는 적용하지 않는다.
 
 파일:
 - `status/time-and-money-status.png`
@@ -60,12 +62,12 @@
 - https://dribbble.com/shots/23933692-WellMate-Health-Care-App-Online-Appointment
 - https://dribbble.com/shots/27635682-Health-Tracking-App-UI
 
-가져올 것:
+당시 Life Lab에서 가져오려던 것:
 - `시간`과 `돈`을 가장 큰 숫자로 동시에 보여주는 상단 카드
 - 서로 크기가 다른 모듈형 metric tile
 - 한 타일 안에서 현재값, 기준값, 짧은 해석만 보여주는 구조
 
-우리 제품에서의 번역:
+당시 Life Lab 적용 기록:
 - 최상단은 `오늘 쓴 시간 × 시급 = 체감 비용`을 큰 숫자로 표시한다.
 - 그 아래 기본 슬롯은 수면, 운동, 식이, 시간 계획, 목표 습관이다.
 - 각 슬롯은 하나의 질문만 답한다.
@@ -75,11 +77,13 @@
   - 시간 계획: `계획 시간 / 실제 사용 시간`
   - 목표 습관: `오늘 필요 행동 / 실행 여부`
 
-주의:
+당시 Life Lab 주의사항:
 - 모든 것을 합친 단일 wellness score는 만들지 않는다.
 - Status는 사용자를 평가하는 dashboard가 아니라 판단을 돕는 snapshot이다.
 
-## 4. Custom metrics
+## 4. Custom metrics — historical Life Lab reference
+
+현재 MOHAE에는 적용하지 않는다.
 
 파일:
 - `custom-metrics/add-custom-routine.png`
@@ -91,12 +95,12 @@
 - https://dribbble.com/shots/26395938-HBIT-Habit-Tracker-App
 - https://dribbble.com/shots/27467544-Habit-Streak-Productivity-Goal-Tracker-Mobile-App-UI-UX-Design
 
-가져올 것:
+당시 Life Lab에서 가져오려던 것:
 - 유형 선택 → 이름 → 반복 주기 → 입력 시점의 짧은 생성 흐름
 - 사용자가 만든 항목도 기본 항목과 같은 카드 규칙으로 표시
 - streak와 heatmap은 목표 습관에서만 선택적으로 사용
 
-우리 제품에서의 번역:
+당시 Life Lab 적용 기록:
 - 사용자는 폼부터 시작하지 않고 agent에게 자연어로 말한다.
 - agent가 `이름 · 단위 · 입력형 · 주기 · 데이터 소스 · 기준값` 스키마를 제안한다.
 - 사용자가 확인하면 Status 슬롯으로 즉시 추가한다.
@@ -105,5 +109,5 @@
 
 - Dribbble 샷의 주황·파랑·초록 팔레트는 복제하지 않는다. 제품 색은 별도로 정한다.
 - 큰 이미지, 큰 숫자, 짧은 문장, 둥근 카드라는 구성 원칙만 공유한다.
-- Explore는 감정적이고 시각적이어도 되지만 Status는 조용하고 판단 가능해야 한다.
+- Explore는 감정적이고 시각적이어도 되며 Profile은 계정·선호·개인정보 상태만 구체적으로 보여준다.
 - 참고 이미지는 저작권이 있는 외부 디자인이다. 내부 디자인 참고용으로만 사용한다.

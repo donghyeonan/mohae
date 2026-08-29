@@ -20,20 +20,25 @@
 - CSS: shorter hero and vertical document flow
 - JS: photo edge navigation, save, attendance, back
 
-## Saved map
+## Shared map
 
-- DOM: `.map-canvas`, `.map-pin`, `.saved-sheet`, `.saved-card`
-- CSS: synthetic map lines, pins, horizontal saved cards
-- JS: visibility policy, seven-day extension, attendance, optional review
+- DOM: `.map-canvas`, `.map-pin`, `.plan-pin`, `.saved-sheet`, `.saved-card`, `.planned-stop-card`
+- CSS: synthetic map lines, two pin types, horizontal map-place cards
+- JS: visibility policy, plan stops, nearby catalog distance, attendance, optional review
 - External map library: none; this is an interaction prototype, not geographic accuracy.
 
-## Status
+## Profile
 
-- DOM: `.status-toolbar`, `.status-content`, `.metric-card`
-- CSS: list/grid modes
-- JS: mode toggle persisted in prototype state
+- DOM: `.profile-screen`, `.account-card`, `.profile-list`
+- CSS: account and settings surface
+- JS: account and profile-setting placeholders
+
+## WebMCP
+
+- `src/webmcp.js` registers top-level imperative tools when the browser supports `document.modelContext.registerTool`.
+- Tools reuse Explore map functions; no separate agent-only state path exists.
 
 ## Persistence
 
-- `localStorage` stores prototype UI state and append-only experience events.
+- `localStorage` stores prototype UI state, Agent-added map stops, and append-only experience events.
 - No backend, auth, analytics, search, payment, or real booking integration.

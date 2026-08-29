@@ -1,4 +1,4 @@
-# Page topology — Tinder redesign → Life Lab
+# Page topology — Tinder redesign → MOHAE
 
 Source: https://dribbble.com/shots/21761565-Tinder-App-UI-Redesign
 
@@ -11,12 +11,12 @@ The Dribbble source is a static concept board, not an executable app. The four l
 3. Expanded profile: back control and wordmark remain; photo becomes a shorter rounded hero; title, category, metadata, description, and tags continue vertically below.
 4. Swipe result: two rotated cards and a confirmation message.
 
-## Life Lab prototype screens
+## MOHAE prototype screens
 
 1. `Explore`: mixed Seoul/Gyeonggi opportunity deck.
 2. `Opportunity detail`: the same card expands into a vertically scrollable detail view.
-3. `Saved map`: only saved opportunities appear as pins and compact cards.
-4. `Profile/status`: measured personal state with list/grid display toggle.
+3. `Shared map`: saved opportunities and user/Agent-added plan stops appear as pins and compact cards.
+4. `Profile`: signed-out account, recommendation signals, locale, region, and privacy state.
 5. `Attendance/review`: attendance is one tap; review is optional progressive disclosure.
 
 ## Fixed layers
