@@ -47,7 +47,7 @@ Reference payload, intentionally not a rigid schema:
   "place_or_market_text": "...",
   "organizer_text": null,
   "people_text": null,
-  "signal_chips": [{"label": "...", "kind": "culinary_selection | competition_award | media_appearance | international_editorial | craft_affiliation | participant | attendee_payoff", "source_role": "guide | competition_organizer | media | editorial | platform", "source_url": "https://...", "observed_at": "...", "scope": "exact_branch | exact_occurrence"}],
+  "signal_chips": [{"label": "...", "kind": "culinary_selection | competition_award | media_appearance | international_editorial | craft_affiliation | participant | attendee_payoff", "tone": "blue_ribbon | michelin | competition | media | editorial | participant | payoff", "source_role": "guide | competition_organizer | media | editorial | platform", "source_url": "https://...", "observed_at": "...", "scope": "exact_branch | exact_occurrence"}],
   "primary_action": {"label": "...", "url": "https://..."},
   "sources": [{"role": "official | map | platform", "url": "https://...", "observed_at": "..."}]
 }
@@ -127,7 +127,7 @@ Do not force event schedule, venue, participation cost, or benefit-recipient fie
 
 ## 3. Chip guidance
 
-Visible chips are typed external signals, not generic explanations or score labels. Use zero to three; zero is normal.
+Visible chips are typed external signals, not generic explanations or score labels. Use zero to three; zero is normal. Use the recognizable source color when it exists, such as Blue Ribbon blue or Michelin red, and a stable semantic tone for media, editorial, participant, and payoff chips.
 
 - Restaurant and cafe: exact-branch and exact-edition Michelin or Blue Ribbon selection, culinary competition award, attributable broadcast/YouTube appearance, international editorial recognition, or exact craft affiliation.
 - Event: named performer, speaker, artist, participant, or a concrete attendee payoff such as included goods, access, prize, learning, or activity.

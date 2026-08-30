@@ -123,8 +123,12 @@ bottomNav.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape") return;
-  explore.handleEscape();
+  if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+  if (event.key === "Escape") {
+    if (explore.handleEscape()) event.preventDefault();
+    return;
+  }
+  if (explore.handleKeyboard(event.key)) event.preventDefault();
 });
 
 if (state.activeTab === "profile") state.view = "profile";

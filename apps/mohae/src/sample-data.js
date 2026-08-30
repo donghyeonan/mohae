@@ -113,18 +113,6 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/37373204?placePath=/review",
       "official": "http://menyahanabi.kr/"
     },
-    "menuGuidance": [
-      {
-        "title": "처음 고를 때",
-        "detail": "업체 추천 표시가 붙은 네 메뉴 중 기본 마제소바는 12,000원, 고기 토핑 도니꾸와 파 중심 네기시오는 15,000원입니다.",
-        "basis": "네이버 업체 등록 추천 메뉴"
-      },
-      {
-        "title": "국물 메뉴",
-        "detail": "같은 추천 표시 메뉴 중 카라멘은 12,000원입니다.",
-        "basis": "네이버 업체 등록 추천 메뉴"
-      }
-    ],
     "signalChips": [
       {
         "label": "수요미식회 82회",
@@ -133,7 +121,8 @@ export const opportunities = [
         "sourceUrl": "https://m.place.naver.com/restaurant/37373204/home",
         "observedAt": "2026-08-30T10:36:45.382Z",
         "scope": "exact_place",
-        "sourceRole": "platform"
+        "sourceRole": "platform",
+        "tone": "media"
       }
     ],
     "distance": "",
@@ -262,13 +251,6 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/31905764?placePath=/review",
       "official": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
     },
-    "menuGuidance": [
-      {
-        "title": "추출 방식 비교",
-        "detail": "아메리카노 4,500원, 브루잉 6,000원, 콜드브루 샘플러 11,000원으로 추출 방식을 나눠 고를 수 있습니다.",
-        "basis": "네이버 업체 등록 메뉴 가격"
-      }
-    ],
     "signalChips": [
       {
         "label": "블루리본 2개",
@@ -277,7 +259,8 @@ export const opportunities = [
         "sourceUrl": "https://www.bluer.co.kr/restaurants/27113",
         "observedAt": "2026-08-30T11:32:28.000Z",
         "scope": "exact_branch_2026",
-        "sourceRole": "guide"
+        "sourceRole": "guide",
+        "tone": "blue_ribbon"
       }
     ],
     "distance": "",
@@ -409,18 +392,6 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/303937152?placePath=/review",
       "official": "https://www.lottehotel.com/seoul-signiel/ko/dining/bar-81"
     },
-    "menuGuidance": [
-      {
-        "title": "단품으로 고를 때",
-        "detail": "칵테일은 32,000–38,000원, 글라스 와인은 42,000–45,000원입니다.",
-        "basis": "네이버 업체 등록 메뉴 가격"
-      },
-      {
-        "title": "2시간 상품",
-        "detail": "Awesome Hours는 150,000원이며 업체 추천 표시가 붙어 있습니다.",
-        "basis": "네이버 업체 등록 추천 메뉴"
-      }
-    ],
     "signalChips": [
       {
         "label": "Forbes 2019 스카이바",
@@ -429,7 +400,8 @@ export const opportunities = [
         "sourceUrl": "https://www.forbes.com/sites/forbestravelguide/2019/08/10/worlds-best-hotel-sky-bars/",
         "observedAt": "2026-08-30T11:32:28.000Z",
         "scope": "exact_place",
-        "sourceRole": "editorial"
+        "sourceRole": "editorial",
+        "tone": "editorial"
       }
     ],
     "distance": "",

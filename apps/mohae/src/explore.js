@@ -14,6 +14,8 @@ export function createExploreFeature(context) {
   let filterReturnFocus = null;
   let animateDetailEntry = false;
   let animateExploreReturn = false;
+  let deckTransitionLocked = false;
+  let detailTransitionLocked = false;
 
   function getOpportunity(id) {
     return opportunities.find((item) => item.id === id) ?? null;
@@ -115,6 +117,10 @@ export function createExploreFeature(context) {
     return ["open", "limited", "closed"].includes(item.status?.tone) ? item.status.tone : "limited";
   }
 
+  function chipTone(chip) {
+    return ["blue_ribbon", "michelin", "competition", "media", "editorial", "participant", "payoff", "neutral"].includes(chip?.tone) ? chip.tone : "neutral";
+  }
+
   function observedDate(item) {
     if (!item.source?.observedAt) return "관측일 미상";
     return new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "numeric", day: "numeric" }).format(new Date(item.source.observedAt));
@@ -138,14 +144,14 @@ export function createExploreFeature(context) {
       ${photoProgress(item)}
       ${behind ? "" : `<span class="card-status is-${statusTone(item)}">${escapeHtml(item.status?.label ?? "운영정보 확인")}</span>
       <span class="card-photo-count">${index + 1}/${item.images.length}</span>
-      ${item.images.length > 1 ? `<button class="photo-cycle" type="button" data-action="next-photo" aria-label="다음 사진"></button>` : ""}
-      <button class="card-information" type="button" data-action="open-detail" aria-label="${escapeHtml(item.title)} 자세히 보기">
+      ${item.images.length > 1 ? `<button class="photo-cycle" type="button" data-action="next-photo" aria-label="${escapeHtml(item.title)} 다음 사진"></button>` : ""}
+      <div class="card-information">
         <span class="category-kicker">${escapeHtml(item.category)}</span>
         <strong>${escapeHtml(item.title)}</strong>
         <span class="card-subtitle">${escapeHtml(item.subtitle)}</span>
-        ${item.signalChips?.length ? `<span class="card-chips">${item.signalChips.slice(0, 2).map((chip) => `<i title="${escapeHtml(`${chip.sourceLabel} · ${observedDate({ source: { observedAt: chip.observedAt } })}`)}">${escapeHtml(chip.label)}</i>`).join("")}</span>` : ""}
-        <span class="detail-hint">${icon("chevronUp")} 자세히</span>
-      </button>`}
+        ${item.signalChips?.length ? `<span class="card-chips">${item.signalChips.slice(0, 2).map((chip) => `<i class="is-${chipTone(chip)}" title="${escapeHtml(`${chip.sourceLabel} · ${observedDate({ source: { observedAt: chip.observedAt } })}`)}">${escapeHtml(chip.label)}</i>`).join("")}</span>` : ""}
+        <span class="detail-hint">↓ 스크롤해 자세히</span>
+      </div>`}
     </article>`;
   }
 
@@ -179,7 +185,7 @@ export function createExploreFeature(context) {
         <button class="action-button pass-button" type="button" data-action="pass" aria-label="넘기기">${icon("x")}</button>
         <button class="action-button save-button" type="button" data-action="save" aria-label="저장하기">${icon("heart")}</button>
       </div>` : ""}
-      <p class="gesture-note">좌우로 선택 · 아래로 스크롤하거나 위로 밀어 자세히</p>
+      <p class="gesture-note">← 넘기기 · → 저장 · ↓ 자세히 · 카드 클릭으로 사진 전환</p>
     </section>`;
     bindImageFallbacks();
     if (item) {
@@ -212,10 +218,9 @@ export function createExploreFeature(context) {
   function renderMenu(item) {
     if (!item.menu?.length && !item.menuMedia?.length) return "";
     return `<section class="evidence-section menu-evidence">
-      <div class="evidence-heading"><h2>메뉴</h2>${item.menuMedia?.length ? `<span>업체 등록 원본</span>` : ""}</div>
-      ${item.menuMedia?.length ? `<div class="menu-media" aria-label="업체 등록 메뉴 사진">${item.menuMedia.map((media) => `<figure><img data-card-image src="${escapeHtml(imageSrc(media.src))}" alt="${escapeHtml(item.title)} ${escapeHtml(media.title)}" loading="lazy"><figcaption><b>${escapeHtml(media.title)}</b><a href="${escapeHtml(media.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(media.source)} · ${media.rightsStatus === "unknown" ? "재사용 권리 미확인" : escapeHtml(media.rightsStatus)}</a></figcaption></figure>`).join("")}</div>` : ""}
+      <div class="evidence-heading"><h2>메뉴</h2></div>
+      ${item.menuMedia?.length ? `<div class="menu-media" aria-label="메뉴 사진">${item.menuMedia.map((media) => `<figure><img data-card-image src="${escapeHtml(imageSrc(media.src))}" alt="${escapeHtml(item.title)} ${escapeHtml(media.title)}" loading="lazy"><figcaption>${escapeHtml(media.title)}</figcaption></figure>`).join("")}</div>` : ""}
       ${item.menu?.length ? `<div class="menu-list">${item.menu.slice(0, 8).map((menu) => `<div><span><b>${escapeHtml(menu.name)}</b>${menu.description ? `<small>${escapeHtml(reviewBody(menu.description, 92))}</small>` : ""}</span><strong>${escapeHtml(menu.price)}</strong></div>`).join("")}</div>` : ""}
-      ${item.menuGuidance?.length ? `<div class="menu-guidance"><h3>메뉴 고르기</h3>${item.menuGuidance.map((tip) => `<p><b>${escapeHtml(tip.title)}</b><span>${escapeHtml(tip.detail)}</span><small>${escapeHtml(tip.basis)}</small></p>`).join("")}</div>` : ""}
     </section>`;
   }
 
@@ -465,10 +470,23 @@ export function createExploreFeature(context) {
     render();
   }
 
+  function runSharedViewTransition(update) {
+    if (detailTransitionLocked) return true;
+    if (typeof document.startViewTransition !== "function" || matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+    detailTransitionLocked = true;
+    document.documentElement.classList.add("is-detail-transition");
+    const transition = document.startViewTransition(update);
+    transition.finished.finally(() => {
+      detailTransitionLocked = false;
+      document.documentElement.classList.remove("is-detail-transition");
+    }).catch(() => {});
+    return true;
+  }
+
   function openDetail(item, smooth = true) {
-    if (!item) return;
-    const commit = () => {
-      animateDetailEntry = smooth;
+    if (!item || detailTransitionLocked) return;
+    const commit = (fallbackAnimation = smooth) => {
+      animateDetailEntry = fallbackAnimation;
       context.state.view = "detail";
       context.state.detailId = item.id;
       context.saveState();
@@ -476,21 +494,28 @@ export function createExploreFeature(context) {
     };
     const card = app.querySelector(".opportunity-card:not(.is-behind)");
     if (!smooth || !card || matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      commit();
+      commit(false);
       return;
     }
+    if (runSharedViewTransition(() => commit(false))) return;
+    detailTransitionLocked = true;
     card.classList.add("open-detail");
-    setTimeout(commit, 180);
+    setTimeout(() => {
+      commit(true);
+      detailTransitionLocked = false;
+    }, 220);
   }
 
   function passCurrent() {
     const item = currentOpportunity();
-    if (!item) return;
+    if (!item || deckTransitionLocked) return;
+    deckTransitionLocked = true;
     context.state.decisions[item.id] = "passed";
     context.recordEvent("passed", item.id);
     animateCard("left", () => {
       context.showToast("이번 추천은 넘겼어요");
       renderExplore();
+      deckTransitionLocked = false;
     });
   }
 
@@ -510,11 +535,13 @@ export function createExploreFeature(context) {
 
   function saveCurrent() {
     const item = currentOpportunity();
-    if (!item) return;
+    if (!item || deckTransitionLocked) return;
+    deckTransitionLocked = true;
     saveOpportunity(item.id, "swipe");
     animateCard("right", () => {
       context.showToast(item.kind === "event" && item.eventEnd ? "프로그램 종료일까지 지도에 저장했어요" : "7일 동안 지도에 저장했어요");
       renderExplore();
+      deckTransitionLocked = false;
     });
   }
 
@@ -530,7 +557,6 @@ export function createExploreFeature(context) {
       completed = true;
       done();
     };
-    card.style.transform = "";
     card.style.removeProperty("--decision-opacity");
     delete card.dataset.direction;
     const onTransitionEnd = (event) => {
@@ -539,8 +565,9 @@ export function createExploreFeature(context) {
       finish();
     };
     card.addEventListener("transitionend", onTransitionEnd);
-    requestAnimationFrame(() => card.classList.add(direction === "left" ? "fly-left" : "fly-right"));
-    setTimeout(finish, 420);
+    void card.offsetWidth;
+    card.classList.add(direction === "left" ? "fly-left" : "fly-right");
+    setTimeout(finish, 320);
   }
 
   function bindCardGesture() {
@@ -635,8 +662,9 @@ export function createExploreFeature(context) {
   }
 
   function backToExplore(smooth = false) {
-    const commit = () => {
-      animateExploreReturn = smooth;
+    if (detailTransitionLocked) return;
+    const commit = (fallbackAnimation = smooth) => {
+      animateExploreReturn = fallbackAnimation;
       context.state.view = "explore";
       context.state.activeTab = "explore";
       context.saveState();
@@ -644,11 +672,16 @@ export function createExploreFeature(context) {
     };
     const detail = app.querySelector(".detail-screen");
     if (!smooth || !detail || matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      commit();
+      commit(false);
       return;
     }
+    if (runSharedViewTransition(() => commit(false))) return;
+    detailTransitionLocked = true;
     detail.classList.add("is-returning");
-    setTimeout(commit, 210);
+    setTimeout(() => {
+      commit(true);
+      detailTransitionLocked = false;
+    }, 210);
   }
 
   function addPlanStop(input) {
@@ -778,7 +811,6 @@ export function createExploreFeature(context) {
     if (action === "next-photo" && id) movePhoto(getOpportunity(id), 1);
     else if (action === "pass") passCurrent();
     else if (action === "save") saveCurrent();
-    else if (action === "open-detail" && id) openDetail(getOpportunity(id));
     else if (action === "back-explore") backToExplore();
     else if (action === "open-map") {
       context.state.view = "map";
@@ -854,6 +886,24 @@ export function createExploreFeature(context) {
     return true;
   }
 
+  function handleKeyboard(key) {
+    if (context.state.view === "explore") {
+      if (key === "ArrowLeft") passCurrent();
+      else if (key === "ArrowRight") saveCurrent();
+      else if (key === "ArrowDown") openDetail(currentOpportunity());
+      else return false;
+      return true;
+    }
+    if (context.state.view === "detail" && key === "ArrowUp") {
+      const scroller = app.querySelector(".detail-scroll");
+      if (scroller && scroller.scrollTop <= 1) {
+        backToExplore(true);
+        return true;
+      }
+    }
+    return false;
+  }
+
   function handleEscape() {
     if (document.querySelector(".sheet-overlay")) {
       closeSheet();
@@ -873,6 +923,7 @@ export function createExploreFeature(context) {
     getMapContext,
     handleAction,
     handleEscape,
+    handleKeyboard,
     recommendNearPlace,
     render,
   };
