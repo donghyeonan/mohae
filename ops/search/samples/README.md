@@ -3,7 +3,7 @@
 ## 2026-08-30 new 10-card sample
 
 - Structured app data: [`2026-08-30-card-10.json`](2026-08-30-card-10.json)
-- Flat review sheet: [`2026-08-30-card-10.csv`](2026-08-30-card-10.csv)
+- Flat evaluation sheet: [`2026-08-30-card-10.csv`](2026-08-30-card-10.csv)
 - Product renderer: `apps/mohae/src/sample-data.js`
 - Validator: [`validate-card-sample.mjs`](validate-card-sample.mjs)
 
@@ -36,6 +36,8 @@ Every bulk-enrichment row must return these values. `unknown` is a value; an emp
 | `category` | product-facing category label |
 | `title` | exact venue or occurrence title |
 | `value_text` | one objective sentence describing the experience |
+| `recommendation_chips` | two or three concise, factual reasons for surfacing the card |
+| `recommendation_reason_count` | number of sourced recommendation reasons |
 | `timing_text` | relevant current hours, period, deadline, or explicit unknown |
 | `action_text` | walk in, reserve, buy, apply, track, or explicit unknown |
 | `cost_text` | free, current price/range, conditional cost, or explicit unknown |
@@ -54,7 +56,7 @@ Every bulk-enrichment row must return these values. `unknown` is a value; an emp
 
 ## Card boundary
 
-A sparse candidate remains a `subject`; it does not become an Explore card. A card requires all minimum fields above, but may explicitly state unknown timing, cost, action, or rights when the wording is safe and the next click still has value.
+A sparse candidate remains a `subject`; it does not become an Explore card. A card requires all minimum fields above, including at least two objective recommendation reasons with source URL and observation time. It may explicitly state unknown timing, cost, action, or rights when the wording is safe and the next click still has value.
 
 A hard-stop conflict in identity, safety, legal availability, false free pricing, or a closed-only action prevents publication. A missing optional program, person, capacity, menu detail, parking rule, or exact daily hour does not automatically remove a permanent place when the limitation is visible.
 
@@ -69,3 +71,7 @@ For restaurants, cafes, and bars, select the hero in this order:
 Visitor-review, blog, clip, `pai`, `aiView`, and other user-originated media are not hero-eligible. If no eligible image exists, hold the card. The local prototype currently displays unknown-rights merchant media for evaluation; that does not establish production reuse rights.
 
 If a qualified remote image fails to load, the renderer uses `apps/mohae/assets/card-image-fallback.png`. This neutral error state is not a representative visual and never makes an otherwise ineligible card publishable.
+
+Review-derived summaries are excluded from this sample because selecting and compressing opinions introduces an editorial layer. Recommendation chips must instead be grounded in atomic public facts such as an official program period, free admission, published hours, exact floor, booking availability, or merchant-marked menu recommendation.
+
+Menu photos are optional. When present, they retain title, source URL, source role, and rights status; merchant-provided menu images are shown as originals, not as evidence of popularity.

@@ -25,6 +25,7 @@ const required = [
   "source",
   "address",
   "externalLinks",
+  "recommendationReasons",
 ];
 const errors = [];
 const heroOrigins = new Set(["official_site", "merchant_provided_map", "provider_exterior", "rights_cleared_editorial", "licensed_official_editorial"]);
@@ -57,8 +58,22 @@ for (const record of Array.isArray(records) ? records : []) {
   if (!record.source?.observedAt || Number.isNaN(Date.parse(record.source.observedAt))) {
     errors.push(`${record.id}: invalid observedAt`);
   }
-  if (!record.externalLinks?.map || !record.externalLinks?.reviews) {
-    errors.push(`${record.id}: missing map or review source`);
+  if (!record.externalLinks?.map) {
+    errors.push(`${record.id}: missing map source`);
+  }
+  if (!Array.isArray(record.recommendationReasons) || record.recommendationReasons.length < 2) {
+    errors.push(`${record.id}: requires at least two objective recommendation reasons`);
+  } else if (!record.recommendationReasons.every((reason) => reason.chip && reason.title && reason.detail && reason.sourceLabel && /^https:\/\//.test(reason.sourceUrl ?? "") && !Number.isNaN(Date.parse(reason.observedAt)))) {
+    errors.push(`${record.id}: incomplete recommendation reason provenance`);
+  }
+  if (record.reviewPatterns || record.reviewInsight || record.reviewSummary) {
+    errors.push(`${record.id}: review-derived summaries are excluded from this contract sample`);
+  }
+  if (record.menuMedia?.some((media) => !media.title || !media.src || !media.source || !media.sourceUrl || !media.rightsStatus)) {
+    errors.push(`${record.id}: incomplete menu media provenance`);
+  }
+  if (record.menuCoverage && record.menuCoverage.imageCount !== (record.menuMedia?.length ?? 0)) {
+    errors.push(`${record.id}: menuCoverage.imageCount does not match menuMedia`);
   }
   if (!Number.isFinite(record.latitude) || !Number.isFinite(record.longitude)) {
     errors.push(`${record.id}: invalid coordinates`);
@@ -90,5 +105,7 @@ console.log(JSON.stringify({
   explicit_rights_status: records.length,
   primary_action: records.length,
   observed_at: records.length,
+  objective_recommendation_reasons: records.reduce((sum, record) => sum + record.recommendationReasons.length, 0),
+  review_summaries: 0,
   errors: 0,
 }, null, 2));

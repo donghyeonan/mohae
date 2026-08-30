@@ -48,28 +48,50 @@
       {
         "name": "마제소바",
         "price": "12,000원",
-        "description": null
+        "description": "업체 추천 표시"
       },
       {
         "name": "도니꾸 마제소바",
         "price": "15,000원",
-        "description": null
+        "description": "업체 추천 표시"
       },
       {
         "name": "네기시오 마제소바",
         "price": "15,000원",
-        "description": null
+        "description": "업체 추천 표시"
       },
       {
         "name": "카라멘",
         "price": "12,000원",
-        "description": null
+        "description": "업체 추천 표시"
       }
     ],
-    "menuMedia": [],
+    "menuMedia": [
+      {
+        "title": "마제소바",
+        "src": "https://ldb-phinf.pstatic.net/20250127_2/1737906511652Vkssf_JPEG/01.-%B8%B6%C1%A6%BC%D2%B9%D9-font.jpg",
+        "source": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
+        "rightsStatus": "unknown"
+      },
+      {
+        "title": "도니꾸 마제소바",
+        "src": "https://ldb-phinf.pstatic.net/20250127_232/1737906754015TKL2h_JPEG/02.-%B5%B5%B4%CF%B2%D9-%B8%B6%C1%A6%BC%D2%B9%D9-font.jpg",
+        "source": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
+        "rightsStatus": "unknown"
+      },
+      {
+        "title": "네기시오 마제소바",
+        "src": "https://ldb-phinf.pstatic.net/20250127_65/1737906872339cbt4U_JPEG/03.-%B3%D7%B1%E2%BD%C3%BF%C0-%B8%B6%C1%A6%BD%C3%B9%D9-font.jpg",
+        "source": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
+        "rightsStatus": "unknown"
+      }
+    ],
     "menuCoverage": {
       "structuredCount": 4,
-      "imageCount": 0,
+      "imageCount": 3,
       "coverage": "representative"
     },
     "source": {
@@ -88,7 +110,37 @@
       "map": "https://map.naver.com/p/entry/place/37373204",
       "reviews": "https://map.naver.com/p/entry/place/37373204?placePath=/review",
       "official": "http://menyahanabi.kr/"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "업체 추천 메뉴 4종",
+        "title": "업체가 네 가지 메뉴를 추천으로 표시했습니다",
+        "detail": "마제소바·도니꾸 마제소바·네기시오 마제소바·카라멘이 현재 업체 등록 메뉴에서 추천으로 표시됩니다.",
+        "sourceLabel": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
+        "observedAt": "2026-08-30T10:36:45.382Z"
+      },
+      {
+        "chip": "가격 공개 15개",
+        "title": "선택 가능한 메뉴와 가격이 공개돼 있습니다",
+        "detail": "현재 구조화 메뉴 15개의 가격이 확인되며 대표 마제소바는 12,000원입니다.",
+        "sourceLabel": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
+        "observedAt": "2026-08-30T10:36:45.382Z"
+      }
+    ],
+    "menuGuidance": [
+      {
+        "title": "처음 고를 때",
+        "detail": "업체 추천 표시가 붙은 네 메뉴 중 기본 마제소바는 12,000원, 고기 토핑 도니꾸와 파 중심 네기시오는 15,000원입니다.",
+        "basis": "네이버 업체 등록 추천 메뉴"
+      },
+      {
+        "title": "국물 메뉴",
+        "detail": "같은 추천 표시 메뉴 중 카라멘은 12,000원입니다.",
+        "basis": "네이버 업체 등록 추천 메뉴"
+      }
+    ]
   },
   {
     "id": "naver-31905764",
@@ -179,10 +231,18 @@
         "description": null
       }
     ],
-    "menuMedia": [],
+    "menuMedia": [
+      {
+        "title": "플랫화이트",
+        "src": "https://ldb-phinf.pstatic.net/20200104_222/1578146510582sjBit_JPEG/U88ytcKz5B4v5bW7Rtgm8Rfn.jpg",
+        "source": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/menu/list",
+        "rightsStatus": "unknown"
+      }
+    ],
     "menuCoverage": {
       "structuredCount": 4,
-      "imageCount": 0,
+      "imageCount": 1,
       "coverage": "representative"
     },
     "source": {
@@ -201,7 +261,40 @@
       "map": "https://map.naver.com/p/entry/place/31905764",
       "reviews": "https://map.naver.com/p/entry/place/31905764?placePath=/review",
       "official": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "자체 로스팅",
+        "title": "공식 사이트가 자체 로스팅 매장으로 소개합니다",
+        "detail": "하우스 블렌드와 싱글오리진 원두를 자체 로스팅하며 성내 플래그십 매장 정보를 별도로 공개합니다.",
+        "sourceLabel": "커피몽타주 공식",
+        "sourceUrl": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html",
+        "observedAt": "2026-08-30T10:17:42.853Z"
+      },
+      {
+        "chip": "평일 오전 8시",
+        "title": "평일에는 오전 8시부터 이용할 수 있습니다",
+        "detail": "현재 공개 영업시간은 평일 08:00–19:00, 주말·공휴일 10:00–19:00입니다.",
+        "sourceLabel": "네이버 업체 등록 정보",
+        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/home",
+        "observedAt": "2026-08-30T10:17:42.853Z"
+      },
+      {
+        "chip": "추출 방식 선택",
+        "title": "에스프레소부터 브루잉·콜드브루까지 가격이 공개돼 있습니다",
+        "detail": "아메리카노 4,500원, 브루잉 6,000원, 콜드브루 샘플러 11,000원이 확인됩니다.",
+        "sourceLabel": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/menu/list",
+        "observedAt": "2026-08-30T10:17:42.853Z"
+      }
+    ],
+    "menuGuidance": [
+      {
+        "title": "추출 방식 비교",
+        "detail": "아메리카노 4,500원, 브루잉 6,000원, 콜드브루 샘플러 11,000원으로 추출 방식을 나눠 고를 수 있습니다.",
+        "basis": "네이버 업체 등록 메뉴 가격"
+      }
+    ]
   },
   {
     "id": "naver-303937152",
@@ -281,10 +374,32 @@
         "description": null
       }
     ],
-    "menuMedia": [],
+    "menuMedia": [
+      {
+        "title": "칵테일",
+        "src": "https://ldb-phinf.pstatic.net/20240219_217/17083403311293rlTa_JPEG/%BD%C3%B1%D7%B4%CF%C3%B3_%C4%AE%C5%D7%C0%CF_%B4%DC%C3%BC%BC%A6%2823%B3%E2_%B0%DC%BF%EF%29.jpg",
+        "source": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/menu/list",
+        "rightsStatus": "unknown"
+      },
+      {
+        "title": "와인",
+        "src": "https://ldb-phinf.pstatic.net/20200310_11/1583826025628cBqFh_JPEG/lCwSs3SaNB47AvTPURrOdAgW.JPG.jpg",
+        "source": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/menu/list",
+        "rightsStatus": "unknown"
+      },
+      {
+        "title": "Awesome Hours",
+        "src": "https://ldb-phinf.pstatic.net/20250902_176/1756801890279O1l2q_JPEG/KakaoTalk_20250902_173029028.jpg",
+        "source": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/menu/list",
+        "rightsStatus": "unknown"
+      }
+    ],
     "menuCoverage": {
       "structuredCount": 4,
-      "imageCount": 0,
+      "imageCount": 3,
       "coverage": "representative"
     },
     "source": {
@@ -303,7 +418,45 @@
       "map": "https://map.naver.com/p/entry/place/303937152",
       "reviews": "https://map.naver.com/p/entry/place/303937152?placePath=/review",
       "official": "https://www.lottehotel.com/seoul-signiel/ko/dining/bar-81"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "롯데월드타워 81층",
+        "title": "주소가 롯데월드타워 81층으로 확인됩니다",
+        "detail": "공개 주소와 호텔 공식 페이지 모두 Bar 81을 롯데월드타워 81층의 바 공간으로 안내합니다.",
+        "sourceLabel": "시그니엘 서울 공식",
+        "sourceUrl": "https://www.lottehotel.com/seoul-signiel/ko/dining/bar-81",
+        "observedAt": "2026-08-30T10:17:44.968Z"
+      },
+      {
+        "chip": "예약 가능",
+        "title": "현재 외부 예약 경로가 연결돼 있습니다",
+        "detail": "캐치테이블 예약 경로와 예약 가능시간 17:00–21:00이 공개돼 있습니다.",
+        "sourceLabel": "캐치테이블",
+        "sourceUrl": "https://app.catchtable.co.kr/ct/shop/bar81",
+        "observedAt": "2026-08-30T10:17:44.968Z"
+      },
+      {
+        "chip": "칵테일 3.2만원부터",
+        "title": "대표 주류 가격 범위가 공개돼 있습니다",
+        "detail": "칵테일 32,000–38,000원, 글라스 와인 42,000–45,000원으로 확인됩니다.",
+        "sourceLabel": "네이버 업체 등록 메뉴",
+        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/menu/list",
+        "observedAt": "2026-08-30T10:17:44.968Z"
+      }
+    ],
+    "menuGuidance": [
+      {
+        "title": "단품으로 고를 때",
+        "detail": "칵테일은 32,000–38,000원, 글라스 와인은 42,000–45,000원입니다.",
+        "basis": "네이버 업체 등록 메뉴 가격"
+      },
+      {
+        "title": "2시간 상품",
+        "detail": "Awesome Hours는 150,000원이며 업체 추천 표시가 붙어 있습니다.",
+        "basis": "네이버 업체 등록 추천 메뉴"
+      }
+    ]
   },
   {
     "id": "naver-11785944",
@@ -413,7 +566,33 @@
       "map": "https://map.naver.com/p/entry/place/11785944",
       "reviews": "https://map.naver.com/p/entry/place/11785944?placePath=/review",
       "official": "https://soma.kspo.or.kr/"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "현재 전시 3개",
+        "title": "공식 사이트에서 진행 중인 전시 세 개가 확인됩니다",
+        "detail": "1관 이승택 회고전과 2관 체험형 전시 두 개가 각각 공식 전시 페이지와 종료일을 갖고 있습니다.",
+        "sourceLabel": "소마미술관 공식",
+        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/list",
+        "observedAt": "2026-08-30T10:17:53.006Z"
+      },
+      {
+        "chip": "9월 6일까지",
+        "title": "두 전시는 9월 6일 종료됩니다",
+        "detail": "이승택: 조각의 바깥에서와 그림책이 살아있다!가 2026년 9월 6일까지로 공지돼 있습니다.",
+        "sourceLabel": "소마미술관 공식",
+        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/list",
+        "observedAt": "2026-08-30T10:17:53.006Z"
+      },
+      {
+        "chip": "1·2관 선택",
+        "title": "성격과 가격이 다른 두 전시관을 고를 수 있습니다",
+        "detail": "1관 전시는 3,000–5,000원, 2관 주전시는 16,000–18,000원으로 공개돼 있습니다.",
+        "sourceLabel": "소마미술관 공식",
+        "sourceUrl": "https://soma.kspo.or.kr/usage/guide",
+        "observedAt": "2026-08-30T10:17:53.006Z"
+      }
+    ]
   },
   {
     "id": "naver-1906572873",
@@ -518,7 +697,33 @@
       "map": "https://map.naver.com/p/entry/place/1906572873",
       "reviews": "https://map.naver.com/p/entry/place/1906572873?placePath=/review",
       "official": "https://www.bookmuseum.go.kr/"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "관람 무료",
+        "title": "상설·기획전 관람료가 무료입니다",
+        "detail": "공식 관람 안내와 현재 가격 정보에서 박물관 관람료 무료가 확인됩니다.",
+        "sourceLabel": "송파책박물관 공식",
+        "sourceUrl": "https://www.bookmuseum.go.kr/watch/watch_info.do",
+        "observedAt": "2026-08-30T10:17:55.877Z"
+      },
+      {
+        "chip": "기획전 10월 25일까지",
+        "title": "현재 책 관련 기획전의 종료일이 공개돼 있습니다",
+        "detail": "동화의 시간, 이야기의 빛깔 전시가 2026년 10월 25일까지 진행됩니다.",
+        "sourceLabel": "송파책박물관 공식",
+        "sourceUrl": "https://www.bookmuseum.go.kr/exhibit/exhibit_view.do?eh_idx=39",
+        "observedAt": "2026-08-30T10:17:55.877Z"
+      },
+      {
+        "chip": "북키움 사전예약",
+        "title": "어린이 체험공간은 별도 예약 규칙이 있습니다",
+        "detail": "북키움은 무료이며 이용일 14일 전 오전 10시에 온라인 예약이 열립니다.",
+        "sourceLabel": "송파책박물관 공식",
+        "sourceUrl": "https://www.bookmuseum.go.kr/watch/watch_inscr_step01.do",
+        "observedAt": "2026-08-30T10:17:55.877Z"
+      }
+    ]
   },
   {
     "id": "naver-19452036",
@@ -617,7 +822,25 @@
       "map": "https://map.naver.com/p/entry/place/19452036",
       "reviews": "https://map.naver.com/p/entry/place/19452036?placePath=/review",
       "official": "https://www.gdfac.or.kr/"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "9월 1–5일",
+        "title": "기간이 정해진 무료 전시가 곧 열립니다",
+        "detail": "2026 아름다운 강동의 모습들이 9월 1일부터 5일까지 10:00–18:00 일정으로 공지돼 있습니다.",
+        "sourceLabel": "강동아트센터 공식",
+        "sourceUrl": "https://www.gdfac.or.kr/product/ko/performance/258463",
+        "observedAt": "2026-08-30T10:18:01.509Z"
+      },
+      {
+        "chip": "무료·전체 관람",
+        "title": "관람 대상과 비용이 명확합니다",
+        "detail": "공식 프로그램 페이지에 무료, 전체 관람 가능 전시로 표시돼 있습니다.",
+        "sourceLabel": "강동아트센터 공식",
+        "sourceUrl": "https://www.gdfac.or.kr/product/ko/performance/258463",
+        "observedAt": "2026-08-30T10:18:01.509Z"
+      }
+    ]
   },
   {
     "id": "naver-12268494",
@@ -707,7 +930,33 @@
       "map": "https://map.naver.com/p/entry/place/12268494",
       "reviews": "https://map.naver.com/p/entry/place/12268494?placePath=/review",
       "official": "https://www.ksponco.or.kr/olympicpark/"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "공원 입장 무료",
+        "title": "일반 공원 이용에는 입장료가 없습니다",
+        "detail": "공식 이용 안내에서 공원 일반 이용은 무료이며 공연·유료시설만 별도임을 확인할 수 있습니다.",
+        "sourceLabel": "올림픽공원 공식",
+        "sourceUrl": "https://www.ksponco.or.kr/olympicpark/menu.es?mid=a20101000000",
+        "observedAt": "2026-08-30T10:18:03.762Z"
+      },
+      {
+        "chip": "보행·자전거 05–22시",
+        "title": "이용 수단별 운영시간이 공개돼 있습니다",
+        "detail": "보행·자전거 출입은 05:00–22:00, 차량 출입은 06:00–22:00입니다.",
+        "sourceLabel": "올림픽공원 공식",
+        "sourceUrl": "https://www.ksponco.or.kr/olympicpark/menu.es?mid=a20101000000",
+        "observedAt": "2026-08-30T10:18:03.762Z"
+      },
+      {
+        "chip": "광장 24시간",
+        "title": "열린 광장은 24시간 이용 가능합니다",
+        "detail": "공식 이용 안내가 광장 지역을 24시간 개방 구역으로 구분합니다.",
+        "sourceLabel": "올림픽공원 공식",
+        "sourceUrl": "https://www.ksponco.or.kr/olympicpark/menu.es?mid=a20101000000",
+        "observedAt": "2026-08-30T10:18:03.762Z"
+      }
+    ]
   },
   {
     "id": "naver-18882132",
@@ -784,7 +1033,33 @@
       "map": "https://map.naver.com/p/entry/place/18882132",
       "reviews": "https://map.naver.com/p/entry/place/18882132?placePath=/review",
       "official": "https://baekjemuseum.seoul.go.kr/"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "관람 무료",
+        "title": "본관 일반 관람료가 무료입니다",
+        "detail": "서울시립박물관 공식 관람 안내에서 본관 관람료 무료가 확인됩니다.",
+        "sourceLabel": "한성백제박물관 공식",
+        "sourceUrl": "https://baekjemuseum.seoul.go.kr/contents.jsp?mpid=SBM0106000000",
+        "observedAt": "2026-08-30T10:18:09.076Z"
+      },
+      {
+        "chip": "금요일 21시까지",
+        "title": "금요일에는 야간 관람 시간이 열립니다",
+        "detail": "3–10월 금요일 운영시간이 09:00–21:00으로 공지돼 있습니다.",
+        "sourceLabel": "한성백제박물관 공식",
+        "sourceUrl": "https://baekjemuseum.seoul.go.kr/contents.jsp?mpid=SBM0106000000",
+        "observedAt": "2026-08-30T10:18:09.076Z"
+      },
+      {
+        "chip": "9월 30일까지 쉼터",
+        "title": "폭염 기간 박물관 로비 쉼터가 운영됩니다",
+        "detail": "박캉스 무더위 쉼터가 2026년 9월 30일까지 무료로 운영된다고 공지돼 있습니다.",
+        "sourceLabel": "한성백제박물관 공식",
+        "sourceUrl": "https://baekjemuseum.seoul.go.kr/",
+        "observedAt": "2026-08-30T10:18:09.076Z"
+      }
+    ]
   },
   {
     "id": "naver-13222642",
@@ -875,7 +1150,33 @@
       "map": "https://map.naver.com/p/entry/place/13222642",
       "reviews": "https://map.naver.com/p/entry/place/13222642?placePath=/review",
       "official": "https://www.riverview8.co.kr/"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "광진교 아래 전망공간",
+        "title": "교각 하부에 조성된 한강 전망·문화공간입니다",
+        "detail": "서울시 한강 안내가 광진교 8번째 교각 하부의 전망·휴식 공간으로 설명합니다.",
+        "sourceLabel": "서울시 한강 공식",
+        "sourceUrl": "https://hangang.seoul.go.kr/www/contents/799.do?mid=726",
+        "observedAt": "2026-08-30T10:18:09.841Z"
+      },
+      {
+        "chip": "일반 이용 무료",
+        "title": "전망·휴식 목적의 일반 이용은 무료입니다",
+        "detail": "공식 이용 안내에서 일반 관람은 무료이고 대관만 별도 절차로 구분됩니다.",
+        "sourceLabel": "서울시 한강 공식",
+        "sourceUrl": "https://hangang.seoul.go.kr/www/contents/799.do?mid=726",
+        "observedAt": "2026-08-30T10:18:09.841Z"
+      },
+      {
+        "chip": "10월까지 20시",
+        "title": "계절별 운영시간이 공개돼 있습니다",
+        "detail": "4–10월에는 12:00–20:00 운영하며 월요일은 휴관입니다.",
+        "sourceLabel": "서울시 한강 공식",
+        "sourceUrl": "https://hangang.seoul.go.kr/www/contents/799.do?mid=726",
+        "observedAt": "2026-08-30T10:18:09.841Z"
+      }
+    ]
   },
   {
     "id": "naver-20303535",
@@ -967,6 +1268,32 @@
       "map": "https://map.naver.com/p/entry/place/20303535",
       "reviews": "https://map.naver.com/p/entry/place/20303535?placePath=/review",
       "official": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
-    }
+    },
+    "recommendationReasons": [
+      {
+        "chip": "2025년 4월 개방",
+        "title": "최근 완공된 공공 보행 연결축입니다",
+        "detail": "강동구 공식 자료가 암사초록길 전면 개방일을 2025년 4월 4일로 기록합니다.",
+        "sourceLabel": "강동구 공식",
+        "sourceUrl": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295",
+        "observedAt": "2026-08-30T10:18:15.278Z"
+      },
+      {
+        "chip": "녹지 덮개 6,300㎡",
+        "title": "도로 위 녹지 공간의 규모가 공개돼 있습니다",
+        "detail": "공식 사업 설명에 6,300㎡ 규모의 녹지 덮개와 보행·자전거 연결이 명시돼 있습니다.",
+        "sourceLabel": "강동구 공식",
+        "sourceUrl": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295",
+        "observedAt": "2026-08-30T10:18:15.278Z"
+      },
+      {
+        "chip": "선사유적지–한강 연결",
+        "title": "두 생활권을 걷기와 자전거로 연결합니다",
+        "detail": "공식 설명이 암사동 유적과 한강공원을 잇는 보행·자전거 축으로 정의합니다.",
+        "sourceLabel": "강동구 공식",
+        "sourceUrl": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295",
+        "observedAt": "2026-08-30T10:18:15.278Z"
+      }
+    ]
   }
 ]

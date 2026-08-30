@@ -20,13 +20,13 @@ Every card published to the Explore deck needs:
 6. **Cost or commitment**: free, price or price range, conditional cost, or explicitly unknown. Missing price never means free.
 7. **Place or market**: venue and area for local objects; geography and diffusion stage for global signals.
 8. **Primary action link and freshness**: map, booking, application, merchant, organizer, or primary source plus `observed_at`.
+9. **Why it surfaced**: two or three concise factual reasons, each linked to a source URL and observation time. Use facts such as a current program period, published price, exact floor, free admission, booking availability, or merchant-marked recommendation. Do not turn review opinions into recommendation evidence.
 
 Optional common fields:
 
 - organizer, operator, or brand;
 - people, dynamically labeled as performers, speakers, artists, chefs, hosts, mentors, or judges;
-- deadline, capacity, age or eligibility conditions;
-- up to three explanatory chips.
+- deadline, capacity, age or eligibility conditions.
 
 The card surface may show only the visual, title, one-line value, timing, cost, place or market, and chips. The rest belongs in the lower detail sheet.
 
@@ -45,7 +45,7 @@ Reference payload, intentionally not a rigid schema:
   "place_or_market_text": "...",
   "organizer_text": null,
   "people_text": null,
-  "chips": [],
+  "recommendation_reasons": [{"chip": "...", "detail": "...", "source_url": "https://...", "observed_at": "..."}],
   "primary_action": {"label": "...", "url": "https://..."},
   "sources": [{"role": "official | map | platform", "url": "https://...", "observed_at": "..."}]
 }

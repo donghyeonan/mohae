@@ -12,6 +12,7 @@ const stopKindLabels = {
 export function createExploreFeature(context) {
   const { app, bottomNav } = context;
   let filterReturnFocus = null;
+  let animateDetailEntry = false;
 
   function getOpportunity(id) {
     return opportunities.find((item) => item.id === id) ?? null;
@@ -136,13 +137,12 @@ export function createExploreFeature(context) {
       ${photoProgress(item)}
       ${behind ? "" : `<span class="card-status is-${statusTone(item)}">${escapeHtml(item.status?.label ?? "운영정보 확인")}</span>
       <span class="card-photo-count">${index + 1}/${item.images.length}</span>
-      <button class="photo-zone photo-prev" type="button" data-action="prev-photo" aria-label="이전 사진"></button>
-      <button class="photo-zone photo-next" type="button" data-action="next-photo" aria-label="다음 사진"></button>
+      ${item.images.length > 1 ? `<button class="photo-cycle" type="button" data-action="next-photo" aria-label="다음 사진"></button>` : ""}
       <button class="card-information" type="button" data-action="open-detail" aria-label="${escapeHtml(item.title)} 자세히 보기">
         <span class="category-kicker">${escapeHtml(item.category)}</span>
         <strong>${escapeHtml(item.title)}</strong>
         <span class="card-subtitle">${escapeHtml(item.subtitle)}</span>
-        <span class="card-chips"><i>${escapeHtml(locationLine(item))}</i><i>${escapeHtml(item.price)}</i></span>
+        <span class="card-chips">${item.recommendationReasons.slice(0, 2).map((reason) => `<i>${escapeHtml(reason.chip)}</i>`).join("")}</span>
         <span class="detail-hint">${icon("chevronUp")} 자세히</span>
       </button>`}
     </article>`;
@@ -178,7 +178,7 @@ export function createExploreFeature(context) {
         <button class="action-button pass-button" type="button" data-action="pass" aria-label="넘기기">${icon("x")}</button>
         <button class="action-button save-button" type="button" data-action="save" aria-label="저장하기">${icon("heart")}</button>
       </div>` : ""}
-      <p class="gesture-note">좌우로 선택 · 위로 밀어 자세히</p>
+      <p class="gesture-note">좌우로 선택 · 아래로 스크롤하거나 위로 밀어 자세히</p>
     </section>`;
     bindImageFallbacks();
     if (item) {
@@ -197,22 +197,16 @@ export function createExploreFeature(context) {
     return text.length > limit ? `${text.slice(0, limit).trim()}…` : text;
   }
 
-  function renderOfficialFacts(item) {
-    const facts = item.official ?? {};
-    return `<section class="evidence-section">
-      <div class="evidence-heading"><h2>이용 정보</h2></div>
-      <dl class="official-facts">
-        <div><dt>이용</dt><dd>${escapeHtml(facts.reservation ?? item.actionText ?? "확인 필요")}</dd></div>
-        <div><dt>주차</dt><dd>${escapeHtml(facts.parking ?? "확인 필요")}</dd></div>
-      </dl>
-    </section>`;
-  }
-
-  function renderCaveat(item) {
-    if (!item.caveatText) return "";
-    return `<section class="evidence-section caveat-section">
-      <div class="evidence-heading"><h2>방문 전 확인</h2></div>
-      <p>${escapeHtml(item.caveatText)}</p>
+  function renderRecommendationReasons(item) {
+    if (!item.recommendationReasons?.length) return "";
+    return `<section class="evidence-section recommendation-evidence">
+      <div class="evidence-heading"><h2>왜 추천했나요</h2><span>확인된 사실</span></div>
+      <div class="recommendation-list">${item.recommendationReasons.map((reason) => `<article>
+        <span>${escapeHtml(reason.chip)}</span>
+        <strong>${escapeHtml(reason.title)}</strong>
+        <p>${escapeHtml(reason.detail)}</p>
+        <a href="${escapeHtml(reason.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(reason.sourceLabel)} · ${escapeHtml(observedDate({ source: { observedAt: reason.observedAt } }))}</a>
+      </article>`).join("")}</div>
     </section>`;
   }
 
@@ -229,27 +223,10 @@ export function createExploreFeature(context) {
   function renderMenu(item) {
     if (!item.menu?.length && !item.menuMedia?.length) return "";
     return `<section class="evidence-section menu-evidence">
-      <div class="evidence-heading"><h2>메뉴</h2></div>
+      <div class="evidence-heading"><h2>메뉴</h2>${item.menuMedia?.length ? `<span>업체 등록 원본</span>` : ""}</div>
+      ${item.menuMedia?.length ? `<div class="menu-media" aria-label="업체 등록 메뉴 사진">${item.menuMedia.map((media) => `<figure><img data-card-image src="${escapeHtml(imageSrc(media.src))}" alt="${escapeHtml(item.title)} ${escapeHtml(media.title)}" loading="lazy"><figcaption><b>${escapeHtml(media.title)}</b><a href="${escapeHtml(media.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(media.source)} · ${media.rightsStatus === "unknown" ? "재사용 권리 미확인" : escapeHtml(media.rightsStatus)}</a></figcaption></figure>`).join("")}</div>` : ""}
       ${item.menu?.length ? `<div class="menu-list">${item.menu.slice(0, 8).map((menu) => `<div><span><b>${escapeHtml(menu.name)}</b>${menu.description ? `<small>${escapeHtml(reviewBody(menu.description, 92))}</small>` : ""}</span><strong>${escapeHtml(menu.price)}</strong></div>`).join("")}</div>` : ""}
-      ${item.menuMedia?.length ? `<div class="menu-media" aria-label="메뉴판 원본">${item.menuMedia.map((media, mediaIndex) => `<figure><img src="${escapeHtml(imageSrc(media.src))}" alt="${escapeHtml(item.title)} 메뉴판 원본" loading="lazy"><figcaption>메뉴판 원본</figcaption></figure>`).join("")}</div>` : ""}
-    </section>`;
-  }
-
-  function renderReviewPatterns(item) {
-    const evidence = item.reviewPatterns;
-    if (!evidence) return "";
-    return `<section class="evidence-section review-evidence">
-      <div class="evidence-heading"><h2>방문자들이 반복해서 선택한 항목</h2></div>
-      ${evidence.patterns?.length ? `<div class="review-pattern-list">${evidence.patterns.map((pattern) => `<div><strong>${escapeHtml(pattern.text)}</strong><span>최근 ${evidence.sampleSize}개 중 ${pattern.count}개</span></div>`).join("")}</div>` : `<p class="empty-evidence">반복해서 나타난 선택 항목이 없습니다.</p>`}
-      <p class="coverage-note">최근 리뷰 ${evidence.sampleSize}개 중 선택 항목 기준입니다. 전체 방문자를 대표하지 않습니다.</p>
-      <a class="inline-source-link" href="${escapeHtml(evidence.sourceUrl)}" target="_blank" rel="noopener noreferrer">네이버에서 리뷰 원문 보기</a>
-    </section>`;
-  }
-
-  function renderSources(item) {
-    return `<section class="source-footer">
-      <span>정보 기준 ${escapeHtml(observedDate(item))}</span>
-      <div class="source-links"><a href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">네이버 지도</a>${item.externalLinks.official ? `<a href="${escapeHtml(item.externalLinks.official)}" target="_blank" rel="noopener noreferrer">공식 사이트</a>` : ""}</div>
+      ${item.menuGuidance?.length ? `<div class="menu-guidance"><h3>메뉴 고르기</h3>${item.menuGuidance.map((tip) => `<p><b>${escapeHtml(tip.title)}</b><span>${escapeHtml(tip.detail)}</span><small>${escapeHtml(tip.basis)}</small></p>`).join("")}</div>` : ""}
     </section>`;
   }
 
@@ -263,40 +240,34 @@ export function createExploreFeature(context) {
     const index = photoIndex(item);
     const photo = item.photoMeta?.[index];
     bottomNav.classList.add("is-hidden");
-    app.innerHTML = `<section class="screen detail-screen" data-view="detail">
+    app.innerHTML = `<section class="screen detail-screen${animateDetailEntry ? " is-entering" : ""}" data-view="detail">
       <header class="detail-topbar">
         <button class="detail-back-button" type="button" data-action="back-explore" aria-label="탐색으로 돌아가기">${icon("arrowLeft")}<span>탐색</span></button>
         <div class="wordmark compact"><span class="mark">✦</span><span>MOHAE</span></div>
-        <button class="square-button detail-more-button" type="button" data-action="detail-more" aria-label="더 보기">${icon("more")}</button>
+        <span class="detail-topbar-spacer" aria-hidden="true"></span>
       </header>
       <div class="detail-scroll">
         <figure class="detail-hero">
           <img data-card-image src="${escapeHtml(imageSrc(item.images[index]))}" alt="${escapeHtml(item.title)} 사진 ${index + 1}">
           ${photoProgress(item)}
           <div class="detail-photo-caption"><span>${index + 1}/${item.images.length}</span><b>${escapeHtml(photo?.source ?? "출처 확인")}${photo?.title ? ` · ${escapeHtml(photo.title)}` : ""}</b></div>
-          <button class="photo-zone photo-prev" type="button" data-action="prev-photo" data-id="${item.id}" aria-label="이전 사진"></button>
-          <button class="photo-zone photo-next" type="button" data-action="next-photo" data-id="${item.id}" aria-label="다음 사진"></button>
+          ${item.images.length > 1 ? `<button class="photo-cycle" type="button" data-action="next-photo" data-id="${item.id}" aria-label="다음 사진"></button>` : ""}
         </figure>
         <div class="detail-body">
           <div class="availability-card is-${statusTone(item)}"><strong>${escapeHtml(item.status?.label ?? "운영정보 확인")}</strong></div>
           <span class="category-kicker accent">${escapeHtml(item.category)}</span>
           <h1>${escapeHtml(item.title)}</h1>
           <p class="detail-subtitle">${escapeHtml(item.subtitle)}</p>
+          ${renderRecommendationReasons(item)}
           <div class="fact-grid">
             <div>${icon("map")}<span><small>위치</small><b>${escapeHtml(item.address ?? locationLine(item))}</b></span></div>
             <div>${icon("calendar")}<span><small>운영</small><b>${escapeHtml(item.schedule)}</b></span></div>
             <div>${icon("wallet")}<span><small>비용</small><b>${escapeHtml(item.price)}</b></span></div>
           </div>
-          ${renderOfficialFacts(item)}
           ${renderPrograms(item)}
           ${renderMenu(item)}
-          ${renderReviewPatterns(item)}
-          ${renderCaveat(item)}
-          ${renderSources(item)}
           <div class="detail-cta-row">
-            <a class="primary-action-cta" href="${escapeHtml(item.primaryAction?.url ?? item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.primaryAction?.label ?? "현재 정보 확인")}</a>
-            <a class="secondary-cta" href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">${icon("route")} 네이버 지도</a>
-            <a class="secondary-cta" href="${escapeHtml(item.externalLinks.reviews)}" target="_blank" rel="noopener noreferrer">${icon("calendar")} 리뷰 원문</a>
+            <a class="primary-action-cta" href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">지도에서 확인</a>
             <button class="primary-cta" type="button" data-action="save-detail" data-id="${item.id}">${context.state.saved[item.id] ? `${icon("check")} 저장됨` : `${icon("heart")} 저장하기`}</button>
           </div>
         </div>
@@ -304,6 +275,7 @@ export function createExploreFeature(context) {
     </section>`;
     bindImageFallbacks();
     bindDetailBackGesture();
+    animateDetailEntry = false;
   }
 
   function bindDetailBackGesture() {
@@ -488,6 +460,24 @@ export function createExploreFeature(context) {
     render();
   }
 
+  function openDetail(item, smooth = true) {
+    if (!item) return;
+    const commit = () => {
+      animateDetailEntry = smooth;
+      context.state.view = "detail";
+      context.state.detailId = item.id;
+      context.saveState();
+      renderDetail(item.id);
+    };
+    const card = app.querySelector(".opportunity-card:not(.is-behind)");
+    if (!smooth || !card || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      commit();
+      return;
+    }
+    card.classList.add("open-detail");
+    setTimeout(commit, 180);
+  }
+
   function passCurrent() {
     const item = currentOpportunity();
     if (!item) return;
@@ -529,8 +519,23 @@ export function createExploreFeature(context) {
       done();
       return;
     }
-    card.classList.add(direction === "left" ? "fly-left" : "fly-right");
-    setTimeout(done, 330);
+    let completed = false;
+    const finish = () => {
+      if (completed) return;
+      completed = true;
+      done();
+    };
+    card.style.transform = "";
+    card.style.removeProperty("--decision-opacity");
+    delete card.dataset.direction;
+    const onTransitionEnd = (event) => {
+      if (event.propertyName !== "transform") return;
+      card.removeEventListener("transitionend", onTransitionEnd);
+      finish();
+    };
+    card.addEventListener("transitionend", onTransitionEnd);
+    requestAnimationFrame(() => card.classList.add(direction === "left" ? "fly-left" : "fly-right"));
+    setTimeout(finish, 420);
   }
 
   function bindCardGesture() {
@@ -540,14 +545,27 @@ export function createExploreFeature(context) {
     let startY = 0;
     let pointerId = null;
     let dragging = false;
+    let settling = false;
+    let suppressClickUntil = 0;
+    let wheelDistance = 0;
+    let wheelResetTimer;
+
+    card.addEventListener("click", (event) => {
+      if (performance.now() >= suppressClickUntil) return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+    }, true);
+
     card.addEventListener("pointerdown", (event) => {
+      if (settling) return;
       pointerId = event.pointerId;
       startX = event.clientX;
       startY = event.clientY;
       dragging = false;
     });
     card.addEventListener("pointermove", (event) => {
-      if (pointerId !== event.pointerId) return;
+      if (settling || pointerId !== event.pointerId) return;
       const horizontal = event.clientX - startX;
       const vertical = event.clientY - startY;
       if (!dragging && Math.hypot(horizontal, vertical) < 8) return;
@@ -560,15 +578,29 @@ export function createExploreFeature(context) {
       card.style.setProperty("--decision-opacity", String(Math.min(1, Math.abs(horizontal) / 90)));
       card.dataset.direction = horizontal >= 0 ? "save" : "pass";
     });
-    const finish = (event) => {
+    const resetDrag = (event) => {
       if (pointerId !== event.pointerId) return;
+      pointerId = null;
+      dragging = false;
+      card.classList.remove("is-dragging");
+      card.style.transform = "";
+      card.style.removeProperty("--decision-opacity");
+      delete card.dataset.direction;
+      if (card.hasPointerCapture?.(event.pointerId)) card.releasePointerCapture(event.pointerId);
+    };
+    const finish = (event) => {
+      if (settling || pointerId !== event.pointerId) return;
       const horizontal = event.clientX - startX;
       const vertical = event.clientY - startY;
+      const wasDragging = dragging;
       pointerId = null;
+      dragging = false;
       card.classList.remove("is-dragging");
       if (card.hasPointerCapture?.(event.pointerId)) card.releasePointerCapture(event.pointerId);
-      if (dragging && Math.abs(horizontal) > 72 && Math.abs(horizontal) > Math.abs(vertical)) {
+      if (wasDragging) suppressClickUntil = performance.now() + 500;
+      if (wasDragging && Math.abs(horizontal) > 72 && Math.abs(horizontal) > Math.abs(vertical)) {
         event.preventDefault();
+        settling = true;
         if (horizontal > 0) saveCurrent();
         else passCurrent();
         return;
@@ -576,19 +608,25 @@ export function createExploreFeature(context) {
       card.style.transform = "";
       card.style.removeProperty("--decision-opacity");
       delete card.dataset.direction;
-      if (dragging && vertical < -48 && Math.abs(vertical) > Math.abs(horizontal)) {
+      if (wasDragging && vertical < -48 && Math.abs(vertical) > Math.abs(horizontal)) {
         event.preventDefault();
-        const item = currentOpportunity();
-        if (item) {
-          context.state.view = "detail";
-          context.state.detailId = item.id;
-          context.saveState();
-          renderDetail(item.id);
-        }
+        settling = true;
+        openDetail(currentOpportunity());
       }
     };
     card.addEventListener("pointerup", finish);
-    card.addEventListener("pointercancel", finish);
+    card.addEventListener("pointercancel", resetDrag);
+    card.addEventListener("wheel", (event) => {
+      if (settling || event.deltaY <= 0) return;
+      event.preventDefault();
+      wheelDistance += event.deltaY;
+      clearTimeout(wheelResetTimer);
+      wheelResetTimer = setTimeout(() => { wheelDistance = 0; }, 180);
+      if (wheelDistance < 54) return;
+      settling = true;
+      suppressClickUntil = performance.now() + 500;
+      openDetail(currentOpportunity());
+    }, { passive: false });
   }
 
   function backToExplore() {
@@ -722,16 +760,11 @@ export function createExploreFeature(context) {
   function handleAction(button) {
     const action = button.dataset.action;
     const id = button.dataset.id ?? currentOpportunity()?.id;
-    if (action === "prev-photo" && id) movePhoto(getOpportunity(id), -1);
-    else if (action === "next-photo" && id) movePhoto(getOpportunity(id), 1);
+    if (action === "next-photo" && id) movePhoto(getOpportunity(id), 1);
     else if (action === "pass") passCurrent();
     else if (action === "save") saveCurrent();
-    else if (action === "open-detail" && id) {
-      context.state.view = "detail";
-      context.state.detailId = id;
-      context.saveState();
-      renderDetail(id);
-    } else if (action === "back-explore") backToExplore();
+    else if (action === "open-detail" && id) openDetail(getOpportunity(id));
+    else if (action === "back-explore") backToExplore();
     else if (action === "open-map") {
       context.state.view = "map";
       context.recordEvent("map_opened", null, { visibleCount: getMapContext().plannedStops.length + getMapContext().savedOpportunities.length });
@@ -755,8 +788,7 @@ export function createExploreFeature(context) {
     } else if (action === "booking-info" && id) {
       context.recordEvent("booking_info_opened", id);
       context.showToast(getOpportunity(id).kind === "event" ? "예약 정보는 다음 단계에서 연결됩니다" : "영업 정보는 다음 단계에서 연결됩니다");
-    } else if (action === "detail-more") context.showToast("추가 메뉴는 다음 단계에서 연결됩니다");
-    else if (action === "recenter-map") context.showToast("현재 위치로 지도를 맞췄어요");
+    } else if (action === "recenter-map") context.showToast("현재 위치로 지도를 맞췄어요");
     else if (action === "map-agent-help") context.showToast("Agent에게 숙소·공항·명소를 이 지도에 추가해 달라고 요청하세요");
     else if (action === "select-map-item") {
       const mapId = button.dataset.mapId;
