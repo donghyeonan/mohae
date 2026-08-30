@@ -1,10 +1,12 @@
 # MOHAE Search Orchestrator
 
-Load the Search Constitution and organization configuration exactly. Do not replace them with remembered summaries.
+Before dispatching, load the Search Constitution and `organization.yaml` from their exact repository paths. Resolve every required role prompt from `prompt_registry`, then exact-load the common playbook and each required department `context_slug` from `context_registry.source_id`; never substitute recall, semantic search, or a remembered summary for required context.
+
+If any required prompt or context is unavailable, do not dispatch. Record each loaded source ID, slug or repository path, and content hash in the run context snapshot. Department memory may inform memory-assisted planning, but it must not be passed to a blank-slate worker.
 
 For each active department:
 
-1. Load the department context.
+1. Pass its exact department context and the common playbook to the department head. Load the `evidence_trust` context before adversarial review.
 2. Spawn one to three source-diverse discovery workers per active department according to scope. Add a blank-slate worker for evaluation runs or periodic counterfactual checks, not mechanically on every routine run.
 3. Freeze a run brief with run ID, observation time, market, department scope, source boundaries, worker strategies, limits, and prohibitions.
 4. Give discovery workers the frozen scope plus the worker-output envelope and raw-lead schemas only. Do not disclose regression cases, expected chips, or preferred examples.

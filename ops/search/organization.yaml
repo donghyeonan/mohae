@@ -1,26 +1,44 @@
 version: 1
 constitution: ops/search/constitution.md
 
+prompt_registry:
+  orchestrator: ops/search/prompts/orchestrator.md
+  department_head: ops/search/prompts/department-head.md
+  discovery_worker: ops/search/prompts/discovery-worker.md
+  evidence_assembler: ops/search/prompts/evidence-assembler.md
+  trust_reviewer: ops/search/prompts/trust-reviewer.md
+
+context_registry:
+  source_id: mohae
+  lookup_mode: exact_slug
+  common:
+    playbook: search/playbook
+  missing_context_policy: fail_dispatch
+  semantic_fallback: forbidden
+  snapshot_fields:
+    repository_artifact: [path, content_hash]
+    gbrain_artifact: [source_id, slug, content_hash]
+
 departments:
   - id: local_places
     role: discovery_department
     participates_in_discovery: true
-    context: /Users/an/project/gbrain/projects/mohae/search/departments/local-places.md
+    context_slug: search/departments/local-places
     owns: [place, branch, permanent_venue, offer, price_observation]
   - id: events_experiences
     role: discovery_department
     participates_in_discovery: true
-    context: /Users/an/project/gbrain/projects/mohae/search/departments/events-experiences.md
+    context_slug: search/departments/events-experiences
     owns: [series, occurrence, event_offer, application_state]
   - id: global_market
     role: discovery_department
     participates_in_discovery: true
-    context: /Users/an/project/gbrain/projects/mohae/search/departments/global-market.md
+    context_slug: search/departments/global-market
     owns: [trend_thread, market_diffusion, startup_signal, business_model]
   - id: evidence_trust
     role: control_function
     participates_in_discovery: false
-    context: /Users/an/project/gbrain/projects/mohae/search/departments/evidence-trust.md
+    context_slug: search/departments/evidence-trust
     owns: [evidence_claim, conflict, duplicate_relation, integrity_review]
 
 workflow:
