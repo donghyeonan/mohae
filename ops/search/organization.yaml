@@ -1,0 +1,44 @@
+version: 1
+constitution: ops/search/constitution.md
+
+departments:
+  - id: local_places
+    context: /Users/an/project/gbrain/projects/mohae/search/departments/local-places.md
+    owns: [place, branch, permanent_venue, offer, price_observation]
+  - id: events_experiences
+    context: /Users/an/project/gbrain/projects/mohae/search/departments/events-experiences.md
+    owns: [series, occurrence, event_offer, application_state]
+  - id: global_market
+    context: /Users/an/project/gbrain/projects/mohae/search/departments/global-market.md
+    owns: [trend_thread, market_diffusion, startup_signal, business_model]
+  - id: evidence_trust
+    context: /Users/an/project/gbrain/projects/mohae/search/departments/evidence-trust.md
+    owns: [evidence_claim, conflict, duplicate_relation, integrity_review]
+
+workflow:
+  discovery_workers:
+    memory_assisted_per_department: 3
+    blank_slate_per_department: 1
+    may_assign_chips: false
+    merge_before_filter: true
+  evidence_assembly:
+    starts_after_union: true
+    requires_provenance: true
+  trust_review:
+    required_before_promotion: true
+  live_recheck:
+    required_before_recommendation: true
+
+evaluation:
+  regression_visible_to_discovery: false
+  active_case_cap: 20
+  retire_after_consecutive_passes: 6
+  holdout_fraction: 0.25
+  compare_blank_slate_to_memory_assisted: true
+  periodic_memory_free_run: true
+
+outputs:
+  raw_lead_schema: ops/search/schemas/raw-lead.schema.json
+  evidence_claim_schema: ops/search/schemas/evidence-claim.schema.json
+  recommendation_schema: ops/search/schemas/recommendation.schema.json
+  run_evaluation_schema: ops/search/schemas/search-run-evaluation.schema.json

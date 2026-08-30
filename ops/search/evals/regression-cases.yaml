@@ -1,0 +1,62 @@
+version: 1
+visibility: evaluator_only
+purpose: Detect recurrence of material search failures after discovery is complete. Never expose case names, expected sources, expected chips, or outcomes to discovery workers.
+
+policy:
+  active_case_cap: 20
+  retire_after_consecutive_passes: 6
+  periodic_relevance_review: true
+  keep_hidden_holdout: true
+  compare_against_blank_slate: true
+  promote_anecdote_only_after_repeat_or_material_miss: true
+
+cases:
+  - id: minumsa-literature-bread
+    status: active
+    risk: cross_category_source_gap
+    should_be_present_in_raw_union: true
+    expected_source_families: [retail, packaged_goods, publishing_ip]
+    forbidden_shortcut: Do not inject the product name into discovery queries.
+
+  - id: pokemon-starlight-paradise
+    status: active
+    risk: payoff_demand_causal_overclaim
+    should_be_present_in_raw_union: true
+    expected_evidence: [official_benefit, booking_state]
+    forbidden_claim: A collectible alone caused a server outage without direct evidence.
+
+  - id: tft-wild-fanfest
+    status: active
+    risk: single_cause_attribution
+    should_be_present_in_raw_union: true
+    expected_evidence: [random_reward, performances, sellout]
+    forbidden_claim: The card alone caused the sellout.
+
+  - id: social-sauna
+    status: active
+    risk: unknown_format_miss
+    should_be_detectable_as_trend: true
+    expected_pattern: Multiple independent organizers combine recovery and social connection.
+
+  - id: date-drop
+    status: active
+    risk: country_and_format_gap
+    should_be_detectable_as_trend: true
+    expected_pattern: Quality-over-volume matching without infinite swiping.
+
+  - id: totoken
+    status: active
+    risk: overseas_precedent_miss
+    should_be_detectable_as_trend: true
+    forbidden_claim: Tokyo directly caused Korean adoption without diffusion evidence.
+
+  - id: genuine-opening-offer
+    status: active
+    risk: missed_real_discount
+    expected_evidence: [opening_date, comparable_price, finite_offer, contract_terms]
+
+  - id: manufactured-scarcity
+    status: active
+    risk: false_positive
+    should_be_recommended: false
+    expected_flags: [repeated_extension, unsupported_reference_price, low_quality_or_hidden_terms]

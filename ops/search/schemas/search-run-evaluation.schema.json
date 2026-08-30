@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mohae.local/schemas/search-run-evaluation.schema.json",
+  "title": "MOHAE Search Run Evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "department_id", "started_at", "worker_counts", "union_count", "integration_loss_count", "blank_slate_unique_count", "material_outcomes"],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "department_id": {"type": "string", "minLength": 1},
+    "started_at": {"type": "string", "format": "date-time"},
+    "constitution_version": {"type": "string"},
+    "prompt_hash": {"type": "string"},
+    "context_snapshot_id": {"type": ["string", "null"]},
+    "worker_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "union_count": {"type": "integer", "minimum": 0},
+    "integration_loss_count": {"type": "integer", "minimum": 0},
+    "blank_slate_unique_count": {"type": "integer", "minimum": 0},
+    "material_outcomes": {"type": "array", "items": {"type": "string"}},
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stage", "root_cause", "description"],
+        "properties": {
+          "stage": {"type": "string", "enum": ["not_discovered", "found_not_merged", "merged_early_rejected", "identity_error", "verification_failed", "verified_not_surfaced", "surfaced_too_late", "false_positive"]},
+          "root_cause": {"type": "string", "enum": ["source_gap", "query_gap", "language_gap", "country_gap", "taxonomy_gap", "tool_failure", "schedule_gap", "early_filter", "dedup_error", "integration_loss", "stale_evidence", "manipulated_signal"]},
+          "description": {"type": "string"},
+          "corrective_action": {"type": ["string", "null"]},
+          "regression_case_id": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "successes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["candidate_id", "success_stage", "discovery_path"],
+        "properties": {
+          "candidate_id": {"type": "string"},
+          "success_stage": {"type": "string", "enum": ["discovery_success", "recommendation_success", "experience_success"]},
+          "discovery_path": {"type": "string"},
+          "lead_time_days": {"type": ["number", "null"]},
+          "repeatable_method": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

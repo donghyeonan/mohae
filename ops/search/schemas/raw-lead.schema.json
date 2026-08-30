@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mohae.local/schemas/raw-lead.schema.json",
+  "title": "MOHAE Raw Lead",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lead_id", "raw_title", "discovery_url", "discovered_via", "source_type", "market", "observed_at", "uncertainties"],
+  "properties": {
+    "lead_id": {"type": "string", "minLength": 1},
+    "raw_title": {"type": "string", "minLength": 1},
+    "raw_description": {"type": ["string", "null"]},
+    "discovery_url": {"type": "string", "format": "uri"},
+    "canonical_url": {"type": ["string", "null"], "format": "uri"},
+    "discovered_via": {"type": "string", "minLength": 1},
+    "source_type": {"type": "string", "enum": ["official", "platform", "editorial", "social", "community", "news", "search", "other"]},
+    "market": {"type": "string", "minLength": 1},
+    "published_at": {"type": ["string", "null"], "format": "date-time"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "possible_entities": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "raw_dates": {"type": "array", "items": {"type": "string"}},
+    "raw_numbers": {"type": "array", "items": {"type": "string"}},
+    "uncertainties": {"type": "array", "items": {"type": "string"}}
+  }
+}

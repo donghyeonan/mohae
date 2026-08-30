@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mohae.local/schemas/evidence-claim.schema.json",
+  "title": "MOHAE Evidence Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claim_id", "subject_id", "family", "claim_text", "source_url", "source_role", "observed_at", "confidence", "inference_level"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "subject_id": {"type": "string", "minLength": 1},
+    "family": {"type": "string", "enum": ["MERIT", "HEAT", "SCARCITY", "PAYOFF", "SOCIAL_CURRENCY", "PERSONAL_FIT"]},
+    "subtype": {"type": ["string", "null"]},
+    "claim_text": {"type": "string", "minLength": 1},
+    "source_url": {"type": "string", "format": "uri"},
+    "source_role": {"type": "string", "enum": ["official", "selection_body", "merchant", "organizer", "booking", "ticketing", "behavior", "editorial", "news", "community", "other"]},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "valid_from": {"type": ["string", "null"], "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+    "inference_level": {"type": "string", "enum": ["direct", "associated", "supported_causal_hypothesis", "causal_confirmed"]},
+    "beneficiary_scope": {"type": ["string", "null"], "enum": ["everyone", "valid_applicant", "first_come", "selected", "lottery", "winner", null]},
+    "acquisition_condition": {"type": ["string", "null"]},
+    "competing_explanations": {"type": "array", "items": {"type": "string"}},
+    "conflict_notes": {"type": ["string", "null"]}
+  }
+}
