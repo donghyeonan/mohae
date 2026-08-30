@@ -221,6 +221,7 @@ export function createExploreFeature(context) {
       <div class="evidence-heading"><h2>메뉴</h2></div>
       ${item.menuMedia?.length ? `<div class="menu-media" aria-label="메뉴 사진">${item.menuMedia.map((media) => `<figure><img data-card-image src="${escapeHtml(imageSrc(media.src))}" alt="${escapeHtml(item.title)} ${escapeHtml(media.title)}" loading="lazy"><figcaption>${escapeHtml(media.title)}</figcaption></figure>`).join("")}</div>` : ""}
       ${item.menu?.length ? `<div class="menu-list">${item.menu.slice(0, 8).map((menu) => `<div><span><b>${escapeHtml(menu.name)}</b>${menu.description ? `<small>${escapeHtml(reviewBody(menu.description, 92))}</small>` : ""}</span><strong>${escapeHtml(menu.price)}</strong></div>`).join("")}</div>` : ""}
+      <p class="menu-more-note">대표 메뉴만 표시했어요. 전체 메뉴와 최신 가격은 아래 네이버 지도에서 확인하세요.</p>
     </section>`;
   }
 
@@ -260,7 +261,7 @@ export function createExploreFeature(context) {
           ${renderPrograms(item)}
           ${renderMenu(item)}
           <div class="detail-cta-row">
-            <a class="primary-action-cta" href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">지도에서 확인</a>
+            <a class="primary-action-cta naver-map-cta" href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer" aria-label="네이버 지도에서 확인"><b aria-hidden="true">N</b>네이버 지도</a>
             <button class="primary-cta" type="button" data-action="save-detail" data-id="${item.id}">${context.state.saved[item.id] ? `${icon("check")} 저장됨` : `${icon("heart")} 저장하기`}</button>
           </div>
         </div>
