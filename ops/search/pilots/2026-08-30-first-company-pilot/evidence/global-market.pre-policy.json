@@ -1,0 +1,298 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "global_market",
+  "subjects": [
+    {
+      "subject_id": "global-tinder-events-2026",
+      "canonical_title": "Global Tinder Events expansion",
+      "lead_ids": [
+        "gm-consumer-01"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "ev-global-tinder-events-2026-001",
+          "subject_id": "global-tinder-events-2026",
+          "claim_type": "availability",
+          "subtype": "expansion_actual",
+          "claim_text": "On 2026-07-23, Tinder said Events was live in Los Angeles and nine additional cities: New York City, Dallas, Denver, Kansas City, Phoenix, Berlin, Munich, Zurich and Geneva; 26 cities by the end of September remained a forward plan.",
+          "polarity": "neutral",
+          "source_url": "https://www.tinderpressroom.com/2026-07-23-Tinder-Expands-Events-Globally,-Bringing-More-Ways-for-Singles-to-Spark-Connections-IRL",
+          "source_role": "official",
+          "source_snapshot_id": "snap-global-001",
+          "source_content_hash": "6b6b413d034e5d8a2a066ff90a845d5f88704ded276c7a29f0ed4399980ddb1c",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "ev-global-tinder-events-2026-002",
+          "subject_id": "global-tinder-events-2026",
+          "claim_type": "demand",
+          "subtype": "adoption_self_reported",
+          "claim_text": "Tinder's internal Los Angeles pilot data reported engagement by 66% of eligible Photo Verified active users, including 71% of users aged 18-24 and 63% of users aged 25+, with 53% week-over-week return to the Events tab; Tinder stated that these figures may not represent other markets.",
+          "polarity": "neutral",
+          "source_url": "https://www.tinderpressroom.com/2026-07-23-Tinder-Expands-Events-Globally,-Bringing-More-Ways-for-Singles-to-Spark-Connections-IRL",
+          "source_role": "official",
+          "source_snapshot_id": "snap-global-001",
+          "source_content_hash": "6b6b413d034e5d8a2a066ff90a845d5f88704ded276c7a29f0ed4399980ddb1c",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "medium",
+          "inference_level": "direct",
+          "verification_status": "unverified"
+        },
+        {
+          "claim_id": "ev-global-tinder-events-2026-003",
+          "subject_id": "global-tinder-events-2026",
+          "claim_type": "scarcity",
+          "subtype": "event_level_demand_self_reported",
+          "claim_text": "Tinder reported that one 60-person candlelight ceramics class sold out within one day of partner promotion; this is a single-event company-reported result, not evidence of market-wide sell-through.",
+          "polarity": "neutral",
+          "source_url": "https://www.tinderpressroom.com/2026-07-23-Tinder-Expands-Events-Globally,-Bringing-More-Ways-for-Singles-to-Spark-Connections-IRL",
+          "source_role": "official",
+          "source_snapshot_id": "snap-global-001",
+          "source_content_hash": "6b6b413d034e5d8a2a066ff90a845d5f88704ded276c7a29f0ed4399980ddb1c",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "medium",
+          "inference_level": "direct",
+          "verification_status": "unverified"
+        },
+        {
+          "claim_id": "ev-global-tinder-events-2026-004",
+          "subject_id": "global-tinder-events-2026",
+          "claim_type": "operation",
+          "subtype": "economic_model_self_reported",
+          "claim_text": "On Match Group's second-quarter earnings call, CEO Spencer Rascoff described Events as scaling through a low-cost model built primarily on event-provider partnerships and set a 75-city year-end target; the cost characterization and target were management statements rather than disclosed Event-level unit economics.",
+          "polarity": "neutral",
+          "source_url": "https://techcrunch.com/2026/08/05/as-gen-z-reconsiders-dating-apps-tinders-irl-events-expand-to-dozens-more-cities/",
+          "source_role": "news",
+          "source_snapshot_id": "snap-global-002",
+          "source_content_hash": "1413b0fadbbea2218f042c0be5623b98a1878456567d2a6e3a3bb77723c9587f",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "medium",
+          "inference_level": "direct",
+          "verification_status": "unverified"
+        },
+        {
+          "claim_id": "ev-global-tinder-events-2026-005",
+          "subject_id": "global-tinder-events-2026",
+          "claim_type": "trend",
+          "subtype": "economic_durability_context",
+          "claim_text": "TechCrunch reported that Tinder revenue declined in 2026 Q2 and monthly active users were down 7% year over year; these platform-wide figures are economic context and do not establish any effect of Events.",
+          "polarity": "negative",
+          "source_url": "https://techcrunch.com/2026/08/05/as-gen-z-reconsiders-dating-apps-tinders-irl-events-expand-to-dozens-more-cities/",
+          "source_role": "news",
+          "source_snapshot_id": "snap-global-002",
+          "source_content_hash": "1413b0fadbbea2218f042c0be5623b98a1878456567d2a6e3a3bb77723c9587f",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "associated",
+          "verification_status": "verified"
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "sup-global-tinder-events-2026-001",
+          "claim_id": "ev-global-tinder-events-2026-002",
+          "chip": "HEAT",
+          "support_strength": "partial",
+          "reason": "The Los Angeles engagement and return figures are direct demand signals but are internal, cohort-limited and not independently verified.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "sup-global-tinder-events-2026-002",
+          "claim_id": "ev-global-tinder-events-2026-003",
+          "chip": "SCARCITY",
+          "support_strength": "partial",
+          "reason": "A 60-person class reportedly sold out in one day, but the signal is limited to one company-reported event.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "No independently measured Events attendance, conversion, retention or ticket-sales series was found; press coverage repeats company metrics and does not convert them into verified adoption.",
+        "No Events-specific revenue, cost, partner-economics or causal impact on Tinder user or revenue trends was disclosed.",
+        "Investor-facing attention is evidenced by earnings-call discussion, but no Event-specific investor allocation or external investment was identified.",
+        "The 26-city and 75-city figures are targets beyond the ten cities confirmed live in the dated launch evidence; no dated Korean availability or adoption evidence was found."
+      ]
+    },
+    {
+      "subject_id": "global-fypro-2026",
+      "canonical_title": "Fypro creator-commerce stack",
+      "lead_ids": [
+        "gm-startup-03",
+        "gm-capital-04"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "ev-global-fypro-2026-001",
+          "subject_id": "global-fypro-2026",
+          "claim_type": "operation",
+          "subtype": "public_launch",
+          "claim_text": "Caelith AI announced Fypro's public launch on 2026-06-25 as a creator stack that analyzes a social account, produces a content and monetization plan, builds a branded site and storefront, and creates an exportable customer list.",
+          "polarity": "neutral",
+          "source_url": "https://www.globenewswire.com/news-release/2026/06/25/3317738/0/en/Fypro-ai-Launches-the-First-AI-Engine-to-Turn-Creators-Audiences-into-Monetization.html",
+          "source_role": "official",
+          "source_snapshot_id": "snap-global-003",
+          "source_content_hash": "22eac2193ce338857fba12435486ebd1cd3a0489334afeeb6c12caf066ffb97e",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "ev-global-fypro-2026-002",
+          "subject_id": "global-fypro-2026",
+          "claim_type": "price",
+          "subtype": "commercial_surface",
+          "claim_text": "Fypro's public pricing page listed a free plan at $0 per month, Pro at $29 per month and Max at $200 per month, with card rates starting at 2.8% plus $0.30 for Pro and 2.6% plus $0.30 for Max.",
+          "polarity": "neutral",
+          "source_url": "https://www.fypro.ai/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-global-004",
+          "source_content_hash": "92307a16c3725d3a0bd5e74c5e02b6a5f96f5a6adaf00ce6d07410d3e37e70bc",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "ev-global-fypro-2026-003",
+          "subject_id": "global-fypro-2026",
+          "claim_type": "demand",
+          "subtype": "adoption_self_reported",
+          "claim_text": "Fypro's site invited visitors to join more than 2,000 creators already running Fypro and said its model was refined by more than 2,000 creators; no public methodology, paid-user split, cohort date or retention series accompanied the count.",
+          "polarity": "neutral",
+          "source_url": "https://www.fypro.ai/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-global-004",
+          "source_content_hash": "92307a16c3725d3a0bd5e74c5e02b6a5f96f5a6adaf00ce6d07410d3e37e70bc",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "medium",
+          "inference_level": "direct",
+          "verification_status": "unverified"
+        },
+        {
+          "claim_id": "ev-global-fypro-2026-004",
+          "subject_id": "global-fypro-2026",
+          "claim_type": "recognition",
+          "subtype": "verified_launch_attention",
+          "claim_text": "Product Hunt displayed Fypro with 592 points and ranked it number 2 of the day and number 3 of the week for 2026-07-02; this verifies launch-platform attention, not creator adoption or investor funding.",
+          "polarity": "neutral",
+          "source_url": "https://www.producthunt.com/products/fypro",
+          "source_role": "community",
+          "source_snapshot_id": "snap-global-005",
+          "source_content_hash": "260e9b6fea1840a4c69a2802d34f419d3523af9442829acb62c9fa6f804b3032",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "sup-global-fypro-2026-001",
+          "claim_id": "ev-global-fypro-2026-004",
+          "chip": "HEAT",
+          "support_strength": "direct",
+          "reason": "Product Hunt's recorded points and day/week ranks are direct platform-attention evidence, scoped to the launch community.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "No public Fypro or Caelith AI funding round, named investor or other investor-attention event was verified.",
+        "No independently measured active-creator count was found; Product Hunt and editorial coverage repeat company-supplied creator and output figures.",
+        "No paid-customer count, subscription mix, revenue, GMV, creator earnings distribution, retention or cohort economics was disclosed, so the visible pricing surface does not establish economic durability.",
+        "No dated evidence established creator geography or Korean adoption, and no causal effect on creator revenue or audience growth was verified."
+      ]
+    },
+    {
+      "subject_id": "global-frido-wellness-retail-2026",
+      "canonical_title": "Frido experiential preventive-wellness retail rollout",
+      "lead_ids": [
+        "gm-consumer-02"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "ev-global-frido-wellness-retail-2026-001",
+          "subject_id": "global-frido-wellness-retail-2026",
+          "claim_type": "availability",
+          "subtype": "current_official_store_surface",
+          "claim_text": "Frido's official Experience Store locator displayed city filters for Pune, Bangalore, Hyderabad, Gurugram, Mumbai, Delhi and Faridabad and stated that stores offer walk-ins, product trials, free consultations, 3D foot scans, gait analysis and personalized recommendations.",
+          "polarity": "neutral",
+          "source_url": "https://experience.myfrido.com/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-global-006",
+          "source_content_hash": "7248dba5876a455e3e6753d7dc197ac89ac9b471d3921afb8b71e390da298cec",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "ev-global-frido-wellness-retail-2026-002",
+          "subject_id": "global-frido-wellness-retail-2026",
+          "claim_type": "operation",
+          "subtype": "expansion_actual",
+          "claim_text": "Indiaretailing reported on 2026-06-16 that Frido had launched 15 company-owned, company-operated experiential stores across Delhi NCR, Mumbai, Bengaluru, Hyderabad and Pune; about 70% were in malls, and formats ranged from 250 to 1,900 square feet.",
+          "polarity": "neutral",
+          "source_url": "https://www.indiaretailing.com/frido-expands-retail-footprint-with-15-new-experiential-stores-across-major-metros",
+          "source_role": "news",
+          "source_snapshot_id": "snap-global-007",
+          "source_content_hash": "6a6037b74208220508aac5c34e4a05f651104f547ee38f883972db39e05d9e88",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "ev-global-frido-wellness-retail-2026-003",
+          "subject_id": "global-frido-wellness-retail-2026",
+          "claim_type": "trend",
+          "subtype": "expansion_plan_self_reported",
+          "claim_text": "Frido told Indiaretailing that it planned 70 to 100 stores across India by FY28 and 350 to 400 jobs; these are future targets rather than completed expansion or verified demand.",
+          "polarity": "neutral",
+          "source_url": "https://www.indiaretailing.com/frido-expands-retail-footprint-with-15-new-experiential-stores-across-major-metros",
+          "source_role": "news",
+          "source_snapshot_id": "snap-global-007",
+          "source_content_hash": "6a6037b74208220508aac5c34e4a05f651104f547ee38f883972db39e05d9e88",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "medium",
+          "inference_level": "direct",
+          "verification_status": "unverified"
+        },
+        {
+          "claim_id": "ev-global-frido-wellness-retail-2026-004",
+          "subject_id": "global-frido-wellness-retail-2026",
+          "claim_type": "recognition",
+          "subtype": "investor_attention_historical",
+          "claim_text": "CB Insights records a $1.52 million private-equity round for Frido on 2023-03-29 from BL Taparia Family Office, Chona Family Office and MGA Ventures; this investor attention predates the 2026 store rollout and does not evidence current store performance.",
+          "polarity": "neutral",
+          "source_url": "https://www.cbinsights.com/company/frido/financials",
+          "source_role": "other",
+          "source_snapshot_id": "snap-global-008",
+          "source_content_hash": "a1b648e3395b25fd3b435e15935852f4bb8b6d7520fbaa05ba6ad90c99002c03",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "medium",
+          "inference_level": "associated",
+          "verification_status": "verified"
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "sup-global-frido-wellness-retail-2026-001",
+          "claim_id": "ev-global-frido-wellness-retail-2026-001",
+          "chip": "PERSONAL_FIT",
+          "support_strength": "direct",
+          "reason": "The official store surface explicitly offers scans, gait analysis and personalized recommendations tied to an individual's feet and comfort needs.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "No independently measured store footfall, transactions, conversion, repeat purchase, scan usage or customer retention was found, so verified adoption remains unresolved.",
+        "No store-level revenue, contribution margin, payback period, lease burden or profitability evidence was found; rollout scale and a historic funding round do not establish economic durability.",
+        "The official locator repeated identical rating text across store cards and showed at least one city/address mismatch, so those ratings were not treated as adoption evidence.",
+        "No dated Korean store availability, customer adoption or causal spillover evidence was found."
+      ]
+    }
+  ]
+}

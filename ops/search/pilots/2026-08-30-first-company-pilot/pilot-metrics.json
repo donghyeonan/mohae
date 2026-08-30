@@ -1,0 +1,58 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "run_class": "non_production_learning_pilot",
+  "workers": 12,
+  "raw_leads": 72,
+  "worker_row_sum": 72,
+  "integration_loss_count": 0,
+  "duplicate_relations": 5,
+  "exact_duplicate_pairs": 3,
+  "canonical_subjects_after_exact_merge": 69,
+  "blank_slate_raw_leads": 18,
+  "blank_slate_unique_subjects": 16,
+  "ownership_flags": 9,
+  "temporal_flags": {
+    "clearly_closed": 2,
+    "last_day": 1,
+    "date_conflicted": 9,
+    "not_yet_open": 13
+  },
+  "workers_requiring_schema_correction": [
+    "lp-official",
+    "lp-index",
+    "lp-edge",
+    "lp-blank",
+    "ee-ticket",
+    "gm-startup",
+    "gm-capital"
+  ],
+  "deep_verified_subjects": 9,
+  "evidence_claims": 43,
+  "claim_chip_support_records": 16,
+  "trust_verdicts": {
+    "approve": 5,
+    "revise": 2,
+    "hold": 2,
+    "reject": 0
+  },
+  "policy_violations": [
+    {
+      "code": "PERSONAL_FIT_ASSIGNED_BEFORE_RECOMMENDATION_CONTEXT",
+      "subject_id": "global-frido-wellness-retail-2026",
+      "support_id": "sup-global-frido-wellness-retail-2026-001",
+      "caught_by_schema": false,
+      "caught_by_trust": false,
+      "archived_in": "evidence/global-market.pre-policy.json",
+      "final_action": "removed_from_published_evidence",
+      "audit_artifact": "final-integration-audit.json"
+    }
+  ],
+  "runtime_attestation": {
+    "declared_profile": "mohae_discovery_web_only",
+    "restricted_profile_enforced": false,
+    "evaluator_store_isolation_enforced": false
+  },
+  "regression_score_valid": false,
+  "recommendations_emitted": 0,
+  "product_exposures": 0
+}

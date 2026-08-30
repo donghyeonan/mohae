@@ -21,7 +21,8 @@ After union and canonicalization, evidence assemblers may assign zero or more of
 - `SCARCITY`
 - `PAYOFF`
 - `SOCIAL_CURRENCY`
-- `PERSONAL_FIT`
+
+`PERSONAL_FIT` is not an evidence-stage chip. Compute it only inside a recommendation decision context that identifies the user, intent, time, location, constraints, and evidence version.
 
 Keep quality, demand, exposure, scarcity, payoff, feasibility, and personal fit separate. An appearance is not an endorsement, a sellout is not quality, and scarcity does not excuse a poor or unsafe product.
 

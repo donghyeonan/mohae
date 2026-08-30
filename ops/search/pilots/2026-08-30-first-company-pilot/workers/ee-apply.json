@@ -1,0 +1,230 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "events_experiences",
+  "worker_id": "ee-apply",
+  "worker_mode": "memory_assisted",
+  "source_strategy": "Public web search and public web reading using registration, government, university, startup, meetup, and program-application queries, with Seoul-capital-region priority.",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "leads": [
+    {
+      "lead_id": "ee-apply-01",
+      "raw_title": "「모두의 창업 프로젝트」통합 모집공고 2차",
+      "raw_description": "창의적 아이디어를 가진 국민의 도전을 받아 일반·기술 트랙과 로컬 트랙으로 운영하는 창업 프로젝트. 공식 공고에는 온라인 도전신청서 접수, 라운드별 멘토링·창업활동자금·시제품 제작 지원, 전국 오디션 등이 기재되어 있다.",
+      "discovery_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178952",
+      "canonical_url": "https://www.modoo.or.kr/",
+      "discovered_via": "Public web search for 2026 September South Korea startup applications, followed by K-Startup detail-page reading",
+      "source_type": "official",
+      "market": "South Korea (nationwide)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "중소벤처기업부",
+        "창업진흥원",
+        "모두의 창업 프로젝트"
+      ],
+      "raw_dates": [
+        "2026-08-20 ~ 2026-09-17 16:00",
+        "2026.08.20(목) 09:00 ~ 2026.09.17(목) 16:00 까지"
+      ],
+      "raw_numbers": [
+        "중소벤처기업부 공고 제2026-511호",
+        "예비창업자, 7년미만",
+        "책임멘토 3인",
+        "외부전문가 5인 이상",
+        "17개 지역창업전담기관",
+        "3R 진출자 200명 중 TOP 10",
+        "창업활동자금 200만원",
+        "AI솔루션 지원(총 100만원)",
+        "최대 2,000만원",
+        "최대 10억원",
+        "최대 3천만원",
+        "최대 1억원"
+      ],
+      "uncertainties": [
+        "공고의 지역 표시는 전국이며 서울 또는 수도권의 특정 개최 장소는 표시되지 않았다.",
+        "공고는 대내·외 상황에 따라 선발 규모, 절차, 일정 및 지원사항이 변경될 수 있다고 명시한다."
+      ]
+    },
+    {
+      "lead_id": "ee-apply-02",
+      "raw_title": "2026년 GovTech 창업경진대회",
+      "raw_description": "AI·데이터 등 디지털 기술로 공공 서비스를 혁신할 아이디어와 예비·초기 GovTech 기업을 모집하는 창업경진대회. K-Startup 상세 공고에는 예비창업자와 공고일 기준 3년 이내 초기창업기업이 대상이며, 1차 평가 후 교육·멘토링·부트캠프가 예정되어 있다고 표시되어 있다.",
+      "discovery_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?pbancSn=178968&schM=view",
+      "canonical_url": "https://k-govtech.kr/common/main",
+      "discovered_via": "Public web search for the official 2026 GovTech competition and K-Startup application notice",
+      "source_type": "official",
+      "market": "South Korea (nationwide)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "정보통신산업진흥원",
+        "과학기술정보통신부",
+        "윕스",
+        "GovTech 창업경진대회"
+      ],
+      "raw_dates": [
+        "2026-08-20 ~ 2026-09-21 10:00",
+        "2026.08.20(목) 10:00 ~ 2026.09.21(월) 10:00 까지",
+        "2026년 08월 20일",
+        "1차 평가: 9월 말",
+        "1차 합격자 발표: 10월 초",
+        "1차 합격자 지원 프로그램: 10월 중~11월 중",
+        "시상식: 12월 초"
+      ],
+      "raw_numbers": [
+        "사업개시일부터 3년이 지나지 않은 창업기업",
+        "42개팀 내외",
+        "아이디어 기획 21개팀 내외",
+        "제품·서비스 개발 21개팀 내외",
+        "14개팀",
+        "아이디어 기획 7개팀",
+        "제품·서비스 개발 7개팀",
+        "총 상금 7,000만원",
+        "과학기술정보통신부 장관상 등 14점"
+      ],
+      "uncertainties": [
+        "공식 경진대회 메인 페이지의 프로그램 일정과 시상내역은 이미지 중심으로 노출되어, 날짜와 선발 절차는 K-Startup 상세 공고에서 확인했다.",
+        "공모 분야별 신청자격과 제출서류가 다르다고 표시되어 있다."
+      ]
+    },
+    {
+      "lead_id": "ee-apply-03",
+      "raw_title": "Try Everything 2026",
+      "raw_description": "서울시의 글로벌 스타트업 축제로, 기술 전시·글로벌 리더 강연·스타트업 IR·비즈니스 밋업·네트워킹 프로그램이 DDP에서 이틀간 진행된다. 서울시 공식 영문 페이지에는 일반 사전등록이 9월 8일까지 열려 있다고 기재되어 있다.",
+      "discovery_url": "https://english.seoul.go.kr/try-everything-2026-to-open-this-september-as-seouls-startup-ecosystem-value-grows-by-usd-100-billion",
+      "canonical_url": "https://tryeverything.or.kr/",
+      "discovered_via": "Public web search for Try Everything 2026 registration, followed by Seoul Metropolitan Government page reading",
+      "source_type": "official",
+      "market": "South Korea (Seoul)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "서울특별시",
+        "Try Everything 2026",
+        "동대문디자인플라자",
+        "DDP"
+      ],
+      "raw_dates": [
+        "Wednesday, September 9 to Thursday, September 10",
+        "Pre-Registration (Application) Jun. 22–Sep. 8",
+        "Applications for One-on-One Meetups Jul. 6–Jul. 19",
+        "Final Meetup Schedule Confirmation Late August",
+        "On-Site Meetups Sep. 9–Sep. 10",
+        "2026. 9. 9.(수)-9. 10.(목) 10:00 ~ 18:00"
+      ],
+      "raw_numbers": [
+        "Around 40 overseas investors, companies, and organizations",
+        "15 last year to 30 this year",
+        "two days",
+        "One-on-One Meetups"
+      ],
+      "uncertainties": [
+        "서울시 공식 페이지의 Registration date는 07/03/2026으로 날짜만 보여 게시 시각은 확인되지 않았다.",
+        "일반 사전등록은 9월 8일까지로 표시되지만 1:1 투자자 밋업 신청 기간은 7월 19일에 종료된 것으로 표시된다."
+      ]
+    },
+    {
+      "lead_id": "ee-apply-04",
+      "raw_title": "서울시 시니어 일자리박람회 2026",
+      "raw_description": "시니어 구직자를 위한 서울시 채용 행사로, 양재 aT센터에서 기업 채용 상담과 현장 면접, 이력서·자기소개서 첨삭, 1:1 면접 컨설팅, AI 체험 등을 제공한다. 9월 15일까지 일자리몽땅에서 사전 신청할 수 있고 행사 당일 현장 등록도 가능하다고 안내한다.",
+      "discovery_url": "https://mediahub.seoul.go.kr/archives/2019199",
+      "canonical_url": "https://www.50plus.or.kr/job/index.do",
+      "discovered_via": "Public web search for Seoul September 2026 registration and official Seoul media-page reading",
+      "source_type": "official",
+      "market": "South Korea (Seoul)",
+      "published_at": "2026-08-27T16:42:00+09:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "서울특별시",
+        "서울시 시니어 일자리박람회",
+        "일자리몽땅",
+        "서울시니어일자리지원센터",
+        "양재 aT센터"
+      ],
+      "raw_dates": [
+        "발행일 2026.08.27. 16:42",
+        "수정일 2026.08.27. 17:22",
+        "9월 15일까지",
+        "2026.9.17. 10:00~17:00",
+        "9월 17일 현장에서 등록"
+      ],
+      "raw_numbers": [
+        "81개 기업",
+        "80여 개 기업",
+        "801개 기업",
+        "1:1 맞춤 컨설팅",
+        "02-2186-9997",
+        "참가비는 전액 무료"
+      ],
+      "uncertainties": [
+        "같은 공식 페이지 안에서 참여기업 수가 '81개 기업', '80여 개 기업', '801개 기업'으로 서로 다르게 표시된다.",
+        "세부 참여기업과 채용 직무는 공식 누리집을 통해 순차 공개한다고 안내되어 있어 관찰 시점의 전체 목록은 확인되지 않았다."
+      ]
+    },
+    {
+      "lead_id": "ee-apply-05",
+      "raw_title": "[강남 취·창업허브센터] 2026 제3회 IR Day 모집 안내 (9/8)",
+      "raw_description": "강남취창업허브센터에서 스타트업 및 예비창업자를 대상으로 진행하는 IR Day 행사. 투자유치·사업 확장, 사업 아이템 피드백, 투자사 및 창업 생태계 관계자 네트워킹을 안내하며 Google Forms 신청 링크와 무료 참가를 표시한다.",
+      "discovery_url": "http://startup.postech.ac.kr/bbs/board.php?bo_table=sub2_2&wr_id=122&sca=%ED%96%89%EC%82%AC%C2%B7%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9",
+      "canonical_url": "https://forms.gle/PCSTvu4j6GChXqEA9",
+      "discovered_via": "Public web search for Seoul September 2026 startup registration and POSTECH program-listing page reading",
+      "source_type": "official",
+      "market": "South Korea (Seoul)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "강남 취·창업허브센터",
+        "POSTECH",
+        "2026 제3회 IR Day"
+      ],
+      "raw_dates": [
+        "2026.08.25 ~ 2026.09.08",
+        "2026년 9월 8일(화) 14:00 ~ 16:30",
+        "신청 기간: 게시일 ~ 9월 6일(일)"
+      ],
+      "raw_numbers": [
+        "제3회",
+        "1층",
+        "서울특별시 강남구 역삼로 160",
+        "참가비: 전액 무료",
+        "070-4112-2308"
+      ],
+      "uncertainties": [
+        "페이지 상단의 접수 기간은 2026.08.25 ~ 2026.09.08이지만 본문 신청 기간은 게시일 ~ 9월 6일(일)로 서로 다르게 표시된다.",
+        "발견 페이지는 POSTECH의 타 기관 프로그램 게시물이며 실제 신청은 Google Forms로 연결된다."
+      ]
+    },
+    {
+      "lead_id": "ee-apply-06",
+      "raw_title": "2026년 Tokyo PMF·GTM 프로그램 창업기업 모집 공고",
+      "raw_description": "도쿄 현지 시장 진출 가능성 검증과 일본 진출 희망 창업기업의 성장을 지원하는 프로그램. 기업진단, 타깃시장 진단분석, 일본 시장진출 실증, SVC도쿄 개소식 초청 및 네트워킹 연계를 안내하며 이메일로 신청을 받는다.",
+      "discovery_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178953",
+      "canonical_url": null,
+      "discovered_via": "Public web search for September 2026 South Korea startup applications, followed by K-Startup detail-page reading",
+      "source_type": "official",
+      "market": "South Korea (nationwide application; Tokyo program)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "창업진흥원",
+        "SVC도쿄",
+        "Tokyo PMF·GTM 프로그램"
+      ],
+      "raw_dates": [
+        "2026-08-19 ~ 2026-09-03 18:00",
+        "2026.08.19(수) 18:00 ~ 2026.09.03(목) 18:00 까지"
+      ],
+      "raw_numbers": [
+        "공고 제2026-072호",
+        "업력 7년 미만",
+        "신산업창업분야는 업력 10년 미만",
+        "①요건검토 → ②서류평가 → ③발표평가",
+        "044-410-1989"
+      ],
+      "uncertainties": [
+        "지원 지역은 전국으로 표시되며 프로그램의 구체적인 도쿄 현장 일정은 상세 페이지에 표시되지 않았다.",
+        "제외대상과 더 자세한 요건은 모집 공고문을 참조하라고 표시되어 있다."
+      ]
+    }
+  ]
+}

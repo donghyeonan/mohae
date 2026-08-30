@@ -1,0 +1,255 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "global_market",
+  "worker_id": "gm-blank",
+  "worker_mode": "blank_slate",
+  "source_strategy": "broad multilingual public web search without department memory, watchlists or regression examples",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "leads": [
+    {
+      "lead_id": "gm-blank-01",
+      "raw_title": "Fitbit founders launch Luffu Link, an LTE health and safety band",
+      "raw_description": "Luffu, founded by Fitbit co-founders James Park and Eric Friedman, launched preorder availability for Luffu Link, a screenless LTE-enabled band combining all-day health sensing, voice logging, GPS/location awareness, family check-ins and help requests without a nearby phone. TechCrunch reported a current preorder price of $250, an expected $300 retail price and expected shipping in early 2027; the band complements Luffu's family health-monitoring app.",
+      "discovery_url": "https://techcrunch.com/2026/08/25/fitbit-founders-launch-luffu-link-an-lte-health-and-safety-band/",
+      "canonical_url": "https://www.luffu.com/",
+      "discovered_via": "English-language public web search, TechCrunch article, and public Luffu product site",
+      "source_type": "news",
+      "market": "Global-facing online preorder; family caregivers, independent older adults, and health- and safety-conscious adults",
+      "published_at": "2026-08-25T05:00:00-07:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Luffu",
+        "Luffu Link",
+        "James Park",
+        "Eric Friedman",
+        "Fitbit"
+      ],
+      "raw_dates": [
+        "2026-08-25 launch report",
+        "early 2027 expected shipping"
+      ],
+      "raw_numbers": [
+        "$250 current preorder price",
+        "$300 expected retail price",
+        "3 colors",
+        "27 hours per week average family-caregiver load cited by James Park"
+      ],
+      "uncertainties": [
+        "The device is available for preorder but was not reported as shipping to consumers yet.",
+        "Early-2027 shipping is an expectation, not a completed delivery date.",
+        "The inspected sources did not provide independent medical-validation or accuracy results for Luffu Link.",
+        "A geographic sales boundary was not stated in the inspected material."
+      ]
+    },
+    {
+      "lead_id": "gm-blank-02",
+      "raw_title": "Fashion startup Atorie raises $9.5M to bring consumers luxury goods without the markup",
+      "raw_description": "Atorie is an AI-powered fashion marketplace connecting factory-owned brands and luxury manufacturers directly with consumers. TechCrunch reported a $9.5 million seed round, around $5 million in sales in the prior year, a company expectation of an annualized run rate above $55 million in 2026, and work with more than 40 factories. The platform uses AI for trend analysis, demand and material-shortage estimates, color testing, outfit building and personalized suggestions; it also plans an in-house line and creator or influencer clothing lines.",
+      "discovery_url": "https://techcrunch.com/2026/08/27/fashion-startup-atorie-raises-9-5m-to-bring-consumers-luxury-goods-without-the-markup/",
+      "canonical_url": "https://shopatorie.com/",
+      "discovered_via": "English-language public web search, TechCrunch article, Atorie storefront, and public a16z speedrun company profile",
+      "source_type": "news",
+      "market": "United States / Los Angeles; global online fashion marketplace and manufacturing network",
+      "published_at": "2026-08-27T10:00:00-07:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Atorie",
+        "Redouane Ramdani",
+        "Luis Angulo",
+        "a16z speedrun",
+        "Night Capital",
+        "Jeremy Liew",
+        "Lightspeed Ventures"
+      ],
+      "raw_dates": [
+        "2026-08-27 funding report",
+        "2024 company founding shown by a16z speedrun profile"
+      ],
+      "raw_numbers": [
+        "$9.5 million seed round",
+        "around $5 million in prior-year sales",
+        "company expects annualized run rate above $55 million in 2026",
+        "more than 40 factories",
+        "5 employees shown by a16z speedrun profile"
+      ],
+      "uncertainties": [
+        "Sales, run-rate expectation, factory count, material provenance and same-factory claims were reported from the company or founder and were not independently audited in the inspected sources.",
+        "The source distinguishes most Atorie products from dupes but does not provide item-by-item manufacturing verification.",
+        "Both atorie.com and shopatorie.com appeared as official-looking public domains; shopatorie.com is the URL shown by the a16z speedrun company profile.",
+        "The above-$55-million annualized run rate is a 2026 expectation rather than a completed full-year result."
+      ]
+    },
+    {
+      "lead_id": "gm-blank-03",
+      "raw_title": "Hoomanely's building a smart feeding bowl and an AI platform to help owners spot when their pup is sick",
+      "raw_description": "Palo Alto startup Hoomanely offers EverBowl, a sensor-equipped dog feeding station and app subscription that measure food and water intake, eating speed, chewing and swallowing sounds, facial thermal readings and oral motion. Its AI establishes an individual baseline and surfaces prolonged deviations. TechCrunch reported an 18-month beta covering more than 80 dogs and about 5 million data points, roughly 50 devices shipped, a $29-per-month service, and $1.8 million in pre-seed funding. Hoomanely describes a longer-term animal-health data model serving research, nutrition and insurance companies.",
+      "discovery_url": "https://techcrunch.com/2026/08/27/hoomanelys-building-a-smart-feeding-bowl-and-an-ai-platform-to-help-owners-spot-when-their-pup-is-sick/",
+      "canonical_url": "https://hoomanely.com/",
+      "discovered_via": "English-language public web search, TechCrunch article, and public Hoomanely product site",
+      "source_type": "news",
+      "market": "United States / Palo Alto; consumer pet health with stated future animal-health data customers",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Hoomanely",
+        "EverBowl",
+        "EverSense",
+        "EverHub",
+        "EverWiz",
+        "BioSense AI Engine",
+        "Sai Supriya Sharath"
+      ],
+      "raw_dates": [
+        "2026-08-27 article date",
+        "18-month beta-testing phase"
+      ],
+      "raw_numbers": [
+        "about 5 million beta data points",
+        "more than 80 dogs in beta",
+        "about 50 devices shipped",
+        "$29 per month subscription",
+        "$1.8 million pre-seed funding"
+      ],
+      "uncertainties": [
+        "The exact article publication time was not captured, so published_at is null while the displayed calendar date is preserved in raw_dates.",
+        "Hoomanely said it does not yet have independent sensitivity, specificity or false-positive rates for clinical events.",
+        "The beta cohort was small and the reported shipment count was about 50 devices.",
+        "The company states that the platform is not a replacement for veterinary diagnosis.",
+        "Expansion to cats, livestock, horses, research, nutrition and insurance is a stated future plan, not a reported current business mix."
+      ]
+    },
+    {
+      "lead_id": "gm-blank-04",
+      "raw_title": "As electric two-wheelers gain a foothold, Belgian startup Any bets on cargo space",
+      "raw_description": "Belgian startup Any is taking preorders for LUV1, a modular electric motorcycle positioned as a 'life utility vehicle' combining two-wheeler agility with small-car cargo utility. Public material states up to 120 liters of storage, 100 km/h maximum speed and 140 km extended range, with configurations for commuting, families, pets, work equipment and camping. TechCrunch reported a starting price of about €7,000, a refundable €49 reservation, more than 600 reservations in the first 100 days, €2.75 million raised, and a current effort to raise at least about €10 million for production.",
+      "discovery_url": "https://techcrunch.com/2026/08/28/as-electric-two-wheelers-gain-a-foothold-belgian-startup-any-bets-on-cargo-space/",
+      "canonical_url": "https://www.rideany.com/en/",
+      "discovered_via": "English-language public web search, TechCrunch article, and public Any configurator and company site",
+      "source_type": "news",
+      "market": "Belgium / Europe; urban electric two-wheelers for commuters, families, businesses and recreational users",
+      "published_at": "2026-08-28T02:33:00-07:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Any",
+        "ANY",
+        "LUV1",
+        "Life Utility Vehicle",
+        "Lowie Vermeersch",
+        "Erik de Winter",
+        "Pieter Van de Velde",
+        "Alessandro Mangano"
+      ],
+      "raw_dates": [
+        "2026-08-28 article publication",
+        "May 2026 prototype unveiling during Milan Design Week",
+        "first 100 days of reservation campaign",
+        "end of 2026 target for closing planned Series A"
+      ],
+      "raw_numbers": [
+        "120 liters cargo capacity",
+        "100 km/h maximum speed",
+        "140 km extended range",
+        "starting around €7,000",
+        "€49 fully refundable reservation fee",
+        "more than 600 reservations in first 100 days",
+        "€2.75 million raised before the reported Series A effort",
+        "seeking about €10 million or more"
+      ],
+      "uncertainties": [
+        "Reservations are refundable and are not completed vehicle sales.",
+        "The first customer deliveries had not occurred in the inspected report.",
+        "Production depends on further funding and ramp execution.",
+        "Range, speed, licensing and starting-price statements describe intended or configured product specifications and may vary by final configuration or jurisdiction.",
+        "The company uses both Any and ANY styling in public materials."
+      ]
+    },
+    {
+      "lead_id": "gm-blank-05",
+      "raw_title": "Two years after launch, Walmart's Flipkart is closing in on India's quick-commerce leaders",
+      "raw_description": "Flipkart Minutes, launched in August 2024, was reported to be delivering 1.1 million to 1.2 million orders per day, up from about 390,000 to 400,000 in November. TechCrunch reported roughly 1,020 to 1,050 micro-fulfillment centers, up from 600 in January and about 340 a year earlier, with around 100 facilities being added monthly and a 1,500-center target by end-2026. Reported repeat-buyer share was 65% to 70%, transactions per customer were up 50% to 60% year over year, average delivery time fell to about 11 minutes from 13, and average order value was about ₹400 to ₹500.",
+      "discovery_url": "https://techcrunch.com/2026/08/22/two-years-after-launch-walmarts-flipkart-is-closing-in-on-indias-quick-commerce-leaders/",
+      "canonical_url": null,
+      "discovered_via": "English-language public web search and TechCrunch market report",
+      "source_type": "news",
+      "market": "India / quick commerce and instant delivery",
+      "published_at": "2026-08-22T20:00:00-07:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Flipkart",
+        "Flipkart Minutes",
+        "Walmart",
+        "Swiggy Instamart",
+        "Blinkit",
+        "Zepto",
+        "Amazon Now",
+        "Datum Intelligence"
+      ],
+      "raw_dates": [
+        "2026-08-22 20:00 PDT article header",
+        "August 2024 service debut",
+        "November comparison point for daily orders",
+        "January comparison point for micro-fulfillment centers",
+        "end of 2026 target for 1,500 centers"
+      ],
+      "raw_numbers": [
+        "1.1 million to 1.2 million orders per day",
+        "about 390,000 to 400,000 orders per day in November",
+        "about 1,020 to 1,050 micro-fulfillment centers",
+        "600 centers in January",
+        "about 340 centers a year earlier",
+        "around 100 facilities added per month",
+        "1,500 centers targeted by end of 2026",
+        "65% to 70% repeat buyers among monthly purchasing customers",
+        "50% to 60% year-over-year increase in transactions per customer",
+        "about ₹400 to ₹500 average order value",
+        "about 11-minute average delivery time, down from 13 minutes"
+      ],
+      "uncertainties": [
+        "Most current Flipkart Minutes operating figures were attributed to people familiar with the matter rather than to a public Flipkart statement.",
+        "Flipkart, Amazon, Swiggy, Zepto and Blinkit parent Eternal did not respond to the report's requests for comment.",
+        "The 1,500-center figure is a target rather than a completed rollout.",
+        "The search index displayed an August 24 date for one result, while the article header itself displayed August 22 at 8:00 PM PDT; published_at follows the article header.",
+        "No directly inspected official Flipkart Minutes canonical page was available, so canonical_url is null."
+      ]
+    },
+    {
+      "lead_id": "gm-blank-06",
+      "raw_title": "easyShop to launch major new retail marketplace in link with OnBuy.com",
+      "raw_description": "easyGroup and UK marketplace technology company OnBuy announced easyShop.com, a planned value-led, pure online marketplace for millions of products including clothing, accessories, footwear and beauty. The parties described an asset-light licensing structure: easyGroup extends the easy brand while OnBuy provides the technology and operates the marketplace day to day, without the operator holding inventory or competing with merchants. The planned Q4 2026 launch covers the UK and 20 other European markets.",
+      "discovery_url": "https://ww.fashionnetwork.com/news/Easyshop-to-launch-major-new-retail-marketplace-in-link-with-onbuy-com,1838386.html",
+      "canonical_url": "https://easyshop.com/",
+      "discovered_via": "English-language public web search, FashionNetwork report, and public easyShop coming-soon site",
+      "source_type": "news",
+      "market": "United Kingdom and 20 other European markets / horizontal online retail marketplace",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "easyShop",
+        "easyShop.com",
+        "easyGroup",
+        "OnBuy",
+        "OnBuy.com",
+        "Sir Stelios Haji-Ioannou",
+        "Cas Paton"
+      ],
+      "raw_dates": [
+        "2026-06-08 article publication",
+        "Q4 2026 planned launch"
+      ],
+      "raw_numbers": [
+        "UK plus 20 other European markets",
+        "more than 86% OnBuy platform expansion over the prior three years stated by the company",
+        "more than 100 million products supported across Europe stated by the company",
+        "millions of products planned for easyShop",
+        "financial terms not disclosed"
+      ],
+      "uncertainties": [
+        "The exact article publication time was not captured, so published_at is null while the displayed publication date is preserved in raw_dates.",
+        "easyShop had not launched at observation time; the canonical site displayed a coming-soon page.",
+        "Q4 2026 timing, geographic coverage, product scale and OnBuy growth figures were forward-looking or company-provided statements.",
+        "The parties said significant long-term investment was agreed but did not disclose financial terms.",
+        "The source describes a pure marketplace without operator inventory, logistics or merchant competition; post-launch implementation was not yet observable."
+      ]
+    }
+  ]
+}

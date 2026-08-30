@@ -1,0 +1,240 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "raw_union_count": 72,
+  "duplicate_relations": [
+    {
+      "relation_id": "DR-001",
+      "lead_ids": [
+        "lp-index-01",
+        "lp-blank-01"
+      ],
+      "relation_type": "exact_subject",
+      "canonical_subject_id": "lp-index-01",
+      "reason": "Both records describe the same E-Mart-to-Starfield Market Wolgye conversion and 2026-08-27 grand opening."
+    },
+    {
+      "relation_id": "DR-002",
+      "lead_ids": [
+        "gm-startup-03",
+        "gm-capital-04"
+      ],
+      "relation_type": "exact_subject",
+      "canonical_subject_id": "gm-startup-03",
+      "reason": "Both records describe Fypro’s July 2026 Product Hunt launch and the same AI TikTok-creator storefront product."
+    },
+    {
+      "relation_id": "DR-003",
+      "lead_ids": [
+        "gm-startup-06",
+        "gm-capital-03"
+      ],
+      "relation_type": "exact_subject",
+      "canonical_subject_id": "gm-startup-06",
+      "reason": "Both records describe the same Speko Launch HN subject: a benchmark-routed, multi-provider voice AI stack with the same reported weekly usage growth."
+    },
+    {
+      "relation_id": "DR-004",
+      "lead_ids": [
+        "lp-official-02",
+        "lp-official-03"
+      ],
+      "relation_type": "same_series_different_occurrence",
+      "canonical_subject_id": "lp-official-02",
+      "reason": "The records share one SW19 opening announcement and operator but refer to distinct store occurrences: Seongsu PT.2 on 2026-08-05 and Hongdae on 2026-08-06."
+    },
+    {
+      "relation_id": "DR-005",
+      "lead_ids": [
+        "ee-edge-01",
+        "ee-blank-01"
+      ],
+      "relation_type": "parent_child",
+      "canonical_subject_id": "ee-blank-01",
+      "reason": "ee-blank-01 is the Frieze Seoul fair itself; ee-edge-01 bundles that parent fair with its linked Neighbourhood Nights city programme."
+    }
+  ],
+  "ownership_flags": [
+    {
+      "lead_id": "lp-edge-01",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is a dated, multi-stop mobile wellness pop-up rather than a persistent place or branch."
+    },
+    {
+      "lead_id": "lp-edge-02",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is a four-day character-licensing fair at COEX."
+    },
+    {
+      "lead_id": "lp-edge-03",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is a finite T1 experiential pop-up running through 2026-09-13."
+    },
+    {
+      "lead_id": "lp-edge-04",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is a ticketed crime-scene and escape-room programme with a defined run through 2026-10-18."
+    },
+    {
+      "lead_id": "lp-edge-05",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is a finite brand-collaboration campaign pop-up, not the underlying permanent Seongsu venue."
+    },
+    {
+      "lead_id": "lp-edge-06",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is a dated PRO-SPECS collaboration pop-up ending 2026-08-30."
+    },
+    {
+      "lead_id": "lp-blank-03",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The lead subject is the Park Seo-Bo Museum inaugural exhibition with a stated closing date, rather than the museum as a permanent venue."
+    },
+    {
+      "lead_id": "lp-blank-04",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is a finite Do Ho Suh exhibition running from 2026-08-27 to 2027-02-09."
+    },
+    {
+      "lead_id": "lp-blank-05",
+      "current_department": "local_places",
+      "suggested_department": "events_experiences",
+      "reason": "The subject is Kim Heecheon’s finite solo exhibition “Moles,” not the museum venue itself."
+    }
+  ],
+  "temporal_flags": [
+    {
+      "lead_id": "lp-edge-01",
+      "status": "clearly_closed",
+      "reason": "The mobile pop-up ended on 2026-08-10, before the 2026-08-30 observation time."
+    },
+    {
+      "lead_id": "lp-edge-02",
+      "status": "clearly_closed",
+      "reason": "The fair ended on 2026-07-19, before the 2026-08-30 observation time."
+    },
+    {
+      "lead_id": "lp-edge-06",
+      "status": "last_day",
+      "reason": "The published run ends on 2026-08-30; at 14:32 KST the lead was on its final listed operating day."
+    },
+    {
+      "lead_id": "lp-official-02",
+      "status": "date_conflicted",
+      "reason": "The source characterizes the two Seoul openings as simultaneous while separately dating Seongsu 2026-08-05 and Hongdae 2026-08-06."
+    },
+    {
+      "lead_id": "lp-index-02",
+      "status": "date_conflicted",
+      "reason": "The raw record gives 2026-08-21 as the formal opening in news and 2026-08-22 as the grand opening in social results."
+    },
+    {
+      "lead_id": "lp-blank-01",
+      "status": "date_conflicted",
+      "reason": "One report’s photo captions show 2026-11-27 while its body and other records show the Starfield Market opening on 2026-08-27."
+    },
+    {
+      "lead_id": "lp-blank-03",
+      "status": "date_conflicted",
+      "reason": "An earlier editorial source ends the inaugural exhibition on 2026-12-31, while the live official museum record ends it on 2027-01-03."
+    },
+    {
+      "lead_id": "ee-apply-05",
+      "status": "date_conflicted",
+      "reason": "The page header gives an application period through 2026-09-08, while the body gives 2026-09-06; the IR Day itself is 2026-09-08 and had not occurred."
+    },
+    {
+      "lead_id": "ee-edge-04",
+      "status": "date_conflicted",
+      "reason": "Raw sources show 06:30 and 07:30 for the 2026-09-13 marathon; whether these are assembly and start times is unresolved, and the occurrence had not begun."
+    },
+    {
+      "lead_id": "ee-blank-01",
+      "status": "date_conflicted",
+      "reason": "The main Frieze date is 2026-09-02 to 2026-09-05, while local-time metadata shows 2026-09-01 to 2026-09-05; the fair had not begun."
+    },
+    {
+      "lead_id": "gm-startup-05",
+      "status": "date_conflicted",
+      "reason": "The YC launch copy says the US$199 launch price ended 2026-08-16, while the later company site says it ends 2026-08-31."
+    },
+    {
+      "lead_id": "gm-blank-05",
+      "status": "date_conflicted",
+      "reason": "The search index displays 2026-08-24 while the article header displays 2026-08-22 20:00 PDT."
+    },
+    {
+      "lead_id": "ee-ticket-04",
+      "status": "not_yet_open",
+      "reason": "The first listed September performance is 2026-09-05, after the observation time."
+    },
+    {
+      "lead_id": "ee-ticket-05",
+      "status": "not_yet_open",
+      "reason": "The one-day performance is scheduled for 2026-09-08; ticketing is present but the occurrence had not begun."
+    },
+    {
+      "lead_id": "ee-ticket-06",
+      "status": "not_yet_open",
+      "reason": "The concert is scheduled for 2026-09-06; booking opened on 2026-08-24 but the occurrence had not begun."
+    },
+    {
+      "lead_id": "ee-apply-03",
+      "status": "not_yet_open",
+      "reason": "Try Everything runs 2026-09-09 to 2026-09-10; preregistration was open but the event had not begun."
+    },
+    {
+      "lead_id": "ee-apply-04",
+      "status": "not_yet_open",
+      "reason": "The job fair is on 2026-09-17; preregistration was open but the event had not begun."
+    },
+    {
+      "lead_id": "ee-edge-01",
+      "status": "not_yet_open",
+      "reason": "Neighbourhood Nights begins 2026-08-31 and the Frieze fair begins 2026-09-02, both after the observation time."
+    },
+    {
+      "lead_id": "ee-edge-05",
+      "status": "not_yet_open",
+      "reason": "The walking festival is scheduled for 2026-09-19."
+    },
+    {
+      "lead_id": "ee-blank-02",
+      "status": "not_yet_open",
+      "reason": "The invitation-only preview begins 2026-08-31 and public show days begin 2026-09-01."
+    },
+    {
+      "lead_id": "ee-blank-03",
+      "status": "not_yet_open",
+      "reason": "EdTech Korea begins 2026-09-17; visitor preregistration was available but the event had not begun."
+    },
+    {
+      "lead_id": "ee-blank-04",
+      "status": "not_yet_open",
+      "reason": "The Seoul Walking Festival is scheduled for 2026-09-20."
+    },
+    {
+      "lead_id": "ee-blank-05",
+      "status": "not_yet_open",
+      "reason": "The ATA Festival is scheduled for 2026-09-19 to 2026-09-20."
+    },
+    {
+      "lead_id": "ee-blank-06",
+      "status": "not_yet_open",
+      "reason": "The biennale begins 2026-09-18."
+    },
+    {
+      "lead_id": "gm-blank-06",
+      "status": "not_yet_open",
+      "reason": "easyShop had not launched; the canonical site was still coming soon with a planned Q4 2026 launch."
+    }
+  ],
+  "canonical_subject_count_after_exact_merge": 69
+}

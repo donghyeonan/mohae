@@ -1,0 +1,216 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "global_market",
+  "worker_id": "gm-startup",
+  "worker_mode": "memory_assisted",
+  "source_strategy": "Public web search and public web reading of official startup pages, official accelerator profiles and launch posts, Product Hunt launch and leaderboard pages, and Hacker News launch posts. Signals were limited to items visibly launched or materially accelerated from 2026-06-01 through 2026-08-30. No private sources, files, memory, prior examples, inferred metrics, evaluation, ranking, recommendation, rejection, deduplication, or Korean-causality claims were used.",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "leads": [
+    {
+      "lead_id": "gm-startup-01",
+      "raw_title": "folk launched a multiplayer personal AI inside messaging apps",
+      "raw_description": "The Product Hunt launch described folk as an AI friend living in iMessage, Telegram, Discord and other messaging apps that can join meetings, plan a date, use location context and improve with conversation history; the launch also added multiplayer use for friends working toward goals together. Folk is a personal AI assistant embedded in messaging apps with persistent context and action-taking features.",
+      "discovery_url": "https://www.producthunt.com/products/folk-3",
+      "canonical_url": "https://getfolk.app/",
+      "discovered_via": "Product Hunt launch page and daily leaderboard",
+      "source_type": "platform",
+      "market": "global",
+      "published_at": "2026-06-01T00:00:00Z",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "folk"
+      ],
+      "raw_dates": [
+        "Launched on June 1st, 2026"
+      ],
+      "raw_numbers": [
+        "#5 of the day",
+        "311",
+        "70 comments",
+        "325 points",
+        "514 followers"
+      ],
+      "uncertainties": [
+        "Product Hunt engagement totals are dynamic: the inspected official leaderboard showed a score of 311 while a later official product-page snapshot showed 325 points.",
+        "The source exposes a calendar date but not a publication time; published_at is normalized to 00:00:00Z and does not assert the actual launch hour.",
+        "The inspected launch sources did not state a country restriction; no availability geography is inferred."
+      ]
+    },
+    {
+      "lead_id": "gm-startup-02",
+      "raw_title": "Acti launched an agentic mobile keyboard for search and in-context actions",
+      "raw_description": "Acti launched a mobile keyboard interface that interprets typed intent and returns a result, link or action without requiring the user to leave the current conversation or text field. Public examples included live sports schedules, nearby restaurants, Notion documents, LinkedIn profiles, meeting links, calendar actions and custom workflows.",
+      "discovery_url": "https://www.producthunt.com/products/acti-2",
+      "canonical_url": "https://www.openacti.com/",
+      "discovered_via": "Product Hunt product and awards pages",
+      "source_type": "platform",
+      "market": "global",
+      "published_at": "2026-07-01T00:00:00Z",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Acti"
+      ],
+      "raw_dates": [
+        "July 1st, 2026",
+        "July 2026"
+      ],
+      "raw_numbers": [
+        "#1 of the month for July 2026",
+        "#1 of the week for July 1st, 2026",
+        "#1 of the day for July 1st, 2026",
+        "825 points",
+        "3.2K followers",
+        "3 reviews"
+      ],
+      "uncertainties": [
+        "Product Hunt point totals are dynamic; separate inspected snapshots showed different current totals, so each number is retained with its page context rather than reconciled.",
+        "The source exposes a calendar date but not a publication time; published_at is normalized to 00:00:00Z and does not assert the actual launch hour.",
+        "App Store and Google Play links were visible, but the inspected sources did not specify country availability."
+      ]
+    },
+    {
+      "lead_id": "gm-startup-03",
+      "raw_title": "Fypro launched an AI storefront builder for TikTok creators and disclosed creator usage",
+      "raw_description": "Fypro launched a service that reads a creator's TikTok account and creates a site, a niche-matched product store, videos in the creator's voice, and an owned customer and email list. Its Product Hunt page publicly stated that it was trained on more than 4 million viral TikToks and used by more than 2,000 creators.",
+      "discovery_url": "https://www.producthunt.com/products/fypro",
+      "canonical_url": "https://www.fypro.ai/",
+      "discovered_via": "Product Hunt product page and monthly leaderboard",
+      "source_type": "platform",
+      "market": "global",
+      "published_at": "2026-07-02T00:00:00Z",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Fypro"
+      ],
+      "raw_dates": [
+        "July 2nd, 2026",
+        "July 2026"
+      ],
+      "raw_numbers": [
+        "2,000+ creators",
+        "4M+ viral TikToks",
+        "1.5K followers",
+        "614 points",
+        "#2 of the day",
+        "#3 of the week"
+      ],
+      "uncertainties": [
+        "The 2,000+ creator count and 4M+ TikTok corpus are self-reported on the launch listing; no independent methodology or measurement date was visible.",
+        "Product Hunt point totals are dynamic and can differ across snapshots.",
+        "The source exposes a calendar date but not a publication time; published_at is normalized to 00:00:00Z and does not assert the actual launch hour.",
+        "The inspected sources did not specify country availability or creator geography."
+      ]
+    },
+    {
+      "lead_id": "gm-startup-04",
+      "raw_title": "Illume Labs entered YC Summer 2026 with a text-based personal health and longevity companion",
+      "raw_description": "Illume Labs publicly launched through Y Combinator as a 24/7 personal health companion that connects wearables, nutrition, workouts, blood panels and genomic data, then sends personalized updates and supports health questions over text. The official profile described a private beta waitlist and an initial group of founding members.",
+      "discovery_url": "https://www.ycombinator.com/companies/illume-labs",
+      "canonical_url": "https://www.illumelabs.ai/",
+      "discovered_via": "Y Combinator company profile and Launch YC post",
+      "source_type": "official",
+      "market": "global",
+      "published_at": "2026-07-20T00:00:00Z",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Illume Labs",
+        "Illume"
+      ],
+      "raw_dates": [
+        "July 20, 2026",
+        "Summer 2026",
+        "Founded: 2026"
+      ],
+      "raw_numbers": [
+        "3 MIT grads",
+        "Team Size: 3",
+        "private beta waitlist"
+      ],
+      "uncertainties": [
+        "No user, revenue, waitlist-size or retention metric was visible in the inspected sources.",
+        "The July 20, 2026 date is displayed on Illume's official site next to its YC launch card; the source does not expose a publication time, so published_at is normalized to 00:00:00Z.",
+        "Health outcomes and cross-data pattern detection are product claims, not independently verified clinical results.",
+        "The YC profile lists the company location as San Francisco; product availability geography was not stated."
+      ]
+    },
+    {
+      "lead_id": "gm-startup-05",
+      "raw_title": "Lumeria opened preorders for a phone-mounted multispectral skin tracker during YC Summer 2026",
+      "raw_description": "Lumeria's YC launch described the Lumoscope, a multispectral camera that clips onto a phone and tracks skin signals over time, paired with an AI coach and a product-and-ingredient database. The company opened founding preorders at $199, stated a later price of $329, and planned Sep-Oct 2026 shipping ahead of general release.",
+      "discovery_url": "https://www.ycombinator.com/companies/lumeria",
+      "canonical_url": "https://lumeria.skin/",
+      "discovered_via": "Y Combinator company profile and official preorder page",
+      "source_type": "official",
+      "market": "global",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Lumeria",
+        "Lumoscope",
+        "Lumi"
+      ],
+      "raw_dates": [
+        "Jul 01, 2026",
+        "August 16",
+        "August 31",
+        "Sep - Oct 2026",
+        "Fall 2026"
+      ],
+      "raw_numbers": [
+        "$199",
+        "$329",
+        "first 5,000 founders",
+        "18000+ products + ingredients",
+        "25M+ views",
+        "150+ interviews",
+        "2 clinical partnerships",
+        "3 months of Premium free",
+        "30-day money-back guarantee",
+        "$190B skincare industry"
+      ],
+      "uncertainties": [
+        "The YC launch copy said $199 until August 16, while the official company site later displayed that the $199 launch price ends August 31; the changed deadline is preserved rather than reconciled.",
+        "'First 5,000 founders' is promotional cohort language and does not establish that 5,000 preorders were placed.",
+        "The inspected pages did not expose a static publication timestamp for the launch post, so published_at is null.",
+        "Product performance, dermatology-data and clinical-light claims are company statements; the site also says Lumeria is a general-wellness product, not a medical device, and is not intended to diagnose, treat, cure or prevent disease.",
+        "The founder's 25M+ UGC portfolio views are not a Lumeria usage metric.",
+        "The company is presented through Y Combinator and Berkeley sources, but preorder shipping geography was not visible in the inspected text."
+      ]
+    },
+    {
+      "lead_id": "gm-startup-06",
+      "raw_title": "Speko launched a model router for voice AI and disclosed weekly external-usage growth",
+      "raw_description": "Speko launched through Hacker News and YC Summer 2026 as a router that benchmarks and selects speech-to-text, language and text-to-speech models by criteria such as accuracy, latency, cost, language and region. The founder said external usage had grown about 25 percent per week on average since the batch began in late June, with growth front-loaded toward launch weeks. The gateway and BYOK setup were described as free forever, with charges for hosted routing and managed keys with consolidated billing.",
+      "discovery_url": "https://news.ycombinator.com/item?id=49332751",
+      "canonical_url": "https://speko.ai/",
+      "discovered_via": "Hacker News Launch HN post and Y Combinator company profile",
+      "source_type": "community",
+      "market": "global",
+      "published_at": "2026-08-17T15:36:00Z",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Speko"
+      ],
+      "raw_dates": [
+        "August 17, 2026 at 15:36",
+        "late June",
+        "Summer 2026",
+        "Aug 11, 2026"
+      ],
+      "raw_numbers": [
+        "about 25 percent per week on average",
+        "118 points",
+        "10+ languages",
+        "Team Size: 4",
+        "46 entries"
+      ],
+      "uncertainties": [
+        "The roughly 25 percent weekly growth figure is self-reported, described as an average, and explicitly qualified as front-loaded toward launch weeks; the source did not expose an absolute usage base.",
+        "Hacker News point totals are dynamic.",
+        "The 15:36 timestamp was visible on an HN index mirror; the primary HN item exposed a relative date during inspection, so second-level precision is unavailable.",
+        "The 10+ languages figure describes prior or operating experience, not a Speko customer count.",
+        "The launch discussed language and region routing and prior enterprise work across Asia, but did not state a product-availability country list."
+      ]
+    }
+  ]
+}

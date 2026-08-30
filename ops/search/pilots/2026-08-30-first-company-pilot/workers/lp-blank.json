@@ -1,0 +1,212 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "local_places",
+  "worker_id": "lp-blank",
+  "worker_mode": "blank_slate",
+  "source_strategy": "broad public web search without department memory, watchlists or regression examples",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "leads": [
+    {
+      "lead_id": "lp-blank-01",
+      "raw_title": "E-Mart opens first Starfield Market in Seoul in Wolgye",
+      "raw_description": "E-Mart Wolgye reopened after renovation as Starfield Market Wolgye on August 27. The Seoul-first format combines E-Mart, Traders, tenants, dining, and family leisure spaces including Sunlight Plaza, Book Ground, and Kids Ground.",
+      "discovery_url": "https://pulse.mk.co.kr/news/english/12138480",
+      "canonical_url": null,
+      "discovered_via": "public web search for Seoul August 2026 openings",
+      "source_type": "news",
+      "market": "Seoul, South Korea",
+      "published_at": "2026-08-28T09:20:05+09:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Starfield Market Wolgye",
+        "E-Mart Wolgye",
+        "E-Mart",
+        "Traders",
+        "Nowon-gu"
+      ],
+      "raw_dates": [
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "raw_numbers": [
+        "21,785 square meters",
+        "519-square-meter Book Ground",
+        "595 square meters of leisure and cultural space",
+        "about 80 percent of F&B brands replaced or relocated",
+        "1.4 million residents"
+      ],
+      "uncertainties": [
+        "No official store-detail URL or current daily operating hours were found in the inspected results.",
+        "Some announced tenants, including WOW Shop, Uniqlo, and MUJI, were reported as opening later in October or November.",
+        "One English report contained November 27 in photo captions while its body and other reports identified the opening as August 27."
+      ]
+    },
+    {
+      "lead_id": "lp-blank-02",
+      "raw_title": "Palace Skateboards Opens Third Seoul Store Inside Lotte World Mall",
+      "raw_description": "Palace Jamsil opened on August 22 on the first floor of Lotte World Mall. The new permanent-looking retail space launched with a Jamsil-exclusive apparel capsule referencing Seoul Olympic Park and Lotte World mascots.",
+      "discovery_url": "https://www.complex.com/style/a/jaelaniturnerwilliams/palace-skateboards-seoul-jamsil-lotte-world-mall",
+      "canonical_url": null,
+      "discovered_via": "public web search for Seoul retail openings in August 2026",
+      "source_type": "editorial",
+      "market": "Seoul, South Korea",
+      "published_at": "2026-08-22T17:00:27.863Z",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Palace Jamsil",
+        "Palace Skateboards",
+        "Lotte World Mall",
+        "Lotte World Tower",
+        "Songpa-gu"
+      ],
+      "raw_dates": [
+        "2026-08-22"
+      ],
+      "raw_numbers": [
+        "third South Korean store",
+        "1,500 square feet",
+        "142.57 square meters",
+        "Lotte World Mall 1F",
+        "300 Olympic-ro"
+      ],
+      "uncertainties": [
+        "An official Palace store-detail URL and exact store hours were not located.",
+        "Availability of the opening-exclusive capsule on August 30 was not confirmed.",
+        "Editorial sources variously call the location a flagship, third Seoul store, or third South Korean store."
+      ]
+    },
+    {
+      "lead_id": "lp-blank-03",
+      "raw_title": "박서보미술관 개관전 《박서보와 흐엉 도딘: 비움 그 충만》",
+      "raw_description": "PARKSEOBO MUSEUM opened in Yeonhui-dong on August 21 with an inaugural exhibition pairing Park Seo-Bo and Huong Dodinh. The official site allows walk-in ticketing without reservations and lists Tuesday through Sunday opening.",
+      "discovery_url": "https://parkseobomuseum.org/home",
+      "canonical_url": "https://parkseobomuseum.org/exhibition",
+      "discovered_via": "public web search followed from an editorial opening report to the official museum site",
+      "source_type": "official",
+      "market": "Seoul, South Korea",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "PARKSEOBO MUSEUM",
+        "Park Seo-Bo",
+        "Huong Dodinh",
+        "PARKSEOBO FOUNDATION",
+        "Yeonhui-dong",
+        "Seodaemun-gu"
+      ],
+      "raw_dates": [
+        "2026-08-21",
+        "2027-01-03",
+        "Tuesday-Sunday 11:00-18:00",
+        "ticketing closes 17:30"
+      ],
+      "raw_numbers": [
+        "5,000 KRW",
+        "42 paintings",
+        "11:00-18:00",
+        "9-54 Yeonhui-ro 24-gil"
+      ],
+      "uncertainties": [
+        "An earlier editorial opening report listed the inaugural exhibition through December 31, 2026, while the live official museum site lists January 3, 2027.",
+        "The official site says walk-ins are accepted, but same-day crowding or temporary admission limits were not checked."
+      ]
+    },
+    {
+      "lead_id": "lp-blank-04",
+      "raw_title": "서도호",
+      "raw_description": "MMCA Seoul opened a large-scale Do Ho Suh solo exhibition on August 27 across basement galleries 3, 4, and 5 and the second-floor MMCA Studio. The official page lists an 8,000 won admission price and a live reservation link.",
+      "discovery_url": "https://www.mmca.go.kr/exhibitions/exhibitionsDetail.do?exhFlag=2&exhId=202601200002041",
+      "canonical_url": "https://www.mmca.go.kr/exhibitions/exhibitionsDetail.do?exhFlag=2&exhId=202601200002041",
+      "discovered_via": "public web search for Seoul exhibitions opening in August 2026",
+      "source_type": "official",
+      "market": "Seoul, South Korea",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Do Ho Suh",
+        "National Museum of Modern and Contemporary Art",
+        "MMCA Seoul",
+        "MMCA Studio"
+      ],
+      "raw_dates": [
+        "2026-08-27",
+        "2027-02-09"
+      ],
+      "raw_numbers": [
+        "8,000 KRW",
+        "B1 galleries 3, 4, and 5",
+        "2F MMCA Studio",
+        "over 30 years of work"
+      ],
+      "uncertainties": [
+        "The official exhibition page links to reservations, but real-time ticket inventory for August 30 was not checked.",
+        "The official page did not expose a publication timestamp in the inspected result.",
+        "The work count field was blank on the official page, while an editorial source described more than 500 works."
+      ]
+    },
+    {
+      "lead_id": "lp-blank-05",
+      "raw_title": "Seo-Seoul Museum of Art Solo Exhibition of Media Artist Kim Heecheon: Moles",
+      "raw_description": "Kim Heecheon: Moles opened at Seo-Seoul Museum of Art on August 20. The free exhibition occupies Gallery 1, Gallery 2, and the Multipurpose Hall and presents games, moving image, photography, and installation, including newly commissioned 2026 works.",
+      "discovery_url": "https://sema.seoul.go.kr/en/whatson/exhibition/detail?exNo=1565118",
+      "canonical_url": "https://sema.seoul.go.kr/en/whatson/exhibition/detail?exNo=1565118",
+      "discovered_via": "public web search for current Seoul Museum of Art exhibitions opened in August 2026",
+      "source_type": "official",
+      "market": "Seoul, South Korea",
+      "published_at": "2026-07-27T00:00:00+09:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Kim Heecheon",
+        "Seo-Seoul Museum of Art",
+        "Seoul Museum of Art",
+        "SeMA"
+      ],
+      "raw_dates": [
+        "2026-08-20",
+        "2026-11-08",
+        "Tuesday-Friday 10:00-20:00",
+        "Saturday-Sunday summer 10:00-19:00"
+      ],
+      "raw_numbers": [
+        "free admission",
+        "daily docent tour at 14:00",
+        "35-minute four-channel video",
+        "about 100 photographs selected from 5,841"
+      ],
+      "uncertainties": [
+        "The page includes an advance-reservation interface, but it was not determined whether ordinary walk-in viewing requires or merely permits reservation.",
+        "The displayed publication date came from search metadata rather than a visible publication field in the exhibition body."
+      ]
+    },
+    {
+      "lead_id": "lp-blank-06",
+      "raw_title": "웨스틴 조선 서울 ‘아리아’ 리뉴얼 오픈… 글로벌 고객 맞춤 프리미엄 다이닝 강화",
+      "raw_description": "Westin Josun Seoul's Aria buffet reopened on July 6 after a full food-station renewal. The changed offer includes a dedicated Korean station, upgraded Japanese, Indian, and Asian stations, a relocated dessert station, welcome wellness juice, and table-served seasonal bingsu.",
+      "discovery_url": "https://www.shinsegaegroupnewsroom.com/westin-josun-seoul-reopens-aria-to-boost-premium-global-dining/",
+      "canonical_url": "https://www.shinsegaegroupnewsroom.com/westin-josun-seoul-reopens-aria-to-boost-premium-global-dining/",
+      "discovered_via": "public web search for Seoul venues materially renewed in July 2026",
+      "source_type": "official",
+      "market": "Seoul, South Korea",
+      "published_at": "2026-07-06T00:00:00+09:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Aria",
+        "Westin Josun Seoul",
+        "Josun Hotels & Resorts",
+        "Shinsegae Group"
+      ],
+      "raw_dates": [
+        "2026-07-06"
+      ],
+      "raw_numbers": [
+        "10 live stations",
+        "about 80 percent foreign guest share"
+      ],
+      "uncertainties": [
+        "The inspected announcement did not state current meal periods, prices, or August 30 table availability.",
+        "The permanence of individual seasonal dishes, including choseontang and seasonal bingsu, was not established.",
+        "A reservation may be needed even though the renewed restaurant remains in operation."
+      ]
+    }
+  ]
+}

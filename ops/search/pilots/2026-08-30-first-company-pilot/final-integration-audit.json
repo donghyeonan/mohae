@@ -1,0 +1,47 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "audited_at": "2026-08-30T15:55:00+09:00",
+  "status": "pass_with_archived_violation_and_snapshot_gaps",
+  "runtime_attestation": {
+    "declared_profile": "mohae_discovery_web_only",
+    "restricted_profile_enforced": false,
+    "evaluator_store_isolation_enforced": false,
+    "run_class": "non_production_learning_pilot",
+    "regression_score_valid": false
+  },
+  "checks": [
+    {
+      "check": "published_evidence_has_no_PERSONAL_FIT",
+      "status": "pass",
+      "count": 0
+    },
+    {
+      "check": "pre_policy_evidence_PERSONAL_FIT",
+      "status": "violation_archived",
+      "artifact": "evidence/global-market.pre-policy.json",
+      "support_id": "sup-global-frido-wellness-retail-2026-001",
+      "action": "removed_from_published_evidence"
+    },
+    {
+      "check": "source_snapshot_manifest_coverage",
+      "status": "partial",
+      "referenced_snapshot_ids": 27,
+      "manifest_entries": 27,
+      "captured_http_2xx": 24,
+      "http_403": 3,
+      "unavailable_snapshot_ids": ["snap-event-001", "snap-event-002", "snap-event-004"]
+    },
+    {
+      "check": "raw_union_reconciliation",
+      "status": "pass",
+      "worker_row_sum": 72,
+      "union_count": 72,
+      "integration_loss_count": 0
+    }
+  ],
+  "output_effect": {
+    "recommendations_emitted": 0,
+    "product_exposures": 0,
+    "publication_status": "research_only"
+  }
+}

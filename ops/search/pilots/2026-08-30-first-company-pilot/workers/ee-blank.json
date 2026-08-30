@@ -1,0 +1,223 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "events_experiences",
+  "worker_id": "ee-blank",
+  "worker_mode": "blank_slate",
+  "source_strategy": "broad public web search without department memory, watchlists or regression examples",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "leads": [
+    {
+      "lead_id": "ee-blank-01",
+      "raw_title": "Frieze Seoul 2026",
+      "raw_description": "Frieze Seoul is a leading international art fair by the team behind premium art fairs such as Frieze London, Frieze Masters, Frieze New York and Frieze Los Angeles. The fourth edition will take place from 2-5 September, 2026. Frieze Seoul will offer both local and international audiences an opportunity to explore the best art from around the world, in addition to a week of events and activations held in the city during Frieze Week. The fair takes place at COEX in Gangnam, Seoul.",
+      "discovery_url": "https://www.coexcenter.com/events/frieze-seoul-2026/",
+      "canonical_url": "https://www.frieze.com/fairs/frieze-seoul",
+      "discovered_via": "public web search; COEX official event listing and Frieze official fair page",
+      "source_type": "official",
+      "market": "South Korea (Seoul)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Frieze Seoul",
+        "Frieze",
+        "COEX",
+        "Galleries Association of Korea",
+        "Patrick Lee"
+      ],
+      "raw_dates": [
+        "2–5 September 2026",
+        "Sep 02 2026 - Sep 05 2026",
+        "Sep 01 2026 - Sep 05 2026"
+      ],
+      "raw_numbers": [
+        "₩750,000",
+        "₩250,000",
+        "₩90,000",
+        "₩70,000",
+        "₩55,000",
+        "7-19 YEARS"
+      ],
+      "uncertainties": [
+        "The COEX page calls this the fourth edition, while the Frieze search result describes the 2026 fair as the fifth edition.",
+        "The COEX page's main date says September 2-5, but its local-time metadata also shows September 1-5.",
+        "The source lists ticket categories and prices but the observed text does not state remaining ticket inventory."
+      ]
+    },
+    {
+      "lead_id": "ee-blank-02",
+      "raw_title": "Design Miami Seoul 2026",
+      "raw_description": "The second edition of Design Miami Seoul 2026 expands its vision beyond the conventional fair model by introducing a platform where cultural discourse and commercial exchange converge. It integrates corporate collaborations, Korean and international design galleries, cultural institutions, and curated exhibitions.",
+      "discovery_url": "https://designmiami.com/fair/seoul-2026",
+      "canonical_url": "https://designmiami.com/fair/seoul-2026",
+      "discovered_via": "public web search; Design Miami official fair page",
+      "source_type": "official",
+      "market": "South Korea (Seoul)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Design Miami Seoul",
+        "Design Miami",
+        "Dongdaemun Design Plaza",
+        "Hyeyoung Cho"
+      ],
+      "raw_dates": [
+        "Aug 31–Sep 6, 2026",
+        "Preview Day By Invitation Only: Monday, Aug 31",
+        "Public Show Days: Tuesday Sep 1—Saturday Sep 5, 10am—8pm",
+        "Sunday Sep 6, 10am—6pm",
+        "September 3, 2026 1:00 am-1:48 am"
+      ],
+      "raw_numbers": [
+        "second edition",
+        "DDP Design Lab 1F",
+        "281 Eulji-ro"
+      ],
+      "uncertainties": [
+        "The page links to Buy Tickets and RSVP destinations, but the observed text does not state ticket prices or remaining availability.",
+        "The Design Talks timestamp is displayed as 1:00 am-1:48 am under a UTC+9 heading; no interpretation of that time was added."
+      ]
+    },
+    {
+      "lead_id": "ee-blank-03",
+      "raw_title": "EdTech Korea 2026",
+      "raw_description": "Visitor registration information lists EdTech Korea 2026 at COEX in Seoul for three days. Pre-registration provides event news and specific notifications, and on-site registration is available at the registration desk.",
+      "discovery_url": "https://edtechkorea.or.kr/fairContents.do?FAIRMENU_IDX=20552&hl=ENG",
+      "canonical_url": "https://edtechkorea.or.kr/fairContents.do?FAIRMENU_IDX=20552&hl=ENG",
+      "discovered_via": "public web search; EdTech Korea official visitor registration page",
+      "source_type": "official",
+      "market": "South Korea (Seoul)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "EdTech Korea 2026",
+        "COEX",
+        "Edtech Korea Fair Organizer"
+      ],
+      "raw_dates": [
+        "September 17th ~ 19th, 2026 / 3 days",
+        "September 17th ~ 18th 10:00 ~ 18:00",
+        "September 19th 10:00 ~ 17:00",
+        "Deadline: 14 September 2026, 23:59 PM KST"
+      ],
+      "raw_numbers": [
+        "Last call for entrance at 17:30",
+        "Last call for entrance at 16:30",
+        "+82-2-6000-6680/6689",
+        "+82-2-2051-3326"
+      ],
+      "uncertainties": [
+        "The observed visitor registration page does not state an admission or registration fee.",
+        "The page provides a pre-registration link but does not state whether registration capacity is limited."
+      ]
+    },
+    {
+      "lead_id": "ee-blank-04",
+      "raw_title": "2026 서울걷자 페스티벌",
+      "raw_description": "사람중심! 함께 걷는 서울! 2026 서울 걷자 페스티벌이 올해로 13회를 맞이했습니다. 서울시의 대표 거리문화축제인 「2026 서울 걷자 페스티벌」에서 서울 도심을 가로지르며 다가온 가을을 한껏 느끼시기 바랍니다.",
+      "discovery_url": "http://walkseoul.com/",
+      "canonical_url": "http://walkseoul.com/",
+      "discovered_via": "public web search; 2026 Seoul Walking Festival official site",
+      "source_type": "official",
+      "market": "South Korea (Seoul)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "2026 서울걷자 페스티벌",
+        "Seoul Walking Festival",
+        "Seoul Metropolitan Government",
+        "Dongdaemun Design Plaza",
+        "Gwanghwamun Square"
+      ],
+      "raw_dates": [
+        "2026년 9월 20일(일) 오전 8시 출발",
+        "8월 10일(월) 오전 10시부터",
+        "06:30 ~ 07:30 참가자 집결",
+        "08:00 ~ 10:20 퍼레이드 이벤트",
+        "~ 11:00 행사 종료"
+      ],
+      "raw_numbers": [
+        "13회",
+        "5,000명 선착순 접수",
+        "4.4 kilometers",
+        "만 18세"
+      ],
+      "uncertainties": [
+        "The official site says registration may close early when capacity is exceeded, but the observed pages do not state whether places remain on August 30.",
+        "The 4.4-kilometer distance appears in the public search result for a news report, not in the observed official-site page text."
+      ]
+    },
+    {
+      "lead_id": "ee-blank-05",
+      "raw_title": "2026 ATA Festival (Asia Top Artist Festival)",
+      "raw_description": "A two-day concert at Nanji Hangang Park open to all ages. Show times are Saturday, September 19, 2026 and Sunday, September 20, 2026, from 12:00 PM to 9:00 PM on both days.",
+      "discovery_url": "https://world.nol.com/en/ticket/places/26000671/products/26009383",
+      "canonical_url": "https://www.atafestival.com/",
+      "discovered_via": "public web search; NOL World public ticket page and ATA Festival official site",
+      "source_type": "platform",
+      "market": "South Korea (Seoul)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "2026 ATA Festival",
+        "Asia Top Artist Festival",
+        "Nanji Hangang Park",
+        "NOL World",
+        "Hankyung.com"
+      ],
+      "raw_dates": [
+        "Sep 19, 2026 - Sep 20, 2026",
+        "Saturday, September 19, 2026 12:00 PM - 9:00 PM",
+        "Sunday, September 20, 2026 12:00 PM - 9:00 PM",
+        "Official Ticket Open: July 2, 2026, at 2:00 PM (KST)"
+      ],
+      "raw_numbers": [
+        "1 Day Pass General 121,000won",
+        "2 Days Pass General 187,000won",
+        "9 hr",
+        "Intermission 100 min",
+        "Up to 4 tickets per person per day"
+      ],
+      "uncertainties": [
+        "The ticket page lists prices and a ticket-open time but does not state remaining inventory in the observed text.",
+        "No separate publication timestamp is visible on the observed ticket or official event page."
+      ]
+    },
+    {
+      "lead_id": "ee-blank-06",
+      "raw_title": "Gyeonggi Ceramics Biennale 2026",
+      "raw_description": "GCB 2026 visitor information lists an exhibition period from September 18 to November 1, 2026, open daily from 10:00 AM to 6:00 PM, with ticket reservations through Naver Reservation and Ticket Link. Venues are in Icheon, Gwangju, and Yeoju, Gyeonggi-do.",
+      "discovery_url": "https://www.gcbiennale.org/gcb2026/en/M000124/S002/conts.do",
+      "canonical_url": "https://www.gcbiennale.org/gcb2026/en/M000124/S002/conts.do",
+      "discovered_via": "public web search; Gyeonggi Ceramics Biennale official visitor information page",
+      "source_type": "official",
+      "market": "South Korea (Gyeonggi-do)",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Gyeonggi Ceramics Biennale 2026",
+        "Gyeonggi Museum of Contemporary Ceramic Art",
+        "Gyeonggi Ceramic Museum",
+        "Gyeonggi Museum of Ceramic Design",
+        "Korea Ceramic Foundation"
+      ],
+      "raw_dates": [
+        "September 18 (Fri) – November 1 (Sun), 2026, Open daily",
+        "10:00 AM – 6:00 PM",
+        "Last admission: 5:00 PM"
+      ],
+      "raw_numbers": [
+        "All Pass (3 Venues) General 11,000원 (7,000원)",
+        "All Pass Discount 7,000원 (4,000원)",
+        "Single Pass Icheon General 6,000원 (3,500원)",
+        "Single Pass Gwangju/Yeoju General 4,000원 (2,500원)",
+        "Ages 19 to 64",
+        "Ages 7 to 18",
+        "Groups of 20 or more people"
+      ],
+      "uncertainties": [
+        "The official page labels parenthetical amounts as pre-sale prices but does not state the pre-sale end date in the observed text.",
+        "The observed page provides ticket reservation links but does not state remaining ticket inventory."
+      ]
+    }
+  ]
+}

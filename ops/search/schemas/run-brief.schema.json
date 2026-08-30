@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mohae.local/schemas/run-brief.schema.json",
+  "title": "MOHAE Search Run Brief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "run_class", "observed_at", "market", "objective", "department_scopes", "workers", "limits", "prohibitions"],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "run_class": {"const": "non_production_learning_pilot"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "market": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 1},
+    "department_scopes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local_places", "events_experiences", "global_market"],
+      "properties": {
+        "local_places": {"type": "object"},
+        "events_experiences": {"type": "object"},
+        "global_market": {"type": "object"}
+      }
+    },
+    "workers": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["worker_id", "department_id", "worker_mode", "source_strategy"],
+        "properties": {
+          "worker_id": {"type": "string"},
+          "department_id": {"type": "string", "enum": ["local_places", "events_experiences", "global_market"]},
+          "worker_mode": {"enum": ["memory_assisted", "blank_slate"]},
+          "source_strategy": {"type": "string"}
+        }
+      }
+    },
+    "limits": {"type": "object"},
+    "prohibitions": {"type": "array", "items": {"type": "string"}}
+  }
+}

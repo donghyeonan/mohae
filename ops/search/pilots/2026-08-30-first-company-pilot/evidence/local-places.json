@@ -1,0 +1,333 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "local_places",
+  "subjects": [
+    {
+      "subject_id": "local-parkseobo-museum",
+      "canonical_title": "PARKSEOBO MUSEUM",
+      "lead_ids": [
+        "lp-blank-03"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "claim-local-001",
+          "subject_id": "local-parkseobo-museum",
+          "claim_type": "identity",
+          "claim_text": "The official PARKSEOBO MUSEUM site lists the museum at 9-54, Yeonhui-ro 24-gil, Seodaemun-gu, Seoul (03723).",
+          "polarity": "neutral",
+          "source_url": "https://parkseobomuseum.org/home",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-001",
+          "source_content_hash": "117d1489d2d019f1be5864fc01f522f920d4b309e203952b123fe4e917ca7ba0",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-002",
+          "subject_id": "local-parkseobo-museum",
+          "claim_type": "operation",
+          "claim_text": "The official inaugural-exhibition page lists 'Park Seo-Bo & Huong Dodinh: Emptiness Fullness' across all museum spaces from 2026-08-21 through 2027-01-03, with 42 paintings.",
+          "polarity": "positive",
+          "source_url": "https://parkseobomuseum.org/exhibition",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-002",
+          "source_content_hash": "e634da902ed602b44670c553b146946db4c083d0cded25ee5c2363194f80c5ca",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-08-21T11:00:00+09:00",
+          "valid_until": "2027-01-03T18:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-003",
+          "subject_id": "local-parkseobo-museum",
+          "claim_type": "operation",
+          "claim_text": "The museum states that it opens Tuesday through Sunday from 11:00 to 18:00 and closes ticketing at 17:30.",
+          "polarity": "neutral",
+          "source_url": "https://parkseobomuseum.org/home",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-001",
+          "source_content_hash": "117d1489d2d019f1be5864fc01f522f920d4b309e203952b123fe4e917ca7ba0",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-004",
+          "subject_id": "local-parkseobo-museum",
+          "claim_type": "price",
+          "claim_text": "General admission is KRW 5,000; the museum says no reservation is required and admission is by on-site ticketing.",
+          "polarity": "neutral",
+          "source_url": "https://parkseobomuseum.org/home",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-001",
+          "source_content_hash": "117d1489d2d019f1be5864fc01f522f920d4b309e203952b123fe4e917ca7ba0",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "everyone",
+          "acquisition_condition": "Purchase an admission ticket on site; reservations are not required."
+        },
+        {
+          "claim_id": "claim-local-005",
+          "subject_id": "local-parkseobo-museum",
+          "claim_type": "operation",
+          "claim_text": "The Cultural Service of the French Embassy calendar lists the inaugural exhibition as ending 2026-12-31, while the live museum page lists 2027-01-03.",
+          "polarity": "conflicting",
+          "source_url": "https://kr.ambafrance-culture.org/ko/evenement/%EC%A0%84%EC%8B%9C-%EB%B0%95%EC%84%9C%EB%B3%B4%EB%AF%B8%EC%88%A0%EA%B4%80-%EA%B0%9C%EA%B4%80%EC%A0%84-%E3%80%8A%EB%B0%95%EC%84%9C%EB%B3%B4%EC%99%80-%ED%9D%90%EC%97%89-%EB%8F%84%EB%94%98-%EB%B9%84/",
+          "source_role": "organizer",
+          "source_snapshot_id": "snap-local-003",
+          "source_content_hash": "a1b7856690d99556aeacb3a5a847091ac54e5f95d0da1bdf5ec39eea9f107f1b",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "disputed",
+          "competing_explanations": [
+            "The embassy calendar may retain an earlier exhibition end date that was later extended by the museum."
+          ],
+          "conflict_notes": "For current planning, the museum-owned live page is the higher-priority source and lists 2027-01-03."
+        }
+      ],
+      "chip_support": [],
+      "unresolved": [
+        "Same-day crowding or temporary admission limits were not exposed on the inspected official pages.",
+        "The external embassy calendar's 2026-12-31 end date has not been corrected to match the museum's 2027-01-03 date."
+      ]
+    },
+    {
+      "subject_id": "local-starfield-market-wolgye",
+      "canonical_title": "Starfield Market Wolgye",
+      "lead_ids": [
+        "lp-index-01",
+        "lp-blank-01"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "claim-local-006",
+          "subject_id": "local-starfield-market-wolgye",
+          "claim_type": "identity",
+          "claim_text": "E-Mart's owner-group newsroom states that the renovated Wolgye branch opened as Starfield Market Wolgye on 2026-08-27, the fifth Starfield Market and the first in Seoul.",
+          "polarity": "positive",
+          "source_url": "https://www.shinsegaegroupnewsroom.com/starfield-market-wolgye-grand-opening/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-004",
+          "source_content_hash": "c45d7b70b16ec12f03ba53b8d618b699d4b97767fa4b14a88f664abff95e9ac8",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-08-27T10:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-007",
+          "subject_id": "local-starfield-market-wolgye",
+          "claim_type": "operation",
+          "claim_text": "E-Mart's live branch page marks Starfield Market Wolgye as open at 15 Madeul-ro 3-gil, Nowon-gu, Seoul, with store hours 10:00-23:00 and closure dates 2026-09-13 and 2026-09-27; individual tenant hours may differ.",
+          "polarity": "positive",
+          "source_url": "https://eapp.emart.com/branch/view.do?id=1059&mallGbn=E",
+          "source_role": "merchant",
+          "source_snapshot_id": "snap-local-005",
+          "source_content_hash": "175ae5d44b6938b9fe8137fc797a0245c00d519761e3e87864f1e9e0bd793a51",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-008",
+          "subject_id": "local-starfield-market-wolgye",
+          "claim_type": "availability",
+          "claim_text": "At the 2026-08-27 opening, WOW Shop was scheduled for October and Uniqlo and MUJI were scheduled for November, so those announced tenants were not part of the currently open launch-day set.",
+          "polarity": "negative",
+          "source_url": "https://www.shinsegaegroupnewsroom.com/starfield-market-wolgye-branch-to-grand-open-on-the-27th/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-006",
+          "source_content_hash": "760c8e346d1bed58995000a7192c86e383ff4a00f70c3c5891b0aafe43cdf178",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "conflict_notes": "The same release's high-level tenant description names Uniqlo and MUJI, but its detailed section says they open later in November."
+        },
+        {
+          "claim_id": "claim-local-009",
+          "subject_id": "local-starfield-market-wolgye",
+          "claim_type": "benefit",
+          "claim_text": "The official opening promotion runs 2026-08-27 through 2026-09-02 with up to 50% off selected beef, seasonal fruit and eggs; Korean sirloin is 50% off with Shinsegae Point accrual only through 2026-08-30, Hwassan pears are KRW 12,885 with point accrual, and a 30-egg pack is KRW 5,984.",
+          "polarity": "positive",
+          "source_url": "https://www.shinsegaegroupnewsroom.com/starfield-market-wolgye-branch-to-grand-open-on-the-27th/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-006",
+          "source_content_hash": "760c8e346d1bed58995000a7192c86e383ff4a00f70c3c5891b0aafe43cdf178",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-08-27T10:00:00+09:00",
+          "valid_until": "2026-09-02T23:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Offers apply to selected products during the stated dates; Shinsegae Point accrual is required for the stated pear and sirloin offers."
+        },
+        {
+          "claim_id": "claim-local-010",
+          "subject_id": "local-starfield-market-wolgye",
+          "claim_type": "availability",
+          "claim_text": "A Nespresso pop-up operates in Sunlight Plaza from 2026-08-27 through 2026-09-09 and offers capsule sampling kits and capsule holders to purchasing customers.",
+          "polarity": "positive",
+          "source_url": "https://www.shinsegaegroupnewsroom.com/starfield-market-wolgye-branch-to-grand-open-on-the-27th/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-006",
+          "source_content_hash": "760c8e346d1bed58995000a7192c86e383ff4a00f70c3c5891b0aafe43cdf178",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-08-27T10:00:00+09:00",
+          "valid_until": "2026-09-09T23:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Gift items are for pop-up purchasing customers; availability while supplies last was not stated on the page."
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "support-local-001",
+          "claim_id": "claim-local-009",
+          "chip": "PAYOFF",
+          "support_strength": "direct",
+          "reason": "The official source gives concrete discounted products, prices, percentage, dates and point-accrual conditions.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-local-002",
+          "claim_id": "claim-local-009",
+          "chip": "SCARCITY",
+          "support_strength": "direct",
+          "reason": "The general promotion ends 2026-09-02 and the stated 50% sirloin offer ends earlier on 2026-08-30.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-local-003",
+          "claim_id": "claim-local-010",
+          "chip": "SCARCITY",
+          "support_strength": "direct",
+          "reason": "The official source limits the pop-up to 2026-08-27 through 2026-09-09.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "The live branch page states that individual tenant hours may differ; current hours for every tenant were not verified.",
+        "The official release gives opening months but not exact opening dates for WOW Shop, Uniqlo or MUJI."
+      ]
+    },
+    {
+      "subject_id": "local-galaxy-robotpark",
+      "canonical_title": "Galaxy Robot Park",
+      "lead_ids": [
+        "lp-index-02"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "claim-local-011",
+          "subject_id": "local-galaxy-robotpark",
+          "claim_type": "identity",
+          "claim_text": "Galaxy Corporation's official site identifies Galaxy Robot Park as its permanent Physical AI theme park spanning about 16,500 square metres in Godeok, Gangdong-gu, Seoul.",
+          "polarity": "neutral",
+          "source_url": "https://insights.galaxyuniverse.ai/en/robot-park/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-007",
+          "source_content_hash": "3b652ddbae48248957279d02ba8a51586665b9419c6cecac5b0449489c505625",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-012",
+          "subject_id": "local-galaxy-robotpark",
+          "claim_type": "operation",
+          "claim_text": "The official site says Galaxy Robot Park held its grand opening on 2026-08-21, adding 17 robots and bringing the full site, including food and beverage venues, into operation after a July pre-opening period.",
+          "polarity": "positive",
+          "source_url": "https://insights.galaxyuniverse.ai/en/robot-park/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-007",
+          "source_content_hash": "3b652ddbae48248957279d02ba8a51586665b9419c6cecac5b0449489c505625",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-08-21T00:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-013",
+          "subject_id": "local-galaxy-robotpark",
+          "claim_type": "demand",
+          "claim_text": "Galaxy Corporation states that every pre-opening session sold out and total pre-opening attendance reached 20,000 visitors.",
+          "polarity": "positive",
+          "source_url": "https://insights.galaxyuniverse.ai/en/robot-park/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-007",
+          "source_content_hash": "3b652ddbae48248957279d02ba8a51586665b9419c6cecac5b0449489c505625",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-014",
+          "subject_id": "local-galaxy-robotpark",
+          "claim_type": "availability",
+          "claim_text": "The current official FAQ does not publish post-opening reservation methods, operating hours or admission fees and says those details will follow Galaxy Corporation's official announcements.",
+          "polarity": "negative",
+          "source_url": "https://insights.galaxyuniverse.ai/en/robot-park/",
+          "source_role": "official",
+          "source_snapshot_id": "snap-local-007",
+          "source_content_hash": "3b652ddbae48248957279d02ba8a51586665b9419c6cecac5b0449489c505625",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-local-015",
+          "subject_id": "local-galaxy-robotpark",
+          "claim_type": "operation",
+          "claim_text": "A 2026-07-07 Korea Herald report based on Galaxy Corporation's pre-launch announcement described an official opening planned for September, which conflicts with and is superseded by the company's current official 2026-08-21 grand-opening record.",
+          "polarity": "conflicting",
+          "source_url": "https://www.koreaherald.com/article/10801313",
+          "source_role": "news",
+          "source_snapshot_id": "snap-local-008",
+          "source_content_hash": "769388c95dd256afaae66dd44c03db74bcafb80f758d95e26d198849e53785e7",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "superseded",
+          "supersedes_claim_id": null,
+          "competing_explanations": [
+            "Galaxy Corporation may have advanced the official opening from September to 2026-08-21 after the July announcement."
+          ],
+          "conflict_notes": "The live company-owned page is the controlling current source and records the grand opening on 2026-08-21."
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "support-local-004",
+          "claim_id": "claim-local-013",
+          "chip": "HEAT",
+          "support_strength": "direct",
+          "reason": "The owner reports all pre-opening sessions sold out and 20,000 visitors before the grand opening.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "Current post-opening ticket prices, booking availability and admission conditions were not exposed on the inspected company-owned page.",
+        "Current operating hours and weekly closure days were not exposed on the inspected company-owned page.",
+        "A precise street address was not exposed on the company-owned page; it identifies only Godeok, Gangdong-gu, Seoul."
+      ]
+    }
+  ]
+}

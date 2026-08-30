@@ -1,0 +1,22 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "expected_worker_count": 12,
+  "received_worker_count": 12,
+  "worker_counts": {
+    "lp-official": 6,
+    "lp-index": 6,
+    "lp-edge": 6,
+    "lp-blank": 6,
+    "ee-ticket": 6,
+    "ee-apply": 6,
+    "ee-edge": 6,
+    "ee-blank": 6,
+    "gm-startup": 6,
+    "gm-consumer": 6,
+    "gm-capital": 6,
+    "gm-blank": 6
+  },
+  "worker_row_sum": 72,
+  "union_count": 72,
+  "integration_loss_count": 0
+}

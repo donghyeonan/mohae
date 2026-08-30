@@ -1,0 +1,213 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "events_experiences",
+  "worker_id": "ee-edge",
+  "worker_mode": "memory_assisted",
+  "source_strategy": "Public web search and public web reading focused on Seoul-capital-region fandom, participatory sport, social ritual, community, recovery/wellness, morning gathering, and public social/editorial formats occurring or open for participation from 2026-08-30 through 2026-09-30.",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "leads": [
+    {
+      "lead_id": "ee-edge-01",
+      "raw_title": "Frieze Seoul 2026 and Neighbourhood Nights",
+      "raw_description": "The official Frieze Seoul page lists the fair at COEX from 2 to 5 September 2026. The same page links a 26 August 2026 feature describing Neighbourhood Nights as late-night cultural events across key Seoul districts from 31 August to 3 September, alongside the fair's talks, film, performance, music and citywide programming.",
+      "discovery_url": "https://www.frieze.com/fairs/frieze-seoul",
+      "canonical_url": "https://www.frieze.com/fairs/frieze-seoul",
+      "discovered_via": "public web search: Frieze Seoul 2026 official dates and citywide programming",
+      "source_type": "official",
+      "market": "South Korea / Seoul / COEX and citywide Seoul districts",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Frieze Seoul",
+        "Neighbourhood Nights",
+        "COEX"
+      ],
+      "raw_dates": [
+        "Frieze Seoul: 2–5 September 2026",
+        "Neighbourhood Nights: 31 August–3 September 2026",
+        "Neighbourhood Nights feature shown as 26 Aug 26"
+      ],
+      "raw_numbers": [
+        "over 120 leading international and regional galleries"
+      ],
+      "uncertainties": [
+        "The main fair page does not display a single publication timestamp, so published_at is null.",
+        "Admission terms, capacity and availability for individual Neighbourhood Nights activities were not verified from the main fair page."
+      ]
+    },
+    {
+      "lead_id": "ee-edge-02",
+      "raw_title": "7979 서울 러닝크루 (7979 SEOUL URBAN RUNNING CREW)",
+      "raw_description": "Seoul's official sports page lists a free Thursday evening running programme from 16 April through 29 October 2026, 19:00–21:00, gathering at Gwanghwamun Square, Yeouido Park and Banpo Hangang Park. It includes running-form instruction and pre/post-run stretching, with 40–60 participants per session.",
+      "discovery_url": "https://sports.seoul.go.kr/main/SP04100000_user/program_view.do",
+      "canonical_url": "https://sports.seoul.go.kr/main/SP04100000_user/program_view.do",
+      "discovered_via": "public web search: 7979 서울 러닝크루 2026 9월",
+      "source_type": "official",
+      "market": "South Korea / Seoul / Gwanghwamun Square, Yeouido Park, Banpo Hangang Park",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "7979 서울 러닝크루",
+        "Seoul Metropolitan Government",
+        "Gwanghwamun Square",
+        "Yeouido Park",
+        "Banpo Hangang Park"
+      ],
+      "raw_dates": [
+        "2026. 4.16.(목) ~ 10.29.(목)",
+        "매주 목요일 19:00 ~ 21:00",
+        "30주"
+      ],
+      "raw_numbers": [
+        "회차당 40~60명",
+        "참가비 무료",
+        "4코스 총 12코스",
+        "2.5K–10K listed course distances"
+      ],
+      "uncertainties": [
+        "The page gives the overall season rather than a September-by-September session list.",
+        "The exact September gathering location and route vary by session and were not fixed on the programme overview.",
+        "Current registration availability for each September session was not verified."
+      ]
+    },
+    {
+      "lead_id": "ee-edge-03",
+      "raw_title": "2026 한강 수상스포츠 체험 프로그램",
+      "raw_description": "A Seoul Metropolitan Government notice lists ten Han River water-sports sessions at Yanghwa Marine Sports Training Center from 1 August through 13 September 2026. Seoul residents aged 11 or older can try yacht sailing, paddleboard, kayak and motorboat activities; the notice says each session recruits 100 people.",
+      "discovery_url": "https://news.seoul.go.kr/culture/archives/533724",
+      "canonical_url": "https://sports.seoul.go.kr/main/SP04050000_user/program_view.do",
+      "discovered_via": "public web search: 양화해양스포츠훈련장 수상스포츠 체험 2026",
+      "source_type": "official",
+      "market": "South Korea / Seoul / Yanghwa Marine Sports Training Center",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "2026 한강 수상스포츠 체험 프로그램",
+        "Seoul Metropolitan Government",
+        "Seoul Yacht Association",
+        "Yanghwa Marine Sports Training Center"
+      ],
+      "raw_dates": [
+        "2026. 8. 1.(토) ~ 9. 13.(일)",
+        "총 10회차",
+        "체험시간 13:00~17:00",
+        "서울시 notice displays 수정일 2026-08-10"
+      ],
+      "raw_numbers": [
+        "회차당 100명",
+        "만 11세 이상",
+        "4가지 종목",
+        "참가비 1인 1만원",
+        "스포츠 취약계층 참가비 면제"
+      ],
+      "uncertainties": [
+        "The displayed 2026-08-10 date is labelled as a modification date, not an unambiguous publication timestamp, so published_at is null.",
+        "The individual remaining session dates between 30 August and 13 September were not listed in the retrieved notice text.",
+        "The notice says sessions can change because of rain, water temperature or weather.",
+        "Current slot availability was not verified."
+      ]
+    },
+    {
+      "lead_id": "ee-edge-04",
+      "raw_title": "RUN SEOUL RUN 2026 제20회 일간스포츠 서울마라톤",
+      "raw_description": "The official event site lists RUN SEOUL RUN 2026 on Sunday 13 September 2026 at Seoul Plaza, with a 07:30 start. Public search results tied to the event also show half-marathon and 10 km categories and an official participant-application link on the site.",
+      "discovery_url": "https://runseoulrun.com/",
+      "canonical_url": "https://runseoulrun.com/",
+      "discovered_via": "public web search: 2026 RUN SEOUL RUN 참가신청",
+      "source_type": "official",
+      "market": "South Korea / Seoul / Seoul Plaza",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "RUN SEOUL RUN 2026",
+        "제20회 일간스포츠 서울마라톤",
+        "Seoul Plaza"
+      ],
+      "raw_dates": [
+        "2026년 9월 13일 일요일",
+        "오전 7시 30분"
+      ],
+      "raw_numbers": [
+        "제20회",
+        "10KM",
+        "21KM / half marathon",
+        "서울 중구 세종대로 110"
+      ],
+      "uncertainties": [
+        "Current application availability or sell-out status on 30 August was not verified.",
+        "A public Instagram search result showed 06:30 at Seoul Plaza while the official website search excerpt showed 07:30; the discrepancy may reflect assembly versus start time but was not resolved.",
+        "The official page did not display a publication timestamp."
+      ]
+    },
+    {
+      "lead_id": "ee-edge-05",
+      "raw_title": "2026 서울 헤리티지 & 웰니스 걷기 페스티벌",
+      "raw_description": "Seoul's official festival listing describes a free global walking festival on 19 September 2026 at Seoul Battleship Park and the nearby Hangang walking trail. It lists morning and afternoon sessions, a 3.0 km loop, performances and experience booths, separate domestic and foreigner registration channels, and first-come registration for 1,000 people.",
+      "discovery_url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=838",
+      "canonical_url": "https://seoul-naru.com/",
+      "discovered_via": "public web search: 서울 2026 9월 웰니스 축제",
+      "source_type": "official",
+      "market": "South Korea / Seoul / Mapo-gu / Seoul Battleship Park and Hangang walking trail",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "2026 서울 헤리티지 & 웰니스 걷기 페스티벌",
+        "Seoul Battleship Park",
+        "Seoul Metropolitan Government"
+      ],
+      "raw_dates": [
+        "2026-09-19",
+        "오전 타임 09:30~13:00",
+        "오후 타임 12:10~15:00"
+      ],
+      "raw_numbers": [
+        "선착순 1,000명",
+        "오전 500명",
+        "오후 500명",
+        "3.0km",
+        "무료",
+        "참가자 키트 6종"
+      ],
+      "uncertainties": [
+        "Current registration availability was not verified.",
+        "The official festival listing does not display a publication timestamp.",
+        "The linked event homepage was identified but its live registration state was not inspected."
+      ]
+    },
+    {
+      "lead_id": "ee-edge-06",
+      "raw_title": "귀멸의 칼날: 전집중展 (Demon Slayer: Total Concentration Exhibition)",
+      "raw_description": "Fever's Seoul ticket page lists an immersive Demon Slayer exhibition at Seongsu S-Factory Building D, first floor, from 27 June through 27 September 2026. It describes recreated story locations, original artwork, interactive content and photo zones, and shows September ticket sessions with general and VIP admission options.",
+      "discovery_url": "https://feverup.com/m/653974/en",
+      "canonical_url": "https://feverup.com/m/653974/en",
+      "discovered_via": "public web search: 귀멸의 칼날 전집중展 2026 서울",
+      "source_type": "platform",
+      "market": "South Korea / Seoul / Seongsu S-Factory Building D, 1F",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Demon Slayer: Total Concentration Exhibition",
+        "귀멸의 칼날: 전집중展",
+        "Fever",
+        "S-Factory"
+      ],
+      "raw_dates": [
+        "June 27, 2026 ~ September 27, 2026",
+        "Closed on August 15",
+        "11:00 AM–9:00 PM",
+        "Last admission 8:00 PM",
+        "September 2026 sessions shown on the ticket page"
+      ],
+      "raw_numbers": [
+        "General admission shown at ₩26,000",
+        "VIP admission shown at ₩30,000",
+        "under 12 accompanied by adults recommended"
+      ],
+      "uncertainties": [
+        "Session-by-session September availability and weekend price differences were not exhaustively checked.",
+        "The Fever page does not display a publication timestamp.",
+        "The page states that VIP photo cards are available only while stocks last."
+      ]
+    }
+  ]
+}

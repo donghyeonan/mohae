@@ -1,0 +1,52 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "run_class": "non_production_learning_pilot",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "market": "South Korea, with Seoul-capital-region execution priority",
+  "objective": "Test whether three discovery departments produce distinct, current, verifiable exploration candidates and whether blank-slate workers add novelty without integration loss.",
+  "department_scopes": {
+    "local_places": {
+      "time_window": "opened or materially changed from 2026-07-01 through 2026-08-30; executable now",
+      "objects": ["place", "branch", "permanent_venue", "offer", "price_observation"],
+      "source_boundary": "public official merchant, map/platform, selection body, booking, commerce, editorial, news, and public brand sources"
+    },
+    "events_experiences": {
+      "time_window": "occurring, booking, applying, or registering from 2026-08-30 through 2026-09-30",
+      "objects": ["series", "occurrence", "event_offer", "application_state"],
+      "source_boundary": "public official organizer, booking, ticketing, registration, institution, government, university, platform, editorial, and public social sources"
+    },
+    "global_market": {
+      "time_window": "signals published or materially accelerated from 2026-06-01 through 2026-08-30",
+      "objects": ["trend_thread", "market_diffusion", "startup_signal", "business_model"],
+      "source_boundary": "public official operators, local-language press, platform inventories, accelerator batches, product launches, jobs, metrics, portfolios, and credible market sources"
+    }
+  },
+  "workers": [
+    {"worker_id": "lp-official", "department_id": "local_places", "worker_mode": "memory_assisted", "source_strategy": "official openings, branch pages, selection bodies, booking and merchant commerce"},
+    {"worker_id": "lp-index", "department_id": "local_places", "worker_mode": "memory_assisted", "source_strategy": "map, editorial, news and discovery indexes for openings and offers"},
+    {"worker_id": "lp-edge", "department_id": "local_places", "worker_mode": "memory_assisted", "source_strategy": "non-food, wellness, retail, IP collaboration and small-operator public channels"},
+    {"worker_id": "lp-blank", "department_id": "local_places", "worker_mode": "blank_slate", "source_strategy": "broad public web search without department memory, watchlists or regression examples"},
+    {"worker_id": "ee-ticket", "department_id": "events_experiences", "worker_mode": "memory_assisted", "source_strategy": "official ticketing, booking, venue and cultural institution inventories"},
+    {"worker_id": "ee-apply", "department_id": "events_experiences", "worker_mode": "memory_assisted", "source_strategy": "registration, government, university, startup, meetup and program applications"},
+    {"worker_id": "ee-edge", "department_id": "events_experiences", "worker_mode": "memory_assisted", "source_strategy": "fandom, participatory sport, social ritual, community and public social/editorial discovery"},
+    {"worker_id": "ee-blank", "department_id": "events_experiences", "worker_mode": "blank_slate", "source_strategy": "broad public web search without department memory, watchlists or regression examples"},
+    {"worker_id": "gm-startup", "department_id": "global_market", "worker_mode": "memory_assisted", "source_strategy": "startup launches, accelerators, Product Hunt, Hacker News and official product metrics"},
+    {"worker_id": "gm-consumer", "department_id": "global_market", "worker_mode": "memory_assisted", "source_strategy": "consumer, lifestyle, wellness, social, dating, retail and hospitality formats in local-language sources"},
+    {"worker_id": "gm-capital", "department_id": "global_market", "worker_mode": "memory_assisted", "source_strategy": "VC portfolios, investment theses, jobs, geographic expansion and economic durability evidence"},
+    {"worker_id": "gm-blank", "department_id": "global_market", "worker_mode": "blank_slate", "source_strategy": "broad multilingual public web search without department memory, watchlists or regression examples"}
+  ],
+  "limits": {
+    "max_leads_per_worker": 6,
+    "max_deep_verification_per_department": 3,
+    "union_before_filter": true,
+    "live_recheck_required_for_final_pilot_result": true
+  },
+  "prohibitions": [
+    "No recommendation chip, score, rank or rejection during discovery",
+    "No regression score",
+    "No product feed or app exposure",
+    "No automatic playbook or GBrain mutation",
+    "No login, CAPTCHA, private API or access-control bypass",
+    "No raw review text, reviewer identity or unlicensed media reuse"
+  ]
+}

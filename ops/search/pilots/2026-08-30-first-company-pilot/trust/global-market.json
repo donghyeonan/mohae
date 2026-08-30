@@ -1,0 +1,94 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "global_market",
+  "verdicts": [
+    {
+      "verdict_id": "trust-global-20260830-001-global-tinder-events-2026",
+      "subject_id": "global-tinder-events-2026",
+      "decision": "approve",
+      "reviewed_claim_ids": [
+        "ev-global-tinder-events-2026-001",
+        "ev-global-tinder-events-2026-002",
+        "ev-global-tinder-events-2026-003",
+        "ev-global-tinder-events-2026-004",
+        "ev-global-tinder-events-2026-005"
+      ],
+      "reason_codes": [
+        "GLOBAL_TREND_SCOPE_ONLY",
+        "CURRENT_SOURCES_VALID",
+        "ACTUAL_EXPANSION_SEPARATED_FROM_FORWARD_PLAN",
+        "OFFICIAL_ADOPTION_NOT_INDEPENDENTLY_VERIFIED",
+        "EVENT_ECONOMIC_DURABILITY_UNPROVEN",
+        "NO_KOREA_TRANSLATION_OR_CAUSALITY"
+      ],
+      "required_evidence": [
+        "Independent event attendance, conversion, retention, or ticket-sales evidence before treating company-reported Los Angeles adoption as verified adoption.",
+        "Dated evidence of cities actually live before treating the 26-city or 75-city targets as completed expansion.",
+        "Events-specific revenue, cost, partner economics, or causal outcome evidence before asserting economic durability or platform impact.",
+        "Dated Korean availability and adoption evidence before any Korea recommendation or Korea-market inference."
+      ],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-global-20260830-001",
+      "expires_at": "2026-09-30T15:20:00+09:00"
+    },
+    {
+      "verdict_id": "trust-global-20260830-001-global-fypro-2026",
+      "subject_id": "global-fypro-2026",
+      "decision": "approve",
+      "reviewed_claim_ids": [
+        "ev-global-fypro-2026-001",
+        "ev-global-fypro-2026-002",
+        "ev-global-fypro-2026-003",
+        "ev-global-fypro-2026-004"
+      ],
+      "reason_codes": [
+        "GLOBAL_SIGNAL_SCOPE_ONLY",
+        "CURRENT_SOURCES_VALID",
+        "LAUNCH_ATTENTION_NOT_ADOPTION",
+        "OFFICIAL_ADOPTION_NOT_INDEPENDENTLY_VERIFIED",
+        "COMMERCIAL_SURFACE_NOT_ECONOMIC_DURABILITY",
+        "NO_VERIFIED_INVESTOR_ATTENTION",
+        "NO_KOREA_TRANSLATION_OR_CAUSALITY"
+      ],
+      "required_evidence": [
+        "Independent active-creator, paid-customer, or retention evidence before treating the self-reported 2,000-creator count as verified adoption.",
+        "Revenue, GMV, subscription mix, creator earnings, retention, or cohort-economics evidence before asserting economic durability.",
+        "A verified funding or named-investor event before asserting investor attention.",
+        "Dated creator geography and Korean adoption evidence before any Korea recommendation or Korea-market inference."
+      ],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-global-20260830-001",
+      "expires_at": "2026-09-30T15:20:00+09:00"
+    },
+    {
+      "verdict_id": "trust-global-20260830-001-global-frido-wellness-retail-2026",
+      "subject_id": "global-frido-wellness-retail-2026",
+      "decision": "approve",
+      "reviewed_claim_ids": [
+        "ev-global-frido-wellness-retail-2026-001",
+        "ev-global-frido-wellness-retail-2026-002",
+        "ev-global-frido-wellness-retail-2026-003",
+        "ev-global-frido-wellness-retail-2026-004"
+      ],
+      "reason_codes": [
+        "GLOBAL_SIGNAL_SCOPE_ONLY",
+        "CURRENT_SOURCES_VALID",
+        "ACTUAL_EXPANSION_SEPARATED_FROM_FORWARD_PLAN",
+        "HISTORICAL_INVESTOR_ATTENTION_NOT_CURRENT_PERFORMANCE",
+        "STORE_ADOPTION_NOT_INDEPENDENTLY_VERIFIED",
+        "STORE_ECONOMIC_DURABILITY_UNPROVEN",
+        "OFFICIAL_LOCATOR_DATA_QUALITY_LIMITATION",
+        "NO_KOREA_TRANSLATION_OR_CAUSALITY"
+      ],
+      "required_evidence": [
+        "Independent store footfall, transactions, conversion, repeat purchase, scan usage, or retention evidence before asserting verified adoption.",
+        "Store-level revenue, contribution margin, payback, lease burden, or profitability evidence before asserting economic durability.",
+        "Dated completed-store evidence before treating the FY28 70-to-100-store target as actual expansion.",
+        "Dated Korean availability and customer evidence before any Korea recommendation or Korea-market inference."
+      ],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-global-20260830-001",
+      "expires_at": "2026-09-30T15:20:00+09:00"
+    }
+  ]
+}

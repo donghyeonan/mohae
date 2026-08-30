@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html	class="h-100"
+		lang="en">
+
+<head>
+		
+		<script>
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-P3575B7');
+		</script>
+		
+		
+		<script>
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-WDXZ5DBQ');
+		</script>
+		
+		
+		<meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="Expires" content="-1"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+	
+	    <title>Kiaf Seoul & FRIEZE SEOUL</title>
+	    <link rel="icon" href="/kiaf-frieze2026/artfair/img/favicon.png" sizes="192x192" />
+		
+		<meta name="title" content="Kiaf / FRIEZE Ticket reservation site">
+	    <meta name="description" content="Kiaf / FRIEZE Ticket reservation site">
+	    <meta property="og:title" content="Kiaf / FRIEZE Ticket reservation site">
+	    <meta property="og:site_name" content="Kiaf / FRIEZE Ticket reservation site">
+	    <meta property="og:type" content="website"> 
+	    <meta property="og:description"  content="Kiaf / FRIEZE Ticket reservation site">
+	    <meta property="og:image" content="https://govent.co.kr/kiaf-frieze2026/artfair/img/og.jpg">
+	    <meta property="og:url" content="https://govent.co.kr/artfair/kiaf-frieze2026/index?lang=en">
+	    <meta name="twitter:card"  content="summary">
+	    <meta name="twitter:title" content="Kiaf / FRIEZE Ticket reservation site">
+	    <meta name="twitter:description" content="Kiaf / FRIEZE Ticket reservation site">
+	    <meta name="twitter:image" content="https://govent.co.kr/kiaf-frieze2026/artfair/img/og.jpg">
+		<link rel="shortcut icon" href="/kiaf-frieze2026/artfair/img/favicon_196.png" sizes="192x192">
+	
+		<!-- 각 content 에 따라 주입받는 meta 태그 -->
+		
+		
+	
+		<!-- CSS 공통 -->
+		<link rel="stylesheet" href="/_css/bootstrap.5.2.0.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="/kiaf-frieze2026/artfair/css/style.css">
+		
+		<!-- 각 content 에 따라 주입받는 css -->
+		
+		
+	</head>
+<body class="d-flex flex-column h-100">
+	
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3575B7"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	
+	
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDXZ5DBQ"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	
+	<div class="lang">
+		
+			<a href="javascript:goLang(&#39;ko&#39;)" class="lan_btn lang_ko">KOR</a>
+			
+		
+    </div>
+	<div class="wrap p-4 mb-5">
+		<div class="logo_outer px-4 pt-3 pb-3 my-5 text-center">
+            <a href="/artfair/kiaf-frieze2026/index?lang=en">
+                <img class="d-block mx-auto mw-100" src="/kiaf-frieze2026/artfair/img/logo.png" alt="Kiaf, Frieze logo" width="300">
+            </a>
+        </div>
+        
+		<!-- content -->
+		
+			<div id="main-form" class="container-lg container-regist main_container-lg border shadow bg-body rounded">
+				<div class="row align-items-center">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-lg-6 p-0 border-end">
+								<div class="d-flex align-items-end flex-column h-100">
+									<div class="p-5 w-100 main_mobile_padding d-flex flex-column justify-content-between h-100">
+									    <div>
+									        <h4 class="title fw-bold pt-0 mb-0">Kiaf SEOUL</h4>
+									        <p class="fw-bold pb-4">
+												Seoul Coex Hall A, B, Grand Ballroom<br />
+												2026.09.03 ~ 09.06
+											</p>
+									        <h4 class="title fw-bold pt-0 mb-0">FRIEZE SEOUL</h4>
+											<p class="fw-bold border-bottom pb-4">
+												Seoul Coex Hall C, D<br />
+												2026.09.03 ~ 09.05
+											</p>
+									
+									        
+									        
+		<div class="accordion accordion-flush accordion_sm mt-1 mb-4" id="accordionFlushExample_1">
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="flush-heading_1">
+					<button
+						class="accordion-button pb-0 collapsed"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#flush-collapse_1"
+						aria-expanded="false"
+						aria-controls="flush-collapse_1">
+						Condition of Entry
+					</button>
+				</h2>
+				<div id="flush-collapse_1" class="accordion-collapse collapse" aria-labelledby="flush-heading_1" data-bs-parent="#accordionFlushExample_1">
+					<div class="accordion-body pb-0 pt-0">
+						<div class="bg-light p-3 mt-2">
+							<p class="font-14">
+								*A Preview Ticket, General Admission First Preview, General Admission First Access, General Admission Afternoon Access, General
+								Admission Student/ Youth (7-19 years / born between 2007-2018) ticket, or 2026 Korea Art Festival Special Discount Ticket
+								("Ticket") will allow entry to both Kiaf SEOUL and Frieze Seoul during the relevant dates and times of the Fairs as determined
+								by the Organizers.<br />
+								*One companion can enter for free to assist a ticket holder with disability (for severe disability grades of 2 or higher only.)
+							</p>
+							<ul class="text-black-50 mb-0 small list-unstyled text-indent-1">
+								<li class="item">
+									1. A valid admission Ticket entitles the Ticket holder to attend the Fairs on the date and at the time stated on the Ticket.
+									Visitors will not be allowed admission to the Fairs without a valid admission Ticket. Please ensure You arrive at least 15
+									minutes before the time stated on Your Admission ticket. Last admission is 30 minutes prior to closing time. Latecomers will
+									not be admitted into the Fairs.
+								</li>
+								<li class="item">
+									2. Parking or tour tickets do not grant admission to the Fairs. Admission Ticket(s) to the Fairs must be bought separately.
+								</li>
+								<li class="item">
+									3. Children aged 7 and older need a valid Ticket to attend the Fairs and must present a valid photo ID such as a passport or
+									student ID to gain entry to the Fairs. Failure to provide a valid ID will result in refused entry and no refunds.
+								</li>
+								<li class="item">
+									4. Children under 7 years of age shall be admitted free of charge, subject to being accompanied at all times by an adult
+									holding an admission Ticket.
+								</li>
+								<li class="item">
+									5. General Admission Ticket and General Admission Student Ticket is available for 1 re-entry, provided that the Ticket is
+									scanned out on leaving the Fair, only on the same day as the date stated use on the Ticket.
+								</li>
+								<li class="item">
+									6. Preview ticket and VIP pass are available for re-entry, provided that the Ticket is scanned out on leaving the Fair.
+								</li>
+								<li class="item">7. No flowers or bouquets can be brought into the Fairs.</li>
+								<li class="item">8. No unauthorized artwork may be brought into the Fairs.</li>
+								<li class="item">9. No unauthorized performances can take place at the Fairs.</li>
+								<li class="item">10. No unauthorized distribution of flyers or other marketing materials is permitted at the Fairs.</li>
+								<li class="item">
+									11. It is Your responsibility to check Your Ticket(s), as mistakes cannot always be rectified, and the Organizers shall not
+									be responsible for any incorrect, lost or stolen Ticket(s).
+								</li>
+								<li class="item">
+									12. By submitting an order for Ticket(s), You acknowledge and accept that all details provided to the Ticket issuer are
+									correct and consent to the Ticket issuer providing electronic Tickets immediately following the processing of payment.
+								</li>
+								<li class="item">
+									13. Ticket(s) may not be used as prizes in competitions, "give-aways" or a lottery without the prior written consent of the
+									Organizers in their sole discretion.
+								</li>
+								<li class="item">
+									14. Ticket(s) must not be resold, exchanged, transferred, altered or defaced. Any such action shall render the Ticket(s)
+									void (and any individual with such a Ticket may be refused entry or removed from the Fairs in the Organizers' sole
+									discretion). For the avoidance of doubt., the following is a non-exhaustive list of prohibited practices which shall lead to
+									the Ticket(s) being void:<br />
+									a. Using a photocopied version of the Ticket;<br />
+									b. Using a screenshot of the Ticket;<br />
+									c. altering the Ticket in any way including by Photoshop (or any similar program); or<br />
+									d. using a photograph of the Ticket.<br />
+									e. Using illegally produced or distributed Ticket<br />
+								</li>
+								<li class="item">
+									15. On entry to the venue all visitors agree to accept and abide by any venue rules and regulations as set by the Organizers
+									or the event venue (as may be updated from time to time) and any other regulations from time to time provided on entry to
+									the venue.
+								</li>
+								<li class="item">
+									16. In order to facilitate the security, safety and comfort of all Fairs visitors, the Organizers reserve the right in their
+									absolute discretion to conduct security searches of persons, clothing, bags and all other items on entry and exit to the
+									Fairs and to confiscate items which may be illegal, cause danger and/or disruption to the Fairs or other visitors, or are in
+									breach of these Terms and Conditions and to refuse admission to the Fairs. Anyone resisting confiscation of disallowed items
+									or disregarding these Terms and Conditions will face eviction from the venue.
+								</li>
+								<li class="item">
+									17. Large bags (including, but not limited to, suitcases, backpacks, folding bicycles, scooters) or any large items bigger
+									than a handbag or laptop bag will not be permitted into the Fairs. Visitors arriving with such items will be refused entry.
+									Visitors are welcome to use cabinets located at the first floor of COEX. Cabinets are extremely limited. We request that
+									where possible visitors keep their belongings with them.
+								</li>
+								<li class="item">
+									18. Visitors must not bring any of the following items into the venue: food, drink, glass, sharp items, drones, laser pens,
+									and the Organizers reserves the right to confiscate any such item(s) from any person entering or at the venue. You will not
+									be allowed to bring any glass bottles of any kind into the Fairs.
+								</li>
+								<li class="item">
+									19. Proof of age may be required for all Ticket types. Please ensure You carry a valid photo ID with You that can be
+									provided as proof of age on request. Failure to provide such ID may result in You being asked to stop consuming and
+									purchasing alcohol and/or leave the Fairs.
+								</li>
+								<li class="item">
+									20. The Organizers reserve the right to:<br />
+									a. refuse admission to the Fairs to anyone who does not have a valid Ticket (including those which appear to be counterfeit,
+									are a screenshot or which have been altered and/or defaced or transferred to another individual other than the original
+									Ticket holder);<br />
+									b. refuse admission to the Fairs to Student Ticket holders who fail to present a valid photo ID;<br />
+									c. evict any person who is: breaching these Terms and Conditions; committing a criminal offence; behaving in a disorderly
+									manner or in a way that has an adverse effect on public safety; behaving in an anti-social manner or in a way that causes a
+									public nuisance; conducting themselves in a manner that is inappropriate to and/or compromises the safety and/or security of
+									other visitors; conducting themselves in a manner that is offensive and/or disrespectful to staff; and/or under the
+									influence of drugs and/or excessive alcohol; and<br />
+									d. refuse alcohol to any visitor who, in the Organizers' absolute discretion, is unreasonably intoxicated and/or is behaving
+									in an unacceptable manner.<br />
+								</li>
+								<li class="item">21. Use of illegal substances is strictly prohibited at the Fairs.</li>
+								<li class="item">22. No animals are allowed at the Fairs, other than service animals.</li>
+								<li class="item">
+									23. Commercial, promotional and trading activities (including the sale or distribution of any items) are not permitted at
+									the Fairs, in the gangways or anywhere else in or around the venue without the prior written consent of the Organizers. The
+									Organizers reserve the right to confiscate any such items for infringement of this condition.
+								</li>
+								<li class="item">
+									24. All sound and moving or still picture rights including, without limitation, on the internet, vest exclusively with the
+									Organizers and any material captured, filmed or recorded at the Fairs may only be used for the personal, non-profit making
+									enjoyment of amateurs and not for commercial gain.
+								</li>
+								<li class="item">
+									25. By entering the Fairs, You agree and consent to being photographed, filmed or recorded as visitors attending the Fairs,
+									and grant Your permission to the Organizers, their affiliates and those authorized by them, to use such photographs, films
+									and recordings (including any copies), and for Your image, likeness, mannerisms and/or voice to be included in any content
+									from such filming, photographs and/or recording (and edited) without compensation and/or credit, which content may be
+									communicated and/or exploited in any and all media worldwide in all perpetuity including for future marketing and
+									promotional material for the Fairs; being photographed, filmed or recorded for television, radio, webcast, podcast and other
+									public broadcast in any medium; and/or being recorded by onsite CCTV cameras and recordings for security purposes.
+								</li>
+								<li class="item">
+									26. Visitors agree to adhere to any policies or restrictions relating to mobile phones and camera usage put in place by the
+									Organizers and/or any Fairs' exhibitors.
+								</li>
+								<li class="item">
+									27. In the event of an emergency, Ticket holders and all visitors to the Fairs must follow instructions and directions from
+									staff, security and/or other officials.
+								</li>
+								<li class="item">
+									28. Certain exhibits within the Fairs may contain flashing lights, strobe lights or neon lights which may cause discomfort
+									or seizures for people with photosensitive epilepsy. Please use caution and seek assistance if necessary.
+								</li>
+								<li class="item">
+									29. You acknowledge that attendance at the Fairs is entirely at your own risk and neither the Organizers nor any of their
+									employees, contractors or agents, shall be liable for any loss, injury or damage (to person or property) howsoever suffered
+									by You, including consequential losses, save for: a. death or personal injury caused by the negligence of the Organizers,
+									their employees, contractors or agents; and b. any other liability that cannot be excluded or limited under applicable laws.
+								</li>
+								<li class="item">
+									30. The Organizers cannot accept financial or other responsibility for any loss or liability incurred by a visitor to the
+									Fairs as a result of contracts entered into by visitors with any Fairs' exhibitor or advice sought or obtained from any
+									Fairs' exhibitor.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+									
+									        
+									        <p class="fw-bold">Ticket Schedule</p>
+									        <div class="overflow-x-auto">
+									            <table class="tg center-middle mb-0">
+												    <colgroup>
+												        <col style="width: 14%" />
+												        <col style="width: 16%" />
+												        <col style="width: 14%" />
+												        <col style="width: 14%" />
+												        <col style="width: 14%" />
+												        <col style="width: 14%" />
+												        <col style="width: 14%" />
+												    </colgroup>
+												    <thead>
+												        <tr>
+												            <th class="tg-top" rowspan="3">Date</th>
+												            <th class="tg-top" rowspan="3">Time</th>
+												            <th class="tg-top" rowspan="3">
+												                Preview Ticket<br /><small class="text-black-50">(Max. 4 days<br />of entry)</small>
+												            </th>
+												            <th class="tg-top py-2" colspan="4">General Admission</th>
+												        </tr>
+												        <tr>
+												            <th class="tg-top py-2" colspan="3">2026 Korea Art Festival Special Discount</th>
+												            <th class="tg-top" rowspan="2">
+												                Student<br /><small class="text-black-50">(Access on<br />one selected<br />day)</small>
+												            </th>
+												        </tr>
+												        <tr>
+												            <th class="tg-top">
+												                Preview Entry<br /><small class="text-black-50">(Access on<br />one selected<br />timeslot)</small>
+												            </th>
+												            <th class="tg-top">
+												                First Access<br /><small class="text-black-50">(Access on<br />one selected<br />timeslot)</small>
+												            </th>
+												            <th class="tg-top">
+												                Afternoon Access<br /><small class="text-black-50">(Access on<br />one selected<br />timeslot)</small>
+												            </th>
+												        </tr>
+												    </thead>
+												    <tbody>
+												        <tr>
+												            <td class="tg-mid" rowspan="2">Sept. 3<br />(Thurs)</td>
+												            <td class="tg-mid">11:00 - 15:00</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												        </tr>
+												        <tr>
+												            <td class="tg-mid">15:00 - 19:00</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid">O</td>
+												        </tr>
+												        <tr>
+												            <td class="tg-mid" rowspan="2">Sept. 4<br />(Fri)</td>
+												            <td class="tg-mid">11:00 - 15:00</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid">O</td>
+												        </tr>
+												        <tr>
+												            <td class="tg-mid">15:00 - 19:00</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid">O</td>
+												        </tr>
+												        <tr>
+												            <td class="tg-mid" rowspan="2">Sept. 5<br />(Sat)</td>
+												            <td class="tg-mid">11:00 - 15:00</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid">O</td>
+												        </tr>
+												        <tr>
+												            <td class="tg-mid">15:00 - 19:00</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid">O</td>
+												        </tr>
+												        <tr>
+												            <td class="tg-mid">Sept. 6 (Sun)<br />*Kiaf Only</td>
+												            <td class="tg-mid">11:00 - 18:00</td>
+												            <td class="tg-mid">O</td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												            <td class="tg-mid"></td>
+												        </tr>
+												    </tbody>
+												</table>
+									        </div>
+									        <p class="small mt-3 mb-5">
+											    * Preview Ticket​ (Max. 4 days of entry)<br />
+											    * General Admission before 3pm / after 3pm (1 day entry from the time and date stated on the ticket)<br />
+											    <b>* With General Admission First Access, you may re-enter after 3:00 PM once you have entered for the first time.</b><br />
+											    * General Admission Kiaf (Access on Sept. 6 only)<br />
+											    * The 2026 Korea Art Festival Special Discount Ticket is supported by the Ministry of Culture, Sports and Tourism of Korea and offers discounted
+											    General Admission (GA) tickets to Kiaf / Frieze Seoul.<br />
+											    * All ticket types, including the 2026 Korea Art Festival Special Discount Ticket, are available in limited quantities and may sell out early.
+											</p>
+									    </div>
+									
+									    <div>
+									        <div class="d-flex align-items-end mb-0_991">
+									            <button class="btn btn-info w-100" type="button" id="checkReservationBtn">CHECK ORDER / LOG IN</button>
+									        </div>
+									        <hr class="d-sm-none" style="margin-top: 3rem" />
+									    </div>
+									</div>
+								</div>
+							</div>
+							
+							
+							<div class="col-lg-6 py-5 px-5 main_mobile_padding_x d-flex flex-column justify-content-between">
+								<div>
+									<table class="table mb-3">
+										<colgroup>
+											<col style="width: 66%" />
+											<col style="width: 17%" />
+											<col style="width: 17%" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="text-start">Ticket Type</th>
+												<th>Price (KRW)</th>
+												<th>Price (USD)</th>
+											</tr>
+											
+												<tr class="ticket-soldout">
+													<th class="text-start fw-normal">
+														<span class="ticket-label">2026 Korea Art Festival Special Discount</span>
+														<br>
+														General Admission Preview Entry
+														<br>
+														<small class="text-black-50">(Sept. 3 only)</small>
+													</th>
+													<td class="text-black-50 text-center">63,000</td>
+													<td class="text-black-50 text-center">$ 45</td>
+												</tr>
+											
+												<tr class="ticket-soldout">
+													<th class="text-start fw-normal">
+														<span class="ticket-label">2026 Korea Art Festival Special Discount</span>
+														<br>
+														General Admission First Access_before 3pm
+														<br>
+														<small class="text-black-50">(one selected day between Sept. 4 and 5)</small>
+													</th>
+													<td class="text-black-50 text-center">63,000</td>
+													<td class="text-black-50 text-center">$ 45</td>
+												</tr>
+											
+												<tr class="ticket-soldout">
+													<th class="text-start fw-normal">
+														<span class="ticket-label">2026 Korea Art Festival Special Discount</span>
+														<br>
+														General Admission Afternoon Access_after 3pm
+														<br>
+														<small class="text-black-50">(one selected day between Sept. 4 and 5)</small>
+													</th>
+													<td class="text-black-50 text-center">49,000</td>
+													<td class="text-black-50 text-center">$ 35</td>
+												</tr>
+											
+												<tr>
+													<th class="text-start">
+														
+														
+														Preview Ticket
+														<br>
+														<small class="text-black-50">(multi-day access between Sept. 3 and 6)</small>
+													</th>
+													<td class="text-black-50 text-center">250,000</td>
+													<td class="text-black-50 text-center">$ 178</td>
+												</tr>
+											
+												<tr>
+													<th class="text-start">
+														
+														
+														General Admission Preview Entry
+														<br>
+														<small class="text-black-50">(Sept. 3 only)</small>
+													</th>
+													<td class="text-black-50 text-center">90,000</td>
+													<td class="text-black-50 text-center">$ 64</td>
+												</tr>
+											
+												<tr>
+													<th class="text-start">
+														
+														
+														General Admission First Access_before 3pm
+														<br>
+														<small class="text-black-50">(one selected day between Sept. 4 and 5)</small>
+													</th>
+													<td class="text-black-50 text-center">90,000</td>
+													<td class="text-black-50 text-center">$ 64</td>
+												</tr>
+											
+												<tr>
+													<th class="text-start">
+														
+														
+														General Admission Afternoon Access_after 3pm
+														<br>
+														<small class="text-black-50">(one selected day between Sept. 4 and 5)</small>
+													</th>
+													<td class="text-black-50 text-center">70,000</td>
+													<td class="text-black-50 text-center">$ 50</td>
+												</tr>
+											
+												<tr>
+													<th class="text-start">
+														
+														
+														General Admission Student
+														<br>
+														<small class="text-black-50">(Between 7-19 *ID card required)</small>
+													</th>
+													<td class="text-black-50 text-center">55,000</td>
+													<td class="text-black-50 text-center">$ 39</td>
+												</tr>
+											
+										</tbody>
+									</table>
+		
+									<div class="mb-3 row main_mobile_row">
+										<label for="button-addon2" class="col-xl-4 col-form-label fw-bold">Promotion Code</label>
+										<div class="col-xl-8 ps-0">
+											<div class="input-group">
+												<input type="text" id="promotionCode" name="promotionCode" class="form-control" placeholder="Promotion Code" data-label="Promotion Code" maxLength="20">
+												<button class="btn btn-sm btn-primary btn-use" type="button" id="promotionCodeUse">Use</button>
+											</div>
+										</div>
+									</div>
+									
+									
+									<div class="d-flex flex-column flex-xl-row justify-content-between align-items-start align-items-xl-end gap-3 mb-3 mt-5">
+										<h5 class="title fw-bold pt-4 mb-0 text-primary">Ticket Type</h5>
+										<div class="d-flex gap-2">
+										    <button type="button" class="btn small btn-dark p-2 rounded ticket-tab-btn active" data-tab="normal">General Ticket</button>
+										    <button type="button" class="btn small btn-outline-dark p-2 rounded ticket-tab-btn" data-tab="group">Group discount Ticket (50+)</button>
+										</div>
+									</div>
+									
+									<div id="tab-normal">
+										
+											
+											
+											
+										
+											<input type="hidden" id="A01_TERM_YN" name="A01_TERM_YN" value=""/>
+											<input type="hidden" id="A01_TIMESLOT_YN" name="A01_TIMESLOT_YN" value="Y"/>
+										
+											
+											
+											
+										
+											<input type="hidden" id="A02_TERM_YN" name="A02_TERM_YN" value=""/>
+											<input type="hidden" id="A02_TIMESLOT_YN" name="A02_TIMESLOT_YN" value="Y"/>
+										
+											
+											
+											
+										
+											<input type="hidden" id="A03_TERM_YN" name="A03_TERM_YN" value=""/>
+											<input type="hidden" id="A03_TIMESLOT_YN" name="A03_TIMESLOT_YN" value="Y"/>
+										
+											<div class="mb-2 row main_mobile_row" id="A04_ticketDiv" data-id="A04">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120" id="A04_NAME">
+													
+													
+													Preview Ticket
+													<br>
+													<small>(multi-day access between Sept. 3 and 6)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+												    <div class="input-group input-group-ticket mb-2">
+												        <span class="input-group-text"></span>
+												        <input type="text" class="form-control text-end border-start-0 border-end-0 pointer-none" id="A04_PRICE" name="A04_PRICE" value="0" tabindex="-1" data-price="250000" data-price-usd="17800" />
+												        <span class="input-group-text border-start-0 ps-0">KRW</span>
+												        <select class="input-group-text cursor-pointer w-70" id="A04_COUNT" name="A04_COUNT" tabindex="-1">
+												            <option value="0" selected>0</option>
+												            <option value="1">1</option>
+												            <option value="2">2</option>
+												            <option value="3">3</option>
+												            <option value="4">4</option>
+												            <option value="5">5</option>
+												            <option value="6">6</option>
+												            <option value="7">7</option>
+												            <option value="8">8</option>
+												            <option value="9">9</option>
+												            <option value="10">10</option>
+												        </select>
+												    </div>
+												</div>
+											</div>
+											
+											
+										
+											<input type="hidden" id="A04_TERM_YN" name="A04_TERM_YN" value=""/>
+											<input type="hidden" id="A04_TIMESLOT_YN" name="A04_TIMESLOT_YN" value="N"/>
+										
+											<div class="mb-2 row main_mobile_row" id="A05_ticketDiv" data-id="A05">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120" id="A05_NAME">
+													
+													
+													General Admission Preview Entry
+													<br>
+													<small>(Sept. 3 only)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+												    <div class="input-group input-group-ticket mb-2">
+												        <span class="input-group-text"></span>
+												        <input type="text" class="form-control text-end border-start-0 border-end-0 pointer-none" id="A05_PRICE" name="A05_PRICE" value="0" tabindex="-1" data-price="90000" data-price-usd="6400" />
+												        <span class="input-group-text border-start-0 ps-0">KRW</span>
+												        <select class="input-group-text cursor-pointer w-70" id="A05_COUNT" name="A05_COUNT" tabindex="-1">
+												            <option value="0" selected>0</option>
+												            <option value="1">1</option>
+												            <option value="2">2</option>
+												            <option value="3">3</option>
+												            <option value="4">4</option>
+												            <option value="5">5</option>
+												            <option value="6">6</option>
+												            <option value="7">7</option>
+												            <option value="8">8</option>
+												            <option value="9">9</option>
+												            <option value="10">10</option>
+												        </select>
+												    </div>
+												</div>
+											</div>
+											
+											
+										
+											<input type="hidden" id="A05_TERM_YN" name="A05_TERM_YN" value=""/>
+											<input type="hidden" id="A05_TIMESLOT_YN" name="A05_TIMESLOT_YN" value="Y"/>
+										
+											<div class="mb-2 row main_mobile_row" id="A06_ticketDiv" data-id="A06">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120" id="A06_NAME">
+													
+													
+													General Admission First Access_before 3pm
+													<br>
+													<small>(one selected day between Sept. 4 and 5)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+												    <div class="input-group input-group-ticket mb-2">
+												        <span class="input-group-text"></span>
+												        <input type="text" class="form-control text-end border-start-0 border-end-0 pointer-none" id="A06_PRICE" name="A06_PRICE" value="0" tabindex="-1" data-price="90000" data-price-usd="6400" />
+												        <span class="input-group-text border-start-0 ps-0">KRW</span>
+												        <select class="input-group-text cursor-pointer w-70" id="A06_COUNT" name="A06_COUNT" tabindex="-1">
+												            <option value="0" selected>0</option>
+												            <option value="1">1</option>
+												            <option value="2">2</option>
+												            <option value="3">3</option>
+												            <option value="4">4</option>
+												            <option value="5">5</option>
+												            <option value="6">6</option>
+												            <option value="7">7</option>
+												            <option value="8">8</option>
+												            <option value="9">9</option>
+												            <option value="10">10</option>
+												        </select>
+												    </div>
+												</div>
+											</div>
+											
+											
+										
+											<input type="hidden" id="A06_TERM_YN" name="A06_TERM_YN" value=""/>
+											<input type="hidden" id="A06_TIMESLOT_YN" name="A06_TIMESLOT_YN" value="Y"/>
+										
+											<div class="mb-2 row main_mobile_row" id="A07_ticketDiv" data-id="A07">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120" id="A07_NAME">
+													
+													
+													General Admission Afternoon Access_after 3pm
+													<br>
+													<small>(one selected day between Sept. 4 and 5)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+												    <div class="input-group input-group-ticket mb-2">
+												        <span class="input-group-text"></span>
+												        <input type="text" class="form-control text-end border-start-0 border-end-0 pointer-none" id="A07_PRICE" name="A07_PRICE" value="0" tabindex="-1" data-price="70000" data-price-usd="5000" />
+												        <span class="input-group-text border-start-0 ps-0">KRW</span>
+												        <select class="input-group-text cursor-pointer w-70" id="A07_COUNT" name="A07_COUNT" tabindex="-1">
+												            <option value="0" selected>0</option>
+												            <option value="1">1</option>
+												            <option value="2">2</option>
+												            <option value="3">3</option>
+												            <option value="4">4</option>
+												            <option value="5">5</option>
+												            <option value="6">6</option>
+												            <option value="7">7</option>
+												            <option value="8">8</option>
+												            <option value="9">9</option>
+												            <option value="10">10</option>
+												        </select>
+												    </div>
+												</div>
+											</div>
+											
+											
+										
+											<input type="hidden" id="A07_TERM_YN" name="A07_TERM_YN" value=""/>
+											<input type="hidden" id="A07_TIMESLOT_YN" name="A07_TIMESLOT_YN" value="Y"/>
+										
+											<div class="mb-2 row main_mobile_row" id="A08_ticketDiv" data-id="A08">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120" id="A08_NAME">
+													
+													
+													General Admission Student
+													<br>
+													<small>(Between 7-19 *ID card required)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+												    <div class="input-group input-group-ticket mb-2">
+												        <span class="input-group-text"></span>
+												        <input type="text" class="form-control text-end border-start-0 border-end-0 pointer-none" id="A08_PRICE" name="A08_PRICE" value="0" tabindex="-1" data-price="55000" data-price-usd="3900" />
+												        <span class="input-group-text border-start-0 ps-0">KRW</span>
+												        <select class="input-group-text cursor-pointer w-70" id="A08_COUNT" name="A08_COUNT" tabindex="-1">
+												            <option value="0" selected>0</option>
+												            <option value="1">1</option>
+												            <option value="2">2</option>
+												            <option value="3">3</option>
+												            <option value="4">4</option>
+												            <option value="5">5</option>
+												            <option value="6">6</option>
+												            <option value="7">7</option>
+												            <option value="8">8</option>
+												            <option value="9">9</option>
+												            <option value="10">10</option>
+												        </select>
+												    </div>
+												</div>
+											</div>
+											
+											<div class="terms mb-2" id="A08_termsDiv" data-id="A08">
+												
+													<div class="group">
+														<input type="checkbox" id="A08_CHECK_1" name="A08_CHECK_1">
+														<label class="subtext-red">Student tickets can only be used to enter the fair by presenting your ID (passport, student ID, etc.) when scanning your ticket on site.</label>
+													</div>
+													<div class="group mt-2">
+														<input type="checkbox" id="A08_CHECK_2" name="A08_CHECK_2">
+														<label class="subtext-red cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal1">
+															If you do not bring your ID, you will not be able to enter and there will be no refund.<br />(*For details, refer to the Terms of Use and Refund
+															Policy)
+														</label>
+													</div>
+													
+													
+		<div class="modal fade" id="modal1" >
+			<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+			    <div class="modal-content">
+			        <div class="modal-header">
+			            <h5 class="modal-title" id="exampleModalLabel">Kiaf SEOUL & Frieze Seoul Terms and Conditions</h5>
+			            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			        </div>
+			        <div class="modal-body">
+			            <h5 class="text-center">General Terms</h5>
+			            <h6>General Terms</h6>
+			            <ul class="text-black-50 mb-3 small list-unstyled text-indent-1">
+			                <li class="item">
+			                    1. GALLERIES ASSOCIATION OF KOREA incorporated and registered at 102-407, 461, Samil-daero, Jongno-gu, Seoul, 03147, Korea ("GAoK"); and Frieze Events Ltd incorporated
+			                    and registered 1 Surrey Street, London, WC2R 2ND ("Frieze"); each an "Organizer" and together the "Organizers".
+			                </li>
+			                <li class="item">2. GAoK is the owner, proprietor, organizer and presenter of the Korea International Art Fair "Kiaf SEOUL" held in Seoul, South Korea since 2002.</li>
+			                <li class="item">
+			                    3. Frieze is the owner, proprietor, organizer and presenter of "Frieze Seoul" and Frieze Art Fairs globally, including Frieze London, Frieze Masters, Frieze New York
+			                    and Frieze Los Angeles.
+			                </li>
+			                <li class="item">4. Kiaf SEOUL and Frieze Seoul, the events of each Organizer, are collectively referred to as the "Fairs".</li>
+			                <li class="item">
+			                    5. A
+			                    <b>
+			                        Preview Ticket, General Admission First Preview, General Admission First Access, General Admission Afternoon Access, Student/Youth Ticket, or 2026 Korea Art
+			                        Festival Special Discount Ticket
+			                    </b>
+			                    ("Ticket") will allow entry to both Kiaf SEOUL and Frieze Seoul during the relevant dates and times of the Fairs as determined by the Organizers. All purchasable
+			                    tickets are specified below.
+			                    <ul class="mt-2 mb-2">
+			                        <li>&nbsp;<b>Preview Ticket</b> - Multi-day ticket, provides access and re-entry to all General Admission days.</li>
+			                        <li>&nbsp;<b>General Admission First Preview</b> - Thursday preview access, 1 re-entry on the same day.</li>
+			                        <li>&nbsp;<b>General Admission First Access</b> - Friday and Saturday access before 3 PM, 1 re-entry on the same day.</li>
+			                        <li>&nbsp;<b>General Admission Afternoon Access</b> - Friday and Saturday access after 3 PM, 1 re-entry on the same day.</li>
+			                        <li>&nbsp;<b>Student / Youth Tickets</b> - General Admission Student (7-19 years), valid ID required.</li>
+			                        <li>&nbsp;<b>2026 Korea Art Festival Special Discount Tickets</b> - Limited quantity discounted tickets for GA First, Afternoon, and Preview Access.</li>
+			                    </ul>
+			                </li>
+			                <li class="item">
+			                    6. By purchasing any Ticket to the Fairs and/or attending the Fairs using a VIP pass, you ("You") agree to be bound by the terms and conditions set out herein ("Terms
+			                    and Conditions") and any other terms drawn to your attention by the Organizers and/or stated on the Ticket.
+			                </li>
+			                <li class="item">
+			                    7. By purchasing a Student/Youth Ticket (7-19 years) or attending with such a Ticket, You confirm that you can present valid photo ID such as a passport or student ID
+			                    to gain entry.
+			                </li>
+			                <li class="item">8. Student/Youth tickets are limited in quantity and may not be available to all individuals aged 7-19.</li>
+			                <li class="item">9. One companion may enter for free to assist a ticket holder with disability (for severe disability grades of 2 or higher only).</li>
+			                <li class="item">
+			                    10. These Terms and Conditions and any dispute or claim (including non-contractual disputes or claims) arising out of or in connection with it or its subject matter or
+			                    formation, shall be governed by, and construed in accordance with the law of the Republic of Korea.
+			                </li>
+			                <li class="item">
+			                    11. If any of these Terms and Conditions should be determined to be illegal, invalid or otherwise unenforceable by reason of the law of any state or country in which
+			                    these Terms and Conditions are intended to be effective, then to the extent and within the jurisdiction in which that term or condition is illegal, invalid or
+			                    unenforceable, it shall be severed and deleted from that term and the remaining Terms and Conditions shall survive and continue to be binding and enforceable.
+			                </li>
+			                <li class="item">
+			                    12. To the extent permitted in law, any cause of action a Ticket holder may have with respect to their Ticket must be commenced within one (1) year after the claim or
+			                    cause of action arises.
+			                </li>
+			                <li class="item">13. Organizers expressly reserve the right to change and/or amend these Terms and Conditions from time to time.</li>
+			            </ul>
+			
+			            <h6>Purchase Conditions & Refund Policy</h6>
+			            <ul class="text-black-50 mb-3 small list-unstyled text-indent-1">
+			                <li class="item">1. Tickets remain the property of the Organizers and may be recalled.</li>
+			                <li class="item">
+			                    2. Refunds (all times 00:00–23:59) for September 3–5, 2026:
+			                    <ul class="mt-2 mb-2">
+			                        <li>&nbsp;<b>Until 11 days before (August 23, 2026)</b>: Full refund</li>
+			                        <li>&nbsp;<b>10 days before (August 24, 2026)</b>: 10% deduction</li>
+			                        <li>&nbsp;<b>7–9 days before (August 25–27, 2026)</b>: 20% deduction</li>
+			                        <li>&nbsp;<b>3–6 days before (August 28–31, 2026)</b>: 30% deduction</li>
+			                        <li>&nbsp;<b>1–2 days before (September 1–September 2, 2026)</b>: 90% deduction</li>
+			                        <li>&nbsp;<b>On the day of the event (September 3–5, 2026)</b>: No refund</li>
+			                    </ul>
+			                </li>
+			                <li class="item">3. If the Fairs are postponed, tickets remain valid for the rescheduled date. Full refunds available if you cannot attend.</li>
+			                <li class="item">4. If the Fairs are cancelled prior to opening, full refund of ticket face value only.</li>
+			                <li class="item">5. If a Fair day is curtailed, Organizers may offer partial refunds or reschedule; rescheduled days follow clause 3.</li>
+			                <li class="item">6. Travel/accommodation costs are your responsibility; Organizers are not liable.</li>
+			                <li class="item">7. Tickets are non-refundable if events are altered due to circumstances beyond Organizers' control.</li>
+			                <li class="item">8. By purchasing a Ticket, you confirm you have read and understood these Terms and Conditions.</li>
+			            </ul>
+			
+			            <h6>Entry Conditions</h6>
+			            <ul class="text-black-50 mb-0 small list-unstyled text-indent-1">
+			                <li class="item">
+			                    1. A valid admission Ticket entitles the Ticket holder to attend the Fairs on the date and at the time stated on the Ticket. Visitors will not be allowed admission
+			                    without a valid Ticket. Please arrive <b>at least 15 minutes before</b> the time stated. Last admission is <b>30 minutes prior to closing</b>. Latecomers will not be
+			                    admitted.
+			                </li>
+			                <li class="item">2. Parking or tour tickets do not grant admission. Admission Ticket(s) must be purchased separately.</li>
+			                <li class="item">3. Children aged 7+ need a valid Ticket and photo ID; under 7 enter free with an adult.</li>
+			                <li class="item">4. General Admission and Student tickets allow <b>1 re-entry</b> on the same day if scanned out. Preview and VIP tickets allow re-entry.</li>
+			                <li class="item">5. No large floral displays may be brought in.</li>
+			                <li class="item">6. No unauthorized artwork, performances, or distribution of marketing materials allowed.</li>
+			                <li class="item">
+			                    7. Tickets must not be resold, exchanged, transferred, altered, or defaced. Any such action voids the Ticket. Prohibited practices include photocopies, screenshots,
+			                    altered tickets, or illegally produced/distributed tickets.
+			                </li>
+			                <li class="item">8. Security checks may be conducted. Prohibited items may be confiscated; visitors refusing checks may be removed.</li>
+			                <li class="item">9. Large bags (backpacks, suitcases, folding bicycles, scooters) are not permitted; limited lockers available.</li>
+			                <li class="item">10. Open containers of food, alcohol, sharp items, drones, and laser pens are not allowed.</li>
+			                <li class="item">11. Proof of age may be required. Failure to provide ID may result in refusal of alcohol or removal.</li>
+			                <li class="item">12. Organizers may refuse entry or evict anyone violating Terms, committing offenses, or behaving dangerously or anti-socially.</li>
+			                <li class="item">13. Use of illegal substances is strictly prohibited; only assistance animals are allowed.</li>
+			                <li class="item">14. Commercial, promotional, or trading activities require prior written consent.</li>
+			                <li class="item">15. All photography/filming rights vest with Organizers. By attending, you consent to being recorded for promotional or security purposes.</li>
+			                <li class="item">16. Visitors must follow staff instructions in emergencies.</li>
+			                <li class="item">17. Certain exhibits may contain flashing/strobe/neon lights. Exercise caution if photosensitive.</li>
+			                <li class="item">
+			                    18. Attendance is at your own risk; Organizers are not liable except for death, personal injury caused by negligence, or liabilities that cannot be excluded by law.
+			                </li>
+			                <li class="item">19. Organizers are not responsible for contracts or advice obtained from any exhibitor.</li>
+			            </ul>
+			            <a href="https://www.frieze.com/privacy" target="_blank"><u class="text-primary fw-bold">Privacy policy.</u></a>
+			        </div>
+			    </div>
+			</div>
+	    </div>
+	
+												
+											</div>
+										
+											<input type="hidden" id="A08_TERM_YN" name="A08_TERM_YN" value="Y"/>
+											<input type="hidden" id="A08_TIMESLOT_YN" name="A08_TIMESLOT_YN" value="Y"/>
+										
+											
+											
+											
+										
+											<input type="hidden" id="A09_TERM_YN" name="A09_TERM_YN" value=""/>
+											<input type="hidden" id="A09_TIMESLOT_YN" name="A09_TIMESLOT_YN" value="N"/>
+										
+											
+											
+											
+										
+											<input type="hidden" id="A10_TERM_YN" name="A10_TERM_YN" value=""/>
+											<input type="hidden" id="A10_TIMESLOT_YN" name="A10_TIMESLOT_YN" value="N"/>
+										
+											
+											
+											
+										
+											<input type="hidden" id="A11_TERM_YN" name="A11_TERM_YN" value=""/>
+											<input type="hidden" id="A11_TIMESLOT_YN" name="A11_TIMESLOT_YN" value="N"/>
+										
+											
+											
+											
+										
+											<input type="hidden" id="A12_TERM_YN" name="A12_TERM_YN" value=""/>
+											<input type="hidden" id="A12_TIMESLOT_YN" name="A12_TIMESLOT_YN" value="N"/>
+										
+											
+											
+											
+										
+											<input type="hidden" id="A13_TERM_YN" name="A13_TERM_YN" value=""/>
+											<input type="hidden" id="A13_TIMESLOT_YN" name="A13_TIMESLOT_YN" value="N"/>
+											
+									</div>
+									
+									<div id="tab-group" class="d-none">
+										<div class="bg-light border rounded-2 p-2 text-center small mb-3">
+											*Group discount tickets are available for purchases of 50 tickets or more.<br />
+											*Partial cancellation is not available for group discount tickets.<br />
+											Please review carefully before payment.<br />
+											<span class="d-inline-block mt-1 fw-bold"> * 50+ Tickets: 10% Discount / 100+ Tickets: 20% Discount </span>
+										</div>
+										
+											<div class="mb-3 row main_mobile_row" id="A04_GroupTicketDiv" data-id="A04">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120">
+													Preview Ticket
+													<br>
+													<small>(multi-day access between Sept. 3 and 6)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+													<div class="input-group input-group-ticket mb-2">
+														<span class="input-group-text"></span>
+														<input type="text" id="A04_GROUP_PRICE" name="A04_GROUP_PRICE" class="form-control text-end border-start-0 border-end-0 pointer-none" value="0" tabindex="-1" data-price="250000" data-price-usd="17800"/>
+														<span class="input-group-text ps-0">KRW</span>
+														<input type="text" id="A04_GROUP_COUNT" name="A04_GROUP_COUNT" class="form-control text-end flex-grow-0 w-70" value="0" tabindex="-1" maxLength="3" data-id="A04"/>
+													</div>
+												</div>
+											</div>
+											<input type="hidden" id="A04_GROUP_TIMESLOT_YN" name="A04_TIMESLOT_YN" value="N"/>
+										
+											<div class="mb-3 row main_mobile_row" id="A05_GroupTicketDiv" data-id="A05">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120">
+													General Admission Preview Entry
+													<br>
+													<small>(Sept. 3 only)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+													<div class="input-group input-group-ticket mb-2">
+														<span class="input-group-text"></span>
+														<input type="text" id="A05_GROUP_PRICE" name="A05_GROUP_PRICE" class="form-control text-end border-start-0 border-end-0 pointer-none" value="0" tabindex="-1" data-price="90000" data-price-usd="6400"/>
+														<span class="input-group-text ps-0">KRW</span>
+														<input type="text" id="A05_GROUP_COUNT" name="A05_GROUP_COUNT" class="form-control text-end flex-grow-0 w-70" value="0" tabindex="-1" maxLength="3" data-id="A05"/>
+													</div>
+												</div>
+											</div>
+											<input type="hidden" id="A05_GROUP_TIMESLOT_YN" name="A05_TIMESLOT_YN" value="Y"/>
+										
+											<div class="mb-3 row main_mobile_row" id="A06_GroupTicketDiv" data-id="A06">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120">
+													General Admission First Access_before 3pm
+													<br>
+													<small>(one selected day between Sept. 4 and 5)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+													<div class="input-group input-group-ticket mb-2">
+														<span class="input-group-text"></span>
+														<input type="text" id="A06_GROUP_PRICE" name="A06_GROUP_PRICE" class="form-control text-end border-start-0 border-end-0 pointer-none" value="0" tabindex="-1" data-price="90000" data-price-usd="6400"/>
+														<span class="input-group-text ps-0">KRW</span>
+														<input type="text" id="A06_GROUP_COUNT" name="A06_GROUP_COUNT" class="form-control text-end flex-grow-0 w-70" value="0" tabindex="-1" maxLength="3" data-id="A06"/>
+													</div>
+												</div>
+											</div>
+											<input type="hidden" id="A06_GROUP_TIMESLOT_YN" name="A06_TIMESLOT_YN" value="Y"/>
+										
+											<div class="mb-3 row main_mobile_row" id="A07_GroupTicketDiv" data-id="A07">
+												<p class="col-xl-7 col-form-label pt-0 pb-2 fw-bold line-height-120">
+													General Admission Afternoon Access_after 3pm
+													<br>
+													<small>(one selected day between Sept. 4 and 5)</small>
+												</p>
+												<div class="col-xl-5 ps-0">
+													<div class="input-group input-group-ticket mb-2">
+														<span class="input-group-text"></span>
+														<input type="text" id="A07_GROUP_PRICE" name="A07_GROUP_PRICE" class="form-control text-end border-start-0 border-end-0 pointer-none" value="0" tabindex="-1" data-price="70000" data-price-usd="5000"/>
+														<span class="input-group-text ps-0">KRW</span>
+														<input type="text" id="A07_GROUP_COUNT" name="A07_GROUP_COUNT" class="form-control text-end flex-grow-0 w-70" value="0" tabindex="-1" maxLength="3" data-id="A07"/>
+													</div>
+												</div>
+											</div>
+											<input type="hidden" id="A07_GROUP_TIMESLOT_YN" name="A07_TIMESLOT_YN" value="Y"/>
+										
+											
+											<input type="hidden" id="A09_GROUP_TIMESLOT_YN" name="A09_TIMESLOT_YN" value="N"/>
+										
+										
+										<p class="text-danger text-end d-none" id="discountPriceRow">
+											<span id="discountRate"></span>% discount : <span id="discountPrice" data-price="0"></span> KRW
+										</p>
+									</div>
+								</div>
+								<div class="mt-5">
+									<div class="mb-4 row main_mobile_row">
+									    <label class="col-xl-5 col-form-label fw-bold">Total</label>
+									    <div class="col-xl-7 ps-0">
+									        <div class="input-group input-group-ticket">
+									            <input type="text" class="form-control text-end border-end-0 pointer-none" id="total_price" name="total_price" data-price="0" value="0" tabindex="-1" />
+									            <span class="input-group-text ps-0">KRW</span>
+									        </div>
+									    </div>
+									</div>
+									
+									<div class="d-grid g fix-bottom-btn mt-3">
+									    <button type="button" class="btn btn-primary" id="reserveBtn">Buy Ticket</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+	</div>
+	<footer class="footer mt-auto py-3 mb-1 border-top text-center">
+		<small class="mb-3 mb-md-0 text-black-50">&copy; Govent Inc. All rights reserved.</small>
+	</footer>
+	
+	<button type="button" class="btn btn-primary btn-floating btn-lg rounded-circle" id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    
+    	<div id="textbanner-box">
+	        <div class="textbanner-top">
+	            <input class="form-check-input me-2" type="checkbox" id="hideBannerWeek" name="agreement_1">
+	            <label class="form-check-label" for="hideBannerWeek">Don't show again for a week</label>
+	            <button id="textbanner-close" type="button" class="btn btn-sm btn-primary mx-3" ><u>Close</u></button>
+	        </div>
+	        <div class="textbanner-body">
+	            <p class="mb-0">* The refund policy has been updated. Please make sure to check the refund policy before making a purchase.</p>
+	        </div>
+	    </div>
+	    
+    
+    
+    <!-- 공통 스크립트 -->
+	
+			<script type="text/javascript" src="/_js/jquery-3.7.1.min.js"></script>
+			<script type="text/javascript" src="/_js/bootstrap.bundle.5.2.0.min.js"></script>
+			<script type="text/javascript" src="/_js/common/util.js"></script>
+			<script type="text/javascript" src="/_js/gotobtn.js"></script>
+    
+			<!-- 공통 script -->
+			<script>
+				$(document).ready(function() {
+					checkBanner();
+				});
+				
+		    	$(document).on("click", "#textbanner-close", function(){
+		    		var hideBannerWeekChecked = $("#hideBannerWeek").prop("checked");
+		    		let path = "/artfair/"+seDomain+"/"
+		    		if(hideBannerWeekChecked){
+		    			setPersistentCookie("govent." + seDomain + ".hideBanner", "Y", 7, "d", path); //7일
+		    		}else{
+		    			setSessionCookie("govent."+seDomain+".hideBanner", "Y", path);	
+		    		}
+		    		$("#textbanner-box").css("display","none");
+		    	});
+		    	
+		    	function checkBanner() {
+		    		if (isBannerHidden()) {
+		    			$("#textbanner-box").css("display","none")
+		    	    } else {
+		    	    	$("#textbanner-box").css("display","block");
+		    	    }
+		    	}
+		    	
+		    	function isBannerHidden() {
+		    	    return getCookie("govent." + seDomain + ".hideBanner") === "Y";
+		    	}
+		    	
+		    	function goLang(language){
+		    		let returnUrl = window.location.pathname;
+		    		let lastPathName = returnUrl.match(/\/([^\/]+)\/?$/)[1];
+		    		let method = getMethod(lastPathName);
+		    		let paramArray = [];
+		    		paramArray.push({name : 'lang', value : language});
+		    		
+		    		if(lastPathName == "pay"){
+		    			if(typeof(lang) != "undefined" && lang == "en"){
+		    				let phoneNumber = JSON.parse(sessionStorage.getItem("artfair."+seDomain+".userData")).phone;
+		    				if(!regexPattern("phone").test(phoneNumber)){
+		    					returnUrl = "/artfair/"+seDomain+"/info";
+		    					alert("The number you entered is not a valid domestic mobile number format. Please fill it out again.");
+		    					postSubmit(returnUrl, paramArray, "goLangForm");
+		    				}
+		    			}
+		    			
+		    			let userData = JSON.parse(sessionStorage.getItem("artfair."+seDomain+".userData"));
+		    			if(userData != null){
+		    				userData.lang = language;
+		    				sessionStorage.setItem("artfair."+seDomain+".userData", JSON.stringify(userData));
+		    			}
+		    		}
+		    		
+		    		if(typeof(slotType) != "undefined"){
+		    			paramArray.push({name : 'slotType', value : slotType});
+		    		}
+		    		
+		    		if(typeof(timeSlotTicketCount) != "undefined" && lastPathName != "index" && lastPathName != "regist"){
+		    			paramArray.push({name : 'timeSlotTicketCount', value : timeSlotTicketCount});
+		    		}
+		    		
+		    		if(lastPathName == "orderResult"){
+		    			paramArray.push({name : 'sendTicketResultCd', value : sendTicketResultCd});
+		    		}
+		    		if(method == "post"){
+		    	 		postSubmit(returnUrl, paramArray, "goLangForm");
+		    		}else{
+		    			getSubmit(returnUrl, paramArray, "goLangForm");
+		    		}
+		    	}
+		    	
+		    	function getMethod(pathName){
+		    		if(pathName == "index" || pathName == "regist" || pathName == "login"){
+		    			return "get";
+		    		}else{
+		    			return "post";
+		    		}
+		    	}
+		    </script>
+
+			<!-- 각 content 에 따라 주입받는 js -->
+			
+			<script>
+			    /*<![CDATA[*/
+				let exhNo = 20262893;
+				let seDomain = "kiaf-frieze2026";
+				let productInfoMap = {"A10":{"productId":"A10","productName":"General Admission Preview Entry_Promotion Code","price":0,"priceUsd":0,"useYn":"N","saleYn":"Y","limit":1,"displayOrder":10,"productNameEn":"General Admission Preview Entry_Promotion Code","timeslotYn":"N","capacity":"-1","productNameSub":"(\uBAA9\uC694\uC77C \uD558\uB8E8)","productNameSubEn":"(Sept. 3 only)","termYn":null,"groupYn":null,"saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-03 18:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A11":{"productId":"A11","productName":"General Admission First Access_\uC624\uD6C4 3\uC2DC \uC774\uC804_Promotion Code","price":0,"priceUsd":0,"useYn":"N","saleYn":"Y","limit":1,"displayOrder":11,"productNameEn":"General Admission First Access_before 3pm_Promotion Code","timeslotYn":"N","capacity":"-1","productNameSub":"(\uAE08\uC694\uC77C, \uD1A0\uC694\uC77C \uC911 \uD558\uB8E8)","productNameSubEn":"(one selected day between Sept. 4 and 5)","termYn":null,"groupYn":null,"saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-05 15:00:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A01":{"productId":"A01","productName":"General Admission Preview Entry","price":63000,"priceUsd":4500,"useYn":"Y","saleYn":"N","limit":10,"displayOrder":1,"productNameEn":"General Admission Preview Entry","timeslotYn":"Y","capacity":"500,0,0","productNameSub":"(\uBAA9\uC694\uC77C \uD558\uB8E8)","productNameSubEn":"(Sept. 3 only)","termYn":null,"groupYn":null,"saleStart":"2026-06-15 11:00:00","saleEnd":"2026-06-30 23:59:59","etc1":"Y","purchaseCount":0,"isPurchasableYn":"N"},"A12":{"productId":"A12","productName":"General Admission Afternoon Access_\uC624\uD6C4 3\uC2DC \uC774\uD6C4_Promotion Code","price":0,"priceUsd":0,"useYn":"N","saleYn":"Y","limit":1,"displayOrder":12,"productNameEn":"General Admission Afternoon Access_after 3pm_Promotion Code","timeslotYn":"N","capacity":"-1","productNameSub":"(\uAE08\uC694\uC77C, \uD1A0\uC694\uC77C \uC911 \uD558\uB8E8)","productNameSubEn":"(one selected day between Sept. 4 and 5)","termYn":null,"groupYn":null,"saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-05 18:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A02":{"productId":"A02","productName":"General Admission First Access_\uC624\uD6C4 3\uC2DC \uC774\uC804","price":63000,"priceUsd":4500,"useYn":"Y","saleYn":"N","limit":10,"displayOrder":2,"productNameEn":"General Admission First Access_before 3pm","timeslotYn":"Y","capacity":"0,75,75","productNameSub":"(\uAE08\uC694\uC77C, \uD1A0\uC694\uC77C \uC911 \uD558\uB8E8)","productNameSubEn":"(one selected day between Sept. 4 and 5)","termYn":null,"groupYn":null,"saleStart":"2026-06-15 11:00:00","saleEnd":"2026-06-30 23:59:59","etc1":"Y","purchaseCount":0,"isPurchasableYn":"N"},"A13":{"productId":"A13","productName":"General Admission Kiaf_Promotion Code","price":0,"priceUsd":0,"useYn":"N","saleYn":"Y","limit":1,"displayOrder":13,"productNameEn":"General Admission Kiaf_Promotion Code","timeslotYn":"N","capacity":"-1","productNameSub":"(9\uC6D4 6\uC77C\uB9CC \uC785\uC7A5 \uAC00\uB2A5)","productNameSubEn":"(Access on Sept. 6 only)","termYn":null,"groupYn":null,"saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-06 17:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A03":{"productId":"A03","productName":"General Admission Afternoon Access_\uC624\uD6C4 3\uC2DC \uC774\uD6C4","price":49000,"priceUsd":3500,"useYn":"Y","saleYn":"N","limit":10,"displayOrder":3,"productNameEn":"General Admission Afternoon Access_after 3pm","timeslotYn":"Y","capacity":"0,392,200","productNameSub":"(\uAE08\uC694\uC77C, \uD1A0\uC694\uC77C \uC911 \uD558\uB8E8)","productNameSubEn":"(one selected day between Sept. 4 and 5)","termYn":null,"groupYn":null,"saleStart":"2026-06-15 11:00:00","saleEnd":"2026-06-30 23:59:59","etc1":"Y","purchaseCount":0,"isPurchasableYn":"N"},"A04":{"productId":"A04","productName":"Preview Ticket","price":250000,"priceUsd":17800,"useYn":"Y","saleYn":"Y","limit":10,"displayOrder":4,"productNameEn":"Preview Ticket","timeslotYn":"N","capacity":"600","productNameSub":"(\uBAA9\uC694\uC77C-\uC77C\uC694\uC77C 4\uC77C\uAC04 \uC785\uC7A5 \uAC00\uB2A5)","productNameSubEn":"(multi-day access between Sept. 3 and 6)","termYn":null,"groupYn":"Y","saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-06 17:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A05":{"productId":"A05","productName":"General Admission Preview Entry","price":90000,"priceUsd":6400,"useYn":"Y","saleYn":"Y","limit":10,"displayOrder":5,"productNameEn":"General Admission Preview Entry","timeslotYn":"Y","capacity":"2526,0,0","productNameSub":"(\uBAA9\uC694\uC77C \uD558\uB8E8)","productNameSubEn":"(Sept. 3 only)","termYn":null,"groupYn":"Y","saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-03 18:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A06":{"productId":"A06","productName":"General Admission First Access_\uC624\uD6C4 3\uC2DC \uC774\uC804","price":90000,"priceUsd":6400,"useYn":"Y","saleYn":"Y","limit":10,"displayOrder":6,"productNameEn":"General Admission First Access_before 3pm","timeslotYn":"Y","capacity":"0,6533,5385","productNameSub":"(\uAE08\uC694\uC77C, \uD1A0\uC694\uC77C \uC911 \uD558\uB8E8)","productNameSubEn":"(one selected day between Sept. 4 and 5)","termYn":null,"groupYn":"Y","saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-05 15:00:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A07":{"productId":"A07","productName":"General Admission Afternoon Access_\uC624\uD6C4 3\uC2DC \uC774\uD6C4","price":70000,"priceUsd":5000,"useYn":"Y","saleYn":"Y","limit":10,"displayOrder":7,"productNameEn":"General Admission Afternoon Access_after 3pm","timeslotYn":"Y","capacity":"0,1150,992","productNameSub":"(\uAE08\uC694\uC77C, \uD1A0\uC694\uC77C \uC911 \uD558\uB8E8)","productNameSubEn":"(one selected day between Sept. 4 and 5)","termYn":null,"groupYn":"Y","saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-05 18:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A08":{"productId":"A08","productName":"General Admission Student","price":55000,"priceUsd":3900,"useYn":"Y","saleYn":"Y","limit":10,"displayOrder":8,"productNameEn":"General Admission Student","timeslotYn":"Y","capacity":"200,200,200","productNameSub":"(7~19\uC138 *\uC2E0\uBD84\uC99D \uD544\uCC38)","productNameSubEn":"(Between 7-19 *ID card required)","termYn":"Y","groupYn":null,"saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-05 18:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"},"A09":{"productId":"A09","productName":"General Admission Kiaf","price":40000,"priceUsd":2800,"useYn":"Y","saleYn":"Y","limit":10,"displayOrder":9,"productNameEn":"General Admission Kiaf","timeslotYn":"N","capacity":"-1","productNameSub":"(9\uC6D4 6\uC77C\uB9CC \uC785\uC7A5 \uAC00\uB2A5)","productNameSubEn":"(Access on Sept. 6 only)","termYn":null,"groupYn":"Y","saleStart":"2026-07-01 00:00:00","saleEnd":"2026-09-06 17:30:00","etc1":"N","purchaseCount":0,"isPurchasableYn":"Y"}};
+				let lang = "en";
+				let slotType = sessionStorage.getItem('artfair.'+seDomain+'.slotType');
+				let thSlotType = "A02";
+				/*]]>*/
+				
+				$(document).ready(function() {
+					$(".terms").attr('style','display:none !important');
+					Object.keys(sessionStorage).forEach(function(key) {
+					    if (key.startsWith('artfair.'+seDomain+'.') && !key.endsWith('.'+seDomain+'.slotType')) {
+					        sessionStorage.removeItem(key);
+					    }
+					});
+					
+					if(sessionStorage.getItem('artfair.'+seDomain+'.slotType') == null || sessionStorage.getItem('artfair.'+seDomain+'.slotType') == undefined || sessionStorage.getItem('artfair.'+seDomain+'.slotType') == ""){
+						if(thSlotType){
+							sessionStorage.setItem("artfair."+seDomain+".slotType", thSlotType);
+							slotType = thSlotType;
+						}
+					}
+				});
+				
+				window.onpageshow = function(event) {
+					if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+						if(sessionStorage.getItem('artfair.'+seDomain+'.slotType') == null || sessionStorage.getItem('artfair.'+seDomain+'.slotType') == undefined || sessionStorage.getItem('artfair.'+seDomain+'.slotType') == ""){
+							alert("Choose The Fair You Would Like to visit First.");
+							location.href="/artfair/" + seDomain + "/index?lang=en";
+							return;
+						}
+						
+						location.reload();
+					}
+				}
+			</script>
+			
+			<script type="text/javascript" src="/kiaf-frieze2026/artfair/js/common.js"></script>
+			<script type="text/javascript" src="/kiaf-frieze2026/artfair/js/regist.js"></script>
+		
+		
+</body>
+</html>

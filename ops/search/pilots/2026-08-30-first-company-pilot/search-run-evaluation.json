@@ -1,0 +1,107 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "company_pilot",
+  "started_at": "2026-08-30T14:32:09+09:00",
+  "constitution_version": "1",
+  "prompt_hash": "manual-pilot-20260830-v1",
+  "context_snapshot_id": null,
+  "worker_counts": {
+    "lp-official": 6,
+    "lp-index": 6,
+    "lp-edge": 6,
+    "lp-blank": 6,
+    "ee-ticket": 6,
+    "ee-apply": 6,
+    "ee-edge": 6,
+    "ee-blank": 6,
+    "gm-startup": 6,
+    "gm-consumer": 6,
+    "gm-capital": 6,
+    "gm-blank": 6
+  },
+  "union_count": 72,
+  "integration_loss_count": 0,
+  "blank_slate_unique_count": 16,
+  "material_outcomes": [
+    "The 12 workers produced 72 preserved raw leads and 69 canonical subjects after three exact merges.",
+    "Blank-slate workers contributed 16 subjects not found by memory-assisted workers.",
+    "Nine Local leads were actually dated Events subjects or mixed place-plus-occurrence records.",
+    "Seven of twelve worker outputs required one bounded schema correction.",
+    "Nine subjects received 43 evidence claims and independent Trust review: five approve, two revise and two hold.",
+    "One pre-recommendation PERSONAL_FIT policy violation passed both JSON Schema and Trust and was blocked only by final integration audit."
+  ],
+  "failures": [
+    {
+      "stage": "merged_early_rejected",
+      "root_cause": "taxonomy_gap",
+      "description": "Nine Local leads were finite events or mixed place-and-occurrence records, exposing an ownership rule that is not mechanically testable.",
+      "corrective_action": "Split persistent venue identity from dated occurrence at normalization and add an ownership invariant before department handoff.",
+      "regression_case_id": null
+    },
+    {
+      "stage": "found_not_merged",
+      "root_cause": "tool_failure",
+      "description": "Seven worker outputs initially violated the declared enum or raw-lead envelope and required one bounded schema correction before union.",
+      "corrective_action": "Validate worker output at the dispatcher boundary and return exact field-level errors for the single retry.",
+      "regression_case_id": null
+    },
+    {
+      "stage": "verification_failed",
+      "root_cause": "stale_evidence",
+      "description": "Galaxy Robot Park had official opening and self-reported demand evidence but lacked an official street address, hours, admission price and current booking method.",
+      "corrective_action": "Require a minimum execution-fact set before a permanent place can pass Trust for product exposure.",
+      "regression_case_id": null
+    },
+    {
+      "stage": "verification_failed",
+      "root_cause": "stale_evidence",
+      "description": "The 7979 running session showed a future calendar but booking was not yet open and the same official surface also displayed a service-ended label.",
+      "corrective_action": "Model not-yet-open separately from unavailable and recheck after the published opening timestamp.",
+      "regression_case_id": null
+    },
+    {
+      "stage": "verification_failed",
+      "root_cause": "manipulated_signal",
+      "description": "STORY A's active booking path was found, but the KRW 30,000 reference-price basis, opening-special duration and coupon conditions were not established.",
+      "corrective_action": "Suppress reference-price savings and urgency until historical price and expiry are independently established.",
+      "regression_case_id": null
+    },
+    {
+      "stage": "merged_early_rejected",
+      "root_cause": "taxonomy_gap",
+      "description": "A Global evidence assembler assigned PERSONAL_FIT without a user decision context, and the Trust reviewer approved the global signal without rejecting that chip support.",
+      "corrective_action": "Make PERSONAL_FIT structurally impossible outside a recommendation context and add a post-Trust invariant validator.",
+      "regression_case_id": null
+    }
+  ],
+  "successes": [
+    {
+      "candidate_id": "local-parkseobo-museum",
+      "success_stage": "discovery_success",
+      "discovery_path": "local blank-slate official-site path",
+      "lead_time_days": null,
+      "repeatable_method": "Search official museum and cultural institution openings without restaurant or merchant watchlists."
+    },
+    {
+      "candidate_id": "local-starfield-market-wolgye",
+      "success_stage": "discovery_success",
+      "discovery_path": "local index plus blank-slate duplicate",
+      "lead_time_days": null,
+      "repeatable_method": "Join opening news with live merchant branch pages and dated promotion terms."
+    },
+    {
+      "candidate_id": "event-story-a-seongsu-2026",
+      "success_stage": "discovery_success",
+      "discovery_path": "local edge discovery followed by Events handoff and replacement booking resolution",
+      "lead_time_days": null,
+      "repeatable_method": "Preserve closed booking URLs as provenance and follow same-business replacement products before declaring closure."
+    },
+    {
+      "candidate_id": "global-fypro-2026",
+      "success_stage": "discovery_success",
+      "discovery_path": "independent startup-launch and capital-strategy workers",
+      "lead_time_days": null,
+      "repeatable_method": "Merge duplicate company signals while separating launch attention, self-reported adoption and economic durability."
+    }
+  ]
+}

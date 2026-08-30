@@ -1,0 +1,1484 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="이마트(Emart)" />
+    <meta name="referrer" content="origin" />
+    <meta name="referrer" content="always" />
+
+    <title>&#49828;&#53440;&#54596;&#46300;&#47560;&#53011; &#50900;&#44228;&#51216; &lt; 점포 찾기 &lt; 이마트</title>
+        <meta name="title" content="점포상세" >
+    <meta name="description" content="이마트 점포를 안내해드립니다.">
+    <meta name="keywords" content="이마트, 점포 찾기, 점포">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="naver-site-verification" content="e568814c1820b1b62945e1040243dae75ace0b39"/>
+    <meta name="google-site-verification" content="KFiFujBGzu7s8n9LgFqJSGYKNeLNW0-DOp8buME84Xs"/>
+    <link rel="apple-touch-icon-precomposed" href="https://stimg.emart.com/app/images/common/ico_emart_120.png">
+    <link rel="shortcut icon" href="https://stimg.emart.com/app/images/common/favicon_emart.ico">
+    <link rel="stylesheet" type="text/css" href="https://eappfront.emart.com/static/css/swiper.min.css">
+        <link rel="stylesheet" type="text/css" href="https://eappfront.emart.com/static/css/ern-emart.min.css?v=601095026">
+        <script type="text/javascript" src="https://eappfront.emart.com/static/js/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/libs/jquery.easing-1.3.min.js"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/libs/jquery.form.min.js"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/libs/jquery.cookie.min.js"></script>
+    <!-- 버전 비교 라이브러리 -->
+<script type="text/javascript" src="https://eappfront.emart.com/static/js/libs/version_compare.min.js"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/common/common.min.js?v=601095026"></script>
+    <script type="text/javascript" src="/static/js/libs/sha256.min.js?v=1"></script>
+<script type="text/javascript" src="/static/js/libs/jquery.jcryption.1.2.js?v=1"></script>
+<script
+    src="https://sac-serviceinfra.emart.com/netfunnel-statics/agents/client/javascript/netfunnel-javascript-agent.js"
+    data-nf-server-url="https://apc.emart.com"
+    data-nf-setting-url="https://apc.emart.com/assets/nf-setting/1/nf-setting.json"
+    data-nf-vwr-page-url="https://sac-serviceinfra.emart.com/netfunnel-statics/assets/vwr-page/1/index.html"
+    data-nf-error-page-url="https://sac-serviceinfra.emart.com/netfunnel-statics/assets/vwr-page/error/errorPage.html"
+    data-nf-custom-cookie-domain=".emart.com"
+    data-nf-network-timeout="500"
+></script>
+<script type="text/javascript">
+  var all_cookies = document.cookie ? document.cookie.split('; ') : [];
+  //var max_version = $.cookie('emart_appversion');
+  var max_version = "null";
+
+  /* for (var i = 0, l = all_cookies.length; i < l; i++) {
+    var parts = all_cookies[i].split('=');
+    var name = parts.shift();
+    var value = parts.join('=');
+
+    if (name == 'emart_appversion') {
+      if (parseInt(value.replace(/\./g,""),10) > parseInt(max_version.replace(/\./g,""),10)) {
+        max_version = value;
+        $.cookie('emart_appversion',max_version);
+      }
+    }
+  } */
+
+	window.isApp = false;
+	window.isAndroid = false;
+	window.isIOS = false;
+	window.isAndroid4_3_over = false;
+	window.isLogin = false;
+	window.isMarket = "";
+	window.loginUrl = 'https://eapp.emart.com/login/login.do';
+	window.deviceBottomHeight = "";
+	window.deviceVersion = ("" != '' && max_version != '') ?
+      parseInt(max_version.replace(/\./g,""),10) > parseInt("".replace(/\./g,""),10) ?
+          parseInt(max_version.replace(/\./g,""),10) : parseInt("".replace(/\./g,""),10) : 0;
+	window.popIndex = 0;
+    if (window.isApp && window.isAndroid) {
+   		window.isAndroidDeprecated = (VersionCompare.lt('', '4.4.0')) ? true : false;
+   	} else if(typeof isAndroidDeprecated === 'undefined') {
+   		window.isAndroidDeprecated = false;
+   	}
+    window.deviceName = "";
+    window.deviceId = "";
+    window.osVersion = "";
+    window.deviceUuid = "";
+    window.xlog = "";
+    window.environment = "prd";
+
+	if (!window.isApp) {
+		emart.Env.set( "home_url", "/main/main.do" );			//홈 url
+		emart.Env.set( "quick_my", "/menu/menuMain_renew.do" );			//메뉴
+		emart.Env.set( "quick_holiday", "/menu/date_holiday.do" );	//휴점점포
+		emart.Env.set( "quick_point", "/menu/pointcard.do" );			//포인트
+		emart.Env.set( "quick_favorite", "/menu/menuFavorite.do" );	//단골이마트
+		emart.Env.set( "quick_emartmall", "/menu/emartMall.do" );	//이마트 몰
+		emart.Env.set( "quick_coupon", "/coupon/list.do?tmstmp=1788070480000" );			//쿠폰
+	}
+	emart.Env.set( "favorite_store_info", "/main/jijumInfo.do" );	//단골이마트 정보
+	emart.Env.set( "serverTime", "/main/currentTime.do" );			//서버시간 정보
+	emart.Env.set("loginUrl", "https://eapp.emart.com/login/login.do");
+	emart.Env.set("menuUrl", "https://eapp.emart.com/menu/menuMain_renew.do");
+	emart.Env.set("cdnUrl", "https://stimg.emart.com/app");
+	emart.Env.set("httpUrl", "https://eapp.emart.com");
+    emart.Env.set("s3CdnUrl", "https://eapp-cdn.emart.com");
+    emart.Env.set("ssg", "https://shinsegaepoint.ssg.com"); //ssg
+    emart.Env.set("ssg_join", "https://member.shinsegaepoint.com/emart/emartApp/member/join/cert"); //ssg 회원가입
+    emart.Env.set("ssg_id", "https://member.shinsegaepoint.com/emart/emartApp/member/findIdPw"); //ssg id 찾기
+    emart.Env.set("ssg_pw", "https://member.shinsegaepoint.com/emart/emartApp/member/findPw"); //ssg pw 변경하기
+    emart.Env.set("ssg_modify", "https://member.shinsegaepoint.com/emart/emartApp/myinfo/cert?ssoToken="); //ssg 회원수정
+    emart.Env.set("ssg_benefit", "https://shinsegaepoint.ssg.com/pointPc/myinfo/certManageBenefit.ssg?svcCode=E0110&ssoToken="); //ssg 맞춤혜택 정보관리
+    emart.Env.set("ssg_terms", "https://member.shinsegaepoint.com/emart/emartApp/stplat/terms"); //ssg 이용약관
+    emart.Env.set("ssg_withdrawal", "https://member.shinsegaepoint.com/emart/emartApp/myinfo/withdrawalPassword?ssoToken="); //ssg 이용약관
+    emart.Env.set("ssg_offline_member", "https://member.shinsegaepoint.com/emart/emartApp/offline/member"); //ssg 오프라인 전용 페이지
+    emart.Env.set("ssg_login", "https://member.shinsegaepoint.com/shinsegaepoint/group/member/login"); //ssg 로그인
+    emart.Env.set("ssg_sso_gate", "https://member.ssg.com/spoint/ssoLogin.ssg"); //ssg sso gate
+    emart.Env.set("spoint_sso_gate", "https://m.shinsegaepoint.com/spcomGate.html"); //spoint sso gate
+    emart.Env.set("ssggo_sso_gate", "https://ssg-go.com/spointGate"); //ssggo sso gate
+    emart.Env.set("everyday_sso_gate", "https://emile.emarteveryday.co.kr/appLink"); //everyday sso gate
+    emart.Env.set("emart24_sso_gate", ""); //emart24 sso gate
+
+</script>
+
+<script type="text/javascript" src="https://eappfront.emart.com/static/js/common/common.mobile.min.js?v=601095026"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/common/makePCookie.min.js"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/common/ssgpay.bridge.min.js?v=601095026"></script>
+    <!-- 2018 renew -->
+<script>
+$(function(){
+	// 안드로이드 4.4.2 이하일 경우 #rn_wrap 요소에 deprecated 클래스 추가
+	if(isApp && isAndroid && isAndroidDeprecated){
+		$('#rn_wrap, #rn_pop_wrap').addClass('deprecated');
+	}
+
+	// 2019-12-06 추가 - iOS앱 심사 대응을 위한 문구 삽입
+	if(isIOS && $('.detail_area').length > 0){
+		var message = '본 경품이벤트는 Apple과 관련이 없음을 알려드립니다.';
+
+		// 이벤트용
+		$('.detail_area:not(.ex-apple-notification)')
+			.filter(function(){ return ($(this).text().indexOf('꼭 확인하세요!') != -1)})
+			.filter(function(){ return ($(this).text().indexOf('경품') != -1)})
+			.find('dd').append('<br>- ' + message);
+
+		// 당첨자 발표용
+		$('.detail_area')
+			.filter(function(){ return ($(this).text().indexOf('경품') != -1)})
+			.find('dt').filter(function(){ return ($(this).text().indexOf('참고해 주세요') != -1)})
+			.next().append('※ ' + message).css('padding-bottom', '40px');
+	}
+
+	// renew
+    if (isIOS && $('.event-description').length) {
+        $('.event-description')
+            .filter(function () {return ($(this).text().indexOf('경품') != -1)})
+            .append('<li>본 경품이벤트는 Apple과 관련이 없음을 알려드립니다.</li>');
+    }
+
+    // Firebase Log Record
+    if ('' !== '' &&  '' !== '') {
+        var params = '{"event": "campaign", "parameters": {"cmpgId": "", "trgId": ""}}';
+        recFirebaseEvents(params);
+    }
+});
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'})
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NJTHCDHN');
+</script>
+<!-- End Google Tag Manager -->
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){}
+</script>
+
+<script type="text/javascript" src="https://eappfront.emart.com/static/js/2020/ern-common.min.js?v=601095026"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/2020/swiper.min.js"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/static/js/common/emartClock.min.js"></script>
+        <link href="https://eappfront.emart.com/css/chunk-vendors.75bbadcf.css" rel="stylesheet">
+    <link href="https://eappfront.emart.com/css/app.7fd19742.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        $(window).bind("pageshow", function(event) {
+            if (event.originalEvent.persisted) {
+                //alert("Cache Page..");
+                window.location.reload();
+            }
+        });
+    </script>
+
+    <style  type="text/css">
+        /* loading */
+        .loading	{position:fixed; top:0; left:0; width:100%; height:100%; z-index:99999;}
+        .loading:before	{content:' '; display:block; position:absolute; top:50%; left:50%; width:40px; height:40px; margin:-20px 0 0 -20px; background:url('https://stimg.emart.com:448/app/images/common/bg_loading.png') no-repeat; background-size:40px 40px;}
+        .loading span	{position:absolute; top:50%; left:50%; width:24px; height:24px; margin:-12px 0 0 -12px; text-indent:-9999px; background:url('https://stimg.emart.com:448/app/images/common/ico_loading.png') no-repeat; background-size:24px 24px; -webkit-animation-name: 'ern-loading'; -webkit-animation-duration: 0.8s; -webkit-animation-timing-function: linear; -webkit-animation-iteration-count : infinite;}
+        .loading:after {content:none !important}
+        @-webkit-keyframes 'ern-loading'	{0% {-webkit-transform:rotate(0deg);} 100% {-webkit-transform:rotate(360deg);}}
+        #body.app .loading	{display:none !important;} /* app일 경우 */
+        .none	{display:none !important;}
+    </style>
+
+</head>
+
+<body class="ern">
+<!-- ern-skip_navi -->
+<div id="ern-skip-navi">
+    <a href="#ern-container">본문 바로가기</a>
+</div>
+<!-- //ern-skip_navi -->
+
+    <!--  2021.03.12 IG.KIM 앱 다운로드 배너 추가 -->
+    <div class="top-banner ern-appdown-check" style="display:none;">
+            <div class="top-banner-content">
+                <a href="#" class="d-download-app top-banner-close" data-url="https://eapp.emart.com/branch/view.do?id=1059&mallGbn=E"> 이마트앱 다운받고 풍성한 혜택을 만나세요! </a>
+                <a href="#" class="ern-btn-appdown d-download-app top-banner-close" data-url="https://eapp.emart.com/branch/view.do?id=1059&mallGbn=E">
+                    <span class="blind">이마트앱 다운로드</span>
+                </a>
+            </div>
+            <a href="#" class="top-banner-close" data-url="https://eapp.emart.com/branch/view.do?id=1059&mallGbn=E" data-log="app_banner_close">
+                <span class="blind">레이어 닫기</span>
+            </a>
+        </div>
+
+		<script>
+        const cookieName = 'eCookies_MAIN_APP_DOWNLOAD';
+
+		$(document).ready(function() {
+			// 메인 앱다운로드 있고 없고를 체크해서 body에 class 부여
+			if ($.cookie(cookieName)) {
+				$(".ern-appdown-check").hide();
+			} else {
+				$(".ern-appdown-check").show();
+			}
+
+		    $('.top-banner-close').click(function() {
+                $.ajax({
+                    type      : 'get',
+                    data      : {act:'app_banner_close'},
+                    dataType  : 'json',
+                    async     : true,
+                    url       : '/common/dummy.do'
+                });
+
+                setTimeout(function(){
+                    $(".ern-appdown-check").slideUp(350);
+                    $.cookie(cookieName, "hide", { expires: 1, path: '/' });
+                    return false;
+                }, 500);
+		    });
+		});
+		</script>
+		<!-- ern-wrap -->
+    <div id="ern-wrap" class="" >
+        <div class="loading none"><span>로딩중</span></div>
+
+        <!-- ern-header -->
+        <header id="ern-header">
+            <script type="text/javascript">
+	function onBack() {
+		if(!window.isApp){
+			$(".ern-link").length <= 0 ? window.history.back() : location.replace(document.referrer);
+		} else {
+			emart.app.cmd('appview_close');
+		}
+		
+	}
+</script>
+
+<div class="header-left">
+    <button type="button" class="btn-header-back" onclick="onBack()" aria-label="뒤로가기"></button>
+    <a href="/main/main.do" class="btn-header-home" data-cmd="open_main_webpage_delpile" aria-label="홈으로 이동"></a>
+</div>
+
+<div class="header-center">
+    <h1 class="head-title">점포상세</h1>
+</div>
+
+<div class="header-right">
+    <div class="gnb-search" style="display: none;">
+        <a href="/webapp/product/search" class="gnb-search-icon" data-cmd="open_main_webpage" aria-label="검색 페이지로 이동"></a>
+    </div>
+    <button type="button" class="btn-all-menu" onclick="allMenu();">
+        <span aria-label="전체메뉴 열기"></span>
+    </button>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', async function () {
+        const isFeatureOn = await window.isShowSearchIcon();
+
+        if (isFeatureOn) {
+            $('.gnb-search').show();
+        } else {
+            $('.gnb-search').hide();
+        }
+
+        if ($.cookie('currentMainType') === 'T') {
+            $('.btn-header-home').attr('href', '/traders/main.do');
+            const $search = $('.gnb-search-icon');
+            $search.attr('href', $search.attr('href').concat('?storeType=T'));
+        }
+    });
+</script>
+</header>
+
+        <!-- //ern-header -->
+        <!-- eapp-common-container -->
+        <div id="eapp-common-container"></div>
+        <!-- //eapp-common-container -->
+
+        <!-- ern-container -->
+        <div id="ern-container">
+            <!-- ern-contents -->
+            <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=hde5euh7pt"></script>
+
+<!-- ern-contents -->
+                <div class="ern-contents shp-content shp-content-detail">
+                    <!-- con-block -->
+                    <div class="con-block">
+                        <!-- box -->
+                        <div class="box">
+                            <span class="store-state open">영업중</span><h2 class="store">스타필드마켓 월계점</h2>
+
+                            <!-- ern-link-box -->
+                            <div class="ern-link-box">
+                                <a class="link" href="#" onclick="return moveCenter();" target="_blank" title="새창">문화센터</a>
+                                <div class="line-bar">
+                                        <span class=""></span>
+                                    </div>
+                                    <a class="link" href="/areamileage/areaMilegMain.do?tmstmp=1788070480000" data-cmd="open_main_webpage">지역단체 마일리지 적립</a>
+                                </div>
+                            <!-- //ern-link-box -->
+
+                            <!-- ern-check-box -->
+                            <div class="ern-check-box">
+                                <label class="lab">
+                                    <input class="chk chk-favor" type="checkbox" id="d-btn-bookmark"  data-store-id="1059">
+                                    <span class="txt">즐겨찾기</span>
+                                </label>
+
+                                <label class="lab">
+	                                        <input class="chk chk-store" type="checkbox" id="d-btn-favor" data-store-id="1059" data-store-name="스타필드마켓 월계점" data-store-type="E">
+	                                        <span class="txt">단골점포</span>
+	                                    </label>
+	                                    </div>
+                            <!-- //ern-check-box -->
+                        </div>
+                        <!-- //box -->
+                    </div>
+                    <!-- //con-block -->
+
+                    <!-- con-block -->
+                    <div class="con-block">
+                        <!-- other-info -->
+                        <div class="box-info other-info">
+                        	<dl>
+                                	<dt class="icon-time">영업시간</dt>
+	                                <dd>
+                                        <span class="font-roboto">10:00~23:00</span>
+                                        <p>스타필드마켓 정상영업</p>
+                                        </dd>
+	                            </dl>
+                        	<dl>
+                                <dt class="icon-closed">휴점일</dt>
+                                <dd>
+                                    <!-- <a href="/menu/date_holiday.do"> -->
+                                                <span class="font-roboto">9/13</span>(일),&nbsp;<span class="font-roboto">9/27</span>(일)<!-- </a> -->
+                                        </dd>
+                            </dl>
+                            
+                            <dl>
+                                	<dt class="icon-customer">고객센터</dt>
+                                    <dd>
+                                        <span class="font-roboto"><a href="tel:02-2092-1234">02-2092-1234</a></span>
+                                    </dd>
+                                    </dl>
+                            <dl>
+                                	<dt class="icon-cultural">문화센터</dt>
+                                    <dd>
+                                        <span class="font-roboto"><a href="tel:02-2092-1250">02-2092-1250</a></span>
+                                    </dd>
+                                </dl>
+                            <dl>
+                                    <dt>일렉트로마트</dt>
+                                    <dd>
+                                        <span class="font-roboto"><a href="tel:02-2092-1207">02-2092-1207</a></span>
+                                    </dd>
+                                    </dl>
+                            <dl>
+                                    <dt>몰리스펫샵</dt>
+                                    <dd>
+                                        <span class="font-roboto"><a href="tel:02-2092-1010">02-2092-1010</a></span>
+                                    </dd>
+                                    </dl>
+                            </div>
+                        <!-- //other-info -->
+                        
+                        <!-- benefit-info -->
+                            <div class="box-info benefit-info">
+                                <h3>전문점/편의시설</h3>
+                                <!-- convenient-benefit -->
+                                <div class="convenient-benefit">
+                                    <span class="round-txt electro-market">일렉트로마트</span>
+                                    <span class="round-txt molly">몰리스</span>
+                                    <span class="round-txt cultural">문화센터</span>
+                                    <span class="round-txt electro-car">전기차 충전소</span>
+                                    </div>
+                                <!-- //convenient-benefit -->
+                            </div>
+                            <!-- //benefit-info -->
+                        <!-- local-info -->
+                        <div class="box-info local-info">
+                            <h3>주소</h3>
+                            <dl>
+                                        <dt>도로명</dt>
+                                        <dd>서울특별시 노원구 마들로3길 15이마트 월계점</dd>
+                                    </dl>
+                                <dl>
+                                        <dt>지번</dt>
+                                        <dd>서울특별시 노원구 월계동 333-1</dd>
+                                    </dl>
+                                </div>
+                        <!-- //local-info -->
+                    </div>
+                    <!-- //con-block -->
+
+                    <!-- con-block -->
+                    <div class="con-block">
+                        <!-- ern-shp-tab -->
+                        <div class="ern-tab ern-shp-tab">
+                            <ul class="tab_button">
+                                <li class="on">
+                                    <a href="#transport" role="tab" aria-selected="true" onclick="tabChange(this)">오시는 길</a>
+                                </li>
+                                <li>
+                                    <a href="#parking" role="tab" aria-selected="false" onclick="tabChange(this)">주차정보</a>
+                                </li>
+                                <li>
+                                    <a href="#floor" role="tab" aria-selected="false" onclick="tabChange(this)">층별안내</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- //ern-shp-tab -->
+    
+                        <!-- tab_contents -->
+                        <div class="tab_contents" id="transport">
+                            <h4 class="blind">오시는 길</h4>
+                            <!-- map-img -->
+                            <div id="map" class="map-img" style="width:100%;height:340px;"></div>
+                            <!-- //map-img -->
+    
+                            <!-- box -->
+                            <div class="box">
+                                <!-- map-link -->
+                                <div class="map-link">
+                                    <button type="button" class="link link-naver-map" onclick="return moveMap();" title="새창">네이버 지도 바로가기</button>
+                                </div>
+                                <!-- //map-link -->
+    
+                                <!-- btm-info -->
+                                <div class="btm-info">[층별 정상 영업 매장] <br/>1층 : 이마트 매장, 애슐리, 블랑제리, 앤티앤스프레즐<br/>2층 : 일렉트로마트,레고스토어,몰리스, 문화센터<br/>        병원, 미용실, 약국, 세탁, 수선실,네일?<br/>3층 : 열쇠 <br/>매장별 영업시간 다르므로, 층별 안내 확인바랍니다.<br/><br/>[버스 이용시]  147, 1222 (진아교통 종점)<br/>[지하철 이용시]<br/>석계역 1호선 1번출구 또는 석계역 6호선 4번출구 앞 버스정류장에서 1135, 1136, 1132 버스 탑승→ 진아교통 종점에서 하차<br/>월계역 2번출구 하차 → 월계4동주민센터(사거리) → 녹천중ㆍ사슴성원4단지 사이 골목 → 녹천초교 방향 우회전 → 녹천초교 삼거리(진아교통) → 이마트월계점(총소요시간 15분)   <br/> ※ 1136 버스는 이마트 앞 까지 운행</div>
+                                <!-- //btm-info -->
+                            </div>
+                            <!-- //box -->
+                        </div>
+                        <!-- //tab_contents -->
+    
+                        <!-- tab_contents -->
+                        <div class="tab_contents" id="parking" style="display:none;">
+                            <h4 class="blind">주차정보</h4>
+                            <!-- box -->
+                            <div class="box">
+                                <!-- btm-info -->
+                                <div class="btm-info">■주차장 유료화 시행 : 2025년 7월 1일(화)~<br/>-. 이마트 구매 영수증 + 테넌트 매장 + 트레이더스 구매 영수증 합산 가능<br/><br/>■이마트 구매 금액별 무료 주차 시간<br/>-.무료회차 : 30분이내 / 기본요금 : 10분당 1,000원 / 30분초과시 회차시간포함 요금부과<br/>-. 1만원이상 : 2시간<br/>-. 3만원이상 : 3시간<br/>-. 5만원이상 : 4시간<br/>-.10만원이상: 5시간<br/>-. 일 최대 무료할인시간(합산 포함): 5시간 <br/><br/>■테넌트 매장 무료 주차 시간<br/>-. 약국,안경,열쇠,수선 : 1시간<br/>-. 푸드,카페 : 2시간<br/>-. 애슐리 : 3시간<br/>-. 병원,뷰티삽,놀이방 : 3시간<br/>-. 문화센터 : 4시간<br/>-. 미용실 : 6시간<br/><br/>■ 전기차 충전소(3층/4층)<br/>-. 무료주차 1시간 : 출차정산 전 고객만족센터에서 접수 必</div>
+                                    <!-- //btm-info -->
+                            </div>
+                            <!-- //box -->
+                        </div>
+                        <!-- //tab_contents -->
+    
+                        <!-- tab_contents -->
+                        <div class="tab_contents" id="floor" style="display:none;">
+                            <h4 class="blind">층별안내</h4>
+                            <ul class="ern-accordion floor-guide">
+                                    <li class="">
+                                                <a href="javascript:void(0)" role="button" class="link" title="상세내용 열기">
+                                                    <span class="floor font-roboto">4F</span>
+                                                    <p class="tit">■ 주차장,ATM(우리,국민,신한,SC제일)</p>
+                                                </a>
+                                                <div class="cont">
+                                        <div class="floor-list">
+                                                    <p class="txt-tit">전기차 충전소(SK, 완속5대/급속14대)</p>
+                                                    <span class="time font-roboto">10:00~23:00</span>
+                                                    <span class="tel font-roboto">02</span>
+                                                    <a class="link-tel" href="tel:02">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            </div>
+                                            </li>
+                                        <li class="">
+                                                <a href="javascript:void(0)" role="button" class="link" title="상세내용 열기">
+                                                    <span class="floor font-roboto">3F</span>
+                                                    <p class="tit">■ 주차장,열쇠,전기차충전(완속),중고폰판매ATM,사진인쇄ATM</p>
+                                                </a>
+                                                <div class="cont">
+                                        <div class="floor-list">
+                                                    <p class="txt-tit">민팃(중고휴대폰판매)</p>
+                                                    <span class="time font-roboto">10:00~23:00</span>
+                                                    <span class="tel font-roboto">1877-5446</span>
+                                                    <a class="link-tel" href="tel:1877-5446">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">열쇠/도장/시계</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-979-1304</span>
+                                                    <a class="link-tel" href="tel:02-979-1304">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">전기차 충전소(차지비, 완속2대, J3구역)</p>
+                                                    <span class="time font-roboto">10:00~23:00</span>
+                                                    <span class="tel font-roboto">1600-4047</span>
+                                                    <a class="link-tel" href="tel:1600-4047">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            </div>
+                                            </li>
+                                        <li class="">
+                                                <a href="javascript:void(0)" role="button" class="link" title="상세내용 열기">
+                                                    <span class="floor font-roboto">2F</span>
+                                                    <p class="tit">■ 유니클로, 무인양품, 신세계팩토리, 데카트론, 스타벅스, 영품문고, 엘리판트, ABC마트, 일렉트로마트(가전),애플,토이킹덤(완구),몰리스,문화센터,약국,병원</p>
+                                                </a>
+                                                <div class="cont">
+                                        <div class="floor-list">
+                                                    <p class="txt-tit">A STORE(애플샵)</p>
+                                                    <span class="time font-roboto">10:00~21:50</span>
+                                                    <span class="tel font-roboto">02-2092-1219</span>
+                                                    <a class="link-tel" href="tel:02-2092-1219">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">ABC마트</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-1588-9667</span>
+                                                    <a class="link-tel" href="tel:02-1588-9667">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">데카트론</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">070-7954-0401</span>
+                                                    <a class="link-tel" href="tel:070-7954-0401">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">레고스토어</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-948-2514</span>
+                                                    <a class="link-tel" href="tel:02-948-2514">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">리고리티</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-976-0309</span>
+                                                    <a class="link-tel" href="tel:02-976-0309">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">몰리스펫샵</p>
+                                                    <span class="time font-roboto">10:00~21:50</span>
+                                                    <span class="tel font-roboto">02-2092-1010</span>
+                                                    <a class="link-tel" href="tel:02-2092-1010">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">문화센터</p>
+                                                    <span class="time font-roboto">10:00~17:00</span>
+                                                    <span class="tel font-roboto">02-2092-1250</span>
+                                                    <a class="link-tel" href="tel:02-2092-1250">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">미담한의원(주말 17시마감) *점심13:00-14:00</p>
+                                                    <span class="time font-roboto">10:00~20:00</span>
+                                                    <span class="tel font-roboto">02-976-3375</span>
+                                                    <a class="link-tel" href="tel:02-976-3375">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">바른네일</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-977-0877</span>
+                                                    <a class="link-tel" href="tel:02-977-0877">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">삼성드림소아과(주말17시 마감),식사시간 점심(13:00-14:00)저녁(18:30-19:00)</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-3296-2502</span>
+                                                    <a class="link-tel" href="tel:02-3296-2502">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">세탁소(크린에이드)</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-949-7199</span>
+                                                    <a class="link-tel" href="tel:02-949-7199">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">수선실(크린에이드)</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-977-4993</span>
+                                                    <a class="link-tel" href="tel:02-977-4993">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">스타벅스</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto"></span>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">신동아 약국(토/일/공휴일 17시 마감)</p>
+                                                    <span class="time font-roboto">10:00~21:30</span>
+                                                    <span class="tel font-roboto">02-978-5344</span>
+                                                    <a class="link-tel" href="tel:02-978-5344">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">신세계팩토리</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-977-8429</span>
+                                                    <a class="link-tel" href="tel:02-977-8429">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">아가방</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-979-4779</span>
+                                                    <a class="link-tel" href="tel:02-979-4779">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">아프리카 안경</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-948-9009</span>
+                                                    <a class="link-tel" href="tel:02-948-9009">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">영풍문고</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-948-0106</span>
+                                                    <a class="link-tel" href="tel:02-948-0106">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">웰니스동물병원(진료시간 13시~19시)</p>
+                                                    <span class="time font-roboto">10:00~20:00</span>
+                                                    <span class="tel font-roboto">02-949-0975</span>
+                                                    <a class="link-tel" href="tel:02-949-0975">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">위니비니</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-971-3332</span>
+                                                    <a class="link-tel" href="tel:02-971-3332">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">이미지 치과  *점심시간12:30-13:30</p>
+                                                    <span class="time font-roboto">10:00~20:00</span>
+                                                    <span class="tel font-roboto">02-949-2735</span>
+                                                    <a class="link-tel" href="tel:02-949-2735">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">이철헤어커커(미용실)</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-975-2326</span>
+                                                    <a class="link-tel" href="tel:02-975-2326">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">일렉트로마트</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-2092-1207</span>
+                                                    <a class="link-tel" href="tel:02-2092-1207">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">일렉트로마트(삼성가전)</p>
+                                                    <span class="time font-roboto">10:00~21:50</span>
+                                                    <span class="tel font-roboto">02-6925-2334</span>
+                                                    <a class="link-tel" href="tel:02-6925-2334">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">일렉트로마트(삼성모바일)</p>
+                                                    <span class="time font-roboto">10:00~20:30</span>
+                                                    <span class="tel font-roboto">02-973-8670</span>
+                                                    <a class="link-tel" href="tel:02-973-8670">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">챔피온 블랙벨트</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-949-1242</span>
+                                                    <a class="link-tel" href="tel:02-949-1242">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">탑텐키즈</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-3296-2758</span>
+                                                    <a class="link-tel" href="tel:02-3296-2758">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">토이킹덤</p>
+                                                    <span class="time font-roboto">10:00~21:50</span>
+                                                    <span class="tel font-roboto">010-2371-5113</span>
+                                                    <a class="link-tel" href="tel:010-2371-5113">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">푸드케어</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-979-2991</span>
+                                                    <a class="link-tel" href="tel:02-979-2991">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">홍콩다방</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto"></span>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">힐시바이 시다스</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-977-3737</span>
+                                                    <a class="link-tel" href="tel:02-977-3737">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            </div>
+                                            </li>
+                                        <li class="">
+                                                <a href="javascript:void(0)" role="button" class="link" title="상세내용 열기">
+                                                    <span class="floor font-roboto">1F</span>
+                                                    <p class="tit">■ 이마트,애슐리,올리브영, BYD, 스마스시, 노브랜드버거, 고객만족센터</p>
+                                                </a>
+                                                <div class="cont">
+                                        <div class="floor-list">
+                                                    <p class="txt-tit">BYD</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-979-6322</span>
+                                                    <a class="link-tel" href="tel:02-979-6322">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">고객만족센터</p>
+                                                    <span class="time font-roboto">10:00~22:50</span>
+                                                    <span class="tel font-roboto">02-2092-1234</span>
+                                                    <a class="link-tel" href="tel:02-2092-1234">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">공차</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-973-6885</span>
+                                                    <a class="link-tel" href="tel:02-973-6885">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">노브랜드 버거</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">02-9654-1123</span>
+                                                    <a class="link-tel" href="tel:02-9654-1123">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">매란방</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">02-977-4500</span>
+                                                    <a class="link-tel" href="tel:02-977-4500">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">모스바니</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">070-8211-1473</span>
+                                                    <a class="link-tel" href="tel:070-8211-1473">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">미니골드</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-978-4410</span>
+                                                    <a class="link-tel" href="tel:02-978-4410">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">바르다김선생&죠스떡볶이</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">02-3296-2888</span>
+                                                    <a class="link-tel" href="tel:02-3296-2888">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">배스킨라빈스</p>
+                                                    <span class="time font-roboto">10:00~21:00</span>
+                                                    <span class="tel font-roboto">02-976-3132</span>
+                                                    <a class="link-tel" href="tel:02-976-3132">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">블랑제리</p>
+                                                    <span class="time font-roboto">10:00~21:50</span>
+                                                    <span class="tel font-roboto">02-948-3853</span>
+                                                    <a class="link-tel" href="tel:02-948-3853">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">빠우</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">02-949-0100</span>
+                                                    <a class="link-tel" href="tel:02-949-0100">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">상품권샵</p>
+                                                    <span class="time font-roboto">10:00~22:30</span>
+                                                    <span class="tel font-roboto">02-2092-1065</span>
+                                                    <a class="link-tel" href="tel:02-2092-1065">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">서청미역</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">02-948-6001</span>
+                                                    <a class="link-tel" href="tel:02-948-6001">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">소다(아울렛)</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-949-2475</span>
+                                                    <a class="link-tel" href="tel:02-949-2475">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">소이연남</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">02-2652-9606</span>
+                                                    <a class="link-tel" href="tel:02-2652-9606">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">솔브 플러스</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-973-0188</span>
+                                                    <a class="link-tel" href="tel:02-973-0188">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">솥밥예찬</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">02-971-5670</span>
+                                                    <a class="link-tel" href="tel:02-971-5670">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">쉬즈미스</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-977-7421</span>
+                                                    <a class="link-tel" href="tel:02-977-7421">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">스킨밴드</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">070-7076-8595</span>
+                                                    <a class="link-tel" href="tel:070-7076-8595">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">스튜디오톰보이</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-971-7811</span>
+                                                    <a class="link-tel" href="tel:02-971-7811">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">스튜디오화이트</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-3296-1233</span>
+                                                    <a class="link-tel" href="tel:02-3296-1233">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">슬립앤슬립</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-979-7977</span>
+                                                    <a class="link-tel" href="tel:02-979-7977">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">시마스시</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">070-8287-0166</span>
+                                                    <a class="link-tel" href="tel:070-8287-0166">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">아메리칸투어리스터</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-979-7006</span>
+                                                    <a class="link-tel" href="tel:02-979-7006">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">아모레</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-979-6520</span>
+                                                    <a class="link-tel" href="tel:02-979-6520">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">알지오지아</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-978-8800</span>
+                                                    <a class="link-tel" href="tel:02-978-8800">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">애슐리퀸즈(샐러드바마감 21:00)</p>
+                                                    <span class="time font-roboto">11:00~21:00</span>
+                                                    <span class="tel font-roboto">0507-1412-1063</span>
+                                                    <a class="link-tel" href="tel:0507-1412-1063">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">앤티앤스프레즐(디저트판매 11:00)</p>
+                                                    <span class="time font-roboto">11:00~21:30</span>
+                                                    <span class="tel font-roboto">070-7798-4947</span>
+                                                    <a class="link-tel" href="tel:070-7798-4947">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">올리브영</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-3236-3065</span>
+                                                    <a class="link-tel" href="tel:02-3236-3065">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">정관장/대상웰라이프</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">070-4422-8071</span>
+                                                    <a class="link-tel" href="tel:070-4422-8071">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">크록스</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-979-4172</span>
+                                                    <a class="link-tel" href="tel:02-979-4172">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            <div class="floor-list">
+                                                    <p class="txt-tit">프로젝트엠</p>
+                                                    <span class="time font-roboto">10:00~22:00</span>
+                                                    <span class="tel font-roboto">02-977-3867</span>
+                                                    <a class="link-tel" href="tel:02-977-3867">
+                                                            <em class="blind">통화</em>
+                                                        </a>
+                                                    </div>
+                                            </div>
+                                            </li>
+                                        </ul>
+                            </div>
+                        <!-- //tab_contents -->
+                    </div>
+                    <!-- //con-block -->
+                </div>
+
+<form name="f" id="f" method="post">
+
+<input type="hidden" name="strConfirmYN" id="strConfirmYN" value="N">
+<input type="hidden" name="gftCpnMstSeq" id="gftCpnMstSeq" value="3489">
+<input type="hidden" name="strName" id="strName" value="이마트 경산점">
+<input type="hidden" name="strName1" id="strName1" value="이마트 성서점">
+<input type="hidden" name="strName2" id="strName2" value="이마트 월배점">
+
+</form>
+
+<script type="text/javascript">
+    emart.Env.set('favorUrl', '/branch/regularEmart.do');
+    emart.Env.set('bookmarkUrl', '/branch/bookmarkEmart.do');
+    emart.Env.set('storePosition', {
+        storeId: '1059',
+        title: '스타필드마켓 월계점',
+        x: '37.6261149',
+        y: '127.0621375'
+    });
+    
+    $( document ).ready(function() {
+		
+		
+        // 즐겨찾기  설정
+        $('#d-btn-bookmark').on('click', function(e) {
+            var HTTP_URI = document.location.protocol+"//"+document.location.host;
+            if(!window.isLogin) {
+            	e.preventDefault();
+                if(confirm('즐겨찾기를 설정하시려면 로그인이 필요합니다.\n로그인 화면으로 이동하시겠습니까?')){
+                    if(window.isApp){
+                        emart.app.cmd('open_main_webpage', 'link='+HTTP_URI+'/login/login.do?retUrl=/branch/view.do?id=1059');
+                    } else {
+                        location.href = '/login/login.do?retUrl=/branch/view.do?id=1059';
+                    }
+                }
+                return;
+            }
+           
+            var $el = $(this),
+                storeId = $el.attr('data-store-id'),
+                isBookmark = $el.is(":checked") ? 'Y' : 'N';
+
+            $.ajax({
+                url: emart.Env.get('bookmarkUrl'),
+                data: {
+                    storeId: storeId,
+                    isBookmark: isBookmark
+                },
+                async: false,
+                dataType: 'json'
+            }).done(function(json) {
+                if( 'string' == typeof(json) ){
+                    json = JSON.parse(json);
+                }
+
+                if(json.success === true) {
+                    if(window.isApp) {
+                        emart.app.cmd('prev_page_reload', 'page_gb=3&op_time=1');
+                    }
+                } else {
+                    alert(json.errMsg);
+                }
+            }).fail(function(){
+                alert("즐겨찾기 설정에 실패 하였습니다.");
+            });
+        });
+        
+        // 단골점포 설정
+        $('#d-btn-favor').on('click', function(e) {
+            var HTTP_URI = document.location.protocol+"//"+document.location.host;
+            if(!window.isLogin) {
+            	e.preventDefault();
+                if(confirm('단골점포를 설정하시려면 로그인이 필요합니다.\n로그인 화면으로 이동하시겠습니까?')){
+                    if(window.isApp){
+                        emart.app.cmd('open_main_webpage', 'link='+HTTP_URI+'/login/login.do?retUrl=/branch/view.do?id=1059');
+                    } else {
+                        location.href = '/login/login.do?retUrl=/branch/view.do?id=1059';
+                    }
+                }
+                return;
+            }
+           
+            var $el = $(this),
+                storeId = $el.attr('data-store-id'),
+                storeName = $el.attr('data-store-name'),
+                storeType = $el.attr('data-store-type');
+
+           if(!$el.is(":checked")){
+               e.preventDefault();
+               alert( "단골점포 설정을 취소하시려면\n 다른 점포를 단골점포로 설정해 주세요.");
+               $el.prop("checked", "checked");
+               return false;
+           }
+            
+           var confirmStr = ''+storeName+'을 단골점포로 설정하시겠습니까?';
+            if(!confirm(confirmStr)) {
+            	e.preventDefault();
+                return;
+            }
+
+            $.ajax({
+                url: emart.Env.get('favorUrl'),
+                data: {
+                    storeId: storeId,
+                    storeType: storeType
+                },
+                async: false,
+                dataType: 'json'
+            }).done(function(json) {
+                if( 'string' == typeof(json)){
+                    json = JSON.parse(json);
+                }
+                if(json.success === true) {
+                	
+                	storeName = $.trim(storeName);
+                	
+                	//alert("success");
+                    emart.PubSub.trigger("change_favo_emart", {
+                         "id": storeId,
+                         "title": json.isfavor ? storeName : '단골이마트'
+                    });
+                    
+                    if(window.isApp) {
+                    	emart.app.cmd("open_menu_webpage", "link="+emart.Env.get("menuUrl")+"&storeId="+storeId);
+                    	setTimeout(function() {
+                    		emart.app.cmd('prev_page_reload', 'page_gb=3&op_time=1');
+                   		}, 500);
+                    }
+                    
+                    if(storeType == "T") {
+                      checkTradersCouponAlert(json.tradersCouponResult);
+                    }
+
+                    if (storeType != "T" && $("#strConfirmYN").val() =="Y" && $("#strName").val() == storeName ) {
+                    	fnGiftCpnInsert(storeName);
+                    }
+                    
+                } else {
+                    alert(json.errMsg);
+                }
+            }).fail(function(){
+                alert("단골점포 설정에 실패 하였습니다.");
+            });
+        });
+
+        fn_checkFavoriteJijum();
+    });
+    
+    function moveCenter() {
+        var regUrl = "https://m.cultureclub.emart.com/";
+        if(window.isApp){
+            emart.app.cmd("open_out_webpage", "link=" + regUrl);
+        }else{
+            window.open(regUrl);
+        }
+
+        return false; // href 동작 막기
+    }
+    
+    function tabChange(obj) {
+        event.preventDefault();
+        $(".tab_contents").hide();
+        $($(obj).attr("href")).show();
+        $(".ern-tab a").attr("aria-selected", "false").parent().removeClass("on");
+        $($(obj)).attr("aria-selected", "true").parent().addClass("on")
+    }
+    
+    function fnGiftCpnInsert(strName) {
+        
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = '/coupon/giftAppcpn_insert.do';
+        params['data'] = {
+           ticketMstSeq: $("#gftCpnMstSeq").val(),
+           eventCode:"SE"
+        };
+        params['beforeSendCallbackFunction'] = function() {
+            //console.log('beforeSendCallbackFunction');
+        };
+        params['successCallbackFunction'] = function(data){
+           console.log(data);
+            var jsonData= emart.isString(data) ? $.parseJSON(data) : data;
+                if(jsonData.status =="1") {
+                    if(!emart.util.loginCheck()) return;
+                    return false;
+                }else if(jsonData.status =="6") {
+                    if(confirm(strName + " 단골점포 설정 및 증정품교환권이 지급되었습니다.\n쿠폰함으로 이동하시겠습니까?")){
+                        
+                        fnGftCpnListGo();
+                    }else {
+                        setTimeout(function() {
+                            location.reload();
+                        }, 500);
+                        return false;
+                    }
+                }
+        };
+        params['completeCallbackFunction'] = function() {
+            //console.log('completeCallbackFunction');
+        };
+        params['errorCallbackFunction'] = function(data){
+            alert('오류가 발생했습니다.\r\n잠시후 다시 이용해 주세요.');
+        };
+        doAjax(params);
+            
+    }
+    
+
+    
+    function fnGftCpnListGo() {
+        var HTTP_URI = document.location.protocol+"//"+document.location.host;
+        if(window.isApp){
+            emart.app.cmd('open_main_webpage', 'link='+HTTP_URI+'/coupon/list.do?eventGbn=E&cpnGbn=C&tmstmp=1788070480000');
+        } else {
+            location.href = '/coupon/list.do?eventGbn=E&cpnGbn=C&tmstmp=1788070480000';
+        }
+    }
+
+    //지점위치값 가져옴
+    var storePositionX = ('37.6261149');
+    var storePositionY = ('127.0621375');
+    
+    //V3옵션나열
+    var mapOptions = {
+        center: new naver.maps.LatLng(storePositionX, storePositionY),
+        zoom : 17,
+        enableWheelZoom : true,
+        enableDragPan : true,
+        enableDblClickZoom : false,
+        mapMode : 0,
+        minMaxLevel : [ 1, 20 ],
+        zoomControl: true,
+        zoomControlOptions: {
+            position: naver.maps.Position.TOP_LEFT
+        },
+        useStyleMap: true
+    };
+    
+    //맵옵션 불러옴
+    var map = new naver.maps.Map('map', mapOptions);
+
+    //위치마크표시
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(storePositionX, storePositionY),
+        map: map
+    });
+    
+    function moveMap() {
+        var regUrl = "https://m.map.naver.com/viewer/map.naver?pinType=site&x=" + storePositionY + "&y=" + storePositionX;
+        if(window.isApp){
+            emart.app.cmd("open_out_webpage", "link=" + regUrl);
+        }else{
+            window.open(regUrl);
+        }
+    }
+    
+    
+    function isBaseDt() {
+    	var torf = false;
+    		
+    	var date = new Date();
+    	var baseDay = date.getFullYear() + ("0"+ (date.getMonth()+1)).slice(-2)+("0"+date.getDate()).slice(-2);
+    	if(Number(baseDay) >= 20210628) {
+    		torf = true;
+    	}
+    	return torf;
+    }
+
+    function checkTradersCouponAlert(result) {
+      const tradersCouponStatus = tradersCouponStatusMap[result.status];
+      if (tradersCouponStatus) {
+        tradersCouponStatus(result.message);
+      }
+    }
+
+    const tradersCouponStatusMap = {
+      '1': () => {
+        if (!emart.util.loginCheck()) return;	//로그인 여부 체크
+      },
+      '': () => {
+        alert('쿠폰 발급 중 오류가 발생했습니다.\r\n잠시후 다시 이용해주세요.');
+      },
+      '6': () => {
+        if(confirm("트레이더스 쿠폰이 발급되었습니다.\n쿠폰함으로 이동하시겠습니까?")) {
+          fn_doCouponGo();
+        }
+      },
+      '4': () => {
+        if (confirm("이미 할인쿠폰이 발급되었습니다.\n쿠폰함으로 이동하시겠습니까?")){
+          fn_doCouponGo();
+        }
+      },
+      '7': () => {
+        alert("발급 받을 수 있는 쿠폰이 없습니다.");
+      },
+      '8': (message) => {
+        alert(message);
+      },
+      '9': (message) => {
+        alert(message);
+      }
+    }
+	
+	//쿠폰 페이지 이동
+	function fn_doCouponGo() {
+        var HTTP_URI = document.location.protocol+"//"+document.location.host;
+		if(window.isApp){
+			emart.app.cmd('open_main_webpage', 'link='+HTTP_URI+'/coupon/list.do?eventGbn=T&cpnGbn=A');
+		} else {
+			window.open('/coupon/list.do?eventGbn=T&cpnGbn=A');
+		}
+	}
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if(!window.isApp) {
+            document.title = '스타필드마켓 월계점' +' < 점포 찾기 < 이마트';
+        }
+    });
+
+    function fn_checkFavoriteJijum() {
+        let favorJijumId = [];
+        let params = $.extend({}, doAjax_params_default);
+        params['url'] = '/myemart/getFavoriteJijumList.do';
+        params['successCallbackFunction'] = function (data) {
+            const jsonData = emart.isString(data) ? $.parseJSON(data) : data;
+
+            if (typeof(jsonData.favoriteJijumList) !== 'undefined' && Object.keys(jsonData.favoriteJijumList).length > 0 && '1059' != '') {
+                if (typeof(jsonData.favoriteJijumList.emart) !== 'undefined' && 'true' === 'true') favorJijumId.push(jsonData.favoriteJijumList.emart.id);
+                if (typeof(jsonData.favoriteJijumList.traders) !== 'undefined' && 'false' === 'true') favorJijumId.push(jsonData.favoriteJijumList.traders.id);
+                if (typeof(jsonData.favoriteJijumList.mollys) !== 'undefined' && 'false' === 'true') favorJijumId.push(jsonData.favoriteJijumList.mollys.id);
+                if (favorJijumId.includes('1059')) $('#d-btn-favor').attr('checked','checked');
+            }
+        };
+        doAjax(params);
+    }
+</script>
+<!-- //ern-contents -->
+            <script type="text/javascript" src="https://eappfront.emart.com/static/js/2020/jquery.counterup.min.js"></script>
+                <script type="text/javascript" src="https://eappfront.emart.com/static/js/2020/jquery.waypoints.min.js"></script>
+                <script type="text/javascript" src="https://eappfront.emart.com/static/js/2020/emoney.min.js?v=601095026"></script>
+                </div>
+        <!-- //ern-container -->
+
+        <!-- scroll up -->
+        <div class="ern-con-top">
+            <a href="#ern-wrap" class="" title="콘텐츠 상단으로 이동">
+    <span>TOP</span>
+</a></div>
+        <!-- //scroll up -->
+
+        <!-- bar-code -->
+        <article id="" class="bar-code-popup">
+            <script type="text/javascript" src="/js/libs/jquery-barcode.min.js"></script>
+<style type="text/css">
+#rn_barcode div:last-child {
+	margin-left:20px;
+	text-align:left !important;
+}
+</style>
+<div class="bar-popup-wrap">
+    <div class="bar-popup-container">
+        <div class="bar-popup-tit"><span>emart</span>
+	        <div class="other-tit">
+	        	<div class="e-money" id="emoneyIcon" style="display:none;">e-money</div>
+                <div class="momkids" id="momkidsIcon" style="display:none; background-position:-430px 0;">momkids</div>
+                    </div>
+        </div>
+        <div class="bar-popup-con">
+            <div class="ern-barcode">
+            	<div class="barcode-inner">
+	            	<input type="hidden" id="barcode-no" value=""/>
+	            	<div id="ern-barcode" class="barcode-default"></div>
+	            	<div class="ern-barcode-number"><span class="blind">바코드번호</span></div>
+            	</div>
+            </div>            
+        </div>
+        <div class="bar-popup-close">
+            <a href="javascript:void(0)" role="button">바코드 팝업창 닫기</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	generateBarcode();
+});
+//바코드 생성
+function generateBarcode(){
+    var value       = $("#barcode-no").val();
+    var btype       = "code128";
+    var renderer    = "bmp";
+    var settings    = {
+            output:renderer,
+            barWidth    : "2",
+            barHeight   : "56",
+            moduleSize  : "1",
+            fontSize    : 14
+    };
+    $("#ern-barcode").barcode(value, btype, settings);
+}
+/*
+ * 2021 리뉴얼 / 2021.03.11 / IG.KIM 맘키즈 가입여부 확인 
+ */
+function isMomKidsYn() {
+    $.ajax({
+        type		: "post",
+        url			: "/app/getEmoneyYnAndMomKidsYn.do",
+        dataType	: "json",
+        async		: true,
+        success		: function(data) {
+            if(data != null) {
+                data.isMomKids == 'true' ? $("#momkidsIcon").show() : $("#momkidsIcon").hide();
+                data.isEmoney == 'true' ? $("#emoneyIcon").show() : $("#emoneyIcon").hide();
+            }
+        },
+        error		: function(data, status, xhr) {
+        }
+    });
+}
+</script>
+</article>
+        <!-- //bar-code -->
+    </div>
+    <!-- //ern-wrap -->
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJTHCDHN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script type="text/javascript" src="https://eappfront.emart.com/js/chunk-vendors.a95aacb4.js"></script>
+    <script type="text/javascript" src="https://eappfront.emart.com/js/app.baad22ae.js"></script>
+
+</body>
+</html>

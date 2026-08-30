@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const fail=m=>{throw new Error(m)};
+const files=['local-places.json','events-experiences.json','global-market.json'];
+const docs=files.map(f=>JSON.parse(fs.readFileSync(path.join(root,'evidence',f),'utf8')));
+const publishedSupports=docs.flatMap(d=>d.subjects.flatMap(s=>s.chip_support));
+const personalFit=publishedSupports.filter(x=>x.chip==='PERSONAL_FIT');
+if(personalFit.length)fail(`published evidence contains ${personalFit.length} PERSONAL_FIT support(s)`);
+const archived=JSON.parse(fs.readFileSync(path.join(root,'evidence','global-market.pre-policy.json'),'utf8'));
+const archivedFit=archived.subjects.flatMap(s=>s.chip_support).filter(x=>x.chip==='PERSONAL_FIT');
+if(archivedFit.length!==1)fail('expected exactly one archived PERSONAL_FIT violation');
+const claims=docs.flatMap(d=>d.subjects.flatMap(s=>s.evidence_claims));
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'source-snapshot-manifest.json'),'utf8'));
+const byId=new Map(manifest.entries.map(e=>[e.snapshot_id,e]));
+for(const c of claims){const e=byId.get(c.source_snapshot_id);if(!e)fail(`missing snapshot manifest entry ${c.source_snapshot_id}`);if(e.capture_status==='captured'){if(!e.file||!e.sha256)fail(`${e.snapshot_id}: missing file/hash`);const digest=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,e.file))).digest('hex');if(digest!==e.sha256||c.source_content_hash!==e.sha256)fail(`${e.snapshot_id}: hash mismatch`)}else if(c.source_content_hash!==null)fail(`${e.snapshot_id}: unavailable snapshot must keep null claim hash`)}
+const audit=JSON.parse(fs.readFileSync(path.join(root,'final-integration-audit.json'),'utf8'));
+if(audit.output_effect.recommendations_emitted!==0||audit.output_effect.product_exposures!==0)fail('unexpected external output');
+if(audit.runtime_attestation.regression_score_valid!==false)fail('pilot must not claim a valid regression score');
+console.log(JSON.stringify({published_personal_fit_supports:0,archived_policy_violations:1,snapshot_manifest_entries:manifest.entries.length,captured_snapshots:manifest.entries.filter(e=>e.capture_status==='captured').length,unavailable_snapshots:manifest.entries.filter(e=>e.capture_status!=='captured').length,recommendations_emitted:0,product_exposures:0},null,2));

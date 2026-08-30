@@ -1,0 +1,13 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "auditability": "original invalid payloads remain in Aside child-task transcripts but were not copied into this bundle",
+  "entries": [
+    {"worker_id": "lp-official", "task_id": "H5waRySgqY43bEvH", "retry": 1, "errors": ["published_at date-only values were not RFC3339 date-times"], "corrected_file": "workers/lp-official.json"},
+    {"worker_id": "lp-index", "task_id": "kSQHvXzxySduet4M", "retry": 1, "errors": ["published_at date-only values were not RFC3339 date-times"], "corrected_file": "workers/lp-index.json"},
+    {"worker_id": "lp-edge", "task_id": "34cqgctSPfX8TGp2", "retry": 1, "errors": ["source_type used undeclared values news_article, blog_post and event_listing", "published_at date-only values were not RFC3339 date-times"], "corrected_file": "workers/lp-edge.json"},
+    {"worker_id": "lp-blank", "task_id": "HaoKstrvtgRTMG31", "retry": 1, "errors": ["published_at date-only values were not RFC3339 date-times"], "corrected_file": "workers/lp-blank.json"},
+    {"worker_id": "ee-ticket", "task_id": "d2X0YpLotowhf41J", "retry": 1, "errors": ["source_type used undeclared value official_cultural_institution"], "corrected_file": "workers/ee-ticket.json"},
+    {"worker_id": "gm-startup", "task_id": "Za76f4ehBQTOqj36", "retry": 1, "errors": ["lead objects used a different startup-signal shape and omitted required raw-lead keys"], "corrected_file": "workers/gm-startup.json"},
+    {"worker_id": "gm-capital", "task_id": "OfhQ9jP4m8SZVEah", "retry": 1, "errors": ["lead objects omitted raw_title and did not match raw-lead.schema.json"], "corrected_file": "workers/gm-capital.json"}
+  ]
+}

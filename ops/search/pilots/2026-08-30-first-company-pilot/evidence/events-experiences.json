@@ -1,0 +1,394 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "events_experiences",
+  "subjects": [
+    {
+      "subject_id": "event-frieze-seoul-2026",
+      "canonical_title": "Frieze Seoul 2026 and Neighbourhood Nights",
+      "lead_ids": [
+        "ee-edge-01",
+        "ee-blank-01"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "claim-event-001",
+          "subject_id": "event-frieze-seoul-2026",
+          "claim_type": "operation",
+          "claim_text": "Frieze Seoul 2026 runs at COEX Halls C and D from 2026-09-02 through 2026-09-05. September 2, 11:00-19:00 is invitation only; September 3 is invitation/preview-ticket access from 11:00-15:00 and public access from 15:00; September 4-5 are open 11:00-19:00.",
+          "polarity": "neutral",
+          "source_url": "https://www.frieze.com/fairs/frieze-seoul/visitor-information",
+          "source_role": "organizer",
+          "source_snapshot_id": "snap-event-001",
+          "source_content_hash": null,
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-09-02T11:00:00+09:00",
+          "valid_until": "2026-09-05T19:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-event-002",
+          "subject_id": "event-frieze-seoul-2026",
+          "claim_type": "availability",
+          "claim_text": "The live Frieze ticket page says discounted tickets are sold out and full-price tickets remain on sale; its Buy Now path opens the official Govent checkout, where full-price ticket quantities can still be selected.",
+          "polarity": "conflicting",
+          "source_url": "https://www.frieze.com/fairs/frieze-seoul/tickets",
+          "source_role": "organizer",
+          "source_snapshot_id": "snap-event-002",
+          "source_content_hash": null,
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Buy a currently offered full-price ticket online through the organizer's Govent checkout; discounted inventory is no longer available.",
+          "competing_explanations": [],
+          "conflict_notes": "Availability differs by price class: discounted inventory is closed, while full-price inventory remains purchasable."
+        },
+        {
+          "claim_id": "claim-event-003",
+          "subject_id": "event-frieze-seoul-2026",
+          "claim_type": "price",
+          "claim_text": "The live official checkout lists KRW 250,000 for a Preview Ticket, KRW 90,000 for General Admission Preview Entry on September 3 or First Access before 15:00 on September 4-5, KRW 70,000 for Afternoon Access after 15:00 on September 4-5, and KRW 55,000 for students aged 7-19 with ID; every ticket permits access to both Frieze Seoul and Kiaf Seoul, with the selected fair visited first except for preview tickets.",
+          "polarity": "neutral",
+          "source_url": "https://govent.co.kr/artfair/kiaf-frieze2026/regist?lang=en&slotType=A02",
+          "source_role": "ticketing",
+          "source_snapshot_id": "snap-event-003",
+          "source_content_hash": "d1e845685a2744324d89dc419aa7b3a73adf8e456511db8010aeb94a3d298568",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-09-03T11:00:00+09:00",
+          "valid_until": "2026-09-05T19:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Online purchase only; student ticket holders must be aged 7-19 and present ID, and general-admission buyers must enter their selected fair first."
+        },
+        {
+          "claim_id": "claim-event-004",
+          "subject_id": "event-frieze-seoul-2026",
+          "claim_type": "operation",
+          "claim_text": "Neighbourhood Nights runs on four consecutive evenings by district: Euljiro on August 31, Hannam on September 1, Cheongdam on September 2 and Samcheong on September 3, with organizer-listed late openings, receptions, performances, talks and parties at participating venues.",
+          "polarity": "positive",
+          "source_url": "https://www.frieze.com/ko/article/frieze-seoul-2026-neighbourhood-nights-celebrating-frieze-week",
+          "source_role": "organizer",
+          "source_snapshot_id": "snap-event-004",
+          "source_content_hash": null,
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-08-31T13:00:00+09:00",
+          "valid_until": "2026-09-03T23:59:59+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-event-005",
+          "subject_id": "event-frieze-seoul-2026",
+          "claim_type": "identity",
+          "claim_text": "COEX's official venue listing calls Frieze Seoul 2026 the fourth edition, while Frieze's organizer-owned About page calls it the fifth edition.",
+          "polarity": "conflicting",
+          "source_url": "https://www.coexcenter.com/events/frieze-seoul-2026",
+          "source_role": "official",
+          "source_snapshot_id": "snap-event-005",
+          "source_content_hash": "108888391996bd38d1189c85e932c6e07dceedcaf6c0826fb91ebd1d620d4054",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "disputed",
+          "competing_explanations": [
+            "The COEX listing may have retained the prior edition number in reused event copy."
+          ],
+          "conflict_notes": "The organizer-owned Frieze page is controlling for edition identity and identifies 2026 as the fifth edition; dates and venue agree across both sources."
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "support-event-001",
+          "claim_id": "claim-event-002",
+          "chip": "SCARCITY",
+          "support_strength": "direct",
+          "reason": "The organizer explicitly marks discounted tickets sold out while full-price tickets remain on sale.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-event-002",
+          "claim_id": "claim-event-003",
+          "chip": "PAYOFF",
+          "support_strength": "direct",
+          "reason": "A single paid ticket provides entry to both Frieze Seoul and Kiaf Seoul under the stated first-entry condition.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-event-003",
+          "claim_id": "claim-event-004",
+          "chip": "SOCIAL_CURRENCY",
+          "support_strength": "direct",
+          "reason": "The organizer lists receptions, artist talks, performances, parties and late openings across four Seoul districts.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "Neighbourhood Nights has no single participation or payment path: the organizer supplies venue-by-venue schedules and maps, while access, capacity, RSVP and price conditions must be checked with each participating venue; at least one listed event is explicitly a private viewing.",
+        "The ticket shop does not expose remaining numeric inventory for each full-price category before purchase.",
+        "COEX has not corrected its fourth-edition wording to match Frieze's fifth-edition identification."
+      ]
+    },
+    {
+      "subject_id": "event-7979-running-crew-2026",
+      "canonical_title": "7979 Seoul Urban Running Crew",
+      "lead_ids": [
+        "ee-edge-02"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "claim-event-006",
+          "subject_id": "event-7979-running-crew-2026",
+          "claim_type": "operation",
+          "claim_text": "Seoul's official sports portal schedules the 2026 season every Thursday from 2026-04-16 through 2026-10-29, 19:00-21:00, using Gwanghwamun Square, Yeouido Park and Banpo Hangang Park as gathering zones.",
+          "polarity": "neutral",
+          "source_url": "https://sports.seoul.go.kr/main/SP04100000_user/program_view.do",
+          "source_role": "official",
+          "source_snapshot_id": "snap-event-006",
+          "source_content_hash": "8c88f586bedd3535aef14254aca777380d91288e3b40edd5a487083e5bb82766",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-04-16T19:00:00+09:00",
+          "valid_until": "2026-10-29T21:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-event-007",
+          "subject_id": "event-7979-running-crew-2026",
+          "claim_type": "price",
+          "claim_text": "Participation is free for Seoul citizens who enjoy exercise, with 40-60 participants per session; the Seoul public-reservation channel allocates 30 first-come places per zone and limits an application to one person.",
+          "polarity": "positive",
+          "source_url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260401154134575023",
+          "source_role": "booking",
+          "source_snapshot_id": "snap-event-007",
+          "source_content_hash": "6a164d14d05ae7805e8c4c473f8f713e8cfceb40ee220d8400046bec7fad3406",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "first_come",
+          "acquisition_condition": "Apply for one person through Seoul Public Service Reservation when the weekly window opens, or use another organizer-approved channel or limited day-of registration."
+        },
+        {
+          "claim_id": "claim-event-008",
+          "subject_id": "event-7979-running-crew-2026",
+          "claim_type": "benefit",
+          "claim_text": "Sessions include running-form coaching and pre/post-run stretching; the official plan lists 12 routes across the three zones, from 2.5 km to 10 km.",
+          "polarity": "positive",
+          "source_url": "https://sports.seoul.go.kr/main/SP04100000_user/program_view.do",
+          "source_role": "official",
+          "source_snapshot_id": "snap-event-006",
+          "source_content_hash": "8c88f586bedd3535aef14254aca777380d91288e3b40edd5a487083e5bb82766",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Join a scheduled session after successful advance registration or accepted day-of registration."
+        },
+        {
+          "claim_id": "claim-event-009",
+          "subject_id": "event-7979-running-crew-2026",
+          "claim_type": "availability",
+          "claim_text": "For the next Thursday session on 2026-09-03, the live Yeouido reservation calendar showed 0/30 applications but 'reservation unavailable' because booking opens at 00:00 on 2026-08-31, three days before use; Seoul also permits advance registration through Dongma Club and limited day-of on-site registration.",
+          "polarity": "neutral",
+          "source_url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260401154134575023",
+          "source_role": "booking",
+          "source_snapshot_id": "snap-event-007",
+          "source_content_hash": "6a164d14d05ae7805e8c4c473f8f713e8cfceb40ee220d8400046bec7fad3406",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-08-30T15:00:00+09:00",
+          "valid_until": "2026-08-31T00:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "first_come",
+          "acquisition_condition": "For the 2026-09-03 Seoul-reservation allocation, return when booking opens at 2026-08-31 00:00; first-time Seoul Public Service Reservation users need a unified Seoul account and mobile identity verification."
+        },
+        {
+          "claim_id": "claim-event-010",
+          "subject_id": "event-7979-running-crew-2026",
+          "claim_type": "operation",
+          "claim_text": "The official Seoul sports portal gives the exact last Thursday as 2026-10-29, while the Seoul Future Hangang Headquarters event wrapper displays 2026-10-31 even though its detail text describes a Thursday-through-October series.",
+          "polarity": "conflicting",
+          "source_url": "https://hangang.seoul.go.kr/www/eventMng/detail.do?evntSn=393&mid=538&srchType=list",
+          "source_role": "official",
+          "source_snapshot_id": "snap-event-008",
+          "source_content_hash": "89d369796482af87a857570feff7d2d9074d881efd94b1ada60792f75d5f430b",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "disputed",
+          "competing_explanations": [
+            "The Hangang event wrapper may use an administrative display range through the end of October rather than the last actual Thursday session."
+          ],
+          "conflict_notes": "Use 2026-10-29 as the exact final occurrence because it is the date on the dedicated sports-program schedule and is the last Thursday in the displayed range."
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "support-event-004",
+          "claim_id": "claim-event-007",
+          "chip": "PAYOFF",
+          "support_strength": "direct",
+          "reason": "The official booking and program pages state that participation is free.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-event-005",
+          "claim_id": "claim-event-009",
+          "chip": "SCARCITY",
+          "support_strength": "direct",
+          "reason": "The live channel limits the zone to 30 first-come online places and one applicant per reservation.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-event-006",
+          "claim_id": "claim-event-008",
+          "chip": "MERIT",
+          "support_strength": "direct",
+          "reason": "The official program provides form coaching, stretching and routes spanning 2.5 km to 10 km across three zones.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "The exact 2026-09-03 route and pace-group assignment were not yet posted on the inspected booking page; it directs participants to the official 7979_src Instagram for weekly details.",
+        "The number of same-day on-site places is not fixed on the official pages and remains subject to session operations.",
+        "The Seoul reservation page labels the overall service 'service ended' while simultaneously showing future September Thursday entries and a future opening rule; the per-date opening rule was used for current availability."
+      ]
+    },
+    {
+      "subject_id": "event-story-a-seongsu-2026",
+      "canonical_title": "STORY A Seongsu: Beauty Survival Murder Mystery",
+      "lead_ids": [
+        "lp-edge-04"
+      ],
+      "evidence_claims": [
+        {
+          "claim_id": "claim-event-011",
+          "subject_id": "event-story-a-seongsu-2026",
+          "claim_type": "operation",
+          "claim_text": "STORY A's official organizer profile lists the Seongsu run from 2026-07-28 through 2026-10-18 at STORY A on the second floor of Amore Seongsu; the live booking product describes an approximately 70-minute open-format crime-scene escape experience and states that English participation is available.",
+          "polarity": "positive",
+          "source_url": "https://www.instagram.com/storya_official/",
+          "source_role": "organizer",
+          "source_snapshot_id": "snap-event-009",
+          "source_content_hash": "eeb96212f7c1b1fccbcee9f2e0136772a82d8f7586218f5b22a6d720b8c52d16",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "valid_from": "2026-07-28T00:00:00+09:00",
+          "valid_until": "2026-10-18T23:59:59+09:00",
+          "confidence": "medium",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        },
+        {
+          "claim_id": "claim-event-012",
+          "subject_id": "event-story-a-seongsu-2026",
+          "claim_type": "availability",
+          "claim_text": "The handed-off Naver item URL ending in 785624 is closed, but that listing links to the current product ending in 7856242; the replacement product is bookable with immediate confirmation and exposed selectable September dates and times, including multiple sessions on 2026-09-01.",
+          "polarity": "conflicting",
+          "source_url": "https://m.booking.naver.com/booking/12/bizes/1696844/items/785624",
+          "source_role": "booking",
+          "source_snapshot_id": "snap-event-010",
+          "source_content_hash": "d7df0b553d946b854c086831714db78daa1bfca2f3a0ed08557659513988d300",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Use the active replacement product at https://m.booking.naver.com/booking/12/bizes/1696844/items/7856242, select an enabled date/time and purchase the required number of participant tickets.",
+          "competing_explanations": [
+            "The original product record may have been retired and replaced without updating the handed-off canonical URL."
+          ],
+          "conflict_notes": "The old product is genuinely closed, but the experience itself is not closed because the same Naver business listing exposes an active replacement product."
+        },
+        {
+          "claim_id": "claim-event-013",
+          "subject_id": "event-story-a-seongsu-2026",
+          "claim_type": "price",
+          "claim_text": "The active booking product lists an opening-special ticket at KRW 15,000 per person, a KRW 12,000 repeat-customer ticket requiring proof of at least two prior experiences, and a KRW 7,500 store-customer ticket requiring a same-day Amore Seongsu purchase of at least KRW 100,000 and limited to two people per receipt; the displayed reference price is KRW 30,000.",
+          "polarity": "positive",
+          "source_url": "https://m.booking.naver.com/booking/12/bizes/1696844/items/7856242",
+          "source_role": "booking",
+          "source_snapshot_id": "snap-event-011",
+          "source_content_hash": "768206ba765a76fe60a0e9589890b90cd09e55c61650495b97ede5bff4824763",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Choose the applicable ticket tier and satisfy its proof or same-day purchase condition; otherwise use the KRW 15,000 opening-special ticket."
+        },
+        {
+          "claim_id": "claim-event-014",
+          "subject_id": "event-story-a-seongsu-2026",
+          "claim_type": "benefit",
+          "claim_text": "Naver Booking states that escape-room customers receive a 10% discount coupon for all products at Amore Seongsu.",
+          "polarity": "positive",
+          "source_url": "https://m.booking.naver.com/booking/12/bizes/1696844/items/785624",
+          "source_role": "booking",
+          "source_snapshot_id": "snap-event-010",
+          "source_content_hash": "d7df0b553d946b854c086831714db78daa1bfca2f3a0ed08557659513988d300",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified",
+          "beneficiary_scope": "valid_applicant",
+          "acquisition_condition": "Book and use the escape-room experience; redemption exclusions or stacking rules were not exposed on the inspected listing."
+        },
+        {
+          "claim_id": "claim-event-015",
+          "subject_id": "event-story-a-seongsu-2026",
+          "claim_type": "operation",
+          "claim_text": "The booking terms require arrival 10 minutes early and tickets for the actual number of participants, cap one booking at 12 tickets, prohibit cancellation or changes after 17:00 on the preceding day, allow children of any age on weekdays with a guardian, and restrict weekends and public holidays to ages 10 and older regardless of guardian accompaniment.",
+          "polarity": "neutral",
+          "source_url": "https://m.booking.naver.com/booking/12/bizes/1696844/items/7856242",
+          "source_role": "booking",
+          "source_snapshot_id": "snap-event-011",
+          "source_content_hash": "768206ba765a76fe60a0e9589890b90cd09e55c61650495b97ede5bff4824763",
+          "observed_at": "2026-08-30T15:00:00+09:00",
+          "confidence": "high",
+          "inference_level": "direct",
+          "verification_status": "verified"
+        }
+      ],
+      "chip_support": [
+        {
+          "support_id": "support-event-007",
+          "claim_id": "claim-event-013",
+          "chip": "PAYOFF",
+          "support_strength": "direct",
+          "reason": "The live booking page gives three concrete discounted price tiers and the exact qualification conditions for the two lower tiers.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-event-008",
+          "claim_id": "claim-event-014",
+          "chip": "PAYOFF",
+          "support_strength": "direct",
+          "reason": "The booking listing explicitly grants escape-room users a 10% Amore Seongsu product coupon.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        },
+        {
+          "support_id": "support-event-009",
+          "claim_id": "claim-event-011",
+          "chip": "SCARCITY",
+          "support_strength": "direct",
+          "reason": "The organizer gives a fixed event end date of 2026-10-18.",
+          "created_at": "2026-08-30T15:00:00+09:00"
+        }
+      ],
+      "unresolved": [
+        "The active Naver calendar exposed dates only through 2026-09-20 at the observation time, so later inventory through the organizer-stated 2026-10-18 end date had not yet been released or was not visible.",
+        "The booking page displayed a separate 20% coupon but did not expose its eligibility, validity period, exclusions or stacking rules without downloading it, so no evidence claim was created for that coupon.",
+        "The exact redemption exclusions for the 10% Amore Seongsu product coupon were not exposed on the inspected listing."
+      ]
+    }
+  ]
+}

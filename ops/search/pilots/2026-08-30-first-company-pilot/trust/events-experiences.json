@@ -1,0 +1,86 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "events_experiences",
+  "verdicts": [
+    {
+      "verdict_id": "trust-event-001",
+      "subject_id": "event-frieze-seoul-2026",
+      "decision": "revise",
+      "reviewed_claim_ids": [
+        "claim-event-001",
+        "claim-event-002",
+        "claim-event-003",
+        "claim-event-004",
+        "claim-event-005"
+      ],
+      "reason_codes": [
+        "COMPOSITE_SUBJECT_EXECUTION_GAP",
+        "VENUE_LEVEL_ACCESS_CONDITIONS_UNVERIFIED",
+        "IDENTITY_EDITION_CONFLICT",
+        "TICKET_CLASS_AVAILABILITY_PROPERLY_SCOPED"
+      ],
+      "required_evidence": [
+        "Separate the ticketed Frieze fair from Neighbourhood Nights in any executable recommendation, or provide current venue-level access, RSVP, capacity, price, and private-event restrictions for each promoted Neighbourhood Nights occurrence.",
+        "Resolve or explicitly suppress the conflicting fourth-edition wording on the COEX listing; use the organizer's fifth-edition identity as controlling until corrected.",
+        "Recheck the official Govent checkout immediately before execution and preserve the distinction between sold-out discounted inventory and selectable full-price ticket classes."
+      ],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-events-20260830-001",
+      "expires_at": "2026-08-31T00:00:00+09:00"
+    },
+    {
+      "verdict_id": "trust-event-002",
+      "subject_id": "event-7979-running-crew-2026",
+      "decision": "hold",
+      "reviewed_claim_ids": [
+        "claim-event-006",
+        "claim-event-007",
+        "claim-event-008",
+        "claim-event-009",
+        "claim-event-010"
+      ],
+      "reason_codes": [
+        "BOOKING_NOT_YET_OPEN",
+        "CURRENT_EXECUTION_STATUS_CONFLICT",
+        "ZERO_APPLICATIONS_NOT_AVAILABILITY",
+        "FINAL_DATE_CONFLICT_RESOLVED_NARROWLY"
+      ],
+      "required_evidence": [
+        "After 2026-08-31 00:00 Asia/Seoul, verify that the 2026-09-03 occurrence accepts a reservation through the stated Seoul booking path rather than relying on a pre-opening 0/30 display.",
+        "Resolve the contradiction between the overall 'service ended' label and the future per-date calendar before representing the Seoul allocation as currently executable.",
+        "Keep Dongma Club and day-of registration separate from the Seoul allocation unless their current application path and available capacity are directly evidenced."
+      ],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-events-20260830-001",
+      "expires_at": "2026-08-31T00:15:00+09:00"
+    },
+    {
+      "verdict_id": "trust-event-003",
+      "subject_id": "event-story-a-seongsu-2026",
+      "decision": "revise",
+      "reviewed_claim_ids": [
+        "claim-event-011",
+        "claim-event-012",
+        "claim-event-013",
+        "claim-event-014",
+        "claim-event-015"
+      ],
+      "reason_codes": [
+        "SUPERSEDED_CANONICAL_BOOKING_URL",
+        "REFERENCE_PRICE_BASIS_UNVERIFIED",
+        "OPENING_SPECIAL_DURATION_UNVERIFIED",
+        "COUPON_CONDITIONS_INCOMPLETE",
+        "LIVE_REPLACEMENT_PATH_VERIFIED"
+      ],
+      "required_evidence": [
+        "Replace the closed item URL ending in 785624 with the active canonical booking product ending in 7856242 for current execution, while retaining the old-to-new relationship as provenance only.",
+        "Substantiate the KRW 30,000 reference price and the time boundary of the KRW 15,000 opening-special offer, or omit reference-price savings and urgency claims.",
+        "Verify the 10% Amore Seongsu coupon on the active product and capture its validity, exclusions, and stacking rules before presenting it as an executable benefit.",
+        "Recheck the active Naver calendar immediately before execution because exposed dates and times are inventory-sensitive."
+      ],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-events-20260830-001",
+      "expires_at": "2026-08-31T00:00:00+09:00"
+    }
+  ]
+}

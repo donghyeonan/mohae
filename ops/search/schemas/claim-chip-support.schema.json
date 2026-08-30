@@ -8,7 +8,7 @@
   "properties": {
     "support_id": {"type": "string", "minLength": 1},
     "claim_id": {"type": "string", "minLength": 1},
-    "chip": {"type": "string", "enum": ["MERIT", "HEAT", "SCARCITY", "PAYOFF", "SOCIAL_CURRENCY", "PERSONAL_FIT"]},
+    "chip": {"type": "string", "enum": ["MERIT", "HEAT", "SCARCITY", "PAYOFF", "SOCIAL_CURRENCY"]},
     "support_strength": {"type": "string", "enum": ["direct", "partial", "context_only"]},
     "reason": {"type": ["string", "null"], "maxLength": 400},
     "created_at": {"type": "string", "format": "date-time"}

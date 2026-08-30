@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mohae.local/schemas/worker-output-envelope.schema.json",
+  "title": "MOHAE Discovery Worker Output Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "department_id", "worker_id", "worker_mode", "source_strategy", "observed_at", "leads"],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "department_id": {"type": "string", "enum": ["local_places", "events_experiences", "global_market"]},
+    "worker_id": {"type": "string", "minLength": 1},
+    "worker_mode": {"type": "string", "enum": ["memory_assisted", "blank_slate"]},
+    "source_strategy": {"type": "string", "minLength": 1},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "leads": {
+      "type": "array",
+      "items": {"$ref": "raw-lead.schema.json"},
+      "maxItems": 6
+    }
+  }
+}

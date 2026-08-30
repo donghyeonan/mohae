@@ -1,0 +1,240 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "global_market",
+  "worker_id": "gm-capital",
+  "worker_mode": "memory_assisted",
+  "source_strategy": "Public-web discovery across VC portfolio spotlights and investment theses, accelerator and launch platforms, startup jobs and geographic expansion reporting, company-reported usage and revenue evidence, and realized acquisition outcomes. Investor attention, founder supply, adoption, and economic durability were kept separate during discovery.",
+  "observed_at": "2026-08-30T14:32:09+09:00",
+  "leads": [
+    {
+      "lead_id": "gm-capital-01",
+      "raw_title": "Orthogonal is building service discovery and payment rails for autonomous AI agents",
+      "raw_description": "Pantera Capital's July 2026 portfolio spotlight describes Orthogonal as infrastructure through which an AI agent can find a service, connect to it, and settle payment automatically. The investor says the system was already connected to more than 50 services and that Pantera led a $4.3 million seed round in June 2026.",
+      "discovery_url": "https://panteracapital.com/portfolio-spotlight-july-2026",
+      "canonical_url": "https://www.orthogonal.com/",
+      "discovered_via": "VC portfolio spotlight to agentic-finance thesis to named June 2026 seed investment and operating-integration claim",
+      "source_type": "official",
+      "market": "Global",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Orthogonal",
+        "Pantera Capital",
+        "Y Combinator",
+        "Pioneer Fund",
+        "Decasonic",
+        "Blast",
+        "Outbound",
+        "Surreal",
+        "agentic payments",
+        "machine-to-service commerce"
+      ],
+      "raw_dates": [
+        "2026-07-29 (date shown by the indexed Pantera portfolio spotlight; exact publication time not exposed)",
+        "2026-06 (month stated for the seed round)"
+      ],
+      "raw_numbers": [
+        "US$4.3 million seed round led by Pantera",
+        "More than 50 services Pantera says were already connected to Orthogonal"
+      ],
+      "uncertainties": [
+        "The integration count is investor-reported and no measurement date or methodology is stated.",
+        "The source discloses no revenue, retention, transaction volume, gross margin, or customer concentration evidence.",
+        "The spotlight's market-size forecast is third-party projection, not Orthogonal adoption evidence."
+      ]
+    },
+    {
+      "lead_id": "gm-capital-02",
+      "raw_title": "OpenFX reports rapid scale in stablecoin-based cross-border settlement",
+      "raw_description": "Pantera Capital's July 2026 portfolio spotlight says OpenFX replaces multi-bank cross-border routing with stablecoin settlement while keeping crypto invisible to senders and recipients. It reports that OpenFX moved its first US$1 billion in year one, reached US$1 billion per month by month 18, and had reached US$80 billion in annualized volume within two years.",
+      "discovery_url": "https://panteracapital.com/portfolio-spotlight-july-2026",
+      "canonical_url": "https://www.openfx.com/",
+      "discovered_via": "VC portfolio spotlight to always-on financial-infrastructure thesis to named portfolio company and public throughput, speed, cost, client, and financing claims",
+      "source_type": "official",
+      "market": "Global",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "OpenFX",
+        "Pantera Capital",
+        "Accel",
+        "Atomico",
+        "Lightspeed",
+        "M13",
+        "Northzone",
+        "Yellow Card",
+        "VelaFi",
+        "stablecoin settlement",
+        "cross-border payments"
+      ],
+      "raw_dates": [
+        "2026-07-29 (date shown by the indexed Pantera portfolio spotlight; exact publication time not exposed)",
+        "2026-03 (month stated for OpenFX's Series A, outside the discovery window but included by the in-window operating update)"
+      ],
+      "raw_numbers": [
+        "US$80 billion annualized cross-border payment volume reported after two years",
+        "US$1 billion cumulative volume in year one",
+        "US$1 billion per month reported run rate by month 18",
+        "98% of transactions reported to settle in under one hour",
+        "90% lower reported cost than conventional cross-border settlement",
+        "US$94 million March 2026 Series A in which Pantera participated"
+      ],
+      "uncertainties": [
+        "All operating metrics in the spotlight are portfolio-company or investor claims without disclosed methodology.",
+        "Annualized payment volume is not revenue and does not establish profitability or retention.",
+        "The statement that OpenFX is on pace for US$1 billion per day is forward-looking rather than an achieved historical average."
+      ]
+    },
+    {
+      "lead_id": "gm-capital-03",
+      "raw_title": "Speko launches a benchmark-routed multi-provider voice stack from YC Summer 2026",
+      "raw_description": "Speko's founder introduced a single API that benchmarks and routes speech-to-text, language-model, and text-to-speech providers by language, region, accuracy, latency, and cost. The August 2026 Launch HN post says external usage had grown about 25% per week on average since the YC batch began in late June, with growth front-loaded toward launch weeks.",
+      "discovery_url": "https://news.ycombinator.com/item?id=49332751",
+      "canonical_url": "https://www.ycombinator.com/companies/speko",
+      "discovered_via": "YC Summer 2026 company profile to Launch HN founder post with product architecture, customer anecdotes, and disclosed usage-growth claim",
+      "source_type": "community",
+      "market": "United States and global developer market",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Speko",
+        "Y Combinator Summer 2026",
+        "Beknazar Abdikamalov",
+        "voice AI routing",
+        "speech-to-text",
+        "text-to-speech",
+        "multi-model gateway"
+      ],
+      "raw_dates": [
+        "2026-08-17 (Launch HN calendar date; exact publication time not preserved here)",
+        "Late 2026-06 (stated start of the external-usage growth interval)"
+      ],
+      "raw_numbers": [
+        "About 25% per week founder-reported average external usage growth since late June, explicitly front-loaded toward launch weeks",
+        "4-person team on the YC company profile",
+        "10+ languages in the founder's prior production voice-agent operating experience"
+      ],
+      "uncertainties": [
+        "The usage-growth claim has no absolute denominator, customer count, paid share, or cohort retention.",
+        "The founder states that growth was front-loaded, so the average should not be read as a stable ongoing rate.",
+        "Customer examples are anonymized and do not establish contract value or duration."
+      ]
+    },
+    {
+      "lead_id": "gm-capital-04",
+      "raw_title": "Fypro packages TikTok audience analysis, content generation, storefronts, and owned customer lists for creators",
+      "raw_description": "Fypro's Product Hunt page describes a creator stack that reads a TikTok account, builds a site and niche-matched store, generates videos, and gives the creator an owned customer and email list. Product Hunt says it is trained on more than 4 million viral TikToks and used by more than 2,000 creators; Fypro's own site further labels more than 2,000 creators as active weekly and claims more than 10 million views generated last quarter.",
+      "discovery_url": "https://www.producthunt.com/products/fypro",
+      "canonical_url": "https://www.fypro.ai/",
+      "discovered_via": "Product Hunt recent launch to creator-commerce business model to company landing page activity and output claims",
+      "source_type": "platform",
+      "market": "Global creator market",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Fypro",
+        "Product Hunt",
+        "TikTok creators",
+        "creator commerce",
+        "owned audience",
+        "AI storefront generation"
+      ],
+      "raw_dates": [
+        "2026-06-16 (Product Hunt page index date returned by public search; exact page publication time unresolved)",
+        "2026-07-02 (Product Hunt day and week award date shown for the launch)"
+      ],
+      "raw_numbers": [
+        "2,000+ creators reported by Product Hunt; Fypro's site describes 2,000+ active creators using it weekly",
+        "4 million+ viral TikTok videos reported as analyzed or used to train the engine",
+        "10 million+ views Fypro says were generated by content planned with the product in the last quarter"
+      ],
+      "uncertainties": [
+        "The June 16 index date and July 2 award date do not by themselves establish a precise launch timestamp.",
+        "Creator, training-set, and view counts are company-reported without methodology or independent verification.",
+        "The pages expose no paid-customer count, revenue, creator retention, merchant GMV, or creator earnings distribution."
+      ]
+    },
+    {
+      "lead_id": "gm-capital-05",
+      "raw_title": "Comp AI pairs reported ARR and customer growth with a Miami headquarters move and hiring plan",
+      "raw_description": "Refresh Miami reports that AI-native compliance startup Comp AI opened a permanent headquarters in Aventura after relocating from New York. Co-founder and COO Claudio Fuentes said the company grew from zero to 900 customers and to more than US$7 million ARR in 14 months; the company planned about 20 hires over 100 days and expected global headcount to grow from 23 to about 50 by year-end.",
+      "discovery_url": "https://refreshmiami.com/news/ai-compliance-startup-plants-its-hq-here-plans-to-hire-20-to-start/",
+      "canonical_url": "https://www.trycomp.ai/",
+      "discovered_via": "Regional startup expansion reporting to headquarters relocation, hiring plan, and founder-reported customers and ARR",
+      "source_type": "editorial",
+      "market": "United States",
+      "published_at": null,
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Comp AI",
+        "Claudio Fuentes",
+        "Lewis Carhart",
+        "Mariano Fuentes",
+        "Aventura",
+        "Miami",
+        "AI compliance",
+        "continuous security monitoring"
+      ],
+      "raw_dates": [
+        "2026-07-31 (article date shown by public search; exact publication time not exposed)",
+        "2026-02 (reported relocation month)",
+        "Next 100 days (stated hiring window from publication)",
+        "End of 2026 (stated global headcount target)"
+      ],
+      "raw_numbers": [
+        "900 customers reported by the co-founder",
+        "More than US$7 million ARR reached in 14 months, company-reported",
+        "14-month zero-to-current customer and ARR growth interval",
+        "20 planned Miami-area hires over 100 days",
+        "23 current global employees and about 50 targeted by year-end",
+        "US$200,000 reported headquarters renovation investment"
+      ],
+      "uncertainties": [
+        "Customer and ARR figures are attributed to a company co-founder and are not independently audited in the article.",
+        "ARR is undefined; the source does not distinguish contracted, billed, or collected recurring revenue.",
+        "The 20 hires and year-end headcount are plans, not completed expansion.",
+        "No retention, churn, gross margin, CAC, or revenue-per-customer distribution is published."
+      ]
+    },
+    {
+      "lead_id": "gm-capital-06",
+      "raw_title": "Noctrix Health closes a US$340 million strategic exit after FDA authorization and commercialization",
+      "raw_description": "Angelini Ventures announced that portfolio company Noctrix Health was acquired by ResMed for US$340 million, marking the venture firm's first portfolio exit. Noctrix's Nidra wearable is described as the first FDA-authorized non-invasive therapy for moderate-to-severe restless legs syndrome. ResMed's completion release says Noctrix became a wholly owned subsidiary on June 1, while contemporaneous MedTech Dive reporting put Noctrix's annual revenue run rate at about US$24 million and quoted ResMed management saying its revenue growth and gross margin exceeded ResMed's.",
+      "discovery_url": "https://www.globenewswire.com/news-release/2026/6/3/3305949/0/en/angelini-ventures-marks-first-portfolio-company-exit-as-resmed-acquires-noctrix-health-for-340-million.html",
+      "canonical_url": "http://investor.resmed.com/news-events/press-releases/detail/424/resmed-completes-acquisition-of-noctrix-health-expanding-clinical-sleep-health-portfolio",
+      "discovered_via": "Venture portfolio exit announcement to acquirer completion release and contemporaneous operating-economics reporting",
+      "source_type": "official",
+      "market": "United States and global sleep-health market",
+      "published_at": "2026-06-03T07:40:00-04:00",
+      "observed_at": "2026-08-30T14:32:09+09:00",
+      "possible_entities": [
+        "Noctrix Health",
+        "ResMed",
+        "Angelini Ventures",
+        "Nidra",
+        "wearable neuromodulation",
+        "restless legs syndrome",
+        "connected sleep health"
+      ],
+      "raw_dates": [
+        "2026-06-03T07:40:00-04:00 (Angelini Ventures release timestamp)",
+        "2026-06-01T16:05:00-04:00 (ResMed acquisition-completion release timestamp)",
+        "2026-06-01 (acquisition completion date)",
+        "2024 (Angelini Ventures investment year stated in the release)",
+        "2016 (Noctrix founding year stated in the release)"
+      ],
+      "raw_numbers": [
+        "US$340 million reported acquisition value",
+        "US$40 million Noctrix Series C round in which Angelini Ventures participated",
+        "About US$24 million annual revenue run rate reported by MedTech Dive from ResMed's disclosure",
+        "First Angelini Ventures portfolio company exit"
+      ],
+      "uncertainties": [
+        "The acquisition value is not a revenue or profit metric and includes strategic value to the acquirer.",
+        "The approximately US$24 million revenue run rate is reported secondhand; the underlying period and revenue definition are not disclosed in the inspected source excerpt.",
+        "Higher growth and gross margin are comparative management statements without absolute percentages.",
+        "No patient retention, reimbursement mix, unit economics, or post-acquisition operating result is published."
+      ]
+    }
+  ]
+}

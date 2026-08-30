@@ -37,6 +37,8 @@ workflow:
   evidence_assembly:
     starts_after_union: true
     requires_provenance: true
+    allowed_chips: [MERIT, HEAT, SCARCITY, PAYOFF, SOCIAL_CURRENCY]
+    personal_fit_requires_recommendation_context: true
   trust_review:
     required_before_promotion: true
   live_recheck:
@@ -51,6 +53,8 @@ evaluation:
   periodic_memory_free_run: true
 
 outputs:
+  run_brief_schema: ops/search/schemas/run-brief.schema.json
+  worker_output_envelope_schema: ops/search/schemas/worker-output-envelope.schema.json
   raw_lead_schema: ops/search/schemas/raw-lead.schema.json
   evidence_claim_schema: ops/search/schemas/evidence-claim.schema.json
   claim_chip_support_schema: ops/search/schemas/claim-chip-support.schema.json

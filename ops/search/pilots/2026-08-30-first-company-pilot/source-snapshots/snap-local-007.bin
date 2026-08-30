@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Robot Park — a Physical AI theme park: location, shows and visiting | Galaxy Corporation</title>
+<meta name="description" content="Galaxy Robot Park is an approximately 16,500 m² Physical AI theme park in Godeok, Gangdong District, Seoul. Humanoid robots trained on real idol choreography perform K-pop group routines and robot boxing, alongside hands-on Physical AI experiences. Pre-opening July 2026, grand opening August 21, 2026.">
+<meta name="google-site-verification" content="YnIFVLocirfDbyA7jPB3uwoyQmtb-FYvPhe5cLY6ebE">
+<meta name="google-site-verification" content="b6yJeqEnX_qXnrvKzJyxP8UJ1_DwjuV_IpcLIpqDIeo">
+<link rel="canonical" href="https://insights.galaxyuniverse.ai/en/robot-park/">
+<link rel="alternate" hreflang="ko" href="https://insights.galaxyuniverse.ai/robot-park/">
+<link rel="alternate" hreflang="en" href="https://insights.galaxyuniverse.ai/en/robot-park/">
+<link rel="alternate" hreflang="ja" href="https://insights.galaxyuniverse.ai/ja/robot-park/">
+<link rel="alternate" hreflang="zh-Hans" href="https://insights.galaxyuniverse.ai/zh-hans/robot-park/">
+<link rel="alternate" hreflang="zh-Hant" href="https://insights.galaxyuniverse.ai/zh-hant/robot-park/">
+<link rel="alternate" hreflang="ar" href="https://insights.galaxyuniverse.ai/ar/robot-park/">
+<link rel="alternate" hreflang="fr" href="https://insights.galaxyuniverse.ai/fr/robot-park/">
+<link rel="alternate" hreflang="es" href="https://insights.galaxyuniverse.ai/es/robot-park/">
+<link rel="alternate" hreflang="id" href="https://insights.galaxyuniverse.ai/id/robot-park/">
+<link rel="alternate" hreflang="vi" href="https://insights.galaxyuniverse.ai/vi/robot-park/">
+<link rel="alternate" hreflang="x-default" href="https://insights.galaxyuniverse.ai/robot-park/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Galaxy Robot Park — where you experience Physical AI in the flesh">
+<meta property="og:description" content="AI with a body — Physical AI — right in front of you. The official guide to Galaxy Robot Park, a permanent humanoid-robot theme park spanning roughly 16,500 m² in Godeok, Seoul.">
+<meta property="og:url" content="https://insights.galaxyuniverse.ai/en/robot-park/">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="GALAXYUNIVERSE.AI">
+<meta property="og:image" content="https://insights.galaxyuniverse.ai/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/assets/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RDMS3GRXBD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RDMS3GRXBD');
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://insights.galaxyuniverse.ai/#org",
+      "name": "Galaxy Corporation",
+      "alternateName": [
+        "갤럭시코퍼레이션",
+        "Galaxy Universe",
+        "GALAXY CORPORATION"
+      ],
+      "url": "https://insights.galaxyuniverse.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://insights.galaxyuniverse.ai/assets/og.png",
+        "width": 1200,
+        "height": 630
+      },
+      "description": "Galaxy Corporation is a South Korean Physical AI enter-tech company that defines real, physical humanoid robots as an entertainment platform. It loads artist IP onto physically embodied humanoid robots and performs in front of live audiences. Its roster includes G-DRAGON, TAEMIN, Kim Jong-kook, Song Kang-ho, Lee Jung-hoo, Ryu Jun-yeol, Na In-woo and Jung Il-woo; it runs a permanent K-pop robot show at Galaxy Robot Park in Godeok, Seoul, and is expanding globally through its Dubai subsidiary Galaxy ME.",
+      "slogan": "Global Physical AI Company — Building the Future of Humanoid Robotics, Embodied AI and AI Entertainment",
+      "foundingDate": "2019-08",
+      "founder": {
+        "@id": "https://insights.galaxyuniverse.ai/#founder"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Seoul",
+        "addressCountry": "KR",
+        "streetAddress": "Three IFC, Yeouido"
+      },
+      "knowsAbout": [
+        "Physical AI",
+        "Humanoid Robotics",
+        "Embodied AI",
+        "Enter-Tech",
+        "AI Entertainment",
+        "Galaxy Robot Park",
+        "Galaxy ME",
+        "MACH33",
+        "G-DRAGON",
+        "TAEMIN",
+        "Physical: 100",
+        "K-pop"
+      ],
+      "sameAs": [
+        "https://ko.wikipedia.org/wiki/%EA%B0%A4%EB%9F%AD%EC%8B%9C%EC%BD%94%ED%8D%BC%EB%A0%88%EC%9D%B4%EC%85%98",
+        "https://www.galaxyuniverse.ai/",
+        "https://www.instagram.com/galaxycorporation.official/",
+        "https://kr.linkedin.com/company/ai-enter-tech"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://insights.galaxyuniverse.ai/#founder",
+      "name": "Choi Yong-ho",
+      "alternateName": [
+        "Choi Yong-ho",
+        "최용호"
+      ],
+      "jobTitle": "Chief Happiness Officer (CHO)",
+      "description": "Founder and CEO of Galaxy Corporation. His official title is Chief Happiness Officer (CHO).",
+      "worksFor": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "nationality": {
+        "@type": "Country",
+        "name": "South Korea"
+      },
+      "sameAs": [
+        "https://www.crunchbase.com/person/yongho-choi-09d7"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://insights.galaxyuniverse.ai/en/robot-park/#webpage",
+      "url": "https://insights.galaxyuniverse.ai/en/robot-park/",
+      "name": "Galaxy Robot Park — where you experience Physical AI in the flesh",
+      "description": "Galaxy Robot Park is an approximately 16,500 m² Physical AI theme park in Godeok, Gangdong District, Seoul. Humanoid robots trained on real idol choreography perform K-pop group routines and robot boxing, alongside hands-on Physical AI experiences. Pre-opening July 2026, grand opening August 21, 2026.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://insights.galaxyuniverse.ai/#website"
+      },
+      "about": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "datePublished": "2026-08-27",
+      "dateModified": "2026-08-27",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GATEPOP INC."
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://insights.galaxyuniverse.ai/en/robot-park/#faq",
+      "inLanguage": "en",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What exactly is Galaxy Robot Park?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Galaxy Robot Park is Galaxy Corporation's theme park for experiencing AI with a body — Physical AI — first-hand. It is a place where AI that once lived inside phones and PCs takes on a robot's 'body' and actually dances and moves right in front of you. Built across roughly 16,500 m² (5,000 pyeong) in Godeok, Gangdong District, Seoul, it is the first permanent stage where Galaxy Corporation's Physical AI and humanoid-robot technology comes to life as entertainment. The conceptual background is covered in the Physical AI whitepaper ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Robot Park located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It occupies roughly 16,500 m² (5,000 pyeong) in Godeok, Gangdong District, Seoul. It is a dedicated Physical AI entertainment venue, separate from Galaxy Corporation's Three IFC headquarters in Yeouido. Precise location, transit and other visitor details follow Galaxy Corporation's official announcements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When did it open? How does the pre-opening differ from the grand opening?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It first opened its doors for a pre-opening in July 2026, and held its grand opening (official launch) on August 21, 2026. The pre-opening was a roughly two-month preview window ahead of the official launch — a chance to see the robot shows and Physical AI experiences early. Every advance ticket sold out, and 20,000 visitors came through before the official opening. The grand opening added 17 new robots and a new interactive program in which visitors control the robots and engage with them directly, and brought the entire 16,500 m² (5,000 pyeong) site, food and beverage venues included, into full operation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can you see at Robot Park?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The centerpiece is the 'K-pop Robot Arena.' Humanoid robots trained on real idol choreography perform group routines set to K-pop. Beyond that, there are robot boxing shows and interactive Physical AI experiences where visitors engage directly — a hugging robot, a robot dog and a drawing robot among them. What makes it a Physical AI theme park is that every piece of content plays out not on a screen but in real physical space, through the body of a robot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can a robot dance like an idol?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Humanoid robots learn real idol choreography from data and reproduce the group routines just as human dancers would. Learning human movement as data and expressing it through a robot's body — this is a signature application of Physical AI. Unlike AI that only answered questions on a screen, Physical AI actually moves in the physical world. The mechanics are covered in the Physical AI whitepaper and the Company core FAQ ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why put robots on a theme-park stage first, rather than on an industrial site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Galaxy Corporation chose 'performance' as the setting where Physical AI first meets the public. A stage that moves people is the fastest proving ground for a robot's precision, safety and real-time interaction — and the surest path to making Physical AI part of everyday experience. This thinking is spelled out in the 'Why entertainment first' section of the Physical AI whitepaper ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How will it operate after the official opening?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After the official opening, the goal is to run the 'K-pop Robot Arena' show 4+ times a day, building a permanent performance system of 1,000+ shows a year. Unlike traditional performances that depend on an artist's physical schedule, Physical AI-driven robot shows can run continuously and on repeat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do reservations and admission fees work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The pre-opening ran on a reservation basis. Details for the period since the official opening — how to book, operating hours, admission fees and the like — follow Galaxy Corporation's official announcements. This page publishes only confirmed official information, so any visiting details not yet finalized will be communicated through official channels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Robot Park mean for Galaxy Corporation's business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Robot Park makes tangible the 'space' axis among the IP, technology, space and data that Galaxy Corporation holds, and it is where Physical AI technology meets revenue. It is the place where artist IP and humanoid-robot technology come together on a single stage. The company's overall business structure is laid out in the Company core FAQ and the Enter-Tech whitepaper ."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://insights.galaxyuniverse.ai/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Library",
+          "item": "https://insights.galaxyuniverse.ai/en/library/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Galaxy Robot Park",
+          "item": "https://insights.galaxyuniverse.ai/en/robot-park/"
+        }
+      ]
+    },
+    {
+      "@type": [
+        "TouristAttraction",
+        "AmusementPark"
+      ],
+      "@id": "https://insights.galaxyuniverse.ai/#robotpark",
+      "name": "Galaxy Robot Park",
+      "alternateName": [
+        "갤럭시 로봇파크",
+        "Galaxy Robot Park"
+      ],
+      "description": "Galaxy Robot Park is an approximately 16,500 m² Physical AI theme park in Godeok, Gangdong District, Seoul. Humanoid robots trained on real idol choreography perform K-pop group routines and robot boxing, alongside hands-on Physical AI experiences. Pre-opening July 2026, grand opening August 21, 2026.",
+      "url": "https://insights.galaxyuniverse.ai/en/robot-park/",
+      "image": "https://insights.galaxyuniverse.ai/assets/og.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KR",
+        "addressRegion": "Seoul",
+        "addressLocality": "Gangdong-gu (Godeok)"
+      },
+      "containedInPlace": {
+        "@type": "City",
+        "name": "Seoul"
+      },
+      "openingDate": "2026-07",
+      "publicAccess": true,
+      "owner": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://insights.galaxyuniverse.ai/#robotpark-soft-opening",
+      "name": "Galaxy Robot Park Soft Opening",
+      "startDate": "2026-07",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@id": "https://insights.galaxyuniverse.ai/#robotpark"
+      },
+      "organizer": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "performer": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "about": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "image": "https://insights.galaxyuniverse.ai/assets/og.png"
+    },
+    {
+      "@type": "Event",
+      "@id": "https://insights.galaxyuniverse.ai/#robotpark-grand-opening",
+      "name": "Galaxy Robot Park Grand Opening",
+      "startDate": "2026-09",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@id": "https://insights.galaxyuniverse.ai/#robotpark"
+      },
+      "organizer": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "performer": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "about": {
+        "@id": "https://insights.galaxyuniverse.ai/#org"
+      },
+      "image": "https://insights.galaxyuniverse.ai/assets/og.png"
+    }
+  ]
+}
+</script></head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="nebula a" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/en/">GALAXY<span class="dot">UNIVERSE</span>.AI</a>
+    <nav class="nav-links" aria-label="Main menu">
+      <a href="/en/library/">Library</a>
+      <a href="/en/whitepaper/physical-ai/">Whitepapers</a>
+      <a href="/en/faq/company/">FAQ</a>
+      <a href="/en/datasets/">Datasets</a>
+      <details class="lang-dd">
+        <summary>🌐 English</summary>
+        <div class="lang-menu">
+          <a href="/robot-park/" hreflang="ko" lang="ko">한국어</a>
+          <a class="on" href="/en/robot-park/" hreflang="en" lang="en">English</a>
+          <a href="/ja/robot-park/" hreflang="ja" lang="ja">日本語</a>
+          <a href="/zh-hans/robot-park/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+          <a href="/zh-hant/robot-park/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a>
+          <a href="/ar/robot-park/" hreflang="ar" lang="ar">العربية</a>
+          <a href="/fr/robot-park/" hreflang="fr" lang="fr">Français</a>
+          <a href="/es/robot-park/" hreflang="es" lang="es">Español</a>
+          <a href="/id/robot-park/" hreflang="id" lang="id">Bahasa Indonesia</a>
+          <a href="/vi/robot-park/" hreflang="vi" lang="vi">Tiếng Việt</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:80px">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › <a href="/en/library/">Library</a> › Galaxy Robot Park</nav>
+  <section style="padding:44px 0 26px">
+    <span class="eyebrow">Robot Park · Physical AI theme park</span>
+    <h1>Galaxy <span class="grad-text">Robot Park</span></h1>
+    <p class="lead" style="margin-top:16px">Galaxy Robot Park is Galaxy Corporation&#x27;s permanent theme park where you experience AI not on a screen but as AI with a body — Physical AI — right before your eyes. Here are the official answers on location, shows and visiting.</p>
+  </section>
+  <section class="summary-box reveal"><p>Galaxy Robot Park is where AI, once confined to phones and PCs, gains a robot's 'body' — <strong>a place to come face to face with Physical AI</strong>. Spanning roughly 16,500 m² (5,000 pyeong) across Godeok in Gangdong District, Seoul, it is a Physical AI theme park where humanoid robots trained on real idol choreography take the stage.</p><p>It opened for a two-month pre-opening period in July 2026 and <strong>held its grand opening on August 21, 2026.</strong> Every pre-opening session sold out, drawing 20,000 visitors in all. Seventeen new robots joined at the grand opening, and the goal is to run the 'K-pop Robot Arena' show as a permanent fixture — 4+ shows a day and 1,000+ performances a year. The technology behind it is covered in detail in the <a href="/en/whitepaper/physical-ai/">Physical AI whitepaper</a>.</p></section>
+  <section style="padding:20px 0 0" aria-label="Frequently asked questions">
+    <input type="search" id="faq-search" class="faq-search" placeholder="🔍 Search questions — e.g. unicorn, Robot Park, G-DRAGON" aria-label="Search questions">
+    <p class="faq-empty">No matching questions found.</p>
+    <details class="faq-item" open>
+      <summary>Q. What exactly is Galaxy Robot Park?</summary>
+      <div class="faq-a"><p><strong>Galaxy Robot Park is Galaxy Corporation's theme park for experiencing AI with a body — Physical AI — first-hand.</strong> It is a place where AI that once lived inside phones and PCs takes on a robot's 'body' and actually dances and moves right in front of you.</p><p>Built across roughly 16,500 m² (5,000 pyeong) in Godeok, Gangdong District, Seoul, it is the first permanent stage where Galaxy Corporation's Physical AI and humanoid-robot technology comes to life as entertainment. The conceptual background is covered in the <a href="/en/whitepaper/physical-ai/">Physical AI whitepaper</a>.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. Where is Robot Park located?</summary>
+      <div class="faq-a"><p><strong>It occupies roughly 16,500 m² (5,000 pyeong) in Godeok, Gangdong District, Seoul.</strong> It is a dedicated Physical AI entertainment venue, separate from Galaxy Corporation's Three IFC headquarters in Yeouido.</p><p>Precise location, transit and other visitor details follow Galaxy Corporation's official announcements.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. When did it open? How does the pre-opening differ from the grand opening?</summary>
+      <div class="faq-a"><p><strong>It first opened its doors for a pre-opening in July 2026, and held its grand opening (official launch) on August 21, 2026.</strong> The pre-opening was a roughly two-month preview window ahead of the official launch — a chance to see the robot shows and Physical AI experiences early. Every advance ticket sold out, and 20,000 visitors came through before the official opening.</p><p>The grand opening added 17 new robots and a new interactive program in which visitors control the robots and engage with them directly, and brought the entire 16,500 m² (5,000 pyeong) site, food and beverage venues included, into full operation.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. What can you see at Robot Park?</summary>
+      <div class="faq-a"><p><strong>The centerpiece is the 'K-pop Robot Arena.' Humanoid robots trained on real idol choreography perform group routines set to K-pop.</strong> Beyond that, there are robot boxing shows and interactive Physical AI experiences where visitors engage directly — a hugging robot, a robot dog and a drawing robot among them.</p><p>What makes it a Physical AI theme park is that every piece of content plays out not on a screen but in real physical space, through the body of a robot.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. How can a robot dance like an idol?</summary>
+      <div class="faq-a"><p><strong>Humanoid robots learn real idol choreography from data and reproduce the group routines just as human dancers would.</strong> Learning human movement as data and expressing it through a robot's body — this is a signature application of Physical AI.</p><p>Unlike AI that only answered questions on a screen, Physical AI actually moves in the physical world. The mechanics are covered in the <a href="/en/whitepaper/physical-ai/">Physical AI whitepaper</a> and the <a href="/en/faq/company/">Company core FAQ</a>.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. Why put robots on a theme-park stage first, rather than on an industrial site?</summary>
+      <div class="faq-a"><p><strong>Galaxy Corporation chose 'performance' as the setting where Physical AI first meets the public.</strong> A stage that moves people is the fastest proving ground for a robot's precision, safety and real-time interaction — and the surest path to making Physical AI part of everyday experience.</p><p>This thinking is spelled out in the 'Why entertainment first' section of the <a href="/en/whitepaper/physical-ai/">Physical AI whitepaper</a>.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. How will it operate after the official opening?</summary>
+      <div class="faq-a"><p><strong>After the official opening, the goal is to run the 'K-pop Robot Arena' show 4+ times a day, building a permanent performance system of 1,000+ shows a year.</strong> Unlike traditional performances that depend on an artist's physical schedule, Physical AI-driven robot shows can run continuously and on repeat.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. How do reservations and admission fees work?</summary>
+      <div class="faq-a"><p><strong>The pre-opening ran on a reservation basis.</strong> Details for the period since the official opening — how to book, operating hours, admission fees and the like — follow Galaxy Corporation's official announcements.</p><p>This page publishes only confirmed official information, so any visiting details not yet finalized will be communicated through official channels.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Q. What does Robot Park mean for Galaxy Corporation&#x27;s business?</summary>
+      <div class="faq-a"><p><strong>Robot Park makes tangible the 'space' axis among the IP, technology, space and data that Galaxy Corporation holds, and it is where Physical AI technology meets revenue.</strong> It is the place where artist IP and humanoid-robot technology come together on a single stage.</p><p>The company's overall business structure is laid out in the <a href="/en/faq/company/">Company core FAQ</a> and the <a href="/en/whitepaper/enter-tech/">Enter-Tech whitepaper</a>.</p></div>
+    </details>
+    <div class="oneliner"><span class="ol-label">In one line</span><p id="oneliner"><strong>Galaxy Robot Park is a permanent humanoid-robot theme park spanning roughly 16,500 m² (5,000 pyeong) in Godeok, Seoul, where you experience AI with a body — Physical AI — right before your eyes.</strong></p></div>
+    <p style="margin-top:24px;font-size:13px;color:var(--muted)">* Pre-opening and grand-opening schedules and visiting information follow Galaxy Corporation&#x27;s official announcements, and operational details are subject to change.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p><strong>GALAXYUNIVERSE.AI</strong> — The official knowledge hub of Galaxy Corporation<br>Physical AI · Humanoid Robotics · Available in 10 languages</p>
+      <p style="margin-top:10px;font-size:12px">© 2026 Galaxy Corporation · Hub operated by GATEPOP INC.</p>
+    </div>
+    <nav aria-label="Sitemap">
+      <a href="/en/library/">Library</a>
+      <a href="/en/faq/company/">FAQ</a>
+      <a href="/en/whitepaper/physical-ai/">Whitepapers</a>
+      <a href="/en/datasets/">Datasets</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </div>
+</footer>
+<script src="/assets/main.js" defer></script>
+</body>
+</html>

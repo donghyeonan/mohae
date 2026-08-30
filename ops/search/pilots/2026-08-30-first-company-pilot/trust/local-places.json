@@ -1,0 +1,76 @@
+{
+  "run_id": "mohae-pilot-20260830-001",
+  "department_id": "local_places",
+  "verdicts": [
+    {
+      "verdict_id": "trust-local-20260830-001-local-parkseobo-museum",
+      "subject_id": "local-parkseobo-museum",
+      "decision": "approve",
+      "reviewed_claim_ids": [
+        "claim-local-001",
+        "claim-local-002",
+        "claim-local-003",
+        "claim-local-004",
+        "claim-local-005"
+      ],
+      "reason_codes": [
+        "ID_OFFICIAL",
+        "OPS_CURRENT_OFFICIAL",
+        "EXEC_DETAILS_PRESENT",
+        "DATE_CONFLICT_DISCLOSED"
+      ],
+      "required_evidence": [],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-local-20260830-001",
+      "expires_at": "2026-09-06T15:20:00+09:00"
+    },
+    {
+      "verdict_id": "trust-local-20260830-001-local-starfield-market-wolgye",
+      "subject_id": "local-starfield-market-wolgye",
+      "decision": "approve",
+      "reviewed_claim_ids": [
+        "claim-local-006",
+        "claim-local-007",
+        "claim-local-008",
+        "claim-local-009",
+        "claim-local-010"
+      ],
+      "reason_codes": [
+        "ID_OFFICIAL",
+        "OPS_CURRENT_MERCHANT",
+        "DELAYED_TENANTS_DISCLOSED",
+        "PROMO_TERMS_DISCLOSED",
+        "SCARCITY_DATE_BOUND"
+      ],
+      "required_evidence": [],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-local-20260830-001",
+      "expires_at": "2026-08-30T23:00:00+09:00"
+    },
+    {
+      "verdict_id": "trust-local-20260830-001-local-galaxy-robotpark",
+      "subject_id": "local-galaxy-robotpark",
+      "decision": "hold",
+      "reviewed_claim_ids": [
+        "claim-local-011",
+        "claim-local-012",
+        "claim-local-013",
+        "claim-local-014",
+        "claim-local-015"
+      ],
+      "reason_codes": [
+        "EXEC_DETAILS_MISSING",
+        "ADDRESS_INCOMPLETE",
+        "DEMAND_SELF_REPORTED",
+        "OPS_CONFLICT_SUPERSEDED"
+      ],
+      "required_evidence": [
+        "Current official street address, operating hours, weekly closure days, admission price, reservation method, admission conditions, and live booking or walk-in availability.",
+        "Independent demand evidence for the sellout and 20,000-attendee figures, or removal of HEAT support and wording that could imply independently verified demand."
+      ],
+      "reviewed_at": "2026-08-30T15:20:00+09:00",
+      "reviewer_run_id": "trust-local-20260830-001",
+      "expires_at": "2026-08-31T15:20:00+09:00"
+    }
+  ]
+}
