@@ -202,27 +202,48 @@ svg { display: block; }
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 .photo-progress i.is-current, .photo-progress i.is-seen { background: #fff; }
-.card-status, .card-photo-count {
+.card-photo-count {
   position: absolute;
   z-index: 5;
   top: 34px;
-  pointer-events: none;
+  right: 18px;
+  min-height: 28px;
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
+  padding: 6px 9px;
   border: 1px solid rgba(255,255,255,.26);
   border-radius: 999px;
+  background: rgba(18,17,20,.5);
   color: #fff;
   font-size: 10px;
   font-weight: 720;
+  pointer-events: none;
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 14px rgba(0,0,0,.12);
 }
-.card-status { left: 18px; max-width: 225px; padding: 6px 10px; }
-.card-photo-count { right: 18px; padding: 6px 9px; background: rgba(18,17,20,.5); }
-.card-status.is-open { background: rgba(13,122,84,.74); }
-.card-status.is-limited { background: rgba(184,104,0,.78); }
-.card-status.is-closed { background: rgba(130,47,61,.82); }
+.card-collection-chip {
+  position: absolute;
+  z-index: 6;
+  top: 34px;
+  left: 18px;
+  max-width: 230px;
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,.34);
+  border-radius: 999px;
+  background: rgba(28,24,31,.72);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 760;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0,0,0,.14);
+}
+.card-collection-chip > span { color: #e9c6ff; }
+.card-collection-chip > b { margin-left: 1px; font-size: 14px; line-height: 1; }
 .photo-cycle {
   position: absolute;
   z-index: 3;
@@ -273,7 +294,7 @@ svg { display: block; }
   font-size: 13px;
   font-weight: 500;
 }
-.card-chips { max-width: 100%; display: flex; gap: 7px; margin-top: 14px; }
+.card-chips { max-width: 100%; display: flex; gap: 7px; margin-top: 14px; pointer-events: none; }
 .card-chips i {
   max-width: 195px;
   overflow: hidden;
@@ -587,6 +608,8 @@ html.is-detail-transition::view-transition-new(mohae-hero) {
 .map-topbar > div { display: grid; gap: 2px; padding: 7px 15px; border-radius: 16px; background: rgba(255,255,255,.88); box-shadow: 0 8px 20px rgba(40,35,33,.09); text-align: center; backdrop-filter: blur(13px); }
 .map-topbar small { color: var(--muted); font-size: 9px; }
 .map-topbar strong { font-size: 14px; }
+.map-screen.is-collection .map-topbar > div { max-width: 210px; }
+.map-screen.is-collection .map-topbar strong { overflow: hidden; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
 .round-back { border-radius: 50%; box-shadow: 0 8px 20px rgba(40,35,33,.1); }
 .map-canvas { position: absolute; inset: 0 0 302px; overflow: hidden; background: #ece8e3; }
 .map-canvas::before {
@@ -620,6 +643,7 @@ html.is-detail-transition::view-transition-new(mohae-hero) {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 .map-pin .icon { width: 18px; height: 18px; transform: rotate(45deg); }
+.map-pin.is-curated { background: linear-gradient(135deg, #30263a, #8d5aaa); box-shadow: 0 8px 18px rgba(82, 54, 98, .26); }
 .map-pin.is-active { z-index: 5; transform: translate(-50%, -50%) rotate(-45deg) scale(1.2); }
 .plan-pin {
   position: absolute;
@@ -670,6 +694,7 @@ html.is-detail-transition::view-transition-new(mohae-hero) {
 .saved-select small { color: var(--accent); font-size: 9px; font-weight: 650; }
 .saved-select strong { overflow: hidden; font-size: 16px; line-height: 1.2; letter-spacing: -.035em; text-overflow: ellipsis; white-space: nowrap; }
 .saved-select em { color: var(--muted); font-size: 10px; font-style: normal; }
+.collection-map-card .saved-select em { display: -webkit-box; overflow: hidden; line-height: 1.35; -webkit-box-orient: vertical; -webkit-line-clamp: 2; white-space: normal; }
 .saved-actions { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 7px; margin-top: 10px; }
 .saved-actions > button { min-height: 38px; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 7px; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-size: 10px; font-weight: 650; cursor: pointer; }
 .saved-actions > button:last-child { border: 0; background: var(--ink); color: #fff; }

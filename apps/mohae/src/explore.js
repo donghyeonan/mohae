@@ -142,7 +142,7 @@ export function createExploreFeature(context) {
     return `<article class="opportunity-card${behind ? " is-behind" : ""}" data-card-id="${item.id}" aria-label="${escapeHtml(item.title)}">
       <img data-card-image src="${escapeHtml(imageSrc(item.images[index]))}" alt="${escapeHtml(item.title)} 사진 ${index + 1}">
       ${photoProgress(item)}
-      ${behind ? "" : `<span class="card-status is-${statusTone(item)}">${escapeHtml(item.status?.label ?? "운영정보 확인")}</span>
+      ${behind ? "" : `<button class="card-collection-chip" type="button" data-action="open-collection-map" data-id="${item.id}" data-collection-id="${escapeHtml(item.collectionContext.id)}" aria-label="${escapeHtml(item.collectionContext.label)} 지도에서 보기"><span aria-hidden="true">✦</span>${escapeHtml(item.collectionContext.label)}<b aria-hidden="true">›</b></button>
       <span class="card-photo-count">${index + 1}/${item.images.length}</span>
       ${item.images.length > 1 ? `<button class="photo-cycle" type="button" data-action="next-photo" aria-label="${escapeHtml(item.title)} 다음 사진"></button>` : ""}
       <div class="card-information">
@@ -368,6 +368,23 @@ export function createExploreFeature(context) {
     </article>`;
   }
 
+  function collectionFor(id) {
+    if (!id) return null;
+    const items = opportunities.filter((item) => item.collectionContext?.id === id);
+    if (!items.length) return null;
+    return { id, label: items[0].collectionContext.label, items };
+  }
+
+  function collectionCardMarkup(item) {
+    const mapId = mapIdForOpportunity(item.id);
+    return `<article class="saved-card collection-map-card ${context.state.selectedMapId === mapId ? "is-selected" : ""}" data-map-id="${mapId}">
+      <button class="saved-select" type="button" data-action="select-map-item" data-map-id="${mapId}" aria-label="${escapeHtml(item.title)} 핀 선택">
+        <img src="${escapeHtml(imageSrc(item.images[0]))}" alt="">
+        <span><small>${escapeHtml(item.category)} · ${escapeHtml(item.location)}</small><strong>${escapeHtml(item.title)}</strong><em>${escapeHtml(item.subtitle)}</em></span>
+      </button>
+    </article>`;
+  }
+
   function projectedPin(latitude, longitude) {
     const x = Math.min(93, Math.max(7, ((longitude - 126.75) / 0.45) * 100));
     const y = Math.min(82, Math.max(12, ((37.7 - latitude) / 0.5) * 100));
@@ -375,23 +392,26 @@ export function createExploreFeature(context) {
   }
 
   function renderMap() {
+    const activeCollection = collectionFor(context.state.activeCollectionId);
     const savedItems = visibleSavedItems();
     const stops = [...context.state.plannedStops].sort((left, right) => left.order - right.order);
+    const mapItems = activeCollection?.items ?? savedItems.map(({ item }) => item);
+    const mapStops = activeCollection ? [] : stops;
     const availableMapIds = [
-      ...stops.map((stop) => mapIdForStop(stop.id)),
-      ...savedItems.map(({ item }) => mapIdForOpportunity(item.id)),
+      ...mapStops.map((stop) => mapIdForStop(stop.id)),
+      ...mapItems.map((item) => mapIdForOpportunity(item.id)),
     ];
     if (!availableMapIds.includes(context.state.selectedMapId)) {
       context.state.selectedMapId = availableMapIds[0] ?? null;
     }
     bottomNav.classList.add("is-hidden");
-    app.innerHTML = `<section class="screen map-screen" data-view="map">
+    app.innerHTML = `<section class="screen map-screen${activeCollection ? " is-collection" : ""}" data-view="map">
       <header class="map-topbar">
         <button class="round-back" type="button" data-action="back-explore" aria-label="탐색으로 돌아가기">${icon("arrowLeft")}</button>
-        <div><small>내 지도</small><strong>${availableMapIds.length}곳</strong></div>
+        <div><small>${activeCollection ? "MOHAE 컬렉션" : "내 지도"}</small><strong>${activeCollection ? escapeHtml(activeCollection.label) : `${availableMapIds.length}곳`}</strong></div>
         <button class="round-back" type="button" data-action="map-agent-help" aria-label="Agent로 장소 추가">${icon("plus")}</button>
       </header>
-      <div class="map-canvas" aria-label="저장한 경험과 계획 장소 지도">
+      <div class="map-canvas" aria-label="${activeCollection ? escapeHtml(`${activeCollection.label} 지도`) : "저장한 경험과 계획 장소 지도"}">
         <svg class="map-lines" viewBox="0 0 390 520" aria-hidden="true">
           <path d="M-20 95C72 136 83 44 176 92s134 5 238 64"/>
           <path d="M22 8c40 93 76 115 63 214s61 119 43 310"/>
@@ -400,8 +420,8 @@ export function createExploreFeature(context) {
           <path class="river" d="M-30 211c103-39 186 11 242 25s116-15 213-69"/>
         </svg>
         <span class="map-label seoul">SEOUL</span><span class="map-label gyeonggi">GYEONGGI</span>
-        ${savedItems.map(({ item }) => `<button class="map-pin ${context.state.selectedMapId === mapIdForOpportunity(item.id) ? "is-active" : ""}" style="--x:${item.pin[0]}%;--y:${item.pin[1]}%" type="button" data-action="select-map-item" data-map-id="${mapIdForOpportunity(item.id)}" aria-label="${escapeHtml(item.title)}">${icon("map")}</button>`).join("")}
-        ${stops.map((stop) => {
+        ${mapItems.map((item) => `<button class="map-pin ${activeCollection ? "is-curated " : ""}${context.state.selectedMapId === mapIdForOpportunity(item.id) ? "is-active" : ""}" style="--x:${item.pin[0]}%;--y:${item.pin[1]}%" type="button" data-action="select-map-item" data-map-id="${mapIdForOpportunity(item.id)}" aria-label="${escapeHtml(item.title)}">${icon("map")}</button>`).join("")}
+        ${mapStops.map((stop) => {
           const [x, y] = projectedPin(stop.latitude, stop.longitude);
           return `<button class="plan-pin ${context.state.selectedMapId === mapIdForStop(stop.id) ? "is-active" : ""}" style="--x:${x}%;--y:${y}%" type="button" data-action="select-map-item" data-map-id="${mapIdForStop(stop.id)}" aria-label="${escapeHtml(stop.name)}"><span>${stop.order}</span></button>`;
         }).join("")}
@@ -409,10 +429,12 @@ export function createExploreFeature(context) {
       </div>
       <section class="saved-sheet">
         <div class="sheet-handle"></div>
-        <div class="map-sheet-heading"><span><b>계획 ${stops.length}</b><i>저장 ${savedItems.length}</i></span><small>Agent가 추가한 장소도 같은 지도에 표시됩니다.</small></div>
-        ${availableMapIds.length ? `<div class="saved-rail">${stops.map(plannedStopMarkup).join("")}${savedItems.map(({ item, saved }) => savedCardMarkup(item, saved)).join("")}</div>` : `<div class="saved-empty"><span>♡</span><h2>지도에 장소가 아직 없어요</h2><p>경험을 저장하거나 Agent에게 숙소·공항·명소를 추가해 달라고 요청하세요.</p></div>`}
+        ${activeCollection ? `<div class="map-sheet-heading"><span><b>${escapeHtml(activeCollection.label)}</b><i>${activeCollection.items.length}곳</i></span><small>MOHAE가 고른 장소를 한 지도에서 봅니다.</small></div>
+          <div class="saved-rail">${activeCollection.items.map(collectionCardMarkup).join("")}</div>` : `<div class="map-sheet-heading"><span><b>계획 ${stops.length}</b><i>저장 ${savedItems.length}</i></span><small>Agent가 추가한 장소도 같은 지도에 표시됩니다.</small></div>
+          ${availableMapIds.length ? `<div class="saved-rail">${stops.map(plannedStopMarkup).join("")}${savedItems.map(({ item, saved }) => savedCardMarkup(item, saved)).join("")}</div>` : `<div class="saved-empty"><span>♡</span><h2>지도에 장소가 아직 없어요</h2><p>경험을 저장하거나 Agent에게 숙소·공항·명소를 추가해 달라고 요청하세요.</p></div>`}`}
       </section>
     </section>`;
+    bindImageFallbacks();
   }
 
   function renderFilter() {
@@ -668,6 +690,7 @@ export function createExploreFeature(context) {
       animateExploreReturn = fallbackAnimation;
       context.state.view = "explore";
       context.state.activeTab = "explore";
+      context.state.activeCollectionId = null;
       context.saveState();
       renderExplore();
     };
@@ -717,6 +740,7 @@ export function createExploreFeature(context) {
     context.state.selectedMapId = mapIdForStop(stop.id);
     context.state.activeTab = "explore";
     context.state.view = "map";
+    context.state.activeCollectionId = null;
     context.recordEvent("map_stop_added", null, { stopId: stop.id, name: stop.name, source: stop.source });
     context.render();
     return { ...stop, mapId: mapIdForStop(stop.id) };
@@ -744,6 +768,7 @@ export function createExploreFeature(context) {
     context.state.selectedMapId = mapId;
     context.state.activeTab = "explore";
     context.state.view = "map";
+    context.state.activeCollectionId = null;
     context.recordEvent("map_place_focused", null, { mapId });
     context.render();
     return { mapId, ...place };
@@ -813,7 +838,17 @@ export function createExploreFeature(context) {
     else if (action === "pass") passCurrent();
     else if (action === "save") saveCurrent();
     else if (action === "back-explore") backToExplore();
-    else if (action === "open-map") {
+    else if (action === "open-collection-map") {
+      const collectionId = button.dataset.collectionId;
+      const collection = collectionFor(collectionId);
+      if (!collection) return false;
+      context.state.activeCollectionId = collection.id;
+      context.state.view = "map";
+      context.state.selectedMapId = id ? mapIdForOpportunity(id) : mapIdForOpportunity(collection.items[0].id);
+      context.recordEvent("collection_map_opened", id, { collectionId: collection.id, collectionLabel: collection.label, visibleCount: collection.items.length });
+      renderMap();
+    } else if (action === "open-map") {
+      context.state.activeCollectionId = null;
       context.state.view = "map";
       context.recordEvent("map_opened", null, { visibleCount: getMapContext().plannedStops.length + getMapContext().savedOpportunities.length });
       renderMap();

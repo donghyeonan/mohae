@@ -25,6 +25,7 @@ const required = [
   "source",
   "address",
   "externalLinks",
+  "collectionContext",
 ];
 const errors = [];
 const heroOrigins = new Set(["official_site", "merchant_provided_map", "provider_exterior", "rights_cleared_editorial", "licensed_official_editorial"]);
@@ -63,12 +64,15 @@ for (const record of Array.isArray(records) ? records : []) {
   if (record.recommendationReasons) {
     errors.push(`${record.id}: generic recommendation reasons are excluded`);
   }
+  if (!/^mohae-[a-z0-9-]+$/.test(record.collectionContext?.id ?? "") || !/^MOHAE\s/.test(record.collectionContext?.label ?? "") || record.collectionContext?.kind !== "curated_collection" || record.collectionContext?.targetType !== "internal_map" || record.collectionContext?.curationStatus !== "prototype_curated") {
+    errors.push(`${record.id}: invalid curated collection context`);
+  }
   const signalChips = record.signalChips ?? [];
   const diningSignalKinds = new Set(["culinary_selection", "competition_award", "media_appearance", "international_editorial", "craft_affiliation"]);
   const eventSignalKinds = new Set(["participant", "attendee_payoff"]);
   const externalSourceRoles = new Set(["guide", "competition_organizer", "media", "editorial", "platform"]);
   const chipTones = new Set(["blue_ribbon", "michelin", "competition", "media", "editorial", "participant", "payoff"]);
-  if (!Array.isArray(signalChips) || signalChips.length > 3 || signalChips.some((chip) => !chip.label || !chip.kind || !chipTones.has(chip.tone) || !chip.sourceLabel || !externalSourceRoles.has(chip.sourceRole) || !/^https:\/\//.test(chip.sourceUrl ?? "") || Number.isNaN(Date.parse(chip.observedAt)) || !chip.scope || /self_report/i.test(chip.scope))) {
+  if (!Array.isArray(signalChips) || signalChips.length > 3 || signalChips.some((chip) => chip.interactive !== false || !chip.label || !chip.kind || !chipTones.has(chip.tone) || !chip.sourceLabel || !externalSourceRoles.has(chip.sourceRole) || !/^https:\/\//.test(chip.sourceUrl ?? "") || Number.isNaN(Date.parse(chip.observedAt)) || !chip.scope || /self_report/i.test(chip.scope))) {
     errors.push(`${record.id}: invalid signal chip provenance`);
   }
   const allowedSignalKinds = ["식당", "카페", "바"].includes(record.category) ? diningSignalKinds : eventSignalKinds;

@@ -122,9 +122,17 @@ export const opportunities = [
         "observedAt": "2026-08-30T10:36:45.382Z",
         "scope": "exact_place",
         "sourceRole": "platform",
-        "tone": "media"
+        "tone": "media",
+        "interactive": false
       }
     ],
+    "collectionContext": {
+      "id": "mohae-songpa-dining",
+      "label": "MOHAE 송파 맛집",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       79,
@@ -260,9 +268,17 @@ export const opportunities = [
         "observedAt": "2026-08-30T11:32:28.000Z",
         "scope": "exact_branch_2026",
         "sourceRole": "guide",
-        "tone": "blue_ribbon"
+        "tone": "blue_ribbon",
+        "interactive": false
       }
     ],
+    "collectionContext": {
+      "id": "mohae-gangdong-dining",
+      "label": "MOHAE 강동 맛집",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       83,
@@ -401,9 +417,17 @@ export const opportunities = [
         "observedAt": "2026-08-30T11:32:28.000Z",
         "scope": "exact_place",
         "sourceRole": "editorial",
-        "tone": "editorial"
+        "tone": "editorial",
+        "interactive": false
       }
     ],
+    "collectionContext": {
+      "id": "mohae-songpa-dining",
+      "label": "MOHAE 송파 맛집",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       78,
@@ -519,6 +543,13 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/11785944?placePath=/review",
       "official": "https://soma.kspo.or.kr/"
     },
+    "collectionContext": {
+      "id": "mohae-songpa-culture",
+      "label": "MOHAE 송파 문화",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       82,
@@ -629,6 +660,13 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/1906572873?placePath=/review",
       "official": "https://www.bookmuseum.go.kr/"
     },
+    "collectionContext": {
+      "id": "mohae-songpa-culture",
+      "label": "MOHAE 송파 문화",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       79,
@@ -733,6 +771,13 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/19452036?placePath=/review",
       "official": "https://www.gdfac.or.kr/"
     },
+    "collectionContext": {
+      "id": "mohae-gangdong-culture",
+      "label": "MOHAE 강동 문화",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       91,
@@ -828,6 +873,13 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/12268494?placePath=/review",
       "official": "https://www.ksponco.or.kr/olympicpark/"
     },
+    "collectionContext": {
+      "id": "mohae-songpa-outing",
+      "label": "MOHAE 송파 나들이",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       83,
@@ -909,6 +961,13 @@ export const opportunities = [
       "map": "https://map.naver.com/p/entry/place/18882132",
       "reviews": "https://map.naver.com/p/entry/place/18882132?placePath=/review",
       "official": "https://baekjemuseum.seoul.go.kr/"
+    },
+    "collectionContext": {
+      "id": "mohae-songpa-culture",
+      "label": "MOHAE 송파 문화",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
     },
     "distance": "",
     "pin": [
@@ -1006,6 +1065,13 @@ export const opportunities = [
       "reviews": "https://map.naver.com/p/entry/place/13222642?placePath=/review",
       "official": "https://www.riverview8.co.kr/"
     },
+    "collectionContext": {
+      "id": "mohae-gangdong-outing",
+      "label": "MOHAE 강동 나들이",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
+    },
     "distance": "",
     "pin": [
       81,
@@ -1102,6 +1168,13 @@ export const opportunities = [
       "map": "https://map.naver.com/p/entry/place/20303535",
       "reviews": "https://map.naver.com/p/entry/place/20303535?placePath=/review",
       "official": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
+    },
+    "collectionContext": {
+      "id": "mohae-gangdong-outing",
+      "label": "MOHAE 강동 나들이",
+      "kind": "curated_collection",
+      "targetType": "internal_map",
+      "curationStatus": "prototype_curated"
     },
     "distance": "",
     "pin": [

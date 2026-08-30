@@ -28,7 +28,8 @@ Optional common fields:
 - organizer, operator, or brand;
 - people, dynamically labeled as performers, speakers, artists, chefs, hosts, mentors, or judges;
 - deadline, capacity, age or eligibility conditions;
-- up to three typed signal chips when a qualifying external signal exists.
+- one publication-level collection context when the card belongs to a reviewed MOHAE collection;
+- up to three non-interactive typed signal chips when a qualifying external signal exists.
 
 The card surface may show only the visual, title, one-line value, timing, cost, place or market, and chips. The rest belongs in the lower detail sheet.
 
@@ -47,7 +48,8 @@ Reference payload, intentionally not a rigid schema:
   "place_or_market_text": "...",
   "organizer_text": null,
   "people_text": null,
-  "signal_chips": [{"label": "...", "kind": "culinary_selection | competition_award | media_appearance | international_editorial | craft_affiliation | participant | attendee_payoff", "tone": "blue_ribbon | michelin | competition | media | editorial | participant | payoff", "source_role": "guide | competition_organizer | media | editorial | platform", "source_url": "https://...", "observed_at": "...", "scope": "exact_branch | exact_occurrence"}],
+  "collection_context": {"id": "mohae-...", "label": "MOHAE ...", "kind": "curated_collection", "target_type": "internal_map"},
+  "signal_chips": [{"label": "...", "kind": "culinary_selection | competition_award | media_appearance | international_editorial | craft_affiliation | participant | attendee_payoff", "tone": "blue_ribbon | michelin | competition | media | editorial | participant | payoff", "interactive": false, "source_role": "guide | competition_organizer | media | editorial | platform", "source_url": "https://...", "observed_at": "...", "scope": "exact_branch | exact_occurrence"}],
   "primary_action": {"label": "...", "url": "https://..."},
   "sources": [{"role": "official | map | platform", "url": "https://...", "observed_at": "..."}]
 }
@@ -127,7 +129,11 @@ Do not force event schedule, venue, participation cost, or benefit-recipient fie
 
 ## 3. Chip guidance
 
-Visible chips are typed external signals, not generic explanations or score labels. Use zero to three; zero is normal. Use the recognizable source color when it exists, such as Blue Ribbon blue or Michelin red, and a stable semantic tone for media, editorial, participant, and payoff chips.
+The top primary collection chip and supporting signal chips have different jobs.
+
+- A collection chip is interactive publication context. It belongs to the card publication, not the canonical place, and opens the matching MOHAE internal map or list. Candidate-list membership alone cannot create it; only a reviewed publication subset can.
+- A trend collection chip is allowed only when the recommendation actually originated from that trend signal. Do not relabel a static registry candidate as `HEAT` or trend-discovered.
+- Signal chips are non-interactive external evidence, not navigation, generic explanations, or score labels. Use zero to three; zero is normal. Use the recognizable source color when it exists, such as Blue Ribbon blue or Michelin red, and a stable semantic tone for media, editorial, participant, and payoff chips.
 
 - Restaurant and cafe: exact-branch and exact-edition Michelin or Blue Ribbon selection, culinary competition award, attributable broadcast/YouTube appearance, international editorial recognition, or exact craft affiliation.
 - Event: named performer, speaker, artist, participant, or a concrete attendee payoff such as included goods, access, prize, learning, or activity.

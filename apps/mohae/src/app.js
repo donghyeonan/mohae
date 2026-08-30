@@ -16,6 +16,7 @@ function initialState() {
     saved: {},
     plannedStops: [],
     selectedMapId: null,
+    activeCollectionId: null,
     nearbyAnchor: null,
     reviewOpenId: null,
     eventLog: [],
