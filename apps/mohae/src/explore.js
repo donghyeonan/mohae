@@ -1,106 +1,5 @@
 import { DAY_MS, addDays, createId, escapeHtml, icon } from "./core.js";
-
-const opportunities = [
-  {
-    id: "pottery-yeonnam",
-    kind: "event",
-    group: "event",
-    category: "클래스",
-    title: "연남의 작은 도예 수업",
-    subtitle: "처음이어도 한 개는 완성하는 저녁",
-    location: "서울 연남동",
-    distance: "34분",
-    schedule: "9월 5일 · 19:30",
-    price: "₩38,000",
-    eventEnd: "2026-09-05T22:00:00+09:00",
-    why: "저장한 후보 중 손을 직접 쓰는 활동은 아직 없어서 새로운 선택으로 보여드렸어요.",
-    description: "여섯 명만 받는 초보자용 물레 수업입니다. 흙을 고르고 중심을 잡는 법부터 시작해 작은 그릇 하나를 완성합니다.",
-    note: "앞치마와 재료는 준비되어 있어요. 완성품은 소성 후 찾아갑니다.",
-    images: ["pottery-1.jpg", "pottery-2.jpg", "pottery-3.jpg"],
-    pin: [37, 40],
-    latitude: 37.5664,
-    longitude: 126.9237,
-  },
-  {
-    id: "jazz-euljiro",
-    kind: "event",
-    group: "event",
-    category: "공연",
-    title: "을지로 레이트 나이트 재즈",
-    subtitle: "서른 명만 들어가는 작은 라이브",
-    location: "서울 을지로",
-    distance: "28분",
-    schedule: "9월 12일 · 20:00",
-    price: "₩25,000",
-    eventEnd: "2026-09-12T23:00:00+09:00",
-    why: "저장한 카페는 조용한 공간이 많지만, 라이브 음악 경험은 거의 없어요.",
-    description: "색소폰과 피아노 듀오가 두 세트로 연주합니다. 좌석 간격이 넓고 혼자 와도 부담 없는 공연입니다.",
-    note: "입장은 공연 30분 전부터입니다. 음료 한 잔이 포함됩니다.",
-    images: ["jazz-1.jpg", "jazz-2.jpg"],
-    pin: [54, 34],
-    latitude: 37.5662,
-    longitude: 126.991,
-  },
-  {
-    id: "climbing-suwon",
-    kind: "event",
-    group: "event",
-    category: "스포츠",
-    title: "수원 초보 볼더링 세션",
-    subtitle: "강습 40분 뒤 자유롭게 더 타보기",
-    location: "경기 수원시",
-    distance: "51분",
-    schedule: "9월 6일 · 15:00",
-    price: "₩22,000",
-    eventEnd: "2026-09-06T18:00:00+09:00",
-    why: "직접 참여하는 활동을 자주 저장해서, 처음 시작하기 쉬운 세션을 골랐어요.",
-    description: "신발 착용부터 안전하게 떨어지는 법까지 배우는 입문 세션입니다. 강습 후 한 시간 동안 자유 이용할 수 있습니다.",
-    note: "운동복과 양말만 가져오면 됩니다. 암벽화는 대여에 포함됩니다.",
-    images: ["climbing-1.jpg", "climbing-2.jpg"],
-    pin: [42, 72],
-    latitude: 37.2636,
-    longitude: 127.0286,
-  },
-  {
-    id: "cafe-haenggung",
-    kind: "place",
-    group: "place",
-    category: "카페",
-    title: "행궁동 오래된 주택 카페",
-    subtitle: "마당이 있고 대화가 조용한 곳",
-    location: "경기 수원시",
-    distance: "47분",
-    schedule: "오늘 · 22:00까지",
-    price: "₩7,000대",
-    why: "밝은 체인점보다 오래된 건물의 작은 공간을 더 자주 저장했어요.",
-    description: "한옥과 1970년대 주택을 이어 만든 카페입니다. 좌석 수가 적고 음악이 크지 않아 혼자 머물기에도 좋습니다.",
-    note: "주말 14~17시는 대기가 생길 수 있어요.",
-    images: ["cafe-1.jpg", "cafe-2.jpg"],
-    pin: [48, 69],
-    latitude: 37.2854,
-    longitude: 127.0132,
-  },
-  {
-    id: "art-seongsu",
-    kind: "event",
-    group: "event",
-    category: "전시",
-    title: "성수의 밤, 빛과 소리 전시",
-    subtitle: "창고 전체를 걷는 55분의 설치 작업",
-    location: "서울 성수동",
-    distance: "31분",
-    schedule: "9월 27일까지",
-    price: "₩18,000",
-    eventEnd: "2026-09-27T20:00:00+09:00",
-    why: "저장한 전시와 형식은 다르지만 같은 지역에서 이어가기 쉬운 후보예요.",
-    description: "빛, 저주파 음향, 움직이는 천을 따라 네 개의 방을 걷는 설치 전시입니다. 정해진 순서 없이 머물 수 있습니다.",
-    note: "한 회차 입장은 40명으로 제한됩니다.",
-    images: ["art-1.jpg", "art-2.jpg"],
-    pin: [67, 40],
-    latitude: 37.5446,
-    longitude: 127.0557,
-  },
-];
+import { opportunities } from "./sample-data.js";
 
 const stopKindLabels = {
   accommodation: "숙소",
@@ -185,6 +84,40 @@ export function createExploreFeature(context) {
     return anchor ? `${distanceKm(anchor, item).toFixed(1)}km` : item.distance;
   }
 
+  function locationLine(item) {
+    const distance = displayDistance(item);
+    return distance ? `${item.location} · ${distance}` : item.location;
+  }
+
+  function imageSrc(src) {
+    if (/^https:\/\/blogfiles\.pstatic\.net\//.test(src)) {
+      return `https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f750_750&src=${encodeURIComponent(src)}`;
+    }
+    return /^(https?:|data:|blob:)/.test(src) ? src : `./assets/${src}`;
+  }
+
+  function bindImageFallbacks() {
+    app.querySelectorAll("img[data-card-image]").forEach((image) => {
+      const useFallback = () => {
+        if (image.dataset.fallbackApplied === "true") return;
+        image.dataset.fallbackApplied = "true";
+        image.classList.add("is-fallback");
+        image.src = "./assets/card-image-fallback.png";
+      };
+      image.addEventListener("error", useFallback, { once: true });
+      if (image.complete && image.naturalWidth === 0) useFallback();
+    });
+  }
+
+  function statusTone(item) {
+    return ["open", "limited", "closed"].includes(item.status?.tone) ? item.status.tone : "limited";
+  }
+
+  function observedDate(item) {
+    if (!item.source?.observedAt) return "관측일 미상";
+    return new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "numeric", day: "numeric" }).format(new Date(item.source.observedAt));
+  }
+
   function photoIndex(item) {
     return Math.min(context.state.photoIndices[item.id] ?? 0, item.images.length - 1);
   }
@@ -199,15 +132,17 @@ export function createExploreFeature(context) {
   function cardMarkup(item, behind = false) {
     const index = photoIndex(item);
     return `<article class="opportunity-card${behind ? " is-behind" : ""}" data-card-id="${item.id}" aria-label="${escapeHtml(item.title)}">
-      <img src="./assets/${item.images[index]}" alt="${escapeHtml(item.title)} 사진 ${index + 1}">
+      <img data-card-image src="${escapeHtml(imageSrc(item.images[index]))}" alt="${escapeHtml(item.title)} 사진 ${index + 1}">
       ${photoProgress(item)}
-      ${behind ? "" : `<button class="photo-zone photo-prev" type="button" data-action="prev-photo" aria-label="이전 사진"></button>
+      ${behind ? "" : `<span class="card-status is-${statusTone(item)}">${escapeHtml(item.status?.label ?? "운영정보 확인")}</span>
+      <span class="card-photo-count">${index + 1}/${item.images.length}</span>
+      <button class="photo-zone photo-prev" type="button" data-action="prev-photo" aria-label="이전 사진"></button>
       <button class="photo-zone photo-next" type="button" data-action="next-photo" aria-label="다음 사진"></button>
       <button class="card-information" type="button" data-action="open-detail" aria-label="${escapeHtml(item.title)} 자세히 보기">
         <span class="category-kicker">${escapeHtml(item.category)}</span>
         <strong>${escapeHtml(item.title)}</strong>
         <span class="card-subtitle">${escapeHtml(item.subtitle)}</span>
-        <span class="card-chips"><i>${escapeHtml(item.location)} · ${escapeHtml(displayDistance(item))}</i><i>${escapeHtml(item.price)}</i></span>
+        <span class="card-chips"><i>${escapeHtml(locationLine(item))}</i><i>${escapeHtml(item.price)}</i></span>
         <span class="detail-hint">${icon("chevronUp")} 자세히</span>
       </button>`}
     </article>`;
@@ -232,7 +167,7 @@ export function createExploreFeature(context) {
     app.innerHTML = `<section class="screen explore-screen" data-view="explore">
       ${topbar()}
       <div class="filter-summary">
-        <span>${anchor ? `${escapeHtml(anchor.name)} 주변` : context.state.filter === "all" ? "전체 경험" : context.state.filter === "event" ? "이벤트" : "맛집·카페"}</span>
+        <span>${anchor ? `${escapeHtml(anchor.name)} 주변` : context.state.filter === "all" ? "새로운 곳 둘러보기" : context.state.filter === "event" ? "현재 프로그램" : "장소"}</span>
         ${anchor ? `<button type="button" data-action="clear-nearby">주변 추천 닫기</button>` : `<b>${items.length}개 남음</b>`}
       </div>
       <div class="deck" aria-live="polite">
@@ -245,6 +180,7 @@ export function createExploreFeature(context) {
       </div>` : ""}
       <p class="gesture-note">좌우로 선택 · 위로 밀어 자세히</p>
     </section>`;
+    bindImageFallbacks();
     if (item) {
       const exposureKey = `seoul-gyeonggi-w35:${item.id}`;
       if (!context.state.exposed[exposureKey]) {
@@ -256,6 +192,67 @@ export function createExploreFeature(context) {
     context.syncNavigation();
   }
 
+  function reviewBody(value, limit = 280) {
+    const text = String(value ?? "").trim();
+    return text.length > limit ? `${text.slice(0, limit).trim()}…` : text;
+  }
+
+  function renderOfficialFacts(item) {
+    const facts = item.official ?? {};
+    return `<section class="evidence-section">
+      <div class="evidence-heading"><h2>이용 정보</h2></div>
+      <dl class="official-facts">
+        <div><dt>이용</dt><dd>${escapeHtml(facts.reservation ?? item.actionText ?? "확인 필요")}</dd></div>
+        <div><dt>주차</dt><dd>${escapeHtml(facts.parking ?? "확인 필요")}</dd></div>
+      </dl>
+    </section>`;
+  }
+
+  function renderCaveat(item) {
+    if (!item.caveatText) return "";
+    return `<section class="evidence-section caveat-section">
+      <div class="evidence-heading"><h2>방문 전 확인</h2></div>
+      <p>${escapeHtml(item.caveatText)}</p>
+    </section>`;
+  }
+
+  function renderPrograms(item) {
+    if (!item.programs?.length) return "";
+    return `<section class="evidence-section">
+      <div class="evidence-heading"><h2>현재 전시·공연·프로그램</h2></div>
+      <div class="program-list">${item.programs.map((program) => `<a class="program-card" href="${escapeHtml(program.url)}" target="_blank" rel="noopener noreferrer">
+        <strong>${escapeHtml(program.title)}</strong><span>${escapeHtml(program.period)}</span><small>${escapeHtml(program.price)}</small>
+      </a>`).join("")}</div>
+    </section>`;
+  }
+
+  function renderMenu(item) {
+    if (!item.menu?.length && !item.menuMedia?.length) return "";
+    return `<section class="evidence-section menu-evidence">
+      <div class="evidence-heading"><h2>메뉴</h2></div>
+      ${item.menu?.length ? `<div class="menu-list">${item.menu.slice(0, 8).map((menu) => `<div><span><b>${escapeHtml(menu.name)}</b>${menu.description ? `<small>${escapeHtml(reviewBody(menu.description, 92))}</small>` : ""}</span><strong>${escapeHtml(menu.price)}</strong></div>`).join("")}</div>` : ""}
+      ${item.menuMedia?.length ? `<div class="menu-media" aria-label="메뉴판 원본">${item.menuMedia.map((media, mediaIndex) => `<figure><img src="${escapeHtml(imageSrc(media.src))}" alt="${escapeHtml(item.title)} 메뉴판 원본" loading="lazy"><figcaption>메뉴판 원본</figcaption></figure>`).join("")}</div>` : ""}
+    </section>`;
+  }
+
+  function renderReviewPatterns(item) {
+    const evidence = item.reviewPatterns;
+    if (!evidence) return "";
+    return `<section class="evidence-section review-evidence">
+      <div class="evidence-heading"><h2>방문자들이 반복해서 선택한 항목</h2></div>
+      ${evidence.patterns?.length ? `<div class="review-pattern-list">${evidence.patterns.map((pattern) => `<div><strong>${escapeHtml(pattern.text)}</strong><span>최근 ${evidence.sampleSize}개 중 ${pattern.count}개</span></div>`).join("")}</div>` : `<p class="empty-evidence">반복해서 나타난 선택 항목이 없습니다.</p>`}
+      <p class="coverage-note">최근 리뷰 ${evidence.sampleSize}개 중 선택 항목 기준입니다. 전체 방문자를 대표하지 않습니다.</p>
+      <a class="inline-source-link" href="${escapeHtml(evidence.sourceUrl)}" target="_blank" rel="noopener noreferrer">네이버에서 리뷰 원문 보기</a>
+    </section>`;
+  }
+
+  function renderSources(item) {
+    return `<section class="source-footer">
+      <span>정보 기준 ${escapeHtml(observedDate(item))}</span>
+      <div class="source-links"><a href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">네이버 지도</a>${item.externalLinks.official ? `<a href="${escapeHtml(item.externalLinks.official)}" target="_blank" rel="noopener noreferrer">공식 사이트</a>` : ""}</div>
+    </section>`;
+  }
+
   function renderDetail(id) {
     const item = getOpportunity(id);
     if (!item) {
@@ -264,6 +261,7 @@ export function createExploreFeature(context) {
       return;
     }
     const index = photoIndex(item);
+    const photo = item.photoMeta?.[index];
     bottomNav.classList.add("is-hidden");
     app.innerHTML = `<section class="screen detail-screen" data-view="detail">
       <header class="detail-topbar">
@@ -272,32 +270,39 @@ export function createExploreFeature(context) {
         <button class="square-button detail-more-button" type="button" data-action="detail-more" aria-label="더 보기">${icon("more")}</button>
       </header>
       <div class="detail-scroll">
-        <div class="detail-hero">
-          <img src="./assets/${item.images[index]}" alt="${escapeHtml(item.title)} 사진 ${index + 1}">
+        <figure class="detail-hero">
+          <img data-card-image src="${escapeHtml(imageSrc(item.images[index]))}" alt="${escapeHtml(item.title)} 사진 ${index + 1}">
           ${photoProgress(item)}
+          <div class="detail-photo-caption"><span>${index + 1}/${item.images.length}</span><b>${escapeHtml(photo?.source ?? "출처 확인")}${photo?.title ? ` · ${escapeHtml(photo.title)}` : ""}</b></div>
           <button class="photo-zone photo-prev" type="button" data-action="prev-photo" data-id="${item.id}" aria-label="이전 사진"></button>
           <button class="photo-zone photo-next" type="button" data-action="next-photo" data-id="${item.id}" aria-label="다음 사진"></button>
-        </div>
+        </figure>
         <div class="detail-body">
+          <div class="availability-card is-${statusTone(item)}"><strong>${escapeHtml(item.status?.label ?? "운영정보 확인")}</strong></div>
           <span class="category-kicker accent">${escapeHtml(item.category)}</span>
           <h1>${escapeHtml(item.title)}</h1>
           <p class="detail-subtitle">${escapeHtml(item.subtitle)}</p>
           <div class="fact-grid">
-            <div>${icon("calendar")}<span><small>언제</small><b>${escapeHtml(item.schedule)}</b></span></div>
-            <div>${icon("map")}<span><small>어디서</small><b>${escapeHtml(item.location)} · ${escapeHtml(displayDistance(item))}</b></span></div>
-            <div>${icon("wallet")}<span><small>예상 비용</small><b>${escapeHtml(item.price)}</b></span></div>
+            <div>${icon("map")}<span><small>위치</small><b>${escapeHtml(item.address ?? locationLine(item))}</b></span></div>
+            <div>${icon("calendar")}<span><small>운영</small><b>${escapeHtml(item.schedule)}</b></span></div>
+            <div>${icon("wallet")}<span><small>비용</small><b>${escapeHtml(item.price)}</b></span></div>
           </div>
-          <section class="why-card"><span>왜 지금 보여줬나요?</span><p>${escapeHtml(item.why)}</p></section>
-          <section class="detail-copy"><h2>이 경험에 관해</h2><p>${escapeHtml(item.description)}</p><p class="note">${escapeHtml(item.note)}</p></section>
-          <div class="detail-tags"><span>${escapeHtml(item.category)}</span><span>${item.location.startsWith("서울") ? "서울" : "경기"}</span><span>${item.kind === "event" ? "예약 필요" : "상시 방문"}</span></div>
+          ${renderOfficialFacts(item)}
+          ${renderPrograms(item)}
+          ${renderMenu(item)}
+          ${renderReviewPatterns(item)}
+          ${renderCaveat(item)}
+          ${renderSources(item)}
           <div class="detail-cta-row">
-            <button class="secondary-cta" type="button" data-action="route" data-id="${item.id}">${icon("route")} 길찾기</button>
-            <button class="secondary-cta" type="button" data-action="booking-info" data-id="${item.id}">${icon("calendar")} ${item.kind === "event" ? "예약 정보" : "영업 정보"}</button>
+            <a class="primary-action-cta" href="${escapeHtml(item.primaryAction?.url ?? item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.primaryAction?.label ?? "현재 정보 확인")}</a>
+            <a class="secondary-cta" href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer">${icon("route")} 네이버 지도</a>
+            <a class="secondary-cta" href="${escapeHtml(item.externalLinks.reviews)}" target="_blank" rel="noopener noreferrer">${icon("calendar")} 리뷰 원문</a>
             <button class="primary-cta" type="button" data-action="save-detail" data-id="${item.id}">${context.state.saved[item.id] ? `${icon("check")} 저장됨` : `${icon("heart")} 저장하기`}</button>
           </div>
         </div>
       </div>
     </section>`;
+    bindImageFallbacks();
     bindDetailBackGesture();
   }
 
@@ -325,7 +330,7 @@ export function createExploreFeature(context) {
   }
 
   function expiryFor(item, saved) {
-    return item.kind === "event" ? item.eventEnd : saved.visibleUntil ?? addDays(saved.savedAt, 7);
+    return item.kind === "event" && item.eventEnd ? item.eventEnd : saved.visibleUntil ?? addDays(saved.savedAt, 7);
   }
 
   function isVisibleSave(item, saved) {
@@ -334,8 +339,8 @@ export function createExploreFeature(context) {
 
   function expiryLabel(item, saved) {
     const expiry = new Date(expiryFor(item, saved));
-    if (item.kind === "event") {
-      return `이벤트 종료 ${expiry.toLocaleDateString("ko-KR", { month: "long", day: "numeric" })}까지`;
+    if (item.kind === "event" && item.eventEnd) {
+      return `프로그램 종료 ${expiry.toLocaleDateString("ko-KR", { month: "long", day: "numeric" })}까지`;
     }
     const days = Math.max(0, Math.ceil((expiry.getTime() - Date.now()) / DAY_MS));
     return `지도에서 ${days}일 더 보여요`;
@@ -353,7 +358,7 @@ export function createExploreFeature(context) {
     const mapId = mapIdForOpportunity(item.id);
     return `<article class="saved-card ${context.state.selectedMapId === mapId ? "is-selected" : ""}" data-map-id="${mapId}">
       <button class="saved-select" type="button" data-action="select-map-item" data-map-id="${mapId}" aria-label="${escapeHtml(item.title)} 핀 선택">
-        <img src="./assets/${item.images[0]}" alt="">
+        <img src="${escapeHtml(imageSrc(item.images[0]))}" alt="">
         <span><small>${escapeHtml(item.category)} · ${escapeHtml(item.location)}</small><strong>${escapeHtml(item.title)}</strong><em>${expiryLabel(item, saved)}</em></span>
       </button>
       <div class="saved-actions">
@@ -436,8 +441,8 @@ export function createExploreFeature(context) {
       <div class="sheet-handle"></div><h2 id="filter-title">이번에는 무엇을 볼까요?</h2><p>검색하지 않고, 준비된 추천 안에서만 고릅니다.</p>
       <div class="filter-options">
         <button type="button" data-action="set-filter" data-filter="all" aria-pressed="${context.state.filter === "all"}"><span>✦</span><b>전체 경험</b><small>종류를 섞어서 보기</small>${icon("check")}</button>
-        <button type="button" data-action="set-filter" data-filter="event" aria-pressed="${context.state.filter === "event"}"><span>◌</span><b>이벤트</b><small>공연 · 전시 · 클래스 · 스포츠</small>${icon("check")}</button>
-        <button type="button" data-action="set-filter" data-filter="place" aria-pressed="${context.state.filter === "place"}"><span>⌂</span><b>맛집·카페</b><small>지금 갈 수 있는 장소</small>${icon("check")}</button>
+        <button type="button" data-action="set-filter" data-filter="event" aria-pressed="${context.state.filter === "event"}"><span>◌</span><b>현재 프로그램</b><small>공연 · 전시 · 예약형 야외 경험</small>${icon("check")}</button>
+        <button type="button" data-action="set-filter" data-filter="place" aria-pressed="${context.state.filter === "place"}"><span>⌂</span><b>장소</b><small>음식 · 카페 · 공원 · 웰니스</small>${icon("check")}</button>
       </div>
       <button class="sheet-close" type="button" data-action="close-sheet">닫기</button>
     </div>`;
@@ -505,7 +510,7 @@ export function createExploreFeature(context) {
       review: "",
     };
     context.state.selectedMapId = mapIdForOpportunity(id);
-    context.recordEvent("saved", id, { source, visibilityRule: item.kind === "event" ? "event_end" : "seven_days" });
+    context.recordEvent("saved", id, { source, visibilityRule: item.kind === "event" && item.eventEnd ? "event_end" : "seven_days" });
   }
 
   function saveCurrent() {
@@ -513,7 +518,7 @@ export function createExploreFeature(context) {
     if (!item) return;
     saveOpportunity(item.id, "swipe");
     animateCard("right", () => {
-      context.showToast(item.kind === "event" ? "이벤트 종료일까지 지도에 저장했어요" : "7일 동안 지도에 저장했어요");
+      context.showToast(item.kind === "event" && item.eventEnd ? "프로그램 종료일까지 지도에 저장했어요" : "7일 동안 지도에 저장했어요");
       renderExplore();
     });
   }
@@ -742,7 +747,7 @@ export function createExploreFeature(context) {
     } else if (action === "save-detail" && id) {
       if (!context.state.saved[id]) saveOpportunity(id, "detail");
       const item = getOpportunity(id);
-      context.showToast(item.kind === "event" ? "종료일까지 지도에 저장했어요" : "7일 동안 지도에 저장했어요");
+      context.showToast(item.kind === "event" && item.eventEnd ? "프로그램 종료일까지 지도에 저장했어요" : "7일 동안 지도에 저장했어요");
       renderDetail(id);
     } else if (action === "route" && id) {
       context.recordEvent("route_opened", id);

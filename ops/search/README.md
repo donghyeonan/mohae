@@ -32,6 +32,12 @@ public discovery
 
 고용량 실행 기록과 변동 상태는 GBrain에 저장하지 않는다. 정확한 runtime 계약은 repository 파일을 기준으로 한다.
 
+### 필수 context 조회 계약
+
+`organization.yaml`은 role prompt의 repository 경로와 GBrain context의 `source_id + slug`를 안정 주소로 등록한다. Orchestrator는 dispatch 전에 공통 playbook, 활성 부서 brief, 필요한 control-function brief를 exact lookup으로 읽고 각 주소와 content hash를 run context snapshot에 기록한다. 필수 context에는 recall, keyword search, semantic search를 fallback으로 사용하지 않으며 하나라도 없으면 dispatch를 중단한다. Blank-slate worker에는 의도적으로 부서 memory와 playbook을 전달하지 않는다.
+
+Embedding은 주소를 모르는 자유형 지식 탐색의 선택적 보조 수단이지, 부서 실행 context의 선행조건이 아니다. Pilot 001은 이 계약 이전의 frozen artifact라 `context_snapshot`이 없으며, run-brief schema는 과거 재현성을 위해 해당 필드를 optional로 허용한다. 새 dispatcher run은 orchestrator 계약에 따라 snapshot을 반드시 생성한다.
+
 ## 3. 부서
 
 정의 원본: [`organization.yaml`](organization.yaml)
@@ -154,6 +160,11 @@ ops/search/
     search-run-evaluation.schema.json
   evals/
     regression-cases.yaml
+  samples/
+    README.md
+    2026-08-30-card-10.json
+    2026-08-30-card-10.csv
+    validate-card-sample.mjs
   pilots/
     2026-08-30-first-company-pilot/
 ```
@@ -163,6 +174,7 @@ ops/search/
 | 구성 요소 | 상태 |
 |---|---|
 | 헌법·조직 설정·prompt | tracked |
+| Exact context·prompt registry contract | tracked, runtime loader not implemented |
 | JSON Schema | tracked |
 | Presentation contract | tracked |
 | 첫 비생산 pilot bundle | tracked |

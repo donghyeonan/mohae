@@ -1,0 +1,1024 @@
+// Generated from the 10-card contract sample observed on 2026-08-30.
+// This replaces the previous 20-place prototype set; no prior card data is reused.
+export const opportunities = [
+  {
+    "id": "naver-37373204",
+    "subjectId": "place:naver:37373204",
+    "naverPlaceId": "37373204",
+    "kind": "place",
+    "group": "place",
+    "category": "식당",
+    "title": "멘야하나비 송파본점",
+    "subtitle": "마제소바·카라멘과 여러 일본식 면 메뉴를 고르는 송리단길 일본식 면 전문점",
+    "location": "서울 송파구",
+    "schedule": "화–일 11:30–21:00 · 휴게시간 있음",
+    "price": "마제소바 12,000원",
+    "actionText": "워크인 · 포장·배달 가능",
+    "primaryAction": {
+      "label": "지도에서 확인",
+      "url": "https://map.naver.com/p/entry/place/37373204"
+    },
+    "images": [
+      "https://ldb-phinf.pstatic.net/20241201_240/1733026627553I75Ri_JPEG/0926-5023-20230928.jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "멘야하나비 송파본점",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:36:45.382Z"
+      }
+    ],
+    "latitude": 37.5109657,
+    "longitude": 127.1077484,
+    "status": {
+      "label": "20:30 주문마감",
+      "tone": "open"
+    },
+    "official": {
+      "hours": "화–금 11:30–21:00 · 휴게 14:30–17:30 / 토·일 11:30–21:00 · 휴게 14:30–17:00 · 주문마감 20:30 · 월요일 휴무",
+      "parking": "공개 주차 정보 미확인",
+      "reservation": "워크인 현장 이용 · 대기공간 · 포장·배달 가능 · 예약 정보 미확인",
+      "sourceUrl": "https://m.place.naver.com/restaurant/37373204/home"
+    },
+    "programs": [],
+    "menu": [
+      {
+        "name": "마제소바",
+        "price": "12,000원",
+        "description": null
+      },
+      {
+        "name": "도니꾸 마제소바",
+        "price": "15,000원",
+        "description": null
+      },
+      {
+        "name": "네기시오 마제소바",
+        "price": "15,000원",
+        "description": null
+      },
+      {
+        "name": "카라멘",
+        "price": "12,000원",
+        "description": null
+      }
+    ],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 4,
+      "imageCount": 0,
+      "coverage": "representative"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/restaurant/37373204/home",
+      "observedAt": "2026-08-30T10:36:45.382Z",
+      "officialUrl": "http://menyahanabi.kr/"
+    },
+    "missing": [
+      "주차 정보",
+      "예약 가능 여부",
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 송파구 백제고분로45길 38 1층",
+    "caveatText": "월요일 정기휴무 외에 월별 임시휴무 공지가 있을 수 있어 방문 당일 현재 상태를 확인해야 합니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/37373204",
+      "reviews": "https://map.naver.com/p/entry/place/37373204?placePath=/review",
+      "official": "http://menyahanabi.kr/"
+    },
+    "distance": "",
+    "pin": [
+      79,
+      38
+    ]
+  },
+  {
+    "id": "naver-31905764",
+    "subjectId": "place:naver:31905764",
+    "naverPlaceId": "31905764",
+    "kind": "place",
+    "group": "place",
+    "category": "카페",
+    "title": "커피몽타주",
+    "subtitle": "자체 로스팅한 하우스 블렌드와 싱글오리진 브루잉을 함께 고르는 성내 플래그십",
+    "location": "서울 강동구",
+    "schedule": "평일 08:00–19:00 · 주말·공휴일 10:00–19:00",
+    "price": "아메리카노 4,500원",
+    "actionText": "워크인 · 포장 가능",
+    "primaryAction": {
+      "label": "지도에서 확인",
+      "url": "https://map.naver.com/p/entry/place/31905764"
+    },
+    "images": [
+      "https://cdn-saas-web-203-48.cdn-nhncommerce.com/montage201372_godomall_com/data/skin/front/moment_allclean/img/about/banner2-2.png",
+      "https://ldb-phinf.pstatic.net/20220118_252/1642491298211DUfdx_JPEG/20FB1FF6-9A15-4561-AF29-505B6EDA9D16.jpeg",
+      "https://ldb-phinf.pstatic.net/20220118_240/1642491299071JiU5c_JPEG/2A95DADC-31A2-40F2-82FF-8EE9493BCD39.jpeg"
+    ],
+    "photoMeta": [
+      {
+        "title": "성내 플래그십",
+        "source": "커피몽타주 공식",
+        "sourceUrl": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "official_site",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:42.853Z"
+      },
+      {
+        "title": "커피몽타주",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:42.853Z"
+      },
+      {
+        "title": "커피몽타주",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:42.853Z"
+      }
+    ],
+    "latitude": 37.5295051,
+    "longitude": 127.1218766,
+    "status": {
+      "label": "오늘 영업 종료",
+      "tone": "closed"
+    },
+    "official": {
+      "hours": "평일 08:00–19:00 / 주말·공휴일 10:00–19:00 · 주문마감 18:30",
+      "parking": "공개 주차 정보 미확인",
+      "reservation": "워크인 카운터 주문 · 포장·배달 가능 · 예약 정보 미확인",
+      "sourceUrl": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
+    },
+    "programs": [],
+    "menu": [
+      {
+        "name": "아메리카노",
+        "price": "4,500원",
+        "description": null
+      },
+      {
+        "name": "카페라떼",
+        "price": "5,000원",
+        "description": null
+      },
+      {
+        "name": "브루잉커피",
+        "price": "6,000원",
+        "description": null
+      },
+      {
+        "name": "콜드브루 샘플러",
+        "price": "11,000원",
+        "description": null
+      }
+    ],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 4,
+      "imageCount": 0,
+      "coverage": "representative"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/restaurant/31905764/home",
+      "observedAt": "2026-08-30T10:17:42.853Z",
+      "officialUrl": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
+    },
+    "missing": [
+      "주차 정보",
+      "예약 가능 여부",
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 강동구 올림픽로48길 23-12 1층",
+    "caveatText": "대표사진의 재사용 권리는 확인되지 않았고, 주차·예약 정보도 공개되지 않았습니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/31905764",
+      "reviews": "https://map.naver.com/p/entry/place/31905764?placePath=/review",
+      "official": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
+    },
+    "distance": "",
+    "pin": [
+      83,
+      34
+    ]
+  },
+  {
+    "id": "naver-303937152",
+    "subjectId": "place:naver:303937152",
+    "naverPlaceId": "303937152",
+    "kind": "place",
+    "group": "place",
+    "category": "바",
+    "title": "시그니엘 서울 바81",
+    "subtitle": "롯데월드타워 81층에서 서울 전망과 샴페인·칵테일을 함께 즐기는 호텔 바",
+    "location": "서울 송파구",
+    "schedule": "일–목 17:00–24:00 · 금–토 17:00–01:00",
+    "price": "칵테일 32,000원부터",
+    "actionText": "캐치테이블 예약",
+    "primaryAction": {
+      "label": "예약 확인",
+      "url": "https://app.catchtable.co.kr/ct/shop/bar81"
+    },
+    "images": [
+      "https://ldb-phinf.pstatic.net/20200310_213/1583826393105dQhnN_JPEG/IjTzSbSHWwMPPHYWFZegmwVW.JPG.jpg",
+      "https://ldb-phinf.pstatic.net/20190823_178/1566523947099Uxe37_JPEG/%A6%A581-2-Large-1.jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "Bar 81",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:44.968Z"
+      },
+      {
+        "title": "Bar 81",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:44.968Z"
+      }
+    ],
+    "latitude": 37.5125735,
+    "longitude": 127.1027273,
+    "status": {
+      "label": "23:00 주문마감",
+      "tone": "open"
+    },
+    "official": {
+      "hours": "일–목 17:00–24:00 · 주문마감 23:00 / 금–토 17:00–01:00 · 주문마감 00:00",
+      "parking": "주차·발렛 가능 표시 · 이용 조건은 예약 전 확인",
+      "reservation": "캐치테이블 예약 · 예약 가능시간 17:00–21:00 · 만 19세 미만 출입 제한",
+      "sourceUrl": "https://app.catchtable.co.kr/ct/shop/bar81"
+    },
+    "programs": [],
+    "menu": [
+      {
+        "name": "칵테일",
+        "price": "32,000–38,000원",
+        "description": null
+      },
+      {
+        "name": "글라스 와인",
+        "price": "42,000–45,000원",
+        "description": null
+      },
+      {
+        "name": "Awesome Hours 2시간",
+        "price": "150,000원",
+        "description": "샴페인·화이트·레드 와인"
+      },
+      {
+        "name": "시그니처 타워",
+        "price": "215,000원",
+        "description": null
+      }
+    ],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 4,
+      "imageCount": 0,
+      "coverage": "representative"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/restaurant/303937152/home",
+      "observedAt": "2026-08-30T10:17:44.968Z",
+      "officialUrl": "https://www.lottehotel.com/seoul-signiel/ko/dining/bar-81"
+    },
+    "missing": [
+      "커버·최소주문",
+      "예약 보증금",
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 송파구 올림픽로 300 롯데월드타워 81층",
+    "caveatText": "워크인 가능 여부와 커버·최소주문·예약 보증금은 현재 공개 정보에서 확인되지 않았습니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/303937152",
+      "reviews": "https://map.naver.com/p/entry/place/303937152?placePath=/review",
+      "official": "https://www.lottehotel.com/seoul-signiel/ko/dining/bar-81"
+    },
+    "distance": "",
+    "pin": [
+      78,
+      37
+    ]
+  },
+  {
+    "id": "naver-11785944",
+    "subjectId": "place:naver:11785944",
+    "naverPlaceId": "11785944",
+    "kind": "event",
+    "group": "event",
+    "category": "전시",
+    "title": "소마미술관",
+    "subtitle": "이승택 회고전과 체험형 그림책 전시를 한 공원 안에서 고르는 현재 전시 묶음",
+    "location": "서울 송파구",
+    "schedule": "화–일 10:00–18:00 · 전시 9월 6일까지",
+    "price": "1관 3,000–5,000원 · 2관 16,000–18,000원",
+    "actionText": "전시별 예매",
+    "primaryAction": {
+      "label": "1관 예매 확인",
+      "url": "https://booking.naver.com/booking/5/bizes/1127674/items/7822182?theme=place&lang=ko&area=ple"
+    },
+    "eventEnd": "2026-09-06T18:00:00+09:00",
+    "images": [
+      "https://ldb-phinf.pstatic.net/20260625_31/1782349818493CPL5n_JPEG/%28%C6%F7%BD%BA%C5%CD_%C0%A5%BF%EB%291%B0%FC_%C0%CC%BD%C2%C5%C3-420x600_%C0%CF%C1%A4%BA%AF%B0%E6.jpg",
+      "https://ldb-phinf.pstatic.net/20260406_56/1775453859769PLYj8_JPEG/%28%C6%F7%BD%BA%C5%CD_%C0%A5%BF%EB%292%B0%FC_%B1%D7%B8%B2%C3%A5%C0%CC_%BF%C3%B8%AE%BA%F1%BE%C6_%C0%E5%BC%D2%C7%A5%B1%E2.jpg",
+      "https://ldb-phinf.pstatic.net/20260406_280/17754538459612rqdl_JPEG/%28%C6%F7%BD%BA%C5%CD_%C0%A5%BF%EB%292026%C1%B6%B0%A2%C0%CC%B2%DE%C6%B2-%C8%AD%C0%CC%C6%AE%B9%D9%C5%C1.jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "이승택: 조각의 바깥에서",
+        "source": "업체 등록",
+        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/237",
+        "role": "current_program",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:53.006Z"
+      },
+      {
+        "title": "그림책이 살아있다!",
+        "source": "업체 등록",
+        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/236",
+        "role": "current_program",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:53.006Z"
+      },
+      {
+        "title": "조각이 꿈+틀",
+        "source": "업체 등록",
+        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/238",
+        "role": "current_program",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:53.006Z"
+      }
+    ],
+    "latitude": 37.5169172,
+    "longitude": 127.1179749,
+    "status": {
+      "label": "오늘 종료 · 내일 휴관",
+      "tone": "closed"
+    },
+    "official": {
+      "hours": "화–일 10:00–18:00 · 입장마감 17:00 · 월요일 휴관",
+      "parking": "올림픽공원 주차장 이용",
+      "reservation": "전시별 예매 경로가 다름 · 1관 네이버 예매 가능",
+      "sourceUrl": "https://soma.kspo.or.kr/"
+    },
+    "programs": [
+      {
+        "title": "이승택: 조각의 바깥에서",
+        "period": "2026.04.10–09.06",
+        "price": "3,000–5,000원",
+        "url": "https://soma.kspo.or.kr/dspy/display/237"
+      },
+      {
+        "title": "그림책이 살아있다!",
+        "period": "2026.04.17–09.06",
+        "price": "16,000–18,000원 · 24개월 미만 무료",
+        "url": "https://soma.kspo.or.kr/dspy/display/236"
+      },
+      {
+        "title": "조각이 꿈+틀",
+        "period": "2026.04.17–2027.02.14",
+        "price": "2관 주전시 티켓에 포함",
+        "url": "https://soma.kspo.or.kr/dspy/display/238"
+      }
+    ],
+    "menu": [],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 0,
+      "imageCount": 0,
+      "coverage": "not_applicable"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/place/11785944/home",
+      "observedAt": "2026-08-30T10:17:53.006Z",
+      "officialUrl": "https://soma.kspo.or.kr/"
+    },
+    "missing": [
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 송파구 올림픽로 424",
+    "caveatText": "1관 성인 연령 표기가 출처별로 만 24세와 만 25세부터로 달라 예매 화면에서 최종 확인해야 합니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/11785944",
+      "reviews": "https://map.naver.com/p/entry/place/11785944?placePath=/review",
+      "official": "https://soma.kspo.or.kr/"
+    },
+    "distance": "",
+    "pin": [
+      82,
+      37
+    ]
+  },
+  {
+    "id": "naver-1906572873",
+    "subjectId": "place:naver:1906572873",
+    "naverPlaceId": "1906572873",
+    "kind": "event",
+    "group": "event",
+    "category": "전시",
+    "title": "송파책박물관",
+    "subtitle": "책의 역사 전시와 읽기 공간, 어린이 체험공간을 무료로 이용하는 공공 책박물관",
+    "location": "서울 송파구",
+    "schedule": "화–일 10:00–18:00 · 기획전 10월 25일까지",
+    "price": "관람 무료",
+    "actionText": "개인 워크인 · 북키움 예약",
+    "primaryAction": {
+      "label": "현재 전시 확인",
+      "url": "https://www.bookmuseum.go.kr/exhibit/exhibit_view.do?eh_idx=39"
+    },
+    "eventEnd": "2026-10-25T18:00:00+09:00",
+    "images": [
+      "https://www.bookmuseum.go.kr/editImg/20260115064037349.png",
+      "https://ldb-phinf.pstatic.net/20190423_110/1555994285004BnOC2_PNG/bVmZUb_l6iodcuvc26l6wkJl.png",
+      "https://ldb-phinf.pstatic.net/20190423_11/1555994284800RptkR_PNG/T50tTJk4wd-Uq_R5IsoEk-6l.png"
+    ],
+    "photoMeta": [
+      {
+        "title": "동화의 시간, 이야기의 빛깔",
+        "source": "송파책박물관 공식",
+        "sourceUrl": "https://www.bookmuseum.go.kr/exhibit/exhibit_view.do?eh_idx=39",
+        "role": "current_program",
+        "rightsStatus": "unknown",
+        "origin": "official_site",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:55.877Z"
+      },
+      {
+        "title": "송파책박물관",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/1906572873/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:55.877Z"
+      },
+      {
+        "title": "송파책박물관",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/1906572873/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:17:55.877Z"
+      }
+    ],
+    "latitude": 37.49892,
+    "longitude": 127.1046179,
+    "status": {
+      "label": "오늘 종료 · 내일 휴관",
+      "tone": "closed"
+    },
+    "official": {
+      "hours": "화–일 10:00–18:00 · 입장마감 17:30 · 월요일 휴관",
+      "parking": "최초 30분 무료 · 이후 5분당 150원",
+      "reservation": "개인 전시는 워크인 · 북키움과 학교·기관 단체는 온라인 예약",
+      "sourceUrl": "https://www.bookmuseum.go.kr/watch/watch_info.do"
+    },
+    "programs": [
+      {
+        "title": "동화의 시간, 이야기의 빛깔",
+        "period": "2026.01.28–10.25",
+        "price": "무료",
+        "url": "https://www.bookmuseum.go.kr/exhibit/exhibit_view.do?eh_idx=39"
+      },
+      {
+        "title": "북키움",
+        "period": "상시 · 14일 전 10:00 예약 오픈",
+        "price": "무료 · 온라인 예약",
+        "url": "https://www.bookmuseum.go.kr/watch/watch_inscr_step01.do"
+      }
+    ],
+    "menu": [],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 0,
+      "imageCount": 0,
+      "coverage": "not_applicable"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/place/1906572873/home",
+      "observedAt": "2026-08-30T10:17:55.877Z",
+      "officialUrl": "https://www.bookmuseum.go.kr/"
+    },
+    "missing": [
+      "북키움 연령 문구 충돌",
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 송파구 송파대로37길 77",
+    "caveatText": "북키움 연령 조건은 공식 페이지 안에서도 문구가 충돌합니다. 예약 단계의 최신 조건을 확인해야 합니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/1906572873",
+      "reviews": "https://map.naver.com/p/entry/place/1906572873?placePath=/review",
+      "official": "https://www.bookmuseum.go.kr/"
+    },
+    "distance": "",
+    "pin": [
+      79,
+      40
+    ]
+  },
+  {
+    "id": "naver-19452036",
+    "subjectId": "place:naver:19452036",
+    "naverPlaceId": "19452036",
+    "kind": "event",
+    "group": "event",
+    "category": "공연·전시",
+    "title": "강동아트센터",
+    "subtitle": "9월 1일부터 지역 풍경을 담은 무료 전시가 열리는 공원형 공연·전시 복합공간",
+    "location": "서울 강동구",
+    "schedule": "무료 전시 9월 1–5일 · 10:00–18:00",
+    "price": "전시 무료 · 공연별 상이",
+    "actionText": "전시는 워크인 · 공연은 개별 예매",
+    "primaryAction": {
+      "label": "프로그램 확인",
+      "url": "https://www.gdfac.or.kr/product/ko/performance/258463"
+    },
+    "eventEnd": "2026-09-05T18:00:00+09:00",
+    "images": [
+      "https://ldb-phinf.pstatic.net/20230712_253/1689138767905qLfqN_JPEG/%B0%AD%B5%BF%BE%C6%C6%AE%BC%BE%C5%CD_%BF%DC%B0%FC1-%BC%F6%C1%A4.jpg",
+      "https://ldb-phinf.pstatic.net/20230712_292/1689138767835qdRwS_JPEG/%B0%AD%B5%BF%BE%C6%C6%AE%BC%BE%C5%CD-03-%BC%F6%C1%A4.jpg",
+      "https://ldb-phinf.pstatic.net/20230712_89/1689138767593fmmex_JPEG/%B0%AD%B5%BF%BE%C6%C6%AE%BC%BE%C5%CD-04%BC%F6%C1%A4.jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "강동아트센터",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/19452036/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:01.509Z"
+      },
+      {
+        "title": "강동아트센터",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/19452036/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:01.509Z"
+      },
+      {
+        "title": "강동아트센터",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/19452036/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:01.509Z"
+      }
+    ],
+    "latitude": 37.5510795,
+    "longitude": 127.1576349,
+    "status": {
+      "label": "오늘 휴관 · 9/1 전시 시작",
+      "tone": "limited"
+    },
+    "official": {
+      "hours": "공간 운영시간 출처 충돌 · 프로그램별 시간 우선 확인",
+      "parking": "주차 가능 표시 · 공연일 혼잡 가능",
+      "reservation": "무료 전시는 현장 관람 · 공연은 프로그램별 예매",
+      "sourceUrl": "https://www.gdfac.or.kr/product/ko/performance/258463"
+    },
+    "programs": [
+      {
+        "title": "2026 아름다운 강동의 모습들",
+        "period": "2026.09.01–09.05 · 10:00–18:00",
+        "price": "무료 · 전체 관람",
+        "url": "https://www.gdfac.or.kr/product/ko/performance/258463"
+      }
+    ],
+    "menu": [],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 0,
+      "imageCount": 0,
+      "coverage": "not_applicable"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/place/19452036/home",
+      "observedAt": "2026-08-30T10:18:01.509Z",
+      "officialUrl": "https://www.gdfac.or.kr/"
+    },
+    "missing": [
+      "장소 정규 운영시간 충돌",
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 강동구 동남로 870",
+    "caveatText": "네이버는 일·월 휴관, 강동구 공식 영문 페이지는 월요일만 휴관으로 표시합니다. 프로그램별 일정이 우선입니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/19452036",
+      "reviews": "https://map.naver.com/p/entry/place/19452036?placePath=/review",
+      "official": "https://www.gdfac.or.kr/"
+    },
+    "distance": "",
+    "pin": [
+      91,
+      30
+    ]
+  },
+  {
+    "id": "naver-12268494",
+    "subjectId": "place:naver:12268494",
+    "naverPlaceId": "12268494",
+    "kind": "place",
+    "group": "place",
+    "category": "공원",
+    "title": "올림픽공원",
+    "subtitle": "올림픽 유산과 조각·생태·잔디광장, 여러 공연장을 한데 걷는 대형 무료 공원",
+    "location": "서울 송파구",
+    "schedule": "보행·자전거 05:00–22:00 · 광장 24시간",
+    "price": "공원 입장 무료",
+    "actionText": "예약 없이 입장",
+    "primaryAction": {
+      "label": "지도에서 입구 확인",
+      "url": "https://map.naver.com/p/entry/place/12268494"
+    },
+    "images": [
+      "https://ldb-phinf.pstatic.net/20150831_229/1441015210203fNWvY_JPEG/12268494_0.jpg",
+      "https://ldb-phinf.pstatic.net/20200107_124/1578375531091GGK7T_JPEG/1wOJJQEx68Nd8zXzwCEDeC4l.jpg",
+      "https://ldb-phinf.pstatic.net/20200402_27/158579567923428o10_JPEG/cPAl41ni0v2rlzjMZiIdCNSa.jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "올림픽공원",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/12268494/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:03.762Z"
+      },
+      {
+        "title": "올림픽공원",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/12268494/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:03.762Z"
+      },
+      {
+        "title": "올림픽공원",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/12268494/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:03.762Z"
+      }
+    ],
+    "latitude": 37.520934,
+    "longitude": 127.122959,
+    "status": {
+      "label": "22:00까지 보행·자전거",
+      "tone": "open"
+    },
+    "official": {
+      "hours": "보행·자전거 05:00–22:00 · 광장 24시간 · 차량 06:00–22:00",
+      "parking": "유료 주차 · 구역별 혼잡도는 공식 페이지 확인",
+      "reservation": "일반 공원 이용은 예약 불필요 · 공연·유료시설 별도",
+      "sourceUrl": "https://www.ksponco.or.kr/olympicpark/menu.es?mid=a20101000000"
+    },
+    "programs": [],
+    "menu": [],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 0,
+      "imageCount": 0,
+      "coverage": "not_applicable"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/place/12268494/home",
+      "observedAt": "2026-08-30T10:18:03.762Z",
+      "officialUrl": "https://www.ksponco.or.kr/olympicpark/"
+    },
+    "missing": [
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 송파구 올림픽로 424",
+    "caveatText": "공연장과 유료시설은 공원 운영시간·무료 입장과 별개의 일정과 요금을 가집니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/12268494",
+      "reviews": "https://map.naver.com/p/entry/place/12268494?placePath=/review",
+      "official": "https://www.ksponco.or.kr/olympicpark/"
+    },
+    "distance": "",
+    "pin": [
+      83,
+      36
+    ]
+  },
+  {
+    "id": "naver-18882132",
+    "subjectId": "place:naver:18882132",
+    "naverPlaceId": "18882132",
+    "kind": "event",
+    "group": "event",
+    "category": "박물관",
+    "title": "한성백제박물관",
+    "subtitle": "한성기 백제의 역사 자료를 무료로 보되 1층·로비 개편공사를 알고 방문해야 하는 시립박물관",
+    "location": "서울 송파구",
+    "schedule": "화–목·주말 09:00–19:00 · 금 21:00까지",
+    "price": "관람 무료",
+    "actionText": "예약 없이 관람",
+    "primaryAction": {
+      "label": "공사·전시 확인",
+      "url": "https://baekjemuseum.seoul.go.kr/"
+    },
+    "eventEnd": "2026-09-30T18:00:00+09:00",
+    "images": [
+      "https://baekjemuseum.seoul.go.kr/upfile/popup/1718271080510_0_jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "한성백제박물관 야간 전경",
+        "source": "한성백제박물관 공식",
+        "sourceUrl": "https://baekjemuseum.seoul.go.kr/",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "official_site",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:09.076Z"
+      }
+    ],
+    "latitude": 37.5155718,
+    "longitude": 127.1206146,
+    "status": {
+      "label": "오늘 종료 · 내일 휴관",
+      "tone": "closed"
+    },
+    "official": {
+      "hours": "3–10월 화–목·토·일 09:00–19:00 · 금 09:00–21:00 · 월요일 휴관",
+      "parking": "주차 가능 표시 · 상세 요금은 공식 방문안내 확인",
+      "reservation": "본관 일반 관람은 별도 예약 안내 없음",
+      "sourceUrl": "https://baekjemuseum.seoul.go.kr/contents.jsp?mpid=SBM0106000000"
+    },
+    "programs": [
+      {
+        "title": "폭염 속 박물관 박캉스 무더위 쉼터",
+        "period": "2026.08.06–09.30 · 화–일 09:00–18:00",
+        "price": "무료 · 음료 구매 불필요",
+        "url": "https://baekjemuseum.seoul.go.kr/"
+      }
+    ],
+    "menu": [],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 0,
+      "imageCount": 0,
+      "coverage": "not_applicable"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/place/18882132/home",
+      "observedAt": "2026-08-30T10:18:09.076Z",
+      "officialUrl": "https://baekjemuseum.seoul.go.kr/"
+    },
+    "missing": [
+      "공사 중 정확한 관람 가능 구역",
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 송파구 위례성대로 71",
+    "caveatText": "2026년 5–11월 1층과 로비 개편공사 중입니다. 상설전시 전체가 정상 운영된다고 가정하면 안 됩니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/18882132",
+      "reviews": "https://map.naver.com/p/entry/place/18882132?placePath=/review",
+      "official": "https://baekjemuseum.seoul.go.kr/"
+    },
+    "distance": "",
+    "pin": [
+      82,
+      37
+    ]
+  },
+  {
+    "id": "naver-13222642",
+    "subjectId": "place:naver:13222642",
+    "naverPlaceId": "13222642",
+    "kind": "place",
+    "group": "place",
+    "category": "전망공간",
+    "title": "광진교 8번가",
+    "subtitle": "광진교 8번째 교각 아래 유리 전망공간에서 한강을 바라보고 쉬는 무료 문화공간",
+    "location": "서울 강동구",
+    "schedule": "4–10월 12:00–20:00 · 월요일 휴관",
+    "price": "일반 이용 무료",
+    "actionText": "예약 없이 방문",
+    "primaryAction": {
+      "label": "지도에서 입구 확인",
+      "url": "https://map.naver.com/p/entry/place/13222642"
+    },
+    "images": [
+      "https://storage.googleapis.com/cr-resource/image/9feb700a8f95cf74052a8c98d134a91e/riverview8/650/408976473edffacc9269bdadcdd01d8f.jpeg?_1788085081",
+      "https://naverbooking-phinf.pstatic.net/20220406_48/1649195721584vegfP_JPEG/%B4%D9%BF%EE%B7%CE%B5%E55.jpg",
+      "https://naverbooking-phinf.pstatic.net/20220406_79/1649195721758AIPMB_JPEG/%B4%D9%BF%EE%B7%CE%B5%E51.jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "광진교8번가",
+        "source": "광진교8번가 공식",
+        "sourceUrl": "https://www.riverview8.co.kr/",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "official_site",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:09.841Z"
+      },
+      {
+        "title": "광진교8번가",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/13222642/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:09.841Z"
+      },
+      {
+        "title": "광진교8번가",
+        "source": "업체 등록",
+        "sourceUrl": "https://m.place.naver.com/place/13222642/home",
+        "role": "official_photo",
+        "rightsStatus": "unknown",
+        "origin": "merchant_provided_map",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:09.841Z"
+      }
+    ],
+    "latitude": 37.5444771,
+    "longitude": 127.1141474,
+    "status": {
+      "label": "20:00 운영 종료",
+      "tone": "limited"
+    },
+    "official": {
+      "hours": "4–10월 12:00–20:00 / 3·11월 12:00–18:00 · 월요일·설날·추석 당일 휴관",
+      "parking": "전용 주차 정보 미확인",
+      "reservation": "일반 전망·휴식 이용은 예약 불필요 · 대관은 별도 신청·승인",
+      "sourceUrl": "https://hangang.seoul.go.kr/www/contents/799.do?mid=726"
+    },
+    "programs": [],
+    "menu": [],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 0,
+      "imageCount": 0,
+      "coverage": "not_applicable"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/place/13222642/home",
+      "observedAt": "2026-08-30T10:18:09.841Z",
+      "officialUrl": "https://www.riverview8.co.kr/"
+    },
+    "missing": [
+      "전용 주차 정보",
+      "미디어 재사용 권리"
+    ],
+    "address": "서울 강동구 천호동 527-2 광진교 8번째 교각 하부",
+    "caveatText": "2026년 8월 30일 당일 프로그램은 확인되지 않았습니다. 전망공간 자체는 운영 중입니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/13222642",
+      "reviews": "https://map.naver.com/p/entry/place/13222642?placePath=/review",
+      "official": "https://www.riverview8.co.kr/"
+    },
+    "distance": "",
+    "pin": [
+      81,
+      31
+    ]
+  },
+  {
+    "id": "naver-20303535",
+    "subjectId": "place:naver:20303535",
+    "naverPlaceId": "20303535",
+    "kind": "place",
+    "group": "place",
+    "category": "산책",
+    "title": "암사초록길",
+    "subtitle": "선사유적지에서 한강까지 보행·자전거길과 6,300㎡ 녹지 덮개로 이어지는 새 연결축",
+    "location": "서울 강동구",
+    "schedule": "2025.04.04 개방 · 일일 운영시간 미공개",
+    "price": "이용료 미확인",
+    "actionText": "지도에서 경로 확인",
+    "primaryAction": {
+      "label": "지도에서 경로 확인",
+      "url": "https://map.naver.com/p/entry/place/20303535"
+    },
+    "images": [
+      "https://mediahub.seoul.go.kr/uploads/mediahub/2025/04/vJFKfvfsWIRzdYBQGsevtuMLfZmanlLp.jpg",
+      "https://mediahub.seoul.go.kr/uploads/mediahub/2025/04/oCAwHuOPCzUrtbfpfwhVLLpdMiGRivBF.jpg",
+      "https://mediahub.seoul.go.kr/uploads/mediahub/2025/04/aQxWTnTgXpCvEvDMptUMAdyiEpChJKUm.jpg"
+    ],
+    "photoMeta": [
+      {
+        "title": "암사동유적 남측의 암사초록길",
+        "source": "내 손안에 서울 · 조수봉",
+        "sourceUrl": "https://mediahub.seoul.go.kr/archives/2014042",
+        "role": "official_editorial",
+        "rightsStatus": "KOGL_TYPE_4_NONCOMMERCIAL_NO_DERIVATIVES",
+        "origin": "licensed_official_editorial",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:15.278Z"
+      },
+      {
+        "title": "보행로와 자전거도로",
+        "source": "내 손안에 서울 · 조수봉",
+        "sourceUrl": "https://mediahub.seoul.go.kr/archives/2014042",
+        "role": "official_editorial",
+        "rightsStatus": "KOGL_TYPE_4_NONCOMMERCIAL_NO_DERIVATIVES",
+        "origin": "licensed_official_editorial",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:15.278Z"
+      },
+      {
+        "title": "상부 쉼터 전망",
+        "source": "내 손안에 서울 · 조수봉",
+        "sourceUrl": "https://mediahub.seoul.go.kr/archives/2014042",
+        "role": "official_editorial",
+        "rightsStatus": "KOGL_TYPE_4_NONCOMMERCIAL_NO_DERIVATIVES",
+        "origin": "licensed_official_editorial",
+        "heroEligible": true,
+        "observedAt": "2026-08-30T10:18:15.278Z"
+      }
+    ],
+    "latitude": 37.5596727,
+    "longitude": 127.1278538,
+    "status": {
+      "label": "운영시간 미공개",
+      "tone": "limited"
+    },
+    "official": {
+      "hours": "2025년 4월 4일 전면 개방 · 일일 운영시간 미공개",
+      "parking": "전용 주차 정보 미확인",
+      "reservation": "공공 보행·자전거길 · 예약 경로 없음",
+      "sourceUrl": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
+    },
+    "programs": [],
+    "menu": [],
+    "menuMedia": [],
+    "menuCoverage": {
+      "structuredCount": 0,
+      "imageCount": 0,
+      "coverage": "not_applicable"
+    },
+    "source": {
+      "naverHome": "https://m.place.naver.com/place/20303535/home",
+      "observedAt": "2026-08-30T10:18:15.278Z",
+      "officialUrl": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
+    },
+    "missing": [
+      "일일 운영시간",
+      "이용료 명시",
+      "전용 주차 정보"
+    ],
+    "address": "서울 강동구 암사동 172-8",
+    "caveatText": "공식 개통자료에 일일 운영시간과 이용료가 명시되지 않았습니다. 사진은 비상업·변경금지 조건의 공공누리 4유형입니다.",
+    "externalLinks": {
+      "map": "https://map.naver.com/p/entry/place/20303535",
+      "reviews": "https://map.naver.com/p/entry/place/20303535?placePath=/review",
+      "official": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
+    },
+    "distance": "",
+    "pin": [
+      84,
+      28
+    ]
+  }
+];

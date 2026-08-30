@@ -3,7 +3,7 @@ import { createExploreFeature } from "./explore.js";
 import { createProfileFeature } from "./profile.js";
 import { registerWebMcpTools } from "./webmcp.js";
 
-const STORAGE_KEY = "mohae-prototype-v1";
+const STORAGE_KEY = "mohae-prototype-v2";
 
 function initialState() {
   const now = new Date().toISOString();
@@ -13,12 +13,9 @@ function initialState() {
     filter: "all",
     photoIndices: {},
     decisions: {},
-    saved: {
-      "jazz-euljiro": { savedAt: now, attendedAt: null, review: "" },
-      "art-seongsu": { savedAt: now, attendedAt: null, review: "" },
-    },
+    saved: {},
     plannedStops: [],
-    selectedMapId: "opportunity:jazz-euljiro",
+    selectedMapId: null,
     nearbyAnchor: null,
     reviewOpenId: null,
     eventLog: [],

@@ -11,6 +11,8 @@ Every card published to the Explore deck needs:
    - Place, food, cafe, wellness: accurate venue, space, product, or signature-item photo.
    - Global trend or startup: official product, format, operator, or market visual.
    - Keep source, observation time, rights status, and a fallback. Logos, generic banners, old editions, and unrelated venue images do not qualify.
+   - Restaurant, cafe, and bar hero order is fixed: exact-branch official site or merchant-provided image → exact-branch exterior or space image from a current provider → rights-cleared external editorial image.
+   - Visitor-review, blog, clip, `pai`, `aiView`, or other user-originated media never becomes the hero. If no eligible visual exists, hold the card instead of substituting a random review image.
 2. **Title and kind**
 3. **One-line value**: what the user can experience, gain, eat, see, learn, or notice.
 4. **Timing**: schedule, opening hours, offer period, or current market stage, whichever fits the kind.
