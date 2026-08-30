@@ -6,9 +6,10 @@ MOHAE is a mobile-first product for choosing what to do in Korea without startin
 
 1. [`docs/product/concept.md`](docs/product/concept.md) — current product boundary and WebMCP collaboration
 2. [`apps/mohae/`](apps/mohae/) — active interactive prototype
-3. [`docs/architecture/`](docs/architecture/) — Explore history and future data boundaries
-4. [`docs/research/`](docs/research/) — reconstructed interaction research
-5. [`docs/archive/`](docs/archive/) — superseded Life Lab and PI product models
+3. [`ops/search/`](ops/search/) — Search departments, runtime contracts, logical backend schema, and pilot records
+4. [`docs/architecture/`](docs/architecture/) — Explore history and future data boundaries
+5. [`docs/research/`](docs/research/) — reconstructed interaction research
+6. [`docs/archive/`](docs/archive/) — superseded Life Lab and PI product models
 
 ## Repository structure
 
@@ -16,6 +17,8 @@ MOHAE is a mobile-first product for choosing what to do in Korea without startin
 apps/
   mohae/                    Active static web prototype
 prototypes/                 Historical visual and schema explorations
+ops/
+  search/                    Search departments, schemas, prompts, pilots, DBML
 docs/
   product/                  Current MOHAE concept
   architecture/             Explore, map, and profile data boundaries

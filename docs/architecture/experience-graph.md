@@ -4,7 +4,7 @@ Do not model the recommendation flywheel as one mutable favorites table.
 
 1. `opportunities`: canonical place/event/class identity and current operational fields.
 2. `recommendation_batches`: the curated cohort published for a region and period.
-3. `recommendation_instances`: immutable record that an opportunity entered a user/context candidate set, including rank and reason.
+3. `recommendation_instances`: immutable record that an opportunity entered a published batch or user/context candidate set, including rank and reason.
 4. `experience_events`: append-only `exposed`, `passed`, `saved`, `map_opened`, `extended`, `attended`, and `reviewed` events. Agent-added trip anchors use a separate map/itinerary history because they are not recommendations.
 5. `user_opportunity_state`: derived current UI state such as active save, visibility deadline, attendance, and latest review reference.
 6. `experience_outcomes`: optional structured outcome attached after attendance; absence of review is not a negative outcome.

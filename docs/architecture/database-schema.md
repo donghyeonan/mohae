@@ -5,6 +5,8 @@
 > 현재 prototype은 `localStorage`만 사용한다.
 >
 > 이전 Life Lab 18-table schema: [`../archive/life-lab-database-schema.md`](../archive/life-lab-database-schema.md)
+>
+> Search 부서와 운영 원장: [`../../ops/search/README.md`](../../ops/search/README.md), [`../../ops/search/search-backend.dbml`](../../ops/search/search-backend.dbml)
 
 ## 1. 제품 경계
 
@@ -31,7 +33,7 @@ MOHAE backend는 세 영역만 소유한다.
 - `event_occurrences`: 시작·종료·신청 마감이 있는 특정 회차
 - `opportunity_cards`: 사용자에게 발행하는 제목·요약·사진·CTA snapshot source
 - `recommendation_batches`: 지역·기간·정책별로 발행한 deck
-- `recommendation_instances`: 사용자에게 실제 노출 후보가 된 카드와 순위·이유
+- `recommendation_instances`: 공개 batch 또는 사용자 decision context의 실제 노출 후보가 된 카드와 순위·이유
 - `experience_events`: append-only `exposed`, `passed`, `saved`, `unsaved`, `map_opened`, `attended`, `reviewed`
 - `user_opportunity_state`: event replay로 만든 현재 저장·방문 상태
 

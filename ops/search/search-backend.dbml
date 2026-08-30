@@ -1,0 +1,667 @@
+// MOHAE Search logical backend schema
+// Status: developer reference. No SQL migration or production database exists.
+// Scope: Search operations, canonical catalog, evidence/trust, and recommendation lineage.
+// Account/Profile and Map/Plan tables are documented in docs/architecture/database-schema.md and are outside this DBML.
+// Runtime field constraints remain authoritative in ops/search/schemas/*.schema.json.
+
+Enum department_id {
+  local_places
+  events_experiences
+  global_market
+  evidence_trust
+}
+
+Enum run_class {
+  routine_discovery
+  evaluation_pilot
+  periodic_counterfactual
+  non_production_learning_pilot
+}
+
+Enum worker_mode {
+  memory_assisted
+  blank_slate
+}
+
+Enum subject_kind {
+  PLACE
+  SERIES
+  OCCURRENCE
+  OFFER
+  TREND
+}
+
+Enum subject_status {
+  candidate
+  active
+  hold
+  unavailable
+  temporarily_unavailable
+  closed
+  superseded
+  rejected
+}
+
+Enum provider_record_status {
+  active
+  unavailable
+  moved
+  merged
+  replaced
+  unknown
+}
+
+Enum source_role {
+  official
+  selection_body
+  merchant
+  organizer
+  booking
+  ticketing
+  map
+  platform
+  behavior
+  editorial
+  news
+  community
+  other
+}
+
+Enum claim_type {
+  identity
+  operation
+  availability
+  price
+  benefit
+  recognition
+  demand
+  scarcity
+  safety
+  legality
+  quality
+  trend
+  causal_explanation
+  other
+}
+
+Enum claim_polarity {
+  positive
+  negative
+  neutral
+  conflicting
+}
+
+Enum inference_level {
+  direct
+  associated
+  supported_causal_hypothesis
+  causal_confirmed
+}
+
+Enum verification_status {
+  unverified
+  verified
+  disputed
+  superseded
+  rejected
+}
+
+Enum chip_type {
+  MERIT
+  HEAT
+  SCARCITY
+  PAYOFF
+  SOCIAL_CURRENCY
+}
+
+Enum support_strength {
+  direct
+  partial
+  context_only
+}
+
+Enum trust_decision {
+  approve
+  hold
+  reject
+  revise
+}
+
+Enum promotion_decision {
+  publish
+  hold
+  reject
+  withdraw
+}
+
+Enum live_state {
+  available
+  limited
+  sold_out
+  closed
+  unknown
+}
+
+Enum experience_event_type {
+  exposed
+  passed
+  saved
+  unsaved
+  map_opened
+  extended
+  attended
+  reviewed
+}
+
+Table search_runs {
+  id uuid [pk]
+  run_class run_class [not null]
+  market varchar [not null]
+  objective text [not null]
+  department_scopes json [not null]
+  limits json
+  prohibitions json
+  constitution_version varchar
+  prompt_hash varchar
+  context_snapshot_id varchar
+  started_at timestamp [not null]
+  observed_at timestamp [not null]
+  completed_at timestamp
+  status varchar [not null]
+  created_at timestamp [not null]
+}
+
+Table search_workers {
+  id varchar [pk]
+  run_id uuid [not null, ref: > search_runs.id]
+  department department_id [not null]
+  worker_mode worker_mode [not null]
+  source_strategy text [not null]
+  output_uri text
+  observed_at timestamp [not null]
+  completed_at timestamp
+
+  Indexes {
+    (run_id, department)
+  }
+}
+
+Table raw_leads {
+  id varchar [pk]
+  run_id uuid [not null, ref: > search_runs.id]
+  worker_id varchar [not null, ref: > search_workers.id]
+  raw_title text [not null]
+  raw_description text
+  discovery_url text [not null]
+  canonical_url text
+  discovered_via text [not null]
+  source_type varchar [not null]
+  market varchar [not null]
+  published_at timestamp
+  observed_at timestamp [not null]
+  possible_entities json
+  raw_dates json
+  raw_numbers json
+  uncertainties json [not null]
+  raw_payload json
+
+  Indexes {
+    (run_id, worker_id)
+    discovery_url
+  }
+}
+
+Table raw_union_memberships {
+  run_id uuid [not null, ref: > search_runs.id]
+  lead_id varchar [not null, ref: > raw_leads.id]
+  worker_id varchar [not null, ref: > search_workers.id]
+  unioned_at timestamp [not null]
+
+  Indexes {
+    (run_id, lead_id, worker_id) [pk]
+  }
+}
+
+Table lead_subject_links {
+  run_id uuid [not null, ref: > search_runs.id]
+  lead_id varchar [not null, ref: > raw_leads.id]
+  subject_id uuid [not null, ref: > subjects.id]
+  link_type varchar [not null, note: 'candidate, canonicalized, duplicate, rejected_identity']
+  linked_at timestamp [not null]
+  linked_by varchar [not null]
+
+  Indexes {
+    (run_id, lead_id, subject_id) [pk]
+    subject_id
+  }
+}
+
+Table subjects {
+  id uuid [pk]
+  kind subject_kind [not null]
+  canonical_name text [not null]
+  canonical_url text
+  status subject_status [not null]
+  market varchar
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+}
+
+Table subject_aliases {
+  id uuid [pk]
+  subject_id uuid [not null, ref: > subjects.id]
+  alias text [not null]
+  language varchar
+  source_url text
+  observed_at timestamp
+
+  Indexes {
+    (subject_id, alias)
+  }
+}
+
+Table subject_external_ids {
+  id uuid [pk]
+  subject_id uuid [ref: > subjects.id]
+  provider varchar [not null]
+  external_id varchar [not null]
+  provider_record_status provider_record_status [not null]
+  current_url text
+  observed_at timestamp [not null]
+  supersedes_external_id_id uuid [ref: > subject_external_ids.id]
+
+  Indexes {
+    (provider, external_id) [unique]
+    subject_id
+  }
+}
+
+Table subject_relations {
+  id uuid [pk]
+  from_subject_id uuid [not null, ref: > subjects.id]
+  to_subject_id uuid [not null, ref: > subjects.id]
+  relation_type varchar [not null, note: 'duplicate_of, successor_of, replaced_by, relocated_to, parent_place, hosts, occurrence_of, offer_for, related_signal']
+  source_url text
+  observed_at timestamp [not null]
+  valid_from timestamp
+  valid_until timestamp
+  notes text
+
+  Indexes {
+    (from_subject_id, to_subject_id, relation_type)
+  }
+}
+
+Table list_collections {
+  id uuid [pk]
+  provider varchar [not null]
+  external_list_id varchar [not null]
+  title text [not null]
+  owner_scope varchar
+  observed_at timestamp [not null]
+
+  Indexes {
+    (provider, external_list_id) [unique]
+  }
+}
+
+Table list_memberships {
+  collection_id uuid [not null, ref: > list_collections.id]
+  external_id_id uuid [not null, ref: > subject_external_ids.id]
+  subject_id uuid [ref: > subjects.id]
+  saved_at timestamp
+  observed_at timestamp [not null]
+  raw_position int
+  raw_category varchar
+
+  Indexes {
+    (collection_id, external_id_id) [pk]
+    subject_id
+  }
+}
+
+Table places {
+  subject_id uuid [pk, ref: - subjects.id]
+  name text [not null]
+  branch_name text
+  latitude decimal
+  longitude decimal
+  address_text text
+  region_code varchar
+  place_kind varchar
+  operator_subject_id uuid [ref: > subjects.id]
+  opened_at timestamp
+  closed_at timestamp
+}
+
+Table experience_series {
+  subject_id uuid [pk, ref: - subjects.id]
+  title text [not null]
+  series_kind varchar
+  organizer_subject_id uuid [ref: > subjects.id]
+  recurring boolean
+}
+
+Table experience_occurrences {
+  subject_id uuid [pk, ref: - subjects.id]
+  series_subject_id uuid [ref: > experience_series.subject_id]
+  place_subject_id uuid [ref: > places.subject_id]
+  starts_at timestamp
+  ends_at timestamp
+  application_opens_at timestamp
+  application_deadline_at timestamp
+  live_state live_state [not null]
+  timezone varchar
+  participation_method text
+  price_text text
+  eligibility_text text
+}
+
+Table offers {
+  subject_id uuid [pk, ref: - subjects.id]
+  place_subject_id uuid [ref: > places.subject_id]
+  merchant_subject_id uuid [ref: > subjects.id]
+  starts_at timestamp
+  ends_at timestamp
+  benefit_text text [not null]
+  beneficiary_scope varchar
+  acquisition_condition text
+  current_price_text text
+  reference_price_text text
+  live_state live_state [not null]
+}
+
+Table trends {
+  subject_id uuid [pk, ref: - subjects.id]
+  geography varchar
+  diffusion_stage varchar
+  first_observed_at timestamp
+  current_stage_observed_at timestamp
+  business_model_text text
+  korea_relevance_text text
+  korea_relevance_inference inference_level
+}
+
+Table source_snapshots {
+  id varchar [pk]
+  source_url text [not null]
+  source_role source_role [not null]
+  observed_at timestamp [not null]
+  http_status int
+  content_hash varchar
+  storage_uri text
+  retrieval_status varchar [not null]
+  unavailable_reason text
+}
+
+Table subject_observations {
+  id uuid [pk]
+  subject_id uuid [not null, ref: > subjects.id]
+  field_key varchar [not null]
+  field_value json [not null]
+  source_url text [not null]
+  source_role source_role [not null]
+  source_snapshot_id varchar [ref: > source_snapshots.id]
+  observed_at timestamp [not null]
+  valid_from timestamp
+  valid_until timestamp
+  verification_status verification_status [not null]
+  supersedes_observation_id uuid [ref: > subject_observations.id]
+
+  Indexes {
+    (subject_id, field_key, observed_at)
+  }
+}
+
+Table subject_projection_sources {
+  subject_id uuid [not null, ref: > subjects.id]
+  projected_field varchar [not null]
+  observation_id uuid [not null, ref: > subject_observations.id]
+  projected_at timestamp [not null]
+
+  Indexes {
+    (subject_id, projected_field, observation_id) [pk]
+  }
+}
+
+Table evidence_claims {
+  id varchar [pk]
+  subject_id uuid [not null, ref: > subjects.id]
+  claim_type claim_type [not null]
+  subtype varchar
+  claim_text text [not null]
+  polarity claim_polarity [not null]
+  source_url text [not null]
+  source_role source_role [not null]
+  source_snapshot_id varchar [not null, ref: > source_snapshots.id]
+  source_content_hash varchar
+  observed_at timestamp [not null]
+  valid_from timestamp
+  valid_until timestamp
+  confidence varchar [not null, note: 'high, medium, low']
+  inference_level inference_level [not null]
+  verification_status verification_status [not null]
+  supersedes_claim_id varchar [ref: > evidence_claims.id]
+  beneficiary_scope varchar
+  acquisition_condition text
+  competing_explanations json
+  conflict_notes text
+
+  Indexes {
+    (subject_id, claim_type)
+    (source_snapshot_id, observed_at)
+  }
+}
+
+Table claim_chip_supports {
+  id varchar [pk]
+  claim_id varchar [not null, ref: > evidence_claims.id]
+  chip chip_type [not null]
+  support_strength support_strength [not null]
+  reason text
+  created_at timestamp [not null]
+
+  Indexes {
+    (claim_id, chip) [unique]
+  }
+}
+
+Table trust_verdicts {
+  id varchar [pk]
+  subject_id uuid [not null, ref: > subjects.id]
+  decision trust_decision [not null]
+  reviewed_claim_ids json [not null]
+  reason_codes json [not null]
+  required_evidence json
+  reviewer_run_id uuid [not null, ref: > search_runs.id]
+  reviewed_at timestamp [not null]
+  expires_at timestamp
+
+  Indexes {
+    (subject_id, reviewed_at)
+  }
+}
+
+Table promotion_decisions {
+  id uuid [pk]
+  subject_id uuid [not null, ref: > subjects.id]
+  trust_verdict_id varchar [not null, ref: > trust_verdicts.id]
+  decision promotion_decision [not null]
+  reason text
+  decided_at timestamp [not null]
+  decided_by varchar [not null]
+}
+
+Table media_assets {
+  id uuid [pk]
+  subject_id uuid [not null, ref: > subjects.id]
+  media_type varchar [not null, note: 'image, poster, menu, video']
+  url text [not null]
+  source_url text [not null]
+  source_role source_role [not null]
+  observed_at timestamp [not null]
+  rights_status varchar [not null]
+  is_representative boolean [not null]
+  width int
+  height int
+}
+
+Table opportunity_cards {
+  id uuid [pk]
+  subject_id uuid [not null, ref: > subjects.id]
+  promotion_decision_id uuid [not null, ref: > promotion_decisions.id]
+  representative_media_id uuid [not null, ref: > media_assets.id]
+  kind varchar [not null]
+  title text [not null]
+  value_text text [not null]
+  timing_text text [not null]
+  action_text text [not null]
+  cost_text text [not null]
+  place_or_market_text text [not null]
+  organizer_text text
+  people_text text
+  primary_action json [not null]
+  source_refs json [not null]
+  category_payload json
+  observed_at timestamp [not null]
+  published_at timestamp
+  withdrawn_at timestamp
+}
+
+Table decision_contexts {
+  id uuid [pk]
+  user_id uuid [not null]
+  intent text [not null]
+  requested_at timestamp [not null]
+  timezone varchar [not null]
+  location_context json
+  time_context json
+  constraints json
+  evidence_version varchar [not null]
+}
+
+Table recommendation_batches {
+  id uuid [pk]
+  decision_context_id uuid [ref: > decision_contexts.id, note: 'required for user-context batches']
+  market varchar [not null]
+  period_start timestamp
+  period_end timestamp
+  policy_version varchar
+  created_at timestamp [not null]
+}
+
+Table recommendation_instances {
+  id uuid [pk]
+  batch_id uuid [not null, ref: > recommendation_batches.id]
+  decision_context_id uuid [ref: > decision_contexts.id, note: 'required when why_you_text or PERSONAL_FIT is present']
+  card_id uuid [not null, ref: > opportunity_cards.id]
+  subject_id uuid [not null, ref: > subjects.id]
+  trust_verdict_id varchar [not null, ref: > trust_verdicts.id]
+  evidence_version varchar [not null]
+  primary_reason_claim_id varchar [not null, ref: > evidence_claims.id]
+  primary_reason_text text [not null]
+  why_now_claim_ids json
+  why_you_text text
+  caveat_text text
+  rank int
+  live_state live_state
+  generated_at timestamp [not null]
+  live_state_checked_at timestamp [not null]
+  recheck_after timestamp [not null]
+  expires_at timestamp
+  source_link text [not null]
+}
+
+Table experience_events {
+  id uuid [pk]
+  user_id uuid [not null]
+  recommendation_instance_id uuid [ref: > recommendation_instances.id]
+  subject_id uuid [not null, ref: > subjects.id]
+  event_type experience_event_type [not null]
+  occurred_at timestamp [not null]
+  actor_type varchar [not null, note: 'user, agent, system']
+  tool_call_id varchar
+  metadata json
+}
+
+Table experience_outcomes {
+  id uuid [pk]
+  user_id uuid [not null]
+  subject_id uuid [not null, ref: > subjects.id]
+  attendance_event_id uuid [ref: > experience_events.id]
+  outcome_type varchar [not null]
+  outcome_value json
+  recorded_at timestamp [not null]
+}
+
+Table user_opportunity_state {
+  user_id uuid [not null]
+  subject_id uuid [not null, ref: > subjects.id]
+  active_save boolean [not null]
+  saved_at timestamp
+  visible_until timestamp
+  attended_at timestamp
+  latest_review_event_id uuid [ref: > experience_events.id]
+  updated_at timestamp [not null]
+
+  Indexes {
+    (user_id, subject_id) [pk]
+  }
+}
+
+Table search_run_evaluations {
+  id uuid [pk]
+  run_id uuid [not null, ref: > search_runs.id]
+  department department_id [not null]
+  started_at timestamp [not null]
+  worker_counts json [not null]
+  union_count int [not null]
+  integration_loss_count int [not null]
+  blank_slate_unique_count int [not null]
+  material_outcomes json [not null]
+  created_at timestamp [not null]
+}
+
+Table search_run_failures {
+  id uuid [pk]
+  evaluation_id uuid [not null, ref: > search_run_evaluations.id]
+  stage varchar [not null]
+  root_cause varchar [not null]
+  description text [not null]
+  corrective_action text
+  regression_case_id varchar
+  post_run_check_id uuid [ref: > post_run_checks.id]
+}
+
+Table post_run_checks {
+  id uuid [pk]
+  source_failure_id uuid [not null, ref: > search_run_failures.id]
+  check_type varchar [not null, note: 'validator, evaluator_case, manual_verification']
+  check_definition json [not null]
+  status varchar [not null]
+  last_checked_at timestamp
+  created_at timestamp [not null]
+}
+
+Table search_run_successes {
+  id uuid [pk]
+  evaluation_id uuid [not null, ref: > search_run_evaluations.id]
+  subject_id uuid [ref: > subjects.id]
+  candidate_id varchar [not null]
+  success_stage varchar [not null]
+  discovery_path text [not null]
+  lead_time_days decimal
+  repeatable_method text
+}
+
+Table lesson_candidates {
+  id uuid [pk]
+  source_run_id uuid [not null, ref: > search_runs.id]
+  department department_id [not null]
+  proposition text [not null]
+  evidence_refs json [not null]
+  status varchar [not null, note: 'proposed, approved, rejected, superseded']
+  proposed_at timestamp [not null]
+  reviewed_at timestamp
+  reviewed_by varchar
+}
