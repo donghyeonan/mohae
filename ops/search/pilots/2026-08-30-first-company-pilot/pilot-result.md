@@ -42,7 +42,9 @@ Novelty is not quality. The 16 blank-slate-only subjects prove coverage expansio
 |---|---|---|---|
 | [PARKSEOBO MUSEUM](https://parkseobomuseum.org/home) | approve | Official address; Tue-Sun 11:00-18:00; KRW 5,000; on-site ticketing; inaugural exhibition through 2027-01-03 | External calendar still says 2026-12-31; same-day crowd limits unknown |
 | [Starfield Market Wolgye](https://eapp.emart.com/branch/view.do?id=1059&mallGbn=E) | approve | Opened 2026-08-27; live branch hours 10:00-23:00; dated selected-product promotion and Nespresso pop-up | Some announced tenants open only in Oct/Nov; the sirloin offer expires 2026-08-30 and the general offer 2026-09-02 |
-| [Galaxy Robot Park](https://insights.galaxyuniverse.ai/en/robot-park/) | hold | Official opening on 2026-08-21; permanent Physical AI park; owner reports 20,000 pre-opening visitors and sold-out sessions | Official hours, exact address, admission price and current booking method are missing; demand is owner-reported |
+| [Galaxy Robot Park](https://insights.galaxyuniverse.ai/en/robot-park/) | hold in the original pilot | Official opening on 2026-08-21; permanent Physical AI park; owner reports 20,000 pre-opening visitors and sold-out sessions | The inspected official page lacked hours, exact address, admission price and booking method; after the pilot the user found current detail in Naver Map, so this hold reveals a source-coverage gap rather than proof that public execution data is absent |
+
+Post-pilot correction: at 2026-08-30 15:48 KST, the open Naver Map place page exposed the street address, closing time, adult/youth/child prices, reservation action, a current performance product, phone, parking and accessibility. The original hold was therefore a source-coverage failure, not an absence of public execution data. Current map and platform pages may verify the operational facts they directly expose; official-source incompleteness alone no longer holds a card when a current allowed platform resolves the field without conflict.
 
 ### Events & Experiences
 

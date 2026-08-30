@@ -26,33 +26,39 @@ departments:
 workflow:
   discovery_department_ids: [local_places, events_experiences, global_market]
   discovery_workers:
-    memory_assisted_per_department: 3
-    blank_slate_per_department: 1
-    runtime_profile: mohae_discovery_web_only
-    allowed_toolsets: [web, source_proxy]
-    denied_capabilities: [terminal, file, session_search, memory, skills, gbrain, inherited_mcp]
-    evaluator_store_mounted: false
+    min_per_active_department: 1
+    max_per_active_department: 3
+    assignment: adaptive_by_scope_and_source_family
+    blank_slate_policy: evaluation_or_periodic_counterfactual
     may_assign_chips: false
     merge_before_filter: true
+    regression_profile:
+      runtime_profile: mohae_discovery_web_only
+      allowed_toolsets: [web, source_proxy]
+      denied_capabilities: [terminal, file, session_search, memory, skills, gbrain, inherited_mcp]
+      evaluator_store_mounted: false
   evidence_assembly:
     starts_after_union: true
     requires_provenance: true
+    ordinary_card_fields_require_atomic_claims: false
+    atomic_claims_for: [chip_reason, conflict, mutable_availability, discount, scarcity, safety, identity, material_trend]
     allowed_chips: [MERIT, HEAT, SCARCITY, PAYOFF, SOCIAL_CURRENCY]
     personal_fit_requires_recommendation_context: true
   trust_review:
     required_before_promotion: true
+    risk_proportionate: true
+    hold_affected_action_before_whole_card: true
   live_recheck:
-    required_before_recommendation: true
+    triggers: [personalized_recommendation_issue, detail_open, save, booking_or_execution_intent]
 
 evaluation:
+  status: deferred_until_repeated_runs
   regression_visible_to_discovery: false
-  active_case_cap: 20
-  retire_after_consecutive_passes: 6
-  holdout_fraction: 0.25
-  compare_blank_slate_to_memory_assisted: true
-  periodic_memory_free_run: true
+  blank_slate_comparison_on: [evaluation_pilot, periodic_counterfactual]
+  periodic_counterfactual: manual_until_repeated_runs
 
 outputs:
+  presentation_contract: ops/search/presentation-contract.md
   run_brief_schema: ops/search/schemas/run-brief.schema.json
   worker_output_envelope_schema: ops/search/schemas/worker-output-envelope.schema.json
   raw_lead_schema: ops/search/schemas/raw-lead.schema.json

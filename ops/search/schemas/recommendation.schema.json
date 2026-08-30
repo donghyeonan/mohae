@@ -14,6 +14,7 @@
     "primary_reason_claim_id": {"type": "string", "minLength": 1},
     "primary_reason_text": {"type": "string", "minLength": 1, "maxLength": 240},
     "why_now_claim_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "decision_context_id": {"type": ["string", "null"], "minLength": 1},
     "why_you_text": {"type": ["string", "null"], "maxLength": 240},
     "caveat_text": {"type": ["string", "null"], "maxLength": 240},
     "live_state": {"type": ["string", "null"], "enum": ["available", "limited", "sold_out", "closed", "unknown", null]},
@@ -22,5 +23,11 @@
     "recheck_after": {"type": "string", "format": "date-time"},
     "expires_at": {"type": ["string", "null"], "format": "date-time"},
     "source_link": {"type": "string", "format": "uri"}
-  }
+  },
+  "allOf": [
+    {
+      "if": {"required": ["why_you_text"], "properties": {"why_you_text": {"type": "string"}}},
+      "then": {"required": ["decision_context_id"]}
+    }
+  ]
 }

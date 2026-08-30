@@ -7,14 +7,14 @@
   "required": ["run_id", "run_class", "observed_at", "market", "objective", "department_scopes", "workers", "limits", "prohibitions"],
   "properties": {
     "run_id": {"type": "string", "minLength": 1},
-    "run_class": {"const": "non_production_learning_pilot"},
+    "run_class": {"type": "string", "enum": ["routine_discovery", "evaluation_pilot", "periodic_counterfactual", "non_production_learning_pilot"]},
     "observed_at": {"type": "string", "format": "date-time"},
     "market": {"type": "string", "minLength": 1},
     "objective": {"type": "string", "minLength": 1},
     "department_scopes": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["local_places", "events_experiences", "global_market"],
+      "minProperties": 1,
       "properties": {
         "local_places": {"type": "object"},
         "events_experiences": {"type": "object"},
@@ -23,7 +23,7 @@
     },
     "workers": {
       "type": "array",
-      "minItems": 12,
+      "minItems": 1,
       "maxItems": 12,
       "uniqueItems": true,
       "items": {

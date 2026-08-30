@@ -10,7 +10,7 @@ MOHAE opens exploration before the user knows what to search for. It surfaces pl
 2. Discovery workers do not rank, recommend, score, or assign recommendation chips.
 3. Preserve the original discovery route, canonical URL when known, observed time, raw wording, numbers, and uncertainty.
 4. Merge every worker result before normalization, deduplication, enrichment, or rejection. Reconcile worker counts against the union to detect integration loss.
-5. Discovery indexes and social posts reveal leads. Official organizers, selection bodies, live application, booking, ticket, inventory, or merchant sources establish current claims.
+5. Discovery indexes and social posts reveal leads. Official organizers and selection bodies remain preferred, while current booking, ticketing, inventory, merchant, map, and platform pages may establish the operational facts they directly expose when source role and observation time are preserved.
 
 ## Evidence after union
 
@@ -32,24 +32,23 @@ Every mutable claim needs source provenance and observation time. Use validity o
 
 ## Detail boundary
 
-Explore explains why something deserves the next click. Detailed hours, prices, menus, reservations, inventory, and reviews are retrieved through current RAG and handed off to canonical services such as the organizer, booking platform, merchant, or map.
+Explore explains why something deserves the next click using the common and category-specific fields in `ops/search/presentation-contract.md`. Ordinary display fields need a current source URL and observation time; they do not each require an atomic evidence claim. Detailed or volatile hours, prices, menus, reservations, inventory, and reviews are refreshed on detail, save, or execution intent and handed off to organizer, booking, merchant, or map services.
 
 ## Safety and source boundaries
 
 Use public and permitted access only. Do not bypass login, CAPTCHA, rate limits, private APIs, robots restrictions, or access controls. Do not republish raw review text, reviewer identity, private-community content, or unlicensed media.
 
-Production discovery must run in a web-only or source-proxy-only profile with no terminal, file, session search, memory, skill, GBrain, evaluator-store, or inherited MCP access. Prompt instructions alone do not establish evaluator isolation. If the restricted profile is unavailable, the run is a non-production experiment and cannot produce a valid regression score.
+Any run that claims an isolated regression or evaluator score must use a web-only or source-proxy-only profile with no terminal, file, session search, memory, skill, GBrain, evaluator-store, or inherited MCP access. Prompt instructions alone do not establish evaluator isolation. Ordinary discovery may use authorized Search context, but without this restricted profile it cannot claim an isolated regression score.
 
 ## Learning without overfitting
 
 1. Regression cases are evaluator-only. Discovery workers never receive case names, expected chips, past misses, or expected sources.
-2. Every department run includes a blank-slate discovery worker that receives only market, time, and broad object scope, without department watchlists or historical lessons.
-3. Compare memory-assisted and blank-slate discoveries. Preserve novel candidates unique to either path.
-4. Keep the active regression suite bounded. Retire stale or repeatedly passing cases, and audit whether cases still represent current failure modes.
-5. Maintain evaluator-only holdouts and periodic memory-free counterfactual runs.
-6. Promote a lesson into the playbook only after it repeats or fixes a material miss. Do not turn every anecdote into a permanent search rule.
-7. Hermes automatic memory, skill review, Dreaming, and Growth Loop may propose a lesson candidate, but may not directly mutate this constitution, department context, evaluator cases, source policy, or promotion logic.
-8. A lesson candidate is promoted only after repeated evidence or one material verified miss, a blank-slate counterfactual, independent review, and an executable post-run check.
+2. Evaluation runs and periodic counterfactual checks include a blank-slate discovery worker that receives only market, time, and broad object scope. Routine discovery does not need a blank-slate worker on every run.
+3. When a blank-slate path is active, compare it with memory-assisted discovery and preserve novel candidates unique to either path.
+4. Regression automation, holdouts, retirement thresholds, and periodic memory-free evaluation remain deferred until repeated product runs exist. When enabled, keep the suite bounded and evaluator-only.
+5. Promote a lesson into the playbook only after it repeats or fixes a material miss. Do not turn every anecdote into a permanent search rule.
+6. Hermes automatic memory, skill review, Dreaming, and Growth Loop may propose a lesson candidate, but may not directly mutate this constitution, department context, evaluator cases, source policy, or promotion logic.
+7. A lesson candidate is promoted only after repeated evidence or one material verified miss, an available counterfactual, independent review, and an executable post-run check.
 
 ## Success and failure
 

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Historical validator for Pilot 001's frozen 3+1-per-department brief, not the adaptive routine dispatcher contract.
 const root = path.dirname(fileURLToPath(import.meta.url));
 const brief = JSON.parse(fs.readFileSync(path.join(root, 'run-brief.json'), 'utf8'));
 const requiredLead = ['lead_id', 'raw_title', 'raw_description', 'discovery_url', 'canonical_url', 'discovered_via', 'source_type', 'market', 'published_at', 'observed_at', 'possible_entities', 'raw_dates', 'raw_numbers', 'uncertainties'];

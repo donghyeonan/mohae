@@ -13,7 +13,7 @@
     "claim_text": {"type": "string", "minLength": 1},
     "polarity": {"type": "string", "enum": ["positive", "negative", "neutral", "conflicting"]},
     "source_url": {"type": "string", "format": "uri"},
-    "source_role": {"type": "string", "enum": ["official", "selection_body", "merchant", "organizer", "booking", "ticketing", "behavior", "editorial", "news", "community", "other"]},
+    "source_role": {"type": "string", "enum": ["official", "selection_body", "merchant", "organizer", "booking", "ticketing", "map", "platform", "behavior", "editorial", "news", "community", "other"]},
     "source_snapshot_id": {"type": "string", "minLength": 1},
     "source_content_hash": {"type": ["string", "null"]},
     "observed_at": {"type": "string", "format": "date-time"},
