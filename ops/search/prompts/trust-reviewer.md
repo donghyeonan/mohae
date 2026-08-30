@@ -15,4 +15,4 @@ Check:
 - missing source, observation time, validity, beneficiary, or acquisition condition;
 - regressions that pass only because discovery workers were exposed to expected cases.
 
-Return approve, hold, reject, or revise with exact reasons and required evidence. Do not discover replacements during review; preserve separation of duties.
+Return a trust-verdict record with approve, hold, reject, or revise, exact reason codes, reviewed claim IDs, expiry, and required evidence. Do not discover replacements during review; preserve separation of duties.

@@ -3,22 +3,35 @@ constitution: ops/search/constitution.md
 
 departments:
   - id: local_places
+    role: discovery_department
+    participates_in_discovery: true
     context: /Users/an/project/gbrain/projects/mohae/search/departments/local-places.md
     owns: [place, branch, permanent_venue, offer, price_observation]
   - id: events_experiences
+    role: discovery_department
+    participates_in_discovery: true
     context: /Users/an/project/gbrain/projects/mohae/search/departments/events-experiences.md
     owns: [series, occurrence, event_offer, application_state]
   - id: global_market
+    role: discovery_department
+    participates_in_discovery: true
     context: /Users/an/project/gbrain/projects/mohae/search/departments/global-market.md
     owns: [trend_thread, market_diffusion, startup_signal, business_model]
   - id: evidence_trust
+    role: control_function
+    participates_in_discovery: false
     context: /Users/an/project/gbrain/projects/mohae/search/departments/evidence-trust.md
     owns: [evidence_claim, conflict, duplicate_relation, integrity_review]
 
 workflow:
+  discovery_department_ids: [local_places, events_experiences, global_market]
   discovery_workers:
     memory_assisted_per_department: 3
     blank_slate_per_department: 1
+    runtime_profile: mohae_discovery_web_only
+    allowed_toolsets: [web, source_proxy]
+    denied_capabilities: [terminal, file, session_search, memory, skills, gbrain, inherited_mcp]
+    evaluator_store_mounted: false
     may_assign_chips: false
     merge_before_filter: true
   evidence_assembly:
@@ -40,5 +53,7 @@ evaluation:
 outputs:
   raw_lead_schema: ops/search/schemas/raw-lead.schema.json
   evidence_claim_schema: ops/search/schemas/evidence-claim.schema.json
+  claim_chip_support_schema: ops/search/schemas/claim-chip-support.schema.json
+  trust_verdict_schema: ops/search/schemas/trust-verdict.schema.json
   recommendation_schema: ops/search/schemas/recommendation.schema.json
   run_evaluation_schema: ops/search/schemas/search-run-evaluation.schema.json

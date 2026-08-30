@@ -37,6 +37,8 @@ Explore explains why something deserves the next click. Detailed hours, prices, 
 
 Use public and permitted access only. Do not bypass login, CAPTCHA, rate limits, private APIs, robots restrictions, or access controls. Do not republish raw review text, reviewer identity, private-community content, or unlicensed media.
 
+Production discovery must run in a web-only or source-proxy-only profile with no terminal, file, session search, memory, skill, GBrain, evaluator-store, or inherited MCP access. Prompt instructions alone do not establish evaluator isolation. If the restricted profile is unavailable, the run is a non-production experiment and cannot produce a valid regression score.
+
 ## Learning without overfitting
 
 1. Regression cases are evaluator-only. Discovery workers never receive case names, expected chips, past misses, or expected sources.
@@ -45,6 +47,8 @@ Use public and permitted access only. Do not bypass login, CAPTCHA, rate limits,
 4. Keep the active regression suite bounded. Retire stale or repeatedly passing cases, and audit whether cases still represent current failure modes.
 5. Maintain evaluator-only holdouts and periodic memory-free counterfactual runs.
 6. Promote a lesson into the playbook only after it repeats or fixes a material miss. Do not turn every anecdote into a permanent search rule.
+7. Hermes automatic memory, skill review, Dreaming, and Growth Loop may propose a lesson candidate, but may not directly mutate this constitution, department context, evaluator cases, source policy, or promotion logic.
+8. A lesson candidate is promoted only after repeated evidence or one material verified miss, a blank-slate counterfactual, independent review, and an executable post-run check.
 
 ## Success and failure
 

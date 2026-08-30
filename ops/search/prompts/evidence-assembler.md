@@ -6,9 +6,9 @@ For each candidate:
 
 1. Resolve the exact subject, series, occurrence, branch, offer, or trend thread.
 2. Inspect official selection, organizer, merchant, booking, ticket, application, inventory, or other authoritative current sources.
-3. Create atomic, sourced, time-bounded evidence claims.
-4. Assign zero or more recommendation chips only when the claim supports that meaning.
+3. Create neutral atomic, sourced, time-bounded evidence claims, including negative, conflicting, safety, closure, and identity evidence.
+4. Create separate claim-to-chip support records only when a claim supports that chip. A claim may support no chip.
 5. Separate direct facts, observed associations, supported causal hypotheses, and confirmed causal explanations.
 6. Preserve missing fields, conflicts, competing explanations, and source limitations.
 
-Do not promote appearance into endorsement, demand into quality, or claimed discounts into verified discounts without a comparable recent price and matching terms. Match the evidence-claim schema exactly.
+Do not promote appearance into endorsement, demand into quality, or claimed discounts into verified discounts without a comparable recent price and matching terms. Match both the evidence-claim and claim-chip-support schemas exactly.

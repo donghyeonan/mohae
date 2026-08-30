@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mohae.local/schemas/claim-chip-support.schema.json",
+  "title": "MOHAE Claim Chip Support",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["support_id", "claim_id", "chip", "support_strength", "created_at"],
+  "properties": {
+    "support_id": {"type": "string", "minLength": 1},
+    "claim_id": {"type": "string", "minLength": 1},
+    "chip": {"type": "string", "enum": ["MERIT", "HEAT", "SCARCITY", "PAYOFF", "SOCIAL_CURRENCY", "PERSONAL_FIT"]},
+    "support_strength": {"type": "string", "enum": ["direct", "partial", "context_only"]},
+    "reason": {"type": ["string", "null"], "maxLength": 400},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

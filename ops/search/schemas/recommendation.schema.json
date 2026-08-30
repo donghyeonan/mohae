@@ -4,16 +4,23 @@
   "title": "MOHAE Recommendation Reason",
   "type": "object",
   "additionalProperties": false,
-  "required": ["subject_id", "primary_reason_claim_id", "primary_reason_text", "live_state_checked_at", "source_link"],
+  "required": ["recommendation_id", "batch_id", "subject_id", "trust_verdict_id", "evidence_version", "primary_reason_claim_id", "primary_reason_text", "generated_at", "live_state_checked_at", "recheck_after", "source_link"],
   "properties": {
+    "recommendation_id": {"type": "string", "minLength": 1},
+    "batch_id": {"type": "string", "minLength": 1},
     "subject_id": {"type": "string", "minLength": 1},
+    "trust_verdict_id": {"type": "string", "minLength": 1},
+    "evidence_version": {"type": "string", "minLength": 1},
     "primary_reason_claim_id": {"type": "string", "minLength": 1},
     "primary_reason_text": {"type": "string", "minLength": 1, "maxLength": 240},
     "why_now_claim_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "why_you_text": {"type": ["string", "null"], "maxLength": 240},
     "caveat_text": {"type": ["string", "null"], "maxLength": 240},
     "live_state": {"type": ["string", "null"], "enum": ["available", "limited", "sold_out", "closed", "unknown", null]},
+    "generated_at": {"type": "string", "format": "date-time"},
     "live_state_checked_at": {"type": "string", "format": "date-time"},
+    "recheck_after": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": ["string", "null"], "format": "date-time"},
     "source_link": {"type": "string", "format": "uri"}
   }
 }

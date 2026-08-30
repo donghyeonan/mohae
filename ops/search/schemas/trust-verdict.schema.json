@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mohae.local/schemas/trust-verdict.schema.json",
+  "title": "MOHAE Trust Verdict",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["verdict_id", "subject_id", "decision", "reviewed_claim_ids", "reason_codes", "reviewed_at", "reviewer_run_id"],
+  "properties": {
+    "verdict_id": {"type": "string", "minLength": 1},
+    "subject_id": {"type": "string", "minLength": 1},
+    "decision": {"type": "string", "enum": ["approve", "hold", "reject", "revise"]},
+    "reviewed_claim_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "reason_codes": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "required_evidence": {"type": "array", "items": {"type": "string"}},
+    "reviewed_at": {"type": "string", "format": "date-time"},
+    "reviewer_run_id": {"type": "string", "minLength": 1},
+    "expires_at": {"type": ["string", "null"], "format": "date-time"}
+  }
+}
