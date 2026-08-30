@@ -20,13 +20,15 @@ Every card published to the Explore deck needs:
 6. **Cost or commitment**: free, price or price range, conditional cost, or explicitly unknown. Missing price never means free.
 7. **Place or market**: venue and area for local objects; geography and diffusion stage for global signals.
 8. **Primary action link and freshness**: map, booking, application, merchant, organizer, or primary source plus `observed_at`.
-9. **Why it surfaced**: two or three concise factual reasons, each linked to a source URL and observation time. Use facts such as a current program period, published price, exact floor, free admission, booking availability, or merchant-marked recommendation. Do not turn review opinions into recommendation evidence.
+
+A generic `why recommended` block is not required. A permanent place with current occurrences may let those programs carry the value directly.
 
 Optional common fields:
 
 - organizer, operator, or brand;
 - people, dynamically labeled as performers, speakers, artists, chefs, hosts, mentors, or judges;
-- deadline, capacity, age or eligibility conditions.
+- deadline, capacity, age or eligibility conditions;
+- up to three typed signal chips when a qualifying external signal exists.
 
 The card surface may show only the visual, title, one-line value, timing, cost, place or market, and chips. The rest belongs in the lower detail sheet.
 
@@ -45,7 +47,7 @@ Reference payload, intentionally not a rigid schema:
   "place_or_market_text": "...",
   "organizer_text": null,
   "people_text": null,
-  "recommendation_reasons": [{"chip": "...", "detail": "...", "source_url": "https://...", "observed_at": "..."}],
+  "signal_chips": [{"label": "...", "kind": "culinary_selection | competition_award | media_appearance | international_editorial | craft_affiliation | participant | attendee_payoff", "source_role": "guide | competition_organizer | media | editorial | platform", "source_url": "https://...", "observed_at": "...", "scope": "exact_branch | exact_occurrence"}],
   "primary_action": {"label": "...", "url": "https://..."},
   "sources": [{"role": "official | map | platform", "url": "https://...", "observed_at": "..."}]
 }
@@ -75,8 +77,8 @@ Show when available:
 - current open state and useful hours;
 - walk-in, queue, or reservation method;
 - price band and one to three representative items;
-- concise reason to go: signature menu, format, atmosphere, recognition, or current novelty;
 - branch and location;
+- objective external chips only when available: exact-branch and exact-edition Michelin or Blue Ribbon selection, competition award, attributable broadcast/YouTube appearance, or equivalent recognition;
 - chef or brand only when it materially explains the experience.
 
 Do not force organizer, speaker, reward, or occurrence fields onto ordinary dining.
@@ -92,7 +94,9 @@ Show when available:
 - location and operator;
 - accessibility, age, equipment, or preparation conditions when material.
 
-A permanent place and its dated exhibition or program may produce separate linked cards.
+A permanent place and its dated exhibition or program may produce separate linked cards. Do not add generic hours, free admission, floor, menu count, or editorial prose as recommendation chips; current program cards already carry their own value.
+
+Event chips should identify concrete event-specific points such as performer, speaker, artist, participant, attendee benefit, included goods, access, prize, or activity. They are not a generic `why recommended` explanation.
 
 ### Offer, product, retail collaboration
 
@@ -123,16 +127,13 @@ Do not force event schedule, venue, participation cost, or benefit-recipient fie
 
 ## 3. Chip guidance
 
-Chips are compact explanations, not verdicts or a full scoring system. Use zero to three.
+Visible chips are typed external signals, not generic explanations or score labels. Use zero to three; zero is normal.
 
-- `MERIT`: durable recognition, demonstrated quality, or a clearly strong structured experience.
-- `HEAT`: current attention, demand, adoption, or acceleration.
-- `SCARCITY`: a real deadline, capacity, finite inventory, or closing window. Scarcity is not quality.
-- `PAYOFF`: a concrete benefit, access, savings, prize, learning outcome, or experience outcome with the main condition visible.
-- `SOCIAL_CURRENCY`: participation creates meaningful social connection, identity, conversation, or shared cultural value.
-- `PERSONAL_FIT`: computed only when a real user decision context exists.
+- Restaurant and cafe: exact-branch and exact-edition Michelin or Blue Ribbon selection, culinary competition award, attributable broadcast/YouTube appearance, international editorial recognition, or exact craft affiliation.
+- Event: named performer, speaker, artist, participant, or a concrete attendee payoff such as included goods, access, prize, learning, or activity.
+- Permanent place: do not add a generic chip when its current programs already express the value.
 
-One current official or credible operational source can support a rough chip when its reason and caveat are preserved. Stronger claims such as verified savings, sellout, quality, causality, safety, or Korean adoption require stronger evidence. Never add a chip merely to fill the card.
+`MERIT`, `HEAT`, `SCARCITY`, `PAYOFF`, `SOCIAL_CURRENCY`, and `PERSONAL_FIT` may remain internal evidence or recommendation dimensions, but they are not rendered as consumer chip labels. `PERSONAL_FIT` remains decision-context-only. Never add a visible chip merely to fill the card.
 
 ## 4. Source and publication boundary
 

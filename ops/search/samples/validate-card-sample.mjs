@@ -25,7 +25,6 @@ const required = [
   "source",
   "address",
   "externalLinks",
-  "recommendationReasons",
 ];
 const errors = [];
 const heroOrigins = new Set(["official_site", "merchant_provided_map", "provider_exterior", "rights_cleared_editorial", "licensed_official_editorial"]);
@@ -61,10 +60,19 @@ for (const record of Array.isArray(records) ? records : []) {
   if (!record.externalLinks?.map) {
     errors.push(`${record.id}: missing map source`);
   }
-  if (!Array.isArray(record.recommendationReasons) || record.recommendationReasons.length < 2) {
-    errors.push(`${record.id}: requires at least two objective recommendation reasons`);
-  } else if (!record.recommendationReasons.every((reason) => reason.chip && reason.title && reason.detail && reason.sourceLabel && /^https:\/\//.test(reason.sourceUrl ?? "") && !Number.isNaN(Date.parse(reason.observedAt)))) {
-    errors.push(`${record.id}: incomplete recommendation reason provenance`);
+  if (record.recommendationReasons) {
+    errors.push(`${record.id}: generic recommendation reasons are excluded`);
+  }
+  const signalChips = record.signalChips ?? [];
+  const diningSignalKinds = new Set(["culinary_selection", "competition_award", "media_appearance", "international_editorial", "craft_affiliation"]);
+  const eventSignalKinds = new Set(["participant", "attendee_payoff"]);
+  const externalSourceRoles = new Set(["guide", "competition_organizer", "media", "editorial", "platform"]);
+  if (!Array.isArray(signalChips) || signalChips.length > 3 || signalChips.some((chip) => !chip.label || !chip.kind || !chip.sourceLabel || !externalSourceRoles.has(chip.sourceRole) || !/^https:\/\//.test(chip.sourceUrl ?? "") || Number.isNaN(Date.parse(chip.observedAt)) || !chip.scope || /self_report/i.test(chip.scope))) {
+    errors.push(`${record.id}: invalid signal chip provenance`);
+  }
+  const allowedSignalKinds = ["식당", "카페", "바"].includes(record.category) ? diningSignalKinds : eventSignalKinds;
+  if (signalChips.some((chip) => !allowedSignalKinds.has(chip.kind))) {
+    errors.push(`${record.id}: signal chip kind is not allowed for this category`);
   }
   if (record.reviewPatterns || record.reviewInsight || record.reviewSummary) {
     errors.push(`${record.id}: review-derived summaries are excluded from this contract sample`);
@@ -105,7 +113,8 @@ console.log(JSON.stringify({
   explicit_rights_status: records.length,
   primary_action: records.length,
   observed_at: records.length,
-  objective_recommendation_reasons: records.reduce((sum, record) => sum + record.recommendationReasons.length, 0),
+  external_signal_chips: records.reduce((sum, record) => sum + (record.signalChips?.length ?? 0), 0),
+  generic_recommendation_reasons: 0,
   review_summaries: 0,
   errors: 0,
 }, null, 2));

@@ -13,6 +13,7 @@ export function createExploreFeature(context) {
   const { app, bottomNav } = context;
   let filterReturnFocus = null;
   let animateDetailEntry = false;
+  let animateExploreReturn = false;
 
   function getOpportunity(id) {
     return opportunities.find((item) => item.id === id) ?? null;
@@ -142,7 +143,7 @@ export function createExploreFeature(context) {
         <span class="category-kicker">${escapeHtml(item.category)}</span>
         <strong>${escapeHtml(item.title)}</strong>
         <span class="card-subtitle">${escapeHtml(item.subtitle)}</span>
-        <span class="card-chips">${item.recommendationReasons.slice(0, 2).map((reason) => `<i>${escapeHtml(reason.chip)}</i>`).join("")}</span>
+        ${item.signalChips?.length ? `<span class="card-chips">${item.signalChips.slice(0, 2).map((chip) => `<i title="${escapeHtml(`${chip.sourceLabel} · ${observedDate({ source: { observedAt: chip.observedAt } })}`)}">${escapeHtml(chip.label)}</i>`).join("")}</span>` : ""}
         <span class="detail-hint">${icon("chevronUp")} 자세히</span>
       </button>`}
     </article>`;
@@ -164,7 +165,7 @@ export function createExploreFeature(context) {
     const next = items[1];
     const anchor = context.state.nearbyAnchor ? coordinatesForMapId(context.state.nearbyAnchor.mapId) : null;
     bottomNav.classList.remove("is-hidden");
-    app.innerHTML = `<section class="screen explore-screen" data-view="explore">
+    app.innerHTML = `<section class="screen explore-screen${animateExploreReturn ? " is-returning" : ""}" data-view="explore">
       ${topbar()}
       <div class="filter-summary">
         <span>${anchor ? `${escapeHtml(anchor.name)} 주변` : context.state.filter === "all" ? "새로운 곳 둘러보기" : context.state.filter === "event" ? "현재 프로그램" : "장소"}</span>
@@ -190,24 +191,12 @@ export function createExploreFeature(context) {
       bindCardGesture();
     }
     context.syncNavigation();
+    animateExploreReturn = false;
   }
 
   function reviewBody(value, limit = 280) {
     const text = String(value ?? "").trim();
     return text.length > limit ? `${text.slice(0, limit).trim()}…` : text;
-  }
-
-  function renderRecommendationReasons(item) {
-    if (!item.recommendationReasons?.length) return "";
-    return `<section class="evidence-section recommendation-evidence">
-      <div class="evidence-heading"><h2>왜 추천했나요</h2><span>확인된 사실</span></div>
-      <div class="recommendation-list">${item.recommendationReasons.map((reason) => `<article>
-        <span>${escapeHtml(reason.chip)}</span>
-        <strong>${escapeHtml(reason.title)}</strong>
-        <p>${escapeHtml(reason.detail)}</p>
-        <a href="${escapeHtml(reason.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(reason.sourceLabel)} · ${escapeHtml(observedDate({ source: { observedAt: reason.observedAt } }))}</a>
-      </article>`).join("")}</div>
-    </section>`;
   }
 
   function renderPrograms(item) {
@@ -258,7 +247,6 @@ export function createExploreFeature(context) {
           <span class="category-kicker accent">${escapeHtml(item.category)}</span>
           <h1>${escapeHtml(item.title)}</h1>
           <p class="detail-subtitle">${escapeHtml(item.subtitle)}</p>
-          ${renderRecommendationReasons(item)}
           <div class="fact-grid">
             <div>${icon("map")}<span><small>위치</small><b>${escapeHtml(item.address ?? locationLine(item))}</b></span></div>
             <div>${icon("calendar")}<span><small>운영</small><b>${escapeHtml(item.schedule)}</b></span></div>
@@ -280,10 +268,14 @@ export function createExploreFeature(context) {
 
   function bindDetailBackGesture() {
     const screen = app.querySelector(".detail-screen");
-    if (!screen) return;
+    const scroller = screen?.querySelector(".detail-scroll");
+    if (!screen || !scroller) return;
     let startX = 0;
     let startY = 0;
     let pointerId = null;
+    let returning = false;
+    let wheelDistance = 0;
+    let wheelResetTimer;
     screen.addEventListener("pointerdown", (event) => {
       pointerId = event.pointerId;
       startX = event.clientX;
@@ -299,6 +291,19 @@ export function createExploreFeature(context) {
         backToExplore();
       }
     });
+    scroller.addEventListener("wheel", (event) => {
+      if (returning || event.deltaY >= 0 || scroller.scrollTop > 1) {
+        if (event.deltaY >= 0 || scroller.scrollTop > 1) wheelDistance = 0;
+        return;
+      }
+      event.preventDefault();
+      wheelDistance += Math.abs(event.deltaY);
+      clearTimeout(wheelResetTimer);
+      wheelResetTimer = setTimeout(() => { wheelDistance = 0; }, 180);
+      if (wheelDistance < 54) return;
+      returning = true;
+      backToExplore(true);
+    }, { passive: false });
   }
 
   function expiryFor(item, saved) {
@@ -629,11 +634,21 @@ export function createExploreFeature(context) {
     }, { passive: false });
   }
 
-  function backToExplore() {
-    context.state.view = "explore";
-    context.state.activeTab = "explore";
-    context.saveState();
-    renderExplore();
+  function backToExplore(smooth = false) {
+    const commit = () => {
+      animateExploreReturn = smooth;
+      context.state.view = "explore";
+      context.state.activeTab = "explore";
+      context.saveState();
+      renderExplore();
+    };
+    const detail = app.querySelector(".detail-screen");
+    if (!smooth || !detail || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      commit();
+      return;
+    }
+    detail.classList.add("is-returning");
+    setTimeout(commit, 210);
   }
 
   function addPlanStop(input) {

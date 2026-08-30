@@ -36,8 +36,8 @@ Every bulk-enrichment row must return these values. `unknown` is a value; an emp
 | `category` | product-facing category label |
 | `title` | exact venue or occurrence title |
 | `value_text` | one objective sentence describing the experience |
-| `recommendation_chips` | two or three concise, factual reasons for surfacing the card |
-| `recommendation_reason_count` | number of sourced recommendation reasons |
+| `signal_chips` | optional typed external signals; empty when no qualifying signal exists |
+| `signal_chip_count` | number of sourced signal chips |
 | `timing_text` | relevant current hours, period, deadline, or explicit unknown |
 | `action_text` | walk in, reserve, buy, apply, track, or explicit unknown |
 | `cost_text` | free, current price/range, conditional cost, or explicit unknown |
@@ -56,7 +56,7 @@ Every bulk-enrichment row must return these values. `unknown` is a value; an emp
 
 ## Card boundary
 
-A sparse candidate remains a `subject`; it does not become an Explore card. A card requires all minimum fields above, including at least two objective recommendation reasons with source URL and observation time. It may explicitly state unknown timing, cost, action, or rights when the wording is safe and the next click still has value.
+A sparse candidate remains a `subject`; it does not become an Explore card. A card requires the executable minimum fields above, but it does not require a generic recommendation explanation or a chip. It may explicitly state unknown timing, cost, action, or rights when the wording is safe and the next click still has value.
 
 A hard-stop conflict in identity, safety, legal availability, false free pricing, or a closed-only action prevents publication. A missing optional program, person, capacity, menu detail, parking rule, or exact daily hour does not automatically remove a permanent place when the limitation is visible.
 
@@ -72,6 +72,6 @@ Visitor-review, blog, clip, `pai`, `aiView`, and other user-originated media are
 
 If a qualified remote image fails to load, the renderer uses `apps/mohae/assets/card-image-fallback.png`. This neutral error state is not a representative visual and never makes an otherwise ineligible card publishable.
 
-Review-derived summaries are excluded from this sample because selecting and compressing opinions introduces an editorial layer. Recommendation chips must instead be grounded in atomic public facts such as an official program period, free admission, published hours, exact floor, booking availability, or merchant-marked menu recommendation.
+Review-derived summaries are excluded from this sample because selecting and compressing opinions introduces an editorial layer. Dining chips are reserved for attributable external signals such as exact-branch Michelin or Blue Ribbon selection, competition awards, or broadcast/YouTube appearances. Each chip requires an external source role (`guide`, `competition_organizer`, `media`, `editorial`, or `platform`); venue self-report alone is not sufficient. Event chips are reserved for event-specific people and attendee payoff. Generic hours, price, free admission, floor, and menu-count facts remain ordinary card or detail fields, not chips.
 
 Menu photos are optional. When present, they retain title, source URL, source role, and rights status; merchant-provided menu images are shown as originals, not as evidence of popularity.
