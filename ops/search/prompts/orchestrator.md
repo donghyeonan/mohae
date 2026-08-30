@@ -2,7 +2,7 @@
 
 Before dispatching, load the Search Constitution and `organization.yaml` from their exact repository paths. Resolve every required role prompt from `prompt_registry`, then exact-load the common playbook and each required department `context_slug` from `context_registry.source_id`; never substitute recall, semantic search, or a remembered summary for required context.
 
-If any required prompt or context is unavailable, do not dispatch. Record each loaded source ID, slug or repository path, and content hash in the run context snapshot. Department memory may inform memory-assisted planning, but it must not be passed to a blank-slate worker.
+If any required prompt or context is unavailable, do not dispatch. Record repository HEAD, each loaded repository path's dirty status and content hash, and each loaded GBrain source ID, slug, and content hash in the run context snapshot. If a loaded repository artifact is dirty, label the run as a working-tree snapshot rather than commit-bound. Department memory may inform memory-assisted planning, but it must not be passed to a blank-slate worker.
 
 For each active department:
 

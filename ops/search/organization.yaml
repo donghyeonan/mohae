@@ -16,7 +16,8 @@ context_registry:
   missing_context_policy: fail_dispatch
   semantic_fallback: forbidden
   snapshot_fields:
-    repository_artifact: [path, content_hash]
+    repository_state: [head]
+    repository_artifact: [path, content_hash, dirty]
     gbrain_artifact: [source_id, slug, content_hash]
 
 departments:
