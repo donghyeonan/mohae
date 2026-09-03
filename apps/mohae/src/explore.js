@@ -1,13 +1,26 @@
-import { DAY_MS, addDays, createId, escapeHtml, icon } from "./core.js";
+import { addDays, escapeHtml, icon } from "./core.js";
+import { detailReturnGesture } from "./gestures.js";
+import { mountNaverMapPreview } from "./map.js";
 import { opportunities } from "./sample-data.js";
+import { admissionReviewBySourceId, refreshSourceCatalog, sourceIndexEntries } from "./data.js";
 
-const stopKindLabels = {
-  accommodation: "숙소",
-  airport: "공항",
-  attraction: "명소",
-  restaurant: "식당",
-  other: "기타",
-};
+const SOURCE_BATCH_SIZE = 20;
+
+let sourceOpportunities = [];
+let allOpportunities = [];
+let sourceOpportunityIds = new Set();
+
+function rebuildOpportunityPool() {
+  sourceOpportunities = sourceIndexEntries.flatMap((entry) => {
+    const review = admissionReviewBySourceId[entry.id];
+    if (!["admitted", "candidate"].includes(review?.status) || !review.explorePayload?.id) return [];
+    return [{ ...review.explorePayload, admissionStatus: review.status, sourceIndexId: entry.id }];
+  });
+  allOpportunities = [...new Map([...opportunities, ...sourceOpportunities].map((item) => [item.id, item])).values()];
+  sourceOpportunityIds = new Set(sourceOpportunities.map(({ id }) => id));
+}
+
+rebuildOpportunityPool();
 
 export function createExploreFeature(context) {
   const { app, bottomNav } = context;
@@ -16,80 +29,145 @@ export function createExploreFeature(context) {
   let animateExploreReturn = false;
   let deckTransitionLocked = false;
   let detailTransitionLocked = false;
+  let detailMapCleanup = null;
+  let detailMapToken = 0;
+
+  function clearDetailLocationMap() {
+    detailMapToken += 1;
+    detailMapCleanup?.();
+    detailMapCleanup = null;
+  }
+
+  async function initializeDetailLocationMap(item) {
+    const token = ++detailMapToken;
+    const node = app.querySelector("#detailLocationMap");
+    const status = app.querySelector(".detail-location-status");
+    if (!node) return;
+    try {
+      const cleanup = await mountNaverMapPreview(node, {
+        latitude: item.latitude,
+        longitude: item.longitude,
+        title: item.title,
+      });
+      if (token !== detailMapToken) {
+        cleanup();
+        return;
+      }
+      detailMapCleanup = cleanup;
+      status?.classList.add("is-hidden");
+    } catch {
+      if (token !== detailMapToken) return;
+      status?.classList.add("is-error");
+      if (status) status.textContent = "지도를 불러오지 못했어요";
+    }
+  }
 
   function getOpportunity(id) {
-    return opportunities.find((item) => item.id === id) ?? null;
+    return context.state.activeExploration?.candidates?.find((item) => item.id === id)
+      ?? allOpportunities.find((item) => item.id === id)
+      ?? null;
   }
 
-  function getStop(id) {
-    return context.state.plannedStops.find((stop) => stop.id === id) ?? null;
-  }
-
-  function mapIdForOpportunity(id) {
-    return `opportunity:${id}`;
-  }
-
-  function mapIdForStop(id) {
-    return `stop:${id}`;
-  }
-
-  function coordinatesForMapId(mapId) {
-    if (mapId.startsWith("stop:")) {
-      const stop = getStop(mapId.slice(5));
-      return stop ? { latitude: stop.latitude, longitude: stop.longitude, name: stop.name } : null;
+  function shuffle(items) {
+    const result = [...items];
+    for (let index = result.length - 1; index > 0; index -= 1) {
+      const swapIndex = crypto.getRandomValues(new Uint32Array(1))[0] % (index + 1);
+      [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
     }
-    if (mapId.startsWith("opportunity:")) {
-      const item = getOpportunity(mapId.slice(12));
-      return item ? { latitude: item.latitude, longitude: item.longitude, name: item.title } : null;
-    }
-    return null;
+    return result;
   }
 
-  function distanceKm(origin, destination) {
-    const radians = (degrees) => (degrees * Math.PI) / 180;
-    const latitudeDelta = radians(destination.latitude - origin.latitude);
-    const longitudeDelta = radians(destination.longitude - origin.longitude);
-    const startLatitude = radians(origin.latitude);
-    const endLatitude = radians(destination.latitude);
-    const haversine = Math.sin(latitudeDelta / 2) ** 2
-      + Math.cos(startLatitude) * Math.cos(endLatitude) * Math.sin(longitudeDelta / 2) ** 2;
-    return 6371 * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
+  function loadNextSourceBatch() {
+    const seen = new Set(context.state.exploreSeenIds);
+    const unseen = sourceOpportunities.filter((item) => !context.state.saved[item.id] && !seen.has(item.id));
+    if (!unseen.length) return false;
+    context.state.exploreBatchIds = shuffle(unseen).slice(0, SOURCE_BATCH_SIZE).map(({ id }) => id);
+    context.state.exploreSeenIds = [...new Set([...context.state.exploreSeenIds, ...context.state.exploreBatchIds])];
+    context.state.exploreBatchIds.forEach((id) => delete context.state.decisions[id]);
+    context.state.activeExploration = null;
+    context.state.activeCollectionId = null;
+    context.saveState();
+    return true;
+  }
+
+  async function refreshAndLoadNextSourceBatch() {
+    if (deckTransitionLocked) return;
+    deckTransitionLocked = true;
+    const button = app.querySelector('[data-action="next-source-batch"]');
+    if (button) button.disabled = true;
+    try {
+      let source = "loaded_catalog";
+      if (!loadNextSourceBatch()) {
+        await refreshSourceCatalog();
+        rebuildOpportunityPool();
+        source = "supabase_refresh";
+        if (!loadNextSourceBatch()) {
+          context.showToast("새로운 추천 장소가 아직 없어요");
+          return;
+        }
+      }
+      context.recordEvent("source_batch_loaded", null, { size: context.state.exploreBatchIds.length, source });
+      renderExplore();
+    } catch {
+      context.showToast("새 추천을 확인하지 못했어요");
+    } finally {
+      deckTransitionLocked = false;
+      if (button?.isConnected) button.disabled = false;
+    }
+  }
+
+  function sourceBatch() {
+    if (!context.state.exploreBatchIds.length || context.state.exploreBatchIds.some((id) => !sourceOpportunityIds.has(id))) {
+      context.state.exploreBatchIds = [];
+      loadNextSourceBatch();
+    }
+    const seen = new Set(context.state.exploreSeenIds);
+    let changed = false;
+    context.state.exploreBatchIds.forEach((id) => {
+      if (!seen.has(id)) { seen.add(id); changed = true; }
+    });
+    if (changed) {
+      context.state.exploreSeenIds = [...seen];
+      context.saveState();
+    }
+    return context.state.exploreBatchIds.map(getOpportunity).filter(Boolean);
   }
 
   function availableOpportunities() {
-    return opportunities.filter((item) => {
+    const scene = context.state.activeExploration;
+    if (scene?.candidates?.length) {
+      return scene.candidates.filter((item) => !isPassed(item.id) && !isSaved(item.id));
+    }
+    return sourceBatch().filter((item) => {
       const matchesFilter = context.state.filter === "all" || item.group === context.state.filter;
-      const available = context.state.decisions[item.id] !== "passed" && !context.state.saved[item.id];
-      return matchesFilter && available;
+      const matchesCollection = !context.state.activeCollectionId || item.collectionContext?.id === context.state.activeCollectionId;
+      const available = !isPassed(item.id) && !isSaved(item.id);
+      return matchesFilter && matchesCollection && available;
     });
   }
 
-  function nearbyAvailableOpportunities(origin, radiusKm) {
-    return availableOpportunities()
-      .map((item) => ({ item, distanceKm: distanceKm(origin, item) }))
-      .filter((candidate) => candidate.distanceKm <= radiusKm)
-      .sort((left, right) => left.distanceKm - right.distanceKm);
-  }
-
   function visibleDeck() {
-    const anchor = context.state.nearbyAnchor ? coordinatesForMapId(context.state.nearbyAnchor.mapId) : null;
-    if (!anchor) return availableOpportunities();
-    return nearbyAvailableOpportunities(anchor, context.state.nearbyAnchor.radiusKm)
-      .map((candidate) => candidate.item);
+    return availableOpportunities();
   }
 
   function currentOpportunity() {
     return visibleDeck()[0] ?? null;
   }
 
-  function displayDistance(item) {
-    if (!context.state.nearbyAnchor) return item.distance;
-    const anchor = coordinatesForMapId(context.state.nearbyAnchor.mapId);
-    return anchor ? `${distanceKm(anchor, item).toFixed(1)}km` : item.distance;
+  function sharedChoice(id) {
+    return context.groupTrip?.isActive ? context.groupTrip.choiceFor(id) : null;
+  }
+
+  function isPassed(id) {
+    return context.groupTrip?.isActive ? sharedChoice(id) === "passed" : context.state.decisions[id] === "passed";
+  }
+
+  function isSaved(id) {
+    return context.groupTrip?.isActive ? sharedChoice(id) === "saved" : Boolean(context.state.saved[id]);
   }
 
   function locationLine(item) {
-    const distance = displayDistance(item);
+    const distance = item.distance;
     return distance ? `${item.location} · ${distance}` : item.location;
   }
 
@@ -97,7 +175,7 @@ export function createExploreFeature(context) {
     if (/^https:\/\/blogfiles\.pstatic\.net\//.test(src)) {
       return `https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f750_750&src=${encodeURIComponent(src)}`;
     }
-    return /^(https?:|data:|blob:)/.test(src) ? src : `./assets/${src}`;
+    return /^(https?:|data:|blob:|\/)/.test(src) ? src : `./assets/${src}`;
   }
 
   function bindImageFallbacks() {
@@ -113,17 +191,47 @@ export function createExploreFeature(context) {
     });
   }
 
-  function statusTone(item) {
-    return ["open", "limited", "closed"].includes(item.status?.tone) ? item.status.tone : "limited";
+  function collectionChipMarkup(item) {
+    const collection = item.collectionContext;
+    if (!collection) return "";
+    const external = collection.targetType === "external_source";
+    const action = external ? "open-source-collection" : "open-mohae-collection";
+    const tone = external ? "is-external-source" : "is-mohae-collection";
+    const destination = external ? "원문 목록 열기" : "컬렉션만 보기";
+    const displayLabel = external ? collection.label : "MOHAE";
+    const url = external ? ` data-url="${escapeHtml(collection.url)}"` : "";
+    const leadingIcon = external ? icon("archive") : "";
+    return `<button class="card-collection-chip ${tone}" type="button" data-action="${action}" data-id="${item.id}" data-collection-id="${escapeHtml(collection.id)}"${url} aria-label="${escapeHtml(collection.label)} ${destination}">${leadingIcon}<span>${escapeHtml(displayLabel)}</span>${external ? '<b aria-hidden="true">↗</b>' : ""}</button>`;
   }
 
-  function chipTone(chip) {
-    return ["blue_ribbon", "michelin", "competition", "media", "editorial", "participant", "payoff", "neutral"].includes(chip?.tone) ? chip.tone : "neutral";
+  function selectionChipMarkup(item) {
+    if (!item.selectionContext?.label) return "";
+    const label = item.selectionContext.label;
+    const tone = ["institution", "media", "editorial", "heritage", "global", "neutral"].includes(item.selectionContext.tone)
+      ? item.selectionContext.tone
+      : "neutral";
+    const isMichelin = item.collectionContext?.id === "michelin-guide-korea-2026";
+    const signalType = item.selectionContext.signalType;
+    const starCount = isMichelin && signalType === "michelin_star" ? item.selectionContext.numericValue : 0;
+    const starMark = '<img class="michelin-mark is-star" src="./assets/michelin-star.svg" alt="">';
+    const michelinMark = starCount
+      ? `<span class="michelin-star-marks" aria-hidden="true">${starMark.repeat(starCount)}</span>`
+      : isMichelin && signalType === "michelin_bib_gourmand"
+        ? '<img class="michelin-mark is-bib" src="./assets/michelin-bib-gourmand.svg" alt="" aria-hidden="true">'
+        : "";
+    const leadingIcon = michelinMark || (!isMichelin && item.selectionContext.icon ? icon(item.selectionContext.icon) : "");
+    return `<span class="card-selection-chip is-${tone}">${leadingIcon}<span>${escapeHtml(label)}</span></span>`;
   }
 
-  function observedDate(item) {
-    if (!item.source?.observedAt) return "관측일 미상";
-    return new Intl.DateTimeFormat("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "numeric", day: "numeric" }).format(new Date(item.source.observedAt));
+  function cardChipRow(item) {
+    const chips = `${collectionChipMarkup(item)}${selectionChipMarkup(item)}`;
+    return chips ? `<div class="card-chip-row">${chips}</div>` : "";
+  }
+
+  function eventMetaMarkup(item) {
+    if (item.kind !== "event") return "";
+    const compactSchedule = String(item.schedule ?? "").split(" · ")[0];
+    return `<span class="card-event-meta">${icon("calendar")}<b>${escapeHtml(compactSchedule)}</b><i aria-hidden="true">·</i>${icon("map")}<b>${escapeHtml(item.location)}</b></span>`;
   }
 
   function photoIndex(item) {
@@ -139,17 +247,21 @@ export function createExploreFeature(context) {
 
   function cardMarkup(item, behind = false) {
     const index = photoIndex(item);
+    const routeOrder = context.state.activeExploration?.mode === "route"
+      ? context.state.activeExploration.candidates.findIndex(({ id }) => id === item.id) + 1
+      : 0;
     return `<article class="opportunity-card${behind ? " is-behind" : ""}" data-card-id="${item.id}" aria-label="${escapeHtml(item.title)}">
       <img data-card-image src="${escapeHtml(imageSrc(item.images[index]))}" alt="${escapeHtml(item.title)} 사진 ${index + 1}">
       ${photoProgress(item)}
-      ${behind ? "" : `<button class="card-collection-chip" type="button" data-action="open-collection-map" data-id="${item.id}" data-collection-id="${escapeHtml(item.collectionContext.id)}" aria-label="${escapeHtml(item.collectionContext.label)} 지도에서 보기"><span aria-hidden="true">✦</span>${escapeHtml(item.collectionContext.label)}<b aria-hidden="true">›</b></button>
-      <span class="card-photo-count">${index + 1}/${item.images.length}</span>
+      ${routeOrder && !behind ? `<span class="card-route-order"><b>${routeOrder}</b>번째 일정</span>` : ""}
+      ${behind ? "" : `<span class="card-photo-count">${index + 1}/${item.images.length}</span>
       ${item.images.length > 1 ? `<button class="photo-cycle" type="button" data-action="next-photo" aria-label="${escapeHtml(item.title)} 다음 사진"></button>` : ""}
       <div class="card-information">
         <span class="category-kicker">${escapeHtml(item.category)}</span>
         <strong>${escapeHtml(item.title)}</strong>
         <span class="card-subtitle">${escapeHtml(item.subtitle)}</span>
-        ${item.signalChips?.length ? `<span class="card-chips">${item.signalChips.slice(0, 2).map((chip) => `<i class="is-${chipTone(chip)}" title="${escapeHtml(`${chip.sourceLabel} · ${observedDate({ source: { observedAt: chip.observedAt } })}`)}">${escapeHtml(chip.label)}</i>`).join("")}</span>` : ""}
+        ${eventMetaMarkup(item)}
+        ${cardChipRow(item)}
         <span class="detail-hint">↓ 스크롤해 자세히</span>
       </div>`}
     </article>`;
@@ -159,27 +271,44 @@ export function createExploreFeature(context) {
     return `<header class="topbar">
       <div class="wordmark"><span class="mark">✦</span><span>MOHAE</span></div>
       <div class="topbar-actions">
-        <button class="square-button" type="button" data-action="open-map" aria-label="내 지도">${icon("map")}</button>
+        ${context.groupTrip?.headerButtonMarkup() ?? ""}
+        <button class="square-button" type="button" data-action="open-profile" aria-label="내 프로필">${icon("user")}</button>
         <button class="square-button" type="button" data-action="open-filter" aria-label="추천 유형 필터">${icon("filter")}</button>
       </div>
     </header>`;
   }
 
   function renderExplore() {
+    clearDetailLocationMap();
     const items = visibleDeck();
     const item = items[0];
     const next = items[1];
-    const anchor = context.state.nearbyAnchor ? coordinatesForMapId(context.state.nearbyAnchor.mapId) : null;
+    const scene = context.state.activeExploration;
+    const activeCollection = scene ? null : collectionFor(context.state.activeCollectionId);
+    const admittedAvailable = sourceOpportunities.filter((candidate) => !context.state.saved[candidate.id]).length;
+    const seenIds = new Set(context.state.exploreSeenIds);
+    const unseenAdmitted = sourceOpportunities.filter((candidate) => !context.state.saved[candidate.id] && !seenIds.has(candidate.id)).length;
+    const hasAnotherBatch = unseenAdmitted > 0;
+    const summaryLabel = scene
+      ? scene.title
+      : activeCollection
+        ? `컬렉션 · ${activeCollection.label}`
+        : context.state.filter === "all"
+          ? `추천 장소 · ${admittedAvailable}곳`
+          : context.state.filter === "event" ? "현재 프로그램" : "장소";
+    const emptyAction = scene ? "clear-exploration" : activeCollection ? "clear-collection" : "next-source-batch";
+    const emptyActionLabel = scene || activeCollection ? "전체 추천 보기" : hasAnotherBatch ? `다음 ${Math.min(SOURCE_BATCH_SIZE, unseenAdmitted)}곳 보기` : "새 추천 확인";
     bottomNav.classList.remove("is-hidden");
-    app.innerHTML = `<section class="screen explore-screen${animateExploreReturn ? " is-returning" : ""}" data-view="explore">
+    app.innerHTML = `<section class="screen explore-screen${animateExploreReturn ? " is-returning" : ""}${context.groupTrip?.isActive ? " has-group-room" : ""}" data-view="explore">
       ${topbar()}
+      ${context.groupTrip?.bannerMarkup() ?? ""}
       <div class="filter-summary">
-        <span>${anchor ? `${escapeHtml(anchor.name)} 주변` : context.state.filter === "all" ? "새로운 곳 둘러보기" : context.state.filter === "event" ? "현재 프로그램" : "장소"}</span>
-        ${anchor ? `<button type="button" data-action="clear-nearby">주변 추천 닫기</button>` : `<b>${items.length}개 남음</b>`}
+        <span>${escapeHtml(summaryLabel)}</span>
+        ${scene ? `<button type="button" data-action="clear-exploration">전체 추천</button>` : activeCollection ? `<button type="button" data-action="clear-collection">컬렉션 닫기</button>` : `<b>${items.length}/${context.state.exploreBatchIds.length || Math.min(SOURCE_BATCH_SIZE, admittedAvailable)} 남음</b>`}
       </div>
       <div class="deck" aria-live="polite">
         ${next ? cardMarkup(next, true) : ""}
-        ${item ? cardMarkup(item) : `<div class="deck-empty"><span>✦</span><h2>지금 볼 추천이 없어요</h2><p>${anchor ? "반경을 넓히거나 주변 추천을 닫아보세요." : "저장한 경험은 지도에서 다시 볼 수 있어요."}</p><button type="button" data-action="${anchor ? "clear-nearby" : "reset-deck"}">${anchor ? "전체 추천 보기" : "넘긴 추천 다시 보기"}</button></div>`}
+        ${item ? cardMarkup(item) : `<div class="deck-empty"><span>✦</span><h2>지금 추천을 모두 봤어요</h2><p>${scene ? "Agent가 구성한 후보를 모두 확인했어요." : activeCollection ? "이 컬렉션의 카드를 모두 확인했어요." : hasAnotherBatch ? "아직 보지 않은 추천 장소가 있어요." : "버튼을 누르면 새 추천을 확인해요."}</p><button type="button" data-action="${emptyAction}">${emptyActionLabel}</button></div>`}
       </div>
       ${item ? `<div class="deck-actions" aria-label="추천 선택">
         <button class="action-button pass-button" type="button" data-action="pass" aria-label="넘기기">${icon("x")}</button>
@@ -189,10 +318,10 @@ export function createExploreFeature(context) {
     </section>`;
     bindImageFallbacks();
     if (item) {
-      const exposureKey = `seoul-gyeonggi-w35:${item.id}`;
+      const exposureKey = scene ? `${scene.createdAt}:${item.id}` : `seoul-gyeonggi-w35:${item.id}`;
       if (!context.state.exposed[exposureKey]) {
         context.state.exposed[exposureKey] = new Date().toISOString();
-        context.recordEvent("exposed", item.id, { rank: 1, nearbyAnchor: context.state.nearbyAnchor?.mapId ?? null });
+        context.recordEvent("exposed", item.id, { rank: 1, sceneTitle: scene?.title ?? null });
       }
       bindCardGesture();
     }
@@ -225,7 +354,42 @@ export function createExploreFeature(context) {
     </section>`;
   }
 
+  function renderExternalProvenance(item) {
+    if (item.origin !== "external" || !item.source?.url) return "";
+    const observedAt = item.source.observedAt
+      ? new Intl.DateTimeFormat("ko-KR", { year: "numeric", month: "short", day: "numeric" }).format(new Date(item.source.observedAt))
+      : "확인 시각 없음";
+    return `<section class="evidence-section agent-provenance">
+      <div class="evidence-heading"><h2>Agent 조사 출처</h2></div>
+      <p>MOHAE catalog에 승격되지 않은 외부 후보예요. 출처를 확인한 뒤 판단하세요.</p>
+      <a href="${escapeHtml(item.source.url)}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(item.source.label ?? "외부 출처")}</strong><span>${escapeHtml(observedAt)} 확인</span>${icon("externalLink")}</a>
+    </section>`;
+  }
+
+  function detailExternalAction(item) {
+    const links = item.externalLinks ?? {};
+    const naverMapUrl = [links.map, item.mapUrl, item.placeUrl]
+      .find((url) => /(?:map\.naver\.com|m\.place\.naver\.com|naver\.me)\//.test(url ?? ""));
+    if (naverMapUrl) return { url: naverMapUrl, label: "네이버 지도", iconName: "map", isNaverMap: true };
+    const url = links.official ?? item.official?.sourceUrl ?? item.source?.url;
+    return url ? { url, label: links.officialLabel ?? "공식 홈페이지", iconName: "externalLink", isNaverMap: false } : null;
+  }
+
+  function renderLocationMap(item) {
+    const hasCoordinates = Number.isFinite(item.latitude) && Number.isFinite(item.longitude);
+    if (!hasCoordinates) return "";
+    return `<section class="evidence-section detail-location-section">
+      <div class="detail-location-heading"><span><small>위치</small><strong>${escapeHtml(item.location)}</strong></span></div>
+      <div class="detail-location-map-wrap">
+        <div id="detailLocationMap" class="detail-location-map" role="region" aria-label="${escapeHtml(item.title)} 위치 지도"></div>
+        <div class="detail-location-status" role="status">네이버 지도를 불러오는 중</div>
+      </div>
+      <p class="detail-location-address">${icon("map")}<span>${escapeHtml(item.address ?? item.location)}</span></p>
+    </section>`;
+  }
+
   function renderDetail(id) {
+    clearDetailLocationMap();
     const item = getOpportunity(id);
     if (!item) {
       context.state.view = "explore";
@@ -234,6 +398,7 @@ export function createExploreFeature(context) {
     }
     const index = photoIndex(item);
     const photo = item.photoMeta?.[index];
+    const externalAction = detailExternalAction(item);
     bottomNav.classList.add("is-hidden");
     app.innerHTML = `<section class="screen detail-screen${animateDetailEntry ? " is-entering" : ""}" data-view="detail">
       <header class="detail-topbar">
@@ -249,7 +414,7 @@ export function createExploreFeature(context) {
           ${item.images.length > 1 ? `<button class="photo-cycle" type="button" data-action="next-photo" data-id="${item.id}" aria-label="다음 사진"></button>` : ""}
         </figure>
         <div class="detail-body">
-          <div class="availability-card is-${statusTone(item)}"><strong>${escapeHtml(item.status?.label ?? "운영정보 확인")}</strong></div>
+          <div class="detail-highlight">${escapeHtml(item.detailHighlight)}</div>
           <span class="category-kicker accent">${escapeHtml(item.category)}</span>
           <h1>${escapeHtml(item.title)}</h1>
           <p class="detail-subtitle">${escapeHtml(item.subtitle)}</p>
@@ -259,16 +424,19 @@ export function createExploreFeature(context) {
             <div>${icon("wallet")}<span><small>비용</small><b>${escapeHtml(item.price)}</b></span></div>
           </div>
           ${renderPrograms(item)}
+          ${renderLocationMap(item)}
+          ${renderExternalProvenance(item)}
           ${renderMenu(item)}
           <div class="detail-cta-row">
-            <a class="primary-action-cta naver-map-cta" href="${escapeHtml(item.externalLinks.map)}" target="_blank" rel="noopener noreferrer" aria-label="네이버 지도에서 확인"><b aria-hidden="true">N</b>네이버 지도</a>
-            <button class="primary-cta" type="button" data-action="save-detail" data-id="${item.id}">${context.state.saved[item.id] ? `${icon("check")} 저장됨` : `${icon("heart")} 저장하기`}</button>
+            ${externalAction ? `<a class="secondary-cta${externalAction.isNaverMap ? " is-naver-map" : ""}" href="${escapeHtml(externalAction.url)}" target="_blank" rel="noopener noreferrer">${icon(externalAction.iconName)} ${escapeHtml(externalAction.label)}</a>` : ""}
+            <button class="primary-cta" type="button" data-action="save-detail" data-id="${item.id}">${isSaved(item.id) ? `${icon("check")} 저장됨` : `${icon("heart")} 저장하기`}</button>
           </div>
         </div>
       </div>
     </section>`;
     bindImageFallbacks();
     bindDetailBackGesture();
+    initializeDetailLocationMap(item);
     animateDetailEntry = false;
   }
 
@@ -279,24 +447,48 @@ export function createExploreFeature(context) {
     let startX = 0;
     let startY = 0;
     let pointerId = null;
+    let pointerStartedAtTop = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartedAtTop = false;
     let returning = false;
     let wheelDistance = 0;
     let wheelResetTimer;
+    const returnOnce = (smooth) => {
+      if (returning) return;
+      returning = true;
+      backToExplore(smooth);
+    };
     screen.addEventListener("pointerdown", (event) => {
       pointerId = event.pointerId;
+      pointerStartedAtTop = scroller.scrollTop <= 1;
       startX = event.clientX;
       startY = event.clientY;
     });
     screen.addEventListener("pointerup", (event) => {
       if (pointerId !== event.pointerId) return;
-      const horizontal = event.clientX - startX;
-      const vertical = event.clientY - startY;
+      const gesture = detailReturnGesture({ startX, startY, endX: event.clientX, endY: event.clientY, scrollTop: pointerStartedAtTop ? scroller.scrollTop : Number.POSITIVE_INFINITY });
       pointerId = null;
-      if (horizontal > 80 && Math.abs(horizontal) > Math.abs(vertical)) {
+      if (gesture) {
         event.preventDefault();
-        backToExplore();
+        returnOnce(gesture === "vertical");
       }
     });
+    screen.addEventListener("pointercancel", () => { pointerId = null; });
+    screen.addEventListener("touchstart", (event) => {
+      const touch = event.touches[0];
+      if (!touch) return;
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      touchStartedAtTop = scroller.scrollTop <= 1;
+    }, { passive: true });
+    screen.addEventListener("touchend", (event) => {
+      const touch = event.changedTouches[0];
+      if (!touch || !touchStartedAtTop) return;
+      const gesture = detailReturnGesture({ startX: touchStartX, startY: touchStartY, endX: touch.clientX, endY: touch.clientY, scrollTop: scroller.scrollTop });
+      if (gesture) returnOnce(gesture === "vertical");
+    }, { passive: true });
+    screen.addEventListener("touchcancel", () => { touchStartedAtTop = false; }, { passive: true });
     scroller.addEventListener("wheel", (event) => {
       if (returning || event.deltaY >= 0 || scroller.scrollTop > 1) {
         if (event.deltaY >= 0 || scroller.scrollTop > 1) wheelDistance = 0;
@@ -307,134 +499,15 @@ export function createExploreFeature(context) {
       clearTimeout(wheelResetTimer);
       wheelResetTimer = setTimeout(() => { wheelDistance = 0; }, 180);
       if (wheelDistance < 54) return;
-      returning = true;
-      backToExplore(true);
+      returnOnce(true);
     }, { passive: false });
-  }
-
-  function expiryFor(item, saved) {
-    return item.kind === "event" && item.eventEnd ? item.eventEnd : saved.visibleUntil ?? addDays(saved.savedAt, 7);
-  }
-
-  function isVisibleSave(item, saved) {
-    return new Date(expiryFor(item, saved)).getTime() > Date.now();
-  }
-
-  function expiryLabel(item, saved) {
-    const expiry = new Date(expiryFor(item, saved));
-    if (item.kind === "event" && item.eventEnd) {
-      return `프로그램 종료 ${expiry.toLocaleDateString("ko-KR", { month: "long", day: "numeric" })}까지`;
-    }
-    const days = Math.max(0, Math.ceil((expiry.getTime() - Date.now()) / DAY_MS));
-    return `지도에서 ${days}일 더 보여요`;
-  }
-
-  function visibleSavedItems() {
-    return Object.entries(context.state.saved)
-      .map(([id, saved]) => ({ item: getOpportunity(id), saved }))
-      .filter(({ item, saved }) => item && isVisibleSave(item, saved));
-  }
-
-  function savedCardMarkup(item, saved) {
-    const attended = Boolean(saved.attendedAt);
-    const reviewOpen = context.state.reviewOpenId === item.id;
-    const mapId = mapIdForOpportunity(item.id);
-    return `<article class="saved-card ${context.state.selectedMapId === mapId ? "is-selected" : ""}" data-map-id="${mapId}">
-      <button class="saved-select" type="button" data-action="select-map-item" data-map-id="${mapId}" aria-label="${escapeHtml(item.title)} 핀 선택">
-        <img src="${escapeHtml(imageSrc(item.images[0]))}" alt="">
-        <span><small>${escapeHtml(item.category)} · ${escapeHtml(item.location)}</small><strong>${escapeHtml(item.title)}</strong><em>${expiryLabel(item, saved)}</em></span>
-      </button>
-      <div class="saved-actions">
-        ${item.kind === "place" ? `<button type="button" data-action="extend" data-id="${item.id}">${icon("plus")} 7일 연장</button>` : ""}
-        <button class="${attended ? "is-done" : ""}" type="button" data-action="attend" data-id="${item.id}" ${attended ? "disabled" : ""}>${icon("check")} ${attended ? "다녀왔어요" : "다녀왔나요?"}</button>
-      </div>
-      ${attended ? `<div class="optional-review">
-        ${saved.review ? `<p class="saved-review">“${escapeHtml(saved.review)}”</p>` : reviewOpen ? `<label for="review-${item.id}">선택 사항</label><textarea id="review-${item.id}" maxlength="180" placeholder="기억해둘 한 줄"></textarea><button type="button" data-action="save-review" data-id="${item.id}">후기 저장</button>` : `<button type="button" data-action="open-review" data-id="${item.id}">원하면 후기 남기기</button>`}
-      </div>` : ""}
-    </article>`;
-  }
-
-  function plannedStopMarkup(stop) {
-    const mapId = mapIdForStop(stop.id);
-    const visitLabel = stop.visitAt
-      ? new Intl.DateTimeFormat("ko-KR", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(new Date(stop.visitAt))
-      : "시간 미정";
-    return `<article class="planned-stop-card ${context.state.selectedMapId === mapId ? "is-selected" : ""}" data-map-id="${mapId}">
-      <button class="planned-stop-select" type="button" data-action="select-map-item" data-map-id="${mapId}" aria-label="${escapeHtml(stop.name)} 핀 선택">
-        <span class="stop-order">${stop.order}</span>
-        <span><small>${escapeHtml(stopKindLabels[stop.kind] ?? stopKindLabels.other)} · ${escapeHtml(visitLabel)}</small><strong>${escapeHtml(stop.name)}</strong><em>${escapeHtml(stop.note || "Agent와 동선에 사용할 장소")}</em></span>
-      </button>
-      <button class="remove-stop" type="button" data-action="remove-plan-stop" data-id="${stop.id}" aria-label="${escapeHtml(stop.name)} 삭제">${icon("trash")} 지도에서 삭제</button>
-    </article>`;
   }
 
   function collectionFor(id) {
     if (!id) return null;
-    const items = opportunities.filter((item) => item.collectionContext?.id === id);
+    const items = allOpportunities.filter((item) => item.collectionContext?.id === id);
     if (!items.length) return null;
     return { id, label: items[0].collectionContext.label, items };
-  }
-
-  function collectionCardMarkup(item) {
-    const mapId = mapIdForOpportunity(item.id);
-    return `<article class="saved-card collection-map-card ${context.state.selectedMapId === mapId ? "is-selected" : ""}" data-map-id="${mapId}">
-      <button class="saved-select" type="button" data-action="select-map-item" data-map-id="${mapId}" aria-label="${escapeHtml(item.title)} 핀 선택">
-        <img src="${escapeHtml(imageSrc(item.images[0]))}" alt="">
-        <span><small>${escapeHtml(item.category)} · ${escapeHtml(item.location)}</small><strong>${escapeHtml(item.title)}</strong><em>${escapeHtml(item.subtitle)}</em></span>
-      </button>
-    </article>`;
-  }
-
-  function projectedPin(latitude, longitude) {
-    const x = Math.min(93, Math.max(7, ((longitude - 126.75) / 0.45) * 100));
-    const y = Math.min(82, Math.max(12, ((37.7 - latitude) / 0.5) * 100));
-    return [x, y];
-  }
-
-  function renderMap() {
-    const activeCollection = collectionFor(context.state.activeCollectionId);
-    const savedItems = visibleSavedItems();
-    const stops = [...context.state.plannedStops].sort((left, right) => left.order - right.order);
-    const mapItems = activeCollection?.items ?? savedItems.map(({ item }) => item);
-    const mapStops = activeCollection ? [] : stops;
-    const availableMapIds = [
-      ...mapStops.map((stop) => mapIdForStop(stop.id)),
-      ...mapItems.map((item) => mapIdForOpportunity(item.id)),
-    ];
-    if (!availableMapIds.includes(context.state.selectedMapId)) {
-      context.state.selectedMapId = availableMapIds[0] ?? null;
-    }
-    bottomNav.classList.add("is-hidden");
-    app.innerHTML = `<section class="screen map-screen${activeCollection ? " is-collection" : ""}" data-view="map">
-      <header class="map-topbar">
-        <button class="round-back" type="button" data-action="back-explore" aria-label="탐색으로 돌아가기">${icon("arrowLeft")}</button>
-        <div><small>${activeCollection ? "MOHAE 컬렉션" : "내 지도"}</small><strong>${activeCollection ? escapeHtml(activeCollection.label) : `${availableMapIds.length}곳`}</strong></div>
-        <button class="round-back" type="button" data-action="map-agent-help" aria-label="Agent로 장소 추가">${icon("plus")}</button>
-      </header>
-      <div class="map-canvas" aria-label="${activeCollection ? escapeHtml(`${activeCollection.label} 지도`) : "저장한 경험과 계획 장소 지도"}">
-        <svg class="map-lines" viewBox="0 0 390 520" aria-hidden="true">
-          <path d="M-20 95C72 136 83 44 176 92s134 5 238 64"/>
-          <path d="M22 8c40 93 76 115 63 214s61 119 43 310"/>
-          <path d="M-12 285c83-35 131-5 184 45s149 40 246-9"/>
-          <path d="M225-20c-14 91 36 112 8 195s22 133 108 174"/>
-          <path class="river" d="M-30 211c103-39 186 11 242 25s116-15 213-69"/>
-        </svg>
-        <span class="map-label seoul">SEOUL</span><span class="map-label gyeonggi">GYEONGGI</span>
-        ${mapItems.map((item) => `<button class="map-pin ${activeCollection ? "is-curated " : ""}${context.state.selectedMapId === mapIdForOpportunity(item.id) ? "is-active" : ""}" style="--x:${item.pin[0]}%;--y:${item.pin[1]}%" type="button" data-action="select-map-item" data-map-id="${mapIdForOpportunity(item.id)}" aria-label="${escapeHtml(item.title)}">${icon("map")}</button>`).join("")}
-        ${mapStops.map((stop) => {
-          const [x, y] = projectedPin(stop.latitude, stop.longitude);
-          return `<button class="plan-pin ${context.state.selectedMapId === mapIdForStop(stop.id) ? "is-active" : ""}" style="--x:${x}%;--y:${y}%" type="button" data-action="select-map-item" data-map-id="${mapIdForStop(stop.id)}" aria-label="${escapeHtml(stop.name)}"><span>${stop.order}</span></button>`;
-        }).join("")}
-        <button class="locate-button" type="button" data-action="recenter-map" aria-label="현재 위치">${icon("focus")}</button>
-      </div>
-      <section class="saved-sheet">
-        <div class="sheet-handle"></div>
-        ${activeCollection ? `<div class="map-sheet-heading"><span><b>${escapeHtml(activeCollection.label)}</b><i>${activeCollection.items.length}곳</i></span><small>MOHAE가 고른 장소를 한 지도에서 봅니다.</small></div>
-          <div class="saved-rail">${activeCollection.items.map(collectionCardMarkup).join("")}</div>` : `<div class="map-sheet-heading"><span><b>계획 ${stops.length}</b><i>저장 ${savedItems.length}</i></span><small>Agent가 추가한 장소도 같은 지도에 표시됩니다.</small></div>
-          ${availableMapIds.length ? `<div class="saved-rail">${stops.map(plannedStopMarkup).join("")}${savedItems.map(({ item, saved }) => savedCardMarkup(item, saved)).join("")}</div>` : `<div class="saved-empty"><span>♡</span><h2>지도에 장소가 아직 없어요</h2><p>경험을 저장하거나 Agent에게 숙소·공항·명소를 추가해 달라고 요청하세요.</p></div>`}`}
-      </section>
-    </section>`;
-    bindImageFallbacks();
   }
 
   function renderFilter() {
@@ -482,7 +555,6 @@ export function createExploreFeature(context) {
 
   function render() {
     if (context.state.view === "detail") renderDetail(context.state.detailId);
-    else if (context.state.view === "map") renderMap();
     else renderExplore();
   }
 
@@ -533,8 +605,10 @@ export function createExploreFeature(context) {
     const item = currentOpportunity();
     if (!item || deckTransitionLocked) return;
     deckTransitionLocked = true;
-    context.state.decisions[item.id] = "passed";
-    context.recordEvent("passed", item.id);
+    if (context.groupTrip?.isActive) {
+      void context.groupTrip.recordChoice({ placeId: item.id, placeTitle: item.title, decision: "passed", surface: "card" }).catch(() => {});
+    } else context.state.decisions[item.id] = "passed";
+    context.recordEvent("passed", item.id, { source: "card", sharedTrip: Boolean(context.groupTrip?.isActive) });
     animateCard("left", () => {
       context.showToast("이번 추천은 넘겼어요");
       renderExplore();
@@ -546,14 +620,17 @@ export function createExploreFeature(context) {
     const item = getOpportunity(id);
     if (!item) throw new Error(`Unknown opportunity: ${id}`);
     const savedAt = new Date().toISOString();
-    context.state.saved[id] = {
-      savedAt,
-      visibleUntil: item.kind === "place" ? addDays(savedAt, 7) : undefined,
-      attendedAt: null,
-      review: "",
-    };
-    context.state.selectedMapId = mapIdForOpportunity(id);
-    context.recordEvent("saved", id, { source, visibilityRule: item.kind === "event" && item.eventEnd ? "event_end" : "seven_days" });
+    if (context.groupTrip?.isActive) {
+      void context.groupTrip.recordChoice({ placeId: item.id, placeTitle: item.title, decision: "saved", surface: source === "detail" ? "detail" : "card" }).catch(() => {});
+    } else {
+      context.state.saved[id] = {
+        savedAt,
+        visibleUntil: item.kind === "place" ? addDays(savedAt, 7) : undefined,
+        attendedAt: null,
+        review: "",
+      };
+    }
+    context.recordEvent("saved", id, { source, sharedTrip: Boolean(context.groupTrip?.isActive), visibilityRule: item.kind === "event" && item.eventEnd ? "event_end" : "seven_days" });
   }
 
   function saveCurrent() {
@@ -562,7 +639,7 @@ export function createExploreFeature(context) {
     deckTransitionLocked = true;
     saveOpportunity(item.id, "swipe");
     animateCard("right", () => {
-      context.showToast(item.kind === "event" && item.eventEnd ? "프로그램 종료일까지 지도에 저장했어요" : "7일 동안 지도에 저장했어요");
+      context.showToast("저장했어요");
       renderExplore();
       deckTransitionLocked = false;
     });
@@ -708,126 +785,38 @@ export function createExploreFeature(context) {
     }, 210);
   }
 
-  function addPlanStop(input) {
-    const latitude = Number(input.latitude);
-    const longitude = Number(input.longitude);
-    if (!input.name?.trim()) throw new Error("A map stop requires a name.");
-    if (!Number.isFinite(latitude) || latitude < -90 || latitude > 90) throw new Error("Latitude must be between -90 and 90.");
-    if (!Number.isFinite(longitude) || longitude < -180 || longitude > 180) throw new Error("Longitude must be between -180 and 180.");
-    const kind = stopKindLabels[input.kind] ? input.kind : "other";
-    if (input.visitAt && Number.isNaN(new Date(input.visitAt).getTime())) throw new Error("visitAt must be a valid ISO 8601 date-time.");
-    const highestOrder = context.state.plannedStops.reduce((highest, stop) => Math.max(highest, stop.order), 0);
-    const requestedOrder = Number(input.order);
-    const order = Number.isInteger(requestedOrder) && requestedOrder > 0
-      ? Math.min(requestedOrder, highestOrder + 1)
-      : highestOrder + 1;
-    for (const existing of context.state.plannedStops) {
-      if (existing.order >= order) existing.order += 1;
-    }
-    const stop = {
-      id: createId("map"),
-      name: input.name.trim().slice(0, 120),
-      kind,
-      latitude,
-      longitude,
-      visitAt: input.visitAt || null,
-      order,
-      note: input.note?.trim().slice(0, 240) || "",
-      source: input.source === "user" ? "user" : "agent",
-      createdAt: new Date().toISOString(),
+  async function presentExploration(scene) {
+    const externalSignals = { ...context.state.externalSignals };
+    for (const signal of scene.externalSignals) externalSignals[signal.id] = signal;
+    const { externalSignals: newSignals, ...activeExploration } = scene;
+    context.state.externalSignals = externalSignals;
+    context.state.activeExploration = {
+      ...activeExploration,
+      externalSignalIds: newSignals.map(({ id }) => id),
     };
-    context.state.plannedStops.push(stop);
-    context.state.selectedMapId = mapIdForStop(stop.id);
-    context.state.activeTab = "explore";
-    context.state.view = "map";
+    for (const candidate of scene.candidates) {
+      delete context.state.decisions[candidate.id];
+      delete context.state.photoIndices[candidate.id];
+    }
     context.state.activeCollectionId = null;
-    context.recordEvent("map_stop_added", null, { stopId: stop.id, name: stop.name, source: stop.source });
-    context.render();
-    return { ...stop, mapId: mapIdForStop(stop.id) };
-  }
-
-  function removePlanStop(id) {
-    const stop = getStop(id);
-    if (!stop) return false;
-    context.state.plannedStops = context.state.plannedStops
-      .filter((candidate) => candidate.id !== id)
-      .sort((left, right) => left.order - right.order);
-    context.state.plannedStops.forEach((candidate, index) => {
-      candidate.order = index + 1;
-    });
-    if (context.state.nearbyAnchor?.mapId === mapIdForStop(id)) context.state.nearbyAnchor = null;
-    context.recordEvent("map_stop_removed", null, { stopId: id, name: stop.name });
-    context.showToast(`${stop.name}을 지도에서 삭제했어요`);
-    renderMap();
-    return true;
-  }
-
-  function focusMapPlace(mapId) {
-    const place = coordinatesForMapId(mapId);
-    if (!place) throw new Error(`Unknown map place: ${mapId}`);
-    context.state.selectedMapId = mapId;
-    context.state.activeTab = "explore";
-    context.state.view = "map";
-    context.state.activeCollectionId = null;
-    context.recordEvent("map_place_focused", null, { mapId });
-    context.render();
-    return { mapId, ...place };
-  }
-
-  function recommendNearPlace(mapId, radiusKm = 10, limit = 5) {
-    const origin = coordinatesForMapId(mapId);
-    if (!origin) throw new Error(`Unknown map place: ${mapId}`);
-    const normalizedRadius = Math.min(100, Math.max(0.1, Number(radiusKm) || 10));
-    const normalizedLimit = Math.min(20, Math.max(1, Math.floor(Number(limit) || 5)));
-    return nearbyAvailableOpportunities(origin, normalizedRadius)
-      .slice(0, normalizedLimit)
-      .map(({ item, distanceKm: rawDistanceKm }) => ({
-        id: item.id,
-        title: item.title,
-        category: item.category,
-        location: item.location,
-        schedule: item.schedule,
-        price: item.price,
-        distanceKm: Number(rawDistanceKm.toFixed(1)),
-      }));
-  }
-
-  function exploreNearPlace(mapId, radiusKm = 10) {
-    const origin = coordinatesForMapId(mapId);
-    if (!origin) throw new Error(`Unknown map place: ${mapId}`);
-    const normalizedRadius = Math.min(100, Math.max(0.1, Number(radiusKm) || 10));
-    context.state.nearbyAnchor = { mapId, radiusKm: normalizedRadius };
     context.state.activeTab = "explore";
     context.state.view = "explore";
-    context.recordEvent("nearby_explore_started", null, { mapId, radiusKm: normalizedRadius });
+    context.recordEvent("agent_exploration_presented", null, {
+      title: scene.title,
+      candidateCount: scene.candidates.length,
+      anchorCount: scene.anchors.length,
+      externalSignalCount: newSignals.length,
+    });
     context.render();
-    return { mapId, placeName: origin.name, radiusKm: normalizedRadius, visibleCount: visibleDeck().length };
-  }
-
-  function getMapContext() {
+    const sharedRoom = await context.groupTrip?.publishScene(activeExploration);
     return {
-      plannedStops: [...context.state.plannedStops]
-        .sort((left, right) => left.order - right.order)
-        .map((stop) => ({
-          mapId: mapIdForStop(stop.id),
-          name: stop.name,
-          kind: stop.kind,
-          latitude: stop.latitude,
-          longitude: stop.longitude,
-          visitAt: stop.visitAt,
-          order: stop.order,
-          note: stop.note,
-        })),
-      savedOpportunities: visibleSavedItems().map(({ item }) => ({
-        mapId: mapIdForOpportunity(item.id),
-        opportunityId: item.id,
-        title: item.title,
-        category: item.category,
-        location: item.location,
-        latitude: item.latitude,
-        longitude: item.longitude,
-        schedule: item.schedule,
-      })),
+      presented: true,
+      sharedRoom: sharedRoom ?? null,
+      title: scene.title,
+      shownCount: scene.candidates.length,
+      anchorCount: scene.anchors.length,
+      externalSignalCount: newSignals.length,
+      storedExternalSignalCount: Object.keys(externalSignals).length,
     };
   }
 
@@ -838,32 +827,43 @@ export function createExploreFeature(context) {
     else if (action === "pass") passCurrent();
     else if (action === "save") saveCurrent();
     else if (action === "back-explore") backToExplore();
-    else if (action === "open-collection-map") {
+    else if (action === "open-mohae-collection") {
       const collectionId = button.dataset.collectionId;
       const collection = collectionFor(collectionId);
       if (!collection) return false;
+      context.state.activeExploration = null;
       context.state.activeCollectionId = collection.id;
-      context.state.view = "map";
-      context.state.selectedMapId = id ? mapIdForOpportunity(id) : mapIdForOpportunity(collection.items[0].id);
-      context.recordEvent("collection_map_opened", id, { collectionId: collection.id, collectionLabel: collection.label, visibleCount: collection.items.length });
-      renderMap();
+      context.state.activeTab = "explore";
+      context.state.view = "explore";
+      context.recordEvent("mohae_collection_opened", id, { collectionId: collection.id, collectionLabel: collection.label, visibleCount: collection.items.length });
+      renderExplore();
+    } else if (action === "open-source-collection") {
+      const url = button.dataset.url;
+      if (!url) return false;
+      context.recordEvent("source_collection_opened", id, { collectionId: button.dataset.collectionId, url });
+      window.open(url, "_blank", "noopener,noreferrer");
     } else if (action === "open-map") {
       context.state.activeCollectionId = null;
+      context.state.activeTab = "map";
       context.state.view = "map";
-      context.recordEvent("map_opened", null, { visibleCount: getMapContext().plannedStops.length + getMapContext().savedOpportunities.length });
-      renderMap();
+      context.recordEvent("map_opened", null, { visibleCount: 0 });
+      context.render();
+    } else if (action === "open-profile") {
+      context.state.view = "profile";
+      context.saveState();
+      context.render();
     } else if (action === "open-filter") renderFilter();
     else if (action === "close-sheet") closeSheet();
     else if (action === "set-filter") {
+      context.state.activeExploration = null;
       context.state.filter = button.dataset.filter;
       context.state.view = "explore";
       context.saveState();
       closeSheet();
       renderExplore();
     } else if (action === "save-detail" && id) {
-      if (!context.state.saved[id]) saveOpportunity(id, "detail");
-      const item = getOpportunity(id);
-      context.showToast(item.kind === "event" && item.eventEnd ? "프로그램 종료일까지 지도에 저장했어요" : "7일 동안 지도에 저장했어요");
+      if (!isSaved(id)) saveOpportunity(id, "detail");
+      context.showToast("저장했어요");
       renderDetail(id);
     } else if (action === "route" && id) {
       context.recordEvent("route_opened", id);
@@ -871,52 +871,20 @@ export function createExploreFeature(context) {
     } else if (action === "booking-info" && id) {
       context.recordEvent("booking_info_opened", id);
       context.showToast(getOpportunity(id).kind === "event" ? "예약 정보는 다음 단계에서 연결됩니다" : "영업 정보는 다음 단계에서 연결됩니다");
-    } else if (action === "recenter-map") context.showToast("현재 위치로 지도를 맞췄어요");
-    else if (action === "map-agent-help") context.showToast("Agent에게 숙소·공항·명소를 이 지도에 추가해 달라고 요청하세요");
-    else if (action === "select-map-item") {
-      const mapId = button.dataset.mapId;
-      if (mapId) {
-        context.state.selectedMapId = mapId;
-        context.saveState();
-        renderMap();
-        requestAnimationFrame(() => document.querySelector(`[data-map-id="${CSS.escape(mapId)}"]`)?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" }));
-      }
-    } else if (action === "remove-plan-stop" && id) removePlanStop(id);
-    else if (action === "extend" && id) {
-      const saved = context.state.saved[id];
-      saved.visibleUntil = addDays(expiryFor(getOpportunity(id), saved), 7);
-      context.recordEvent("extended", id, { days: 7, visibleUntil: saved.visibleUntil });
-      context.showToast("지도 표시를 7일 연장했어요");
-      renderMap();
-    } else if (action === "attend" && id) {
-      context.state.saved[id].attendedAt = new Date().toISOString();
-      context.recordEvent("attended", id);
-      context.showToast("다녀온 경험으로 기록했어요");
-      renderMap();
-    } else if (action === "open-review" && id) {
-      context.state.reviewOpenId = id;
-      context.saveState();
-      renderMap();
-      document.querySelector(`#review-${CSS.escape(id)}`)?.focus();
-    } else if (action === "save-review" && id) {
-      const field = document.querySelector(`#review-${CSS.escape(id)}`);
-      const review = field?.value.trim() ?? "";
-      if (!review) {
-        context.showToast("남기고 싶은 내용이 있을 때만 적어주세요");
-      } else {
-        context.state.saved[id].review = review;
-        context.state.reviewOpenId = null;
-        context.recordEvent("reviewed", id, { text: review });
-        context.showToast("후기를 저장했어요");
-        renderMap();
-      }
+    } else if (action === "next-source-batch") {
+      void refreshAndLoadNextSourceBatch();
     } else if (action === "reset-deck") {
       context.state.decisions = {};
       context.recordEvent("deck_reset");
       renderExplore();
-    } else if (action === "clear-nearby") {
-      context.state.nearbyAnchor = null;
-      context.recordEvent("nearby_explore_closed");
+    } else if (action === "clear-exploration") {
+      context.state.activeExploration = null;
+      context.recordEvent("agent_exploration_cleared");
+      renderExplore();
+    } else if (action === "clear-collection") {
+      const collectionId = context.state.activeCollectionId;
+      context.state.activeCollectionId = null;
+      context.recordEvent("mohae_collection_closed", null, { collectionId });
       renderExplore();
     } else return false;
     return true;
@@ -953,14 +921,10 @@ export function createExploreFeature(context) {
   }
 
   return {
-    addPlanStop,
-    exploreNearPlace,
-    focusMapPlace,
-    getMapContext,
     handleAction,
     handleEscape,
     handleKeyboard,
-    recommendNearPlace,
+    presentExploration,
     render,
   };
 }

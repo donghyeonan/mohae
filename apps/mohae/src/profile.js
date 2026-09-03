@@ -4,9 +4,10 @@ export function createProfileFeature(context) {
   function render() {
     const displayName = context.state.profile.displayName || "게스트";
     const initial = displayName === "게스트" ? "M" : displayName.slice(0, 1).toUpperCase();
-    context.bottomNav.classList.remove("is-hidden");
+    context.bottomNav.classList.add("is-hidden");
     context.app.innerHTML = `<section class="screen profile-screen" data-view="profile">
       <header class="profile-header">
+        <button class="profile-back" type="button" data-action="back-from-profile" aria-label="탐색으로 돌아가기">${icon("arrowLeft")}</button>
         <div class="avatar">${escapeHtml(initial)}</div>
         <div><small>MY MOHAE</small><h1>${escapeHtml(displayName)}</h1></div>
       </header>
@@ -31,7 +32,12 @@ export function createProfileFeature(context) {
 
   function handleAction(button) {
     const action = button.dataset.action;
-    if (action === "start-sign-in") {
+    if (action === "back-from-profile") {
+      context.state.activeTab = "explore";
+      context.state.view = "explore";
+      context.saveState();
+      context.render();
+    } else if (action === "start-sign-in") {
       context.recordEvent("sign_in_opened");
       context.showToast("로그인 제공자는 아직 연결되지 않았어요");
     } else if (action === "profile-language") {

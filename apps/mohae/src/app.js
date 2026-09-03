@@ -1,5 +1,7 @@
 import { createId } from "./core.js";
 import { createExploreFeature } from "./explore.js";
+import { createGroupTripFeature } from "./group-trip.js";
+import { createMapFeature } from "./map.js";
 import { createProfileFeature } from "./profile.js";
 import { registerWebMcpTools } from "./webmcp.js";
 
@@ -13,12 +15,16 @@ function initialState() {
     filter: "all",
     photoIndices: {},
     decisions: {},
+    exploreBatchIds: [],
+    exploreSeenIds: [],
     saved: {},
-    plannedStops: [],
-    selectedMapId: null,
+    activeExploration: null,
+    externalSignals: {},
+    currentLocation: null,
     activeCollectionId: null,
-    nearbyAnchor: null,
-    reviewOpenId: null,
+    mapSheetState: "collapsed",
+    mapCollectionFilter: null,
+    mapTypeFilter: null,
     eventLog: [],
     exposed: {},
     profile: {
@@ -35,11 +41,15 @@ function loadState() {
   try {
     const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "null");
     if (!parsed || typeof parsed !== "object") return defaults;
+    const current = Object.fromEntries(Object.keys(defaults)
+      .filter((key) => Object.hasOwn(parsed, key))
+      .map((key) => [key, parsed[key]]));
     return {
       ...defaults,
-      ...parsed,
+      ...current,
       profile: { ...defaults.profile, ...(parsed.profile ?? {}) },
-      plannedStops: Array.isArray(parsed.plannedStops) ? parsed.plannedStops : [],
+      exploreBatchIds: Array.isArray(parsed.exploreBatchIds) ? parsed.exploreBatchIds : [],
+      exploreSeenIds: Array.isArray(parsed.exploreSeenIds) ? parsed.exploreSeenIds : [],
     };
   } catch {
     return defaults;
@@ -47,14 +57,18 @@ function loadState() {
 }
 
 let state = loadState();
+let groupTrip = null;
 const app = document.querySelector("#app");
 const bottomNav = document.querySelector("#bottomNav");
 const toast = document.querySelector("#toast");
 let toastTimer;
 
 function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  const { currentLocation: _sessionOnlyLocation, ...persistedState } = state;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(persistedState));
 }
+
+saveState();
 
 function recordEvent(type, opportunityId = null, metadata = {}) {
   const event = {
@@ -62,7 +76,7 @@ function recordEvent(type, opportunityId = null, metadata = {}) {
     type,
     at: new Date().toISOString(),
     opportunityId,
-    recommendationId: opportunityId ? `seoul-gyeonggi-w35:${opportunityId}` : null,
+    recommendationId: opportunityId && !/^(external|catalog):/.test(opportunityId) ? `seoul-gyeonggi-w35:${opportunityId}` : null,
     context: { filter: state.filter, view: state.view },
     metadata,
   };
@@ -92,6 +106,9 @@ const context = {
   get state() {
     return state;
   },
+  get groupTrip() {
+    return groupTrip;
+  },
   recordEvent,
   saveState,
   showToast,
@@ -100,16 +117,24 @@ const context = {
 };
 
 const explore = createExploreFeature(context);
+const map = createMapFeature(context);
 const profile = createProfileFeature(context);
+groupTrip = createGroupTripFeature(context);
 
 function render() {
-  if (state.view === "profile") profile.render();
-  else explore.render();
+  if (state.view === "map") map.render();
+  else {
+    map.deactivate();
+    if (state.view === "profile") profile.render();
+    else explore.render();
+  }
 }
 
 document.querySelector(".phone").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-action]");
+  const button = event.target.closest("[data-action], [data-map-action], [data-map-filter-group], [data-group-action]");
   if (!button) return;
+  if (groupTrip.handleAction(button)) return;
+  if (map.handleAction(button)) return;
   if (explore.handleAction(button)) return;
   profile.handleAction(button);
 });
@@ -117,8 +142,9 @@ document.querySelector(".phone").addEventListener("click", (event) => {
 bottomNav.addEventListener("click", (event) => {
   const button = event.target.closest("[data-tab]");
   if (!button) return;
-  state.activeTab = button.dataset.tab === "profile" ? "profile" : "explore";
+  state.activeTab = button.dataset.tab === "map" ? "map" : "explore";
   state.view = state.activeTab;
+  if (state.activeTab === "map") state.activeCollectionId = null;
   saveState();
   render();
 });
@@ -132,10 +158,13 @@ document.addEventListener("keydown", (event) => {
   if (explore.handleKeyboard(event.key)) event.preventDefault();
 });
 
-if (state.activeTab === "profile") state.view = "profile";
-else if (!new Set(["explore", "detail", "map"]).has(state.view)) state.view = "explore";
+if (state.activeTab === "profile") {
+  state.activeTab = "explore";
+  state.view = "explore";
+} else if (!new Set(["explore", "detail", "map", "profile"]).has(state.view)) state.view = "explore";
 render();
+void groupTrip.initialize();
 
-registerWebMcpTools(explore).catch((error) => {
+registerWebMcpTools({ map, explore, groupTrip }).catch((error) => {
   console.error("Failed to register MOHAE WebMCP tools.", error);
 });

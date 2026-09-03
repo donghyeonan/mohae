@@ -1,1185 +1,744 @@
-// Generated from the 10-card contract sample observed on 2026-08-30.
-// This replaces the previous 20-place prototype set; no prior card data is reused.
-export const opportunities = [
+const OBSERVED_AT = "2026-09-02T09:20:35+09:00";
+
+const SOURCES = {
+  hidden: {
+    id: "naver-hidden-archive",
+    label: "NAVER Hidden Archive",
+    url: "https://mkt.naver.com/hiddenarchive?tab=discover",
+    role: "19–33세 사용자의 저장·리뷰를 바탕으로 네이버가 편집한 장소 큐레이션",
+    caveat: "Hidden Archive 선정은 플레이스 검색 순위와 무관하며, 운영 정보는 네이버 플레이스에서 다시 확인해야 한다.",
+  },
+  michelin: {
+    id: "michelin-guide-korea-2026",
+    label: "MICHELIN Guide · 2026",
+    url: "https://guide.michelin.com/kr/ko/selection/south-korea/restaurants",
+    role: "미쉐린 인스펙터의 서울·부산 2026 공식 선정·평가",
+    caveat: "선정은 2026 에디션 기준이며 예약, 가격, 영업시간은 각 레스토랑에서 다시 확인해야 한다.",
+  },
+};
+
+const NAVER_DETAILS = {
+  "hidden-house-of-vinyl-mangwon": {
+    naverPlaceId: "1032945614",
+    address: "서울 마포구 희우정로16길 23 1층",
+    schedule: "매일 11:00–22:00",
+    price: "아메리카노 6,000원",
+    menu: [
+      { name: "딸기 파블로바", price: "13,000원" },
+      { name: "홍시 파블로바", price: "13,000원" },
+      { name: "아메리카노", price: "6,000원" },
+    ],
+  },
+  "hidden-point-of-view": {
+    naverPlaceId: "1160844669",
+    address: "서울 성동구 연무장길 18 1,2,3층",
+    schedule: "매일 12:00–20:00 · 입장 마감 19:55",
+    price: "상품 가격 미확인",
+    uncertainty: "네이버 플레이스에 상점 등록 메뉴·가격표 탭이 없다.",
+  },
+  "hidden-movieland": {
+    naverPlaceId: "1252677579",
+    address: "서울 성동구 연무장길 5-5",
+    schedule: "목–일 12:30–21:30 · 월–수 휴무",
+    price: "관람료 미확인",
+    uncertainty: "네이버 플레이스에 등록 프로그램·관람료 탭이 없다.",
+  },
+  "hidden-your-mind": {
+    naverPlaceId: "153796899",
+    address: "서울 서대문구 연희로 122 302호",
+    schedule: "13:00 영업 시작 · 종료·휴무 미확인",
+    price: "상품 가격 미확인",
+    uncertainty: "영업시간 펼치기가 열리지 않았고 상점 등록 가격 탭도 없다.",
+  },
+  "hidden-samuel-smalls": {
+    naverPlaceId: "1851456584",
+    address: "서울 성동구 연무장5가길 25 성수역SKV1타워 지하1층 B108호",
+    schedule: "매일 13:00–19:30",
+    price: "상품 가격 미확인",
+    uncertainty: "네이버 플레이스에 상점 등록 메뉴·가격표 탭이 없다.",
+  },
+  "hidden-lcdc-seoul": {
+    naverPlaceId: "1450511980",
+    address: "서울 성동구 연무장17길 10",
+    schedule: "1F 10:00–20:00 · 2·3F 11:00–20:00 · 4F 11:00–21:00",
+    price: "입장·프로그램 가격 미확인",
+    uncertainty: "통합 입장료·프로그램 가격 탭이 없고 층별 운영이 다르다.",
+  },
+  "hidden-milmilia": {
+    naverPlaceId: "1975136648",
+    address: "서울 용산구 녹사평대로40나길 38-11 밀밀아",
+    schedule: "매일 00:00–22:00 · 네이버 표시 기준",
+    price: "프로그램 가격 미확인",
+    uncertainty: "가격표가 이미지로만 노출되어 정확한 항목과 가격을 판독하지 못했다.",
+  },
+  "hidden-the-forest-choso": {
+    naverPlaceId: "1602048207",
+    address: "서울 종로구 인왕산로 172",
+    schedule: "매일 08:00–22:00 · 주문마감 21:30 · 연중무휴",
+    price: "아메리카노 4,900원",
+    menu: [
+      { name: "아메리카노", price: "4,900원" },
+      { name: "카페라떼", price: "5,900원" },
+      { name: "오트라떼", price: "6,500원" },
+    ],
+  },
+  "hidden-poset-yeonhui": {
+    naverPlaceId: "1239700627",
+    address: "서울 서대문구 증가로 18 3층 305호 포셋",
+    schedule: "화–일 12:00–20:00 · 월요일 휴무",
+    price: "상품 가격 미확인",
+    uncertainty: "네이버 플레이스에 상점 등록 메뉴·가격표 탭이 없다.",
+  },
+  "hidden-process-itw": {
+    naverPlaceId: "1419063859",
+    address: "서울 용산구 우사단로 42",
+    schedule: "월–수·일 10:00–익일 01:00 · 목–토 익일 05:00까지",
+    price: "프로그램·입장료 미확인",
+    uncertainty: "매장·행사·대관에 따라 운영이 달라지며 등록 가격 탭이 없다.",
+  },
+  "michelin-mingles-2026": {
+    naverPlaceId: "35215752",
+    address: "서울 강남구 도산대로67길 19 힐탑빌딩 2층",
+    schedule: "월–토 12:00–22:00 · 일요일 휴무 · 특별휴무 확인",
+    price: "런치 320,000원",
+    menu: [
+      { name: "Lunch menu", price: "320,000원" },
+      { name: "Dinner menu", price: "420,000원" },
+      { name: "4 glasses 와인페어링", price: "변동" },
+    ],
+    uncertainty: "특별 휴무와 월별 변동 안내가 있어 방문일 재확인이 필요하다.",
+  },
+  "michelin-mosu-2026": {
+    naverPlaceId: "1904337795",
+    address: "서울 용산구 회나무로41길 4 1층 2층",
+    schedule: "화 18:00–22:00 · 수–토 12:00–22:00 · 휴게 15:00–18:00 · 일·월 휴무",
+    price: "코스 가격 미확인",
+    uncertainty: "네이버 플레이스에 등록 메뉴·가격 탭이 없다.",
+  },
+  "michelin-solbam-2026": {
+    naverPlaceId: "1971122149",
+    address: "서울 강남구 학동로 231 백영논현센터 2층 솔밤",
+    schedule: "월–토 17:30–22:30 · 일요일 휴무",
+    price: "코스 가격 미확인 · 코키지 150,000원",
+    menu: [
+      { name: "Solbam Course", price: "변동" },
+      { name: "Beverage Pairing", price: "변동" },
+      { name: "Corkage", price: "150,000원" },
+    ],
+    uncertainty: "코스와 페어링 가격은 네이버 플레이스에 '변동'으로 표시된다.",
+  },
+  "michelin-la-yeon-2026": {
+    naverPlaceId: "37402189",
+    address: "서울 중구 동호로 249 서울신라호텔 23층",
+    schedule: "매일 12:00–21:30 · 휴게 14:30–17:30",
+    price: "점심 라연코스 220,000원",
+    menu: [
+      { name: "점심 라연코스", price: "220,000원" },
+      { name: "저녁 신라코스", price: "350,000원" },
+      { name: "구절판", price: "55,000원" },
+    ],
+  },
+  "michelin-palate-2026": {
+    naverPlaceId: "1525539643",
+    address: "부산 해운대구 달맞이길65번길 154 3층",
+    schedule: "수 18:00–22:00 · 목–일 12:00–22:00 · 월·화 휴무 · 주문마감 19:00",
+    price: "런치코스 125,000원",
+    menu: [
+      { name: "런치코스", price: "125,000원" },
+      { name: "디너코스", price: "250,000원" },
+    ],
+    uncertainty: "네이버의 주문마감 19:00 표시와 22:00 종료시간의 간격이 크다.",
+  },
+  "michelin-iwa-2026": {
+    naverPlaceId: "1509986557",
+    address: "부산 해운대구 해운대해변로209번길 13 2층",
+    schedule: "월–토 12:00–22:00 · 일요일 휴무",
+    price: "오마카세 가격 미확인 · 네이버 표시 '변동'",
+    menu: [{ name: "오마카세(런치·디너)", price: "변동" }],
+    uncertainty: "네이버 플레이스에 정확한 숫자 대신 '변동'으로 표시된다.",
+  },
+  "michelin-myeongdong-kyoja-2026": {
+    naverPlaceId: "11592650",
+    address: "서울 중구 퇴계로 129",
+    schedule: "매일 10:30–21:00 · 주문마감 20:30",
+    price: "칼국수 12,000원",
+    menu: [
+      { name: "칼국수", price: "12,000원" },
+      { name: "만두", price: "13,000원" },
+      { name: "비빔국수", price: "12,000원" },
+    ],
+    uncertainty: "미쉐린 표시가 있는 명동교자 본점 카드 기준이다.",
+  },
+  "michelin-jinmi-sikdang-2026": {
+    naverPlaceId: "19862126",
+    address: "서울 마포구 마포대로 186-6",
+    schedule: "월–토 12:00–20:00 · 휴게 15:30–17:00 · 일요일 휴무",
+    price: "게장정식 45,000원",
+    menu: [
+      { name: "게장정식", price: "45,000원" },
+      { name: "간장게장 포장", price: "40,000원" },
+      { name: "게장정식 추가", price: "40,000원" },
+    ],
+    uncertainty: "현재 메뉴 데이터의 업체 직접 관리 여부는 확인되지 않는다.",
+  },
+  "michelin-woo-lae-oak-2026": {
+    naverPlaceId: "11679381",
+    address: "서울 중구 창경궁로 62-29",
+    schedule: "화–일 11:30–21:00 · 주문마감 20:20 · 월요일 휴무",
+    price: "평양냉면 18,000원",
+    menu: [
+      { name: "평양냉면", price: "18,000원" },
+      { name: "비빔냉면", price: "18,000원" },
+      { name: "온면", price: "18,000원" },
+    ],
+    uncertainty: "매장 상황에 따라 마감시간이 달라질 수 있다.",
+  },
+  "michelin-mijin-2026": {
+    naverPlaceId: "11680222",
+    address: "서울 종로구 종로 19 르메이에르종로타운1 1층",
+    schedule: "매일 10:30–21:00 · 주문마감 20:30",
+    price: "냉메밀 12,000원",
+    menu: [
+      { name: "냉메밀", price: "12,000원" },
+      { name: "온메밀", price: "12,000원" },
+      { name: "비빔메밀", price: "12,000원" },
+    ],
+    uncertainty: "종로1가의 미쉐린 표시 광화문미진 본점 카드 기준이다.",
+  },
+};
+
+const NAVER_IDENTITIES = {
+  "hidden-house-of-vinyl-mangwon": { name: "하우스오브바이닐 망원점", latitude: 37.5546572, longitude: 126.9032499 },
+  "hidden-point-of-view": { name: "POINT of VIEW SEOUL", latitude: 37.5435123, longitude: 127.0513815 },
+  "hidden-movieland": { name: "무비랜드", latitude: 37.5441745, longitude: 127.0503006 },
+  "hidden-your-mind": { name: "유어마인드", latitude: 37.5684604, longitude: 126.9324382 },
+  "hidden-samuel-smalls": { name: "samuelsmalls", latitude: 37.5435865, longitude: 127.0554611 },
+  "hidden-lcdc-seoul": { name: "LCDC SEOUL", latitude: 37.5415206, longitude: 127.0614308 },
+  "hidden-milmilia": { name: "밀밀아", latitude: 37.5362786, longitude: 126.9893522 },
+  "hidden-the-forest-choso": { name: "더숲 초소책방", latitude: 37.5859415, longitude: 126.964205 },
+  "hidden-poset-yeonhui": { name: "포셋 연희", latitude: 37.5700065, longitude: 126.9312814 },
+  "hidden-process-itw": { name: "프로세스 이태원", latitude: 37.5338796, longitude: 126.9957861 },
+  "michelin-mingles-2026": { name: "밍글스", latitude: 37.5253845, longitude: 127.0441702, michelin2026: true },
+  "michelin-mosu-2026": { name: "모수 서울", latitude: 37.5412038, longitude: 126.996194, michelin2026: true },
+  "michelin-solbam-2026": { name: "솔밤", latitude: 37.5156791, longitude: 127.034072, michelin2026: true },
+  "michelin-la-yeon-2026": { name: "서울신라호텔 라연", latitude: 37.5555885, longitude: 127.0053093, michelin2026: true },
+  "michelin-palate-2026": { name: "팔레트", latitude: 35.156539, longitude: 129.1783644, michelin2026: true },
+  "michelin-iwa-2026": { name: "이와", latitude: 35.159629, longitude: 129.1538429, michelin2026: true },
+  "michelin-myeongdong-kyoja-2026": {
+    name: "명동교자 본점",
+    latitude: 37.561184,
+    longitude: 126.9860958,
+    michelin2026: true,
+    caveat: "미쉐린 공식 페이지 주소는 명동10길 29이지만, 네이버의 미쉐린 가이드 서울 2026 표기 본점은 퇴계로 129로 약 288m 떨어져 있다. 운영정보는 현재 네이버 본점 기준이다.",
+  },
+  "michelin-jinmi-sikdang-2026": { name: "진미식당", latitude: 37.5506119, longitude: 126.9557656, michelin2026: true },
+  "michelin-woo-lae-oak-2026": { name: "우래옥", latitude: 37.5681693, longitude: 126.9987278, michelin2026: true },
+  "michelin-mijin-2026": { name: "광화문미진", latitude: 37.5705485, longitude: 126.9798986, michelin2026: true },
+};
+
+const catalog = [
   {
-    "id": "naver-37373204",
-    "subjectId": "place:naver:37373204",
-    "naverPlaceId": "37373204",
-    "kind": "place",
-    "group": "place",
-    "category": "식당",
-    "title": "멘야하나비 송파본점",
-    "subtitle": "마제소바·카라멘과 여러 일본식 면 메뉴를 고르는 송리단길 일본식 면 전문점",
-    "location": "서울 송파구",
-    "schedule": "화–일 11:30–21:00 · 휴게시간 있음",
-    "price": "마제소바 12,000원",
-    "actionText": "워크인 · 포장·배달 가능",
-    "primaryAction": {
-      "label": "지도에서 확인",
-      "url": "https://map.naver.com/p/entry/place/37373204"
-    },
-    "images": [
-      "https://ldb-phinf.pstatic.net/20241201_240/1733026627553I75Ri_JPEG/0926-5023-20230928.jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "멘야하나비 송파본점",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:36:45.382Z"
-      }
-    ],
-    "latitude": 37.5109657,
-    "longitude": 127.1077484,
-    "status": {
-      "label": "20:30 주문마감",
-      "tone": "open"
-    },
-    "official": {
-      "hours": "화–금 11:30–21:00 · 휴게 14:30–17:30 / 토·일 11:30–21:00 · 휴게 14:30–17:00 · 주문마감 20:30 · 월요일 휴무",
-      "parking": "공개 주차 정보 미확인",
-      "reservation": "워크인 현장 이용 · 대기공간 · 포장·배달 가능 · 예약 정보 미확인",
-      "sourceUrl": "https://m.place.naver.com/restaurant/37373204/home"
-    },
-    "programs": [],
-    "menu": [
-      {
-        "name": "마제소바",
-        "price": "12,000원",
-        "description": "업체 추천 표시"
-      },
-      {
-        "name": "도니꾸 마제소바",
-        "price": "15,000원",
-        "description": "업체 추천 표시"
-      },
-      {
-        "name": "네기시오 마제소바",
-        "price": "15,000원",
-        "description": "업체 추천 표시"
-      },
-      {
-        "name": "카라멘",
-        "price": "12,000원",
-        "description": "업체 추천 표시"
-      }
-    ],
-    "menuMedia": [
-      {
-        "title": "마제소바",
-        "src": "https://ldb-phinf.pstatic.net/20250127_2/1737906511652Vkssf_JPEG/01.-%B8%B6%C1%A6%BC%D2%B9%D9-font.jpg",
-        "source": "네이버 업체 등록 메뉴",
-        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
-        "rightsStatus": "unknown"
-      },
-      {
-        "title": "도니꾸 마제소바",
-        "src": "https://ldb-phinf.pstatic.net/20250127_232/1737906754015TKL2h_JPEG/02.-%B5%B5%B4%CF%B2%D9-%B8%B6%C1%A6%BC%D2%B9%D9-font.jpg",
-        "source": "네이버 업체 등록 메뉴",
-        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
-        "rightsStatus": "unknown"
-      },
-      {
-        "title": "네기시오 마제소바",
-        "src": "https://ldb-phinf.pstatic.net/20250127_65/1737906872339cbt4U_JPEG/03.-%B3%D7%B1%E2%BD%C3%BF%C0-%B8%B6%C1%A6%BD%C3%B9%D9-font.jpg",
-        "source": "네이버 업체 등록 메뉴",
-        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/menu/list",
-        "rightsStatus": "unknown"
-      }
-    ],
-    "menuCoverage": {
-      "structuredCount": 4,
-      "imageCount": 3,
-      "coverage": "representative"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/restaurant/37373204/home",
-      "observedAt": "2026-08-30T10:36:45.382Z",
-      "officialUrl": "http://menyahanabi.kr/"
-    },
-    "missing": [
-      "주차 정보",
-      "예약 가능 여부",
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 송파구 백제고분로45길 38 1층",
-    "caveatText": "월요일 정기휴무 외에 월별 임시휴무 공지가 있을 수 있어 방문 당일 현재 상태를 확인해야 합니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/37373204",
-      "reviews": "https://map.naver.com/p/entry/place/37373204?placePath=/review",
-      "official": "http://menyahanabi.kr/"
-    },
-    "signalChips": [
-      {
-        "label": "수요미식회 82회",
-        "kind": "media_appearance",
-        "sourceLabel": "네이버 업체 등록 방송정보",
-        "sourceUrl": "https://m.place.naver.com/restaurant/37373204/home",
-        "observedAt": "2026-08-30T10:36:45.382Z",
-        "scope": "exact_place",
-        "sourceRole": "platform",
-        "tone": "media",
-        "interactive": false
-      }
-    ],
-    "collectionContext": {
-      "id": "mohae-songpa-dining",
-      "label": "MOHAE 송파 맛집",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      79,
-      38
-    ]
+    id: "hidden-house-of-vinyl-mangwon",
+    source: "hidden",
+    naverPlaceId: "1032945614",
+    category: "LP 카페 · 음악 감상",
+    tag: "Hidden Archive",
+    title: "하우스오브바이닐 망원점",
+    subtitle: "가구도 음악도 감상하게 되는 LP 카페",
+    detailHighlight: "신청곡을 LP로 듣는 망원의 주택형 카페",
+    location: "서울 마포구",
+    address: "서울 마포구 희우정로16길 23 1층",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240104_16%2F1704301988801wvBv9_JPEG%2FKakaoTalk_20240104_020129520_01.jpg",
+    latitude: 37.5546572,
+    longitude: 126.9032499,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/c3f64ae2dfe04378a5ff151395214549",
+    sourceTitle: "Hidden Archive · 서울의 LP바",
+    selectionLabel: "서울 LP바 5",
   },
   {
-    "id": "naver-31905764",
-    "subjectId": "place:naver:31905764",
-    "naverPlaceId": "31905764",
-    "kind": "place",
-    "group": "place",
-    "category": "카페",
-    "title": "커피몽타주",
-    "subtitle": "자체 로스팅한 하우스 블렌드와 싱글오리진 브루잉을 함께 고르는 성내 플래그십",
-    "location": "서울 강동구",
-    "schedule": "평일 08:00–19:00 · 주말·공휴일 10:00–19:00",
-    "price": "아메리카노 4,500원",
-    "actionText": "워크인 · 포장 가능",
-    "primaryAction": {
-      "label": "지도에서 확인",
-      "url": "https://map.naver.com/p/entry/place/31905764"
-    },
-    "images": [
-      "https://cdn-saas-web-203-48.cdn-nhncommerce.com/montage201372_godomall_com/data/skin/front/moment_allclean/img/about/banner2-2.png",
-      "https://ldb-phinf.pstatic.net/20220118_252/1642491298211DUfdx_JPEG/20FB1FF6-9A15-4561-AF29-505B6EDA9D16.jpeg",
-      "https://ldb-phinf.pstatic.net/20220118_240/1642491299071JiU5c_JPEG/2A95DADC-31A2-40F2-82FF-8EE9493BCD39.jpeg"
-    ],
-    "photoMeta": [
-      {
-        "title": "성내 플래그십",
-        "source": "커피몽타주 공식",
-        "sourceUrl": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "official_site",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:42.853Z"
-      },
-      {
-        "title": "커피몽타주",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:42.853Z"
-      },
-      {
-        "title": "커피몽타주",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:42.853Z"
-      }
-    ],
-    "latitude": 37.5295051,
-    "longitude": 127.1218766,
-    "status": {
-      "label": "오늘 영업 종료",
-      "tone": "closed"
-    },
-    "official": {
-      "hours": "평일 08:00–19:00 / 주말·공휴일 10:00–19:00 · 주문마감 18:30",
-      "parking": "공개 주차 정보 미확인",
-      "reservation": "워크인 카운터 주문 · 포장·배달 가능 · 예약 정보 미확인",
-      "sourceUrl": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
-    },
-    "programs": [],
-    "menu": [
-      {
-        "name": "아메리카노",
-        "price": "4,500원",
-        "description": null
-      },
-      {
-        "name": "카페라떼",
-        "price": "5,000원",
-        "description": null
-      },
-      {
-        "name": "브루잉커피",
-        "price": "6,000원",
-        "description": null
-      },
-      {
-        "name": "콜드브루 샘플러",
-        "price": "11,000원",
-        "description": null
-      }
-    ],
-    "menuMedia": [
-      {
-        "title": "플랫화이트",
-        "src": "https://ldb-phinf.pstatic.net/20200104_222/1578146510582sjBit_JPEG/U88ytcKz5B4v5bW7Rtgm8Rfn.jpg",
-        "source": "네이버 업체 등록 메뉴",
-        "sourceUrl": "https://m.place.naver.com/restaurant/31905764/menu/list",
-        "rightsStatus": "unknown"
-      }
-    ],
-    "menuCoverage": {
-      "structuredCount": 4,
-      "imageCount": 1,
-      "coverage": "representative"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/restaurant/31905764/home",
-      "observedAt": "2026-08-30T10:17:42.853Z",
-      "officialUrl": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
-    },
-    "missing": [
-      "주차 정보",
-      "예약 가능 여부",
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 강동구 올림픽로48길 23-12 1층",
-    "caveatText": "대표사진의 재사용 권리는 확인되지 않았고, 주차·예약 정보도 공개되지 않았습니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/31905764",
-      "reviews": "https://map.naver.com/p/entry/place/31905764?placePath=/review",
-      "official": "https://www.coffeemontage.com/main/html.php?htmid=proc/seongnae.html"
-    },
-    "signalChips": [
-      {
-        "label": "블루리본 2개",
-        "kind": "culinary_selection",
-        "sourceLabel": "블루리본서베이 2026 서울",
-        "sourceUrl": "https://www.bluer.co.kr/restaurants/27113",
-        "observedAt": "2026-08-30T11:32:28.000Z",
-        "scope": "exact_branch_2026",
-        "sourceRole": "guide",
-        "tone": "blue_ribbon",
-        "interactive": false
-      }
-    ],
-    "collectionContext": {
-      "id": "mohae-gangdong-dining",
-      "label": "MOHAE 강동 맛집",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      83,
-      34
-    ]
+    id: "hidden-point-of-view",
+    source: "hidden",
+    naverPlaceId: "1160844669",
+    category: "문구 · 디자인 편집숍",
+    tag: "Hidden Archive",
+    title: "포인트오브뷰",
+    subtitle: "힙하고 멋진 거 혼자 다 하는 문구 편집숍",
+    detailHighlight: "기록 도구를 물건이 아닌 관점으로 고르는 곳",
+    location: "서울 성동구",
+    address: "서울 성동구 연무장길 18 1,2,3층",
+    image: "https://mkt-cdn.pstatic.net/mkt/2024/09/diggingarchive/place/2024-10-21-e806561a-9a64-47c6-8dfa-7ffb4e8d18af.png",
+    latitude: 37.5435123,
+    longitude: 127.0513815,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/58985ecfd1c04cddbf9c2cc10596aab5",
+    sourceTitle: "Hidden Archive · 감각적인 문구소품숍",
+    selectionLabel: "문구소품숍 6",
   },
   {
-    "id": "naver-303937152",
-    "subjectId": "place:naver:303937152",
-    "naverPlaceId": "303937152",
-    "kind": "place",
-    "group": "place",
-    "category": "바",
-    "title": "시그니엘 서울 바81",
-    "subtitle": "롯데월드타워 81층에서 서울 전망과 샴페인·칵테일을 함께 즐기는 호텔 바",
-    "location": "서울 송파구",
-    "schedule": "일–목 17:00–24:00 · 금–토 17:00–01:00",
-    "price": "칵테일 32,000원부터",
-    "actionText": "캐치테이블 예약",
-    "primaryAction": {
-      "label": "예약 확인",
-      "url": "https://app.catchtable.co.kr/ct/shop/bar81"
-    },
-    "images": [
-      "https://ldb-phinf.pstatic.net/20200310_213/1583826393105dQhnN_JPEG/IjTzSbSHWwMPPHYWFZegmwVW.JPG.jpg",
-      "https://ldb-phinf.pstatic.net/20190823_178/1566523947099Uxe37_JPEG/%A6%A581-2-Large-1.jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "Bar 81",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:44.968Z"
-      },
-      {
-        "title": "Bar 81",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:44.968Z"
-      }
-    ],
-    "latitude": 37.5125735,
-    "longitude": 127.1027273,
-    "status": {
-      "label": "23:00 주문마감",
-      "tone": "open"
-    },
-    "official": {
-      "hours": "일–목 17:00–24:00 · 주문마감 23:00 / 금–토 17:00–01:00 · 주문마감 00:00",
-      "parking": "주차·발렛 가능 표시 · 이용 조건은 예약 전 확인",
-      "reservation": "캐치테이블 예약 · 예약 가능시간 17:00–21:00 · 만 19세 미만 출입 제한",
-      "sourceUrl": "https://app.catchtable.co.kr/ct/shop/bar81"
-    },
-    "programs": [],
-    "menu": [
-      {
-        "name": "칵테일",
-        "price": "32,000–38,000원",
-        "description": null
-      },
-      {
-        "name": "글라스 와인",
-        "price": "42,000–45,000원",
-        "description": null
-      },
-      {
-        "name": "Awesome Hours 2시간",
-        "price": "150,000원",
-        "description": "샴페인·화이트·레드 와인"
-      },
-      {
-        "name": "시그니처 타워",
-        "price": "215,000원",
-        "description": null
-      }
-    ],
-    "menuMedia": [
-      {
-        "title": "칵테일",
-        "src": "https://ldb-phinf.pstatic.net/20240219_217/17083403311293rlTa_JPEG/%BD%C3%B1%D7%B4%CF%C3%B3_%C4%AE%C5%D7%C0%CF_%B4%DC%C3%BC%BC%A6%2823%B3%E2_%B0%DC%BF%EF%29.jpg",
-        "source": "네이버 업체 등록 메뉴",
-        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/menu/list",
-        "rightsStatus": "unknown"
-      },
-      {
-        "title": "와인",
-        "src": "https://ldb-phinf.pstatic.net/20200310_11/1583826025628cBqFh_JPEG/lCwSs3SaNB47AvTPURrOdAgW.JPG.jpg",
-        "source": "네이버 업체 등록 메뉴",
-        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/menu/list",
-        "rightsStatus": "unknown"
-      },
-      {
-        "title": "Awesome Hours",
-        "src": "https://ldb-phinf.pstatic.net/20250902_176/1756801890279O1l2q_JPEG/KakaoTalk_20250902_173029028.jpg",
-        "source": "네이버 업체 등록 메뉴",
-        "sourceUrl": "https://m.place.naver.com/restaurant/303937152/menu/list",
-        "rightsStatus": "unknown"
-      }
-    ],
-    "menuCoverage": {
-      "structuredCount": 4,
-      "imageCount": 3,
-      "coverage": "representative"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/restaurant/303937152/home",
-      "observedAt": "2026-08-30T10:17:44.968Z",
-      "officialUrl": "https://www.lottehotel.com/seoul-signiel/ko/dining/bar-81"
-    },
-    "missing": [
-      "커버·최소주문",
-      "예약 보증금",
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 송파구 올림픽로 300 롯데월드타워 81층",
-    "caveatText": "워크인 가능 여부와 커버·최소주문·예약 보증금은 현재 공개 정보에서 확인되지 않았습니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/303937152",
-      "reviews": "https://map.naver.com/p/entry/place/303937152?placePath=/review",
-      "official": "https://www.lottehotel.com/seoul-signiel/ko/dining/bar-81"
-    },
-    "signalChips": [
-      {
-        "label": "Forbes 2019 스카이바",
-        "kind": "international_editorial",
-        "sourceLabel": "Forbes 2019 World’s Best Hotel Sky Bars",
-        "sourceUrl": "https://www.forbes.com/sites/forbestravelguide/2019/08/10/worlds-best-hotel-sky-bars/",
-        "observedAt": "2026-08-30T11:32:28.000Z",
-        "scope": "exact_place",
-        "sourceRole": "editorial",
-        "tone": "editorial",
-        "interactive": false
-      }
-    ],
-    "collectionContext": {
-      "id": "mohae-songpa-dining",
-      "label": "MOHAE 송파 맛집",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      78,
-      37
-    ]
+    id: "hidden-movieland",
+    source: "hidden",
+    naverPlaceId: "1252677579",
+    category: "독립 영화관 · 문화",
+    tag: "Hidden Archive",
+    title: "무비랜드",
+    subtitle: "이곳은 영화관인가 놀이공원인가",
+    detailHighlight: "작은 극장에서 다시 만나는 영화의 물성",
+    location: "서울 성동구",
+    address: "서울 성동구 연무장길 5-5",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240618_192%2F1718687814950XNFIA_JPEG%2FLJ_movieland_3_023.jpg",
+    latitude: 37.5441745,
+    longitude: 127.0503006,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/6c79dc7afe41422dbb60056a7a9d8149",
+    sourceTitle: "Hidden Archive · 소규모 예술 영화관",
+    selectionLabel: "예술 영화관 5",
   },
   {
-    "id": "naver-11785944",
-    "subjectId": "place:naver:11785944",
-    "naverPlaceId": "11785944",
-    "kind": "event",
-    "group": "event",
-    "category": "전시",
-    "title": "소마미술관",
-    "subtitle": "이승택 회고전과 체험형 그림책 전시를 한 공원 안에서 고르는 현재 전시 묶음",
-    "location": "서울 송파구",
-    "schedule": "화–일 10:00–18:00 · 전시 9월 6일까지",
-    "price": "1관 3,000–5,000원 · 2관 16,000–18,000원",
-    "actionText": "전시별 예매",
-    "primaryAction": {
-      "label": "1관 예매 확인",
-      "url": "https://booking.naver.com/booking/5/bizes/1127674/items/7822182?theme=place&lang=ko&area=ple"
-    },
-    "eventEnd": "2026-09-06T18:00:00+09:00",
-    "images": [
-      "https://ldb-phinf.pstatic.net/20260625_31/1782349818493CPL5n_JPEG/%28%C6%F7%BD%BA%C5%CD_%C0%A5%BF%EB%291%B0%FC_%C0%CC%BD%C2%C5%C3-420x600_%C0%CF%C1%A4%BA%AF%B0%E6.jpg",
-      "https://ldb-phinf.pstatic.net/20260406_56/1775453859769PLYj8_JPEG/%28%C6%F7%BD%BA%C5%CD_%C0%A5%BF%EB%292%B0%FC_%B1%D7%B8%B2%C3%A5%C0%CC_%BF%C3%B8%AE%BA%F1%BE%C6_%C0%E5%BC%D2%C7%A5%B1%E2.jpg",
-      "https://ldb-phinf.pstatic.net/20260406_280/17754538459612rqdl_JPEG/%28%C6%F7%BD%BA%C5%CD_%C0%A5%BF%EB%292026%C1%B6%B0%A2%C0%CC%B2%DE%C6%B2-%C8%AD%C0%CC%C6%AE%B9%D9%C5%C1.jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "이승택: 조각의 바깥에서",
-        "source": "업체 등록",
-        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/237",
-        "role": "current_program",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:53.006Z"
-      },
-      {
-        "title": "그림책이 살아있다!",
-        "source": "업체 등록",
-        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/236",
-        "role": "current_program",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:53.006Z"
-      },
-      {
-        "title": "조각이 꿈+틀",
-        "source": "업체 등록",
-        "sourceUrl": "https://soma.kspo.or.kr/dspy/display/238",
-        "role": "current_program",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:53.006Z"
-      }
-    ],
-    "latitude": 37.5169172,
-    "longitude": 127.1179749,
-    "status": {
-      "label": "오늘 종료 · 내일 휴관",
-      "tone": "closed"
-    },
-    "official": {
-      "hours": "화–일 10:00–18:00 · 입장마감 17:00 · 월요일 휴관",
-      "parking": "올림픽공원 주차장 이용",
-      "reservation": "전시별 예매 경로가 다름 · 1관 네이버 예매 가능",
-      "sourceUrl": "https://soma.kspo.or.kr/"
-    },
-    "programs": [
-      {
-        "title": "이승택: 조각의 바깥에서",
-        "period": "2026.04.10–09.06",
-        "price": "3,000–5,000원",
-        "url": "https://soma.kspo.or.kr/dspy/display/237"
-      },
-      {
-        "title": "그림책이 살아있다!",
-        "period": "2026.04.17–09.06",
-        "price": "16,000–18,000원 · 24개월 미만 무료",
-        "url": "https://soma.kspo.or.kr/dspy/display/236"
-      },
-      {
-        "title": "조각이 꿈+틀",
-        "period": "2026.04.17–2027.02.14",
-        "price": "2관 주전시 티켓에 포함",
-        "url": "https://soma.kspo.or.kr/dspy/display/238"
-      }
-    ],
-    "menu": [],
-    "menuMedia": [],
-    "menuCoverage": {
-      "structuredCount": 0,
-      "imageCount": 0,
-      "coverage": "not_applicable"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/place/11785944/home",
-      "observedAt": "2026-08-30T10:17:53.006Z",
-      "officialUrl": "https://soma.kspo.or.kr/"
-    },
-    "missing": [
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 송파구 올림픽로 424",
-    "caveatText": "1관 성인 연령 표기가 출처별로 만 24세와 만 25세부터로 달라 예매 화면에서 최종 확인해야 합니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/11785944",
-      "reviews": "https://map.naver.com/p/entry/place/11785944?placePath=/review",
-      "official": "https://soma.kspo.or.kr/"
-    },
-    "collectionContext": {
-      "id": "mohae-songpa-culture",
-      "label": "MOHAE 송파 문화",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      82,
-      37
-    ]
+    id: "hidden-your-mind",
+    source: "hidden",
+    naverPlaceId: "153796899",
+    category: "독립서점 · 출판",
+    tag: "Hidden Archive",
+    title: "유어마인드",
+    subtitle: "귀엽고 독특한 독립출판물 끝판왕",
+    detailHighlight: "독립출판의 현재를 한 자리에서 훑는 서점",
+    location: "서울 서대문구",
+    address: "서울 서대문구 연희로 122 302호",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA2MTJfNTcg%2FMDAxNzE4MTc4NzQxODU5.-FKxobYIrwG3Des_rmIHYhxNDe2ryrxy3Trtp_WpDxcg.sXMiRSL5ehV9UXcl5LHxUXsPKoQAmlgSxfZDuLuweR0g.JPEG%2F20240612_133733.jpg.jpg%3Ftype%3Dw1500_60_sharpen",
+    latitude: 37.5684604,
+    longitude: 126.9324382,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/ea93424aca6d47759ac0e740e9f2c4c4",
+    sourceTitle: "Hidden Archive · 독립 서점",
+    selectionLabel: "독립 서점 6",
   },
   {
-    "id": "naver-1906572873",
-    "subjectId": "place:naver:1906572873",
-    "naverPlaceId": "1906572873",
-    "kind": "event",
-    "group": "event",
-    "category": "전시",
-    "title": "송파책박물관",
-    "subtitle": "책의 역사 전시와 읽기 공간, 어린이 체험공간을 무료로 이용하는 공공 책박물관",
-    "location": "서울 송파구",
-    "schedule": "화–일 10:00–18:00 · 기획전 10월 25일까지",
-    "price": "관람 무료",
-    "actionText": "개인 워크인 · 북키움 예약",
-    "primaryAction": {
-      "label": "현재 전시 확인",
-      "url": "https://www.bookmuseum.go.kr/exhibit/exhibit_view.do?eh_idx=39"
-    },
-    "eventEnd": "2026-10-25T18:00:00+09:00",
-    "images": [
-      "https://www.bookmuseum.go.kr/editImg/20260115064037349.png",
-      "https://ldb-phinf.pstatic.net/20190423_110/1555994285004BnOC2_PNG/bVmZUb_l6iodcuvc26l6wkJl.png",
-      "https://ldb-phinf.pstatic.net/20190423_11/1555994284800RptkR_PNG/T50tTJk4wd-Uq_R5IsoEk-6l.png"
-    ],
-    "photoMeta": [
-      {
-        "title": "동화의 시간, 이야기의 빛깔",
-        "source": "송파책박물관 공식",
-        "sourceUrl": "https://www.bookmuseum.go.kr/exhibit/exhibit_view.do?eh_idx=39",
-        "role": "current_program",
-        "rightsStatus": "unknown",
-        "origin": "official_site",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:55.877Z"
-      },
-      {
-        "title": "송파책박물관",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/1906572873/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:55.877Z"
-      },
-      {
-        "title": "송파책박물관",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/1906572873/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:17:55.877Z"
-      }
-    ],
-    "latitude": 37.49892,
-    "longitude": 127.1046179,
-    "status": {
-      "label": "오늘 종료 · 내일 휴관",
-      "tone": "closed"
-    },
-    "official": {
-      "hours": "화–일 10:00–18:00 · 입장마감 17:30 · 월요일 휴관",
-      "parking": "최초 30분 무료 · 이후 5분당 150원",
-      "reservation": "개인 전시는 워크인 · 북키움과 학교·기관 단체는 온라인 예약",
-      "sourceUrl": "https://www.bookmuseum.go.kr/watch/watch_info.do"
-    },
-    "programs": [
-      {
-        "title": "동화의 시간, 이야기의 빛깔",
-        "period": "2026.01.28–10.25",
-        "price": "무료",
-        "url": "https://www.bookmuseum.go.kr/exhibit/exhibit_view.do?eh_idx=39"
-      },
-      {
-        "title": "북키움",
-        "period": "상시 · 14일 전 10:00 예약 오픈",
-        "price": "무료 · 온라인 예약",
-        "url": "https://www.bookmuseum.go.kr/watch/watch_inscr_step01.do"
-      }
-    ],
-    "menu": [],
-    "menuMedia": [],
-    "menuCoverage": {
-      "structuredCount": 0,
-      "imageCount": 0,
-      "coverage": "not_applicable"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/place/1906572873/home",
-      "observedAt": "2026-08-30T10:17:55.877Z",
-      "officialUrl": "https://www.bookmuseum.go.kr/"
-    },
-    "missing": [
-      "북키움 연령 문구 충돌",
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 송파구 송파대로37길 77",
-    "caveatText": "북키움 연령 조건은 공식 페이지 안에서도 문구가 충돌합니다. 예약 단계의 최신 조건을 확인해야 합니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/1906572873",
-      "reviews": "https://map.naver.com/p/entry/place/1906572873?placePath=/review",
-      "official": "https://www.bookmuseum.go.kr/"
-    },
-    "collectionContext": {
-      "id": "mohae-songpa-culture",
-      "label": "MOHAE 송파 문화",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      79,
-      40
-    ]
+    id: "hidden-samuel-smalls",
+    source: "hidden",
+    naverPlaceId: "1851456584",
+    category: "빈티지 가구 · 소품",
+    tag: "Hidden Archive",
+    title: "사무엘스몰즈",
+    subtitle: "빈티지 소품 가득! 성수의 숨겨진 보물창고",
+    detailHighlight: "시대가 다른 물건을 직접 보고 조합하는 쇼룸",
+    location: "서울 성동구",
+    address: "서울 성동구 연무장5가길 25 성수역SKV1타워 지하1층 B108호",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzEwMjhfMjk5%2FMDAxNjk4NDc5MzA3MTIx.REgbhQP0PtVZLjPJ6O4W1oRylwBN5QvVSn-sby2qcHAg.K1StavusHye61outrx5VI-nr50XzAp6k3pIpMWORMFog.JPEG%2Fimage.jpg%3Ftype%3Dw1500_60_sharpen",
+    latitude: 37.5435865,
+    longitude: 127.0554611,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/227b6436a1954e578b4609046109ef20",
+    sourceTitle: "Hidden Archive · 디자인 가구·소품숍",
+    selectionLabel: "디자인 쇼룸 6",
   },
   {
-    "id": "naver-19452036",
-    "subjectId": "place:naver:19452036",
-    "naverPlaceId": "19452036",
-    "kind": "event",
-    "group": "event",
-    "category": "공연·전시",
-    "title": "강동아트센터",
-    "subtitle": "9월 1일부터 지역 풍경을 담은 무료 전시가 열리는 공원형 공연·전시 복합공간",
-    "location": "서울 강동구",
-    "schedule": "무료 전시 9월 1–5일 · 10:00–18:00",
-    "price": "전시 무료 · 공연별 상이",
-    "actionText": "전시는 워크인 · 공연은 개별 예매",
-    "primaryAction": {
-      "label": "프로그램 확인",
-      "url": "https://www.gdfac.or.kr/product/ko/performance/258463"
-    },
-    "eventEnd": "2026-09-05T18:00:00+09:00",
-    "images": [
-      "https://ldb-phinf.pstatic.net/20230712_253/1689138767905qLfqN_JPEG/%B0%AD%B5%BF%BE%C6%C6%AE%BC%BE%C5%CD_%BF%DC%B0%FC1-%BC%F6%C1%A4.jpg",
-      "https://ldb-phinf.pstatic.net/20230712_292/1689138767835qdRwS_JPEG/%B0%AD%B5%BF%BE%C6%C6%AE%BC%BE%C5%CD-03-%BC%F6%C1%A4.jpg",
-      "https://ldb-phinf.pstatic.net/20230712_89/1689138767593fmmex_JPEG/%B0%AD%B5%BF%BE%C6%C6%AE%BC%BE%C5%CD-04%BC%F6%C1%A4.jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "강동아트센터",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/19452036/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:01.509Z"
-      },
-      {
-        "title": "강동아트센터",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/19452036/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:01.509Z"
-      },
-      {
-        "title": "강동아트센터",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/19452036/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:01.509Z"
-      }
-    ],
-    "latitude": 37.5510795,
-    "longitude": 127.1576349,
-    "status": {
-      "label": "오늘 휴관 · 9/1 전시 시작",
-      "tone": "limited"
-    },
-    "official": {
-      "hours": "공간 운영시간 출처 충돌 · 프로그램별 시간 우선 확인",
-      "parking": "주차 가능 표시 · 공연일 혼잡 가능",
-      "reservation": "무료 전시는 현장 관람 · 공연은 프로그램별 예매",
-      "sourceUrl": "https://www.gdfac.or.kr/product/ko/performance/258463"
-    },
-    "programs": [
-      {
-        "title": "2026 아름다운 강동의 모습들",
-        "period": "2026.09.01–09.05 · 10:00–18:00",
-        "price": "무료 · 전체 관람",
-        "url": "https://www.gdfac.or.kr/product/ko/performance/258463"
-      }
-    ],
-    "menu": [],
-    "menuMedia": [],
-    "menuCoverage": {
-      "structuredCount": 0,
-      "imageCount": 0,
-      "coverage": "not_applicable"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/place/19452036/home",
-      "observedAt": "2026-08-30T10:18:01.509Z",
-      "officialUrl": "https://www.gdfac.or.kr/"
-    },
-    "missing": [
-      "장소 정규 운영시간 충돌",
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 강동구 동남로 870",
-    "caveatText": "네이버는 일·월 휴관, 강동구 공식 영문 페이지는 월요일만 휴관으로 표시합니다. 프로그램별 일정이 우선입니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/19452036",
-      "reviews": "https://map.naver.com/p/entry/place/19452036?placePath=/review",
-      "official": "https://www.gdfac.or.kr/"
-    },
-    "collectionContext": {
-      "id": "mohae-gangdong-culture",
-      "label": "MOHAE 강동 문화",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      91,
-      30
-    ]
+    id: "hidden-lcdc-seoul",
+    source: "hidden",
+    naverPlaceId: "1450511980",
+    category: "복합문화공간 · 리테일",
+    tag: "Hidden Archive",
+    title: "LCDC SEOUL",
+    subtitle: "이 시대 가장 힙한 복합문화공간",
+    detailHighlight: "브랜드와 이야기가 층마다 바뀌는 성수의 공간",
+    location: "서울 성동구",
+    address: "서울 성동구 연무장17길 10",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211203_290%2F1638508220054BLjyw_JPEG%2FIMG_2520.jpg",
+    latitude: 37.5415206,
+    longitude: 127.0614308,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/7cd2c833501e4059a50ce009cef709c3",
+    sourceTitle: "Hidden Archive · 복합문화공간",
+    selectionLabel: "복합문화공간 5",
   },
   {
-    "id": "naver-12268494",
-    "subjectId": "place:naver:12268494",
-    "naverPlaceId": "12268494",
-    "kind": "place",
-    "group": "place",
-    "category": "공원",
-    "title": "올림픽공원",
-    "subtitle": "올림픽 유산과 조각·생태·잔디광장, 여러 공연장을 한데 걷는 대형 무료 공원",
-    "location": "서울 송파구",
-    "schedule": "보행·자전거 05:00–22:00 · 광장 24시간",
-    "price": "공원 입장 무료",
-    "actionText": "예약 없이 입장",
-    "primaryAction": {
-      "label": "지도에서 입구 확인",
-      "url": "https://map.naver.com/p/entry/place/12268494"
-    },
-    "images": [
-      "https://ldb-phinf.pstatic.net/20150831_229/1441015210203fNWvY_JPEG/12268494_0.jpg",
-      "https://ldb-phinf.pstatic.net/20200107_124/1578375531091GGK7T_JPEG/1wOJJQEx68Nd8zXzwCEDeC4l.jpg",
-      "https://ldb-phinf.pstatic.net/20200402_27/158579567923428o10_JPEG/cPAl41ni0v2rlzjMZiIdCNSa.jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "올림픽공원",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/12268494/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:03.762Z"
-      },
-      {
-        "title": "올림픽공원",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/12268494/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:03.762Z"
-      },
-      {
-        "title": "올림픽공원",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/12268494/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:03.762Z"
-      }
-    ],
-    "latitude": 37.520934,
-    "longitude": 127.122959,
-    "status": {
-      "label": "22:00까지 보행·자전거",
-      "tone": "open"
-    },
-    "official": {
-      "hours": "보행·자전거 05:00–22:00 · 광장 24시간 · 차량 06:00–22:00",
-      "parking": "유료 주차 · 구역별 혼잡도는 공식 페이지 확인",
-      "reservation": "일반 공원 이용은 예약 불필요 · 공연·유료시설 별도",
-      "sourceUrl": "https://www.ksponco.or.kr/olympicpark/menu.es?mid=a20101000000"
-    },
-    "programs": [],
-    "menu": [],
-    "menuMedia": [],
-    "menuCoverage": {
-      "structuredCount": 0,
-      "imageCount": 0,
-      "coverage": "not_applicable"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/place/12268494/home",
-      "observedAt": "2026-08-30T10:18:03.762Z",
-      "officialUrl": "https://www.ksponco.or.kr/olympicpark/"
-    },
-    "missing": [
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 송파구 올림픽로 424",
-    "caveatText": "공연장과 유료시설은 공원 운영시간·무료 입장과 별개의 일정과 요금을 가집니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/12268494",
-      "reviews": "https://map.naver.com/p/entry/place/12268494?placePath=/review",
-      "official": "https://www.ksponco.or.kr/olympicpark/"
-    },
-    "collectionContext": {
-      "id": "mohae-songpa-outing",
-      "label": "MOHAE 송파 나들이",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      83,
-      36
-    ]
+    id: "hidden-milmilia",
+    source: "hidden",
+    naverPlaceId: "1975136648",
+    category: "요가 · 명상",
+    tag: "Hidden Archive",
+    title: "밀밀아",
+    subtitle: "하늘과 가까이, 언덕 위 고요한 요가원",
+    detailHighlight: "도시의 속도를 잠시 낮추는 이태원 요가 공간",
+    location: "서울 용산구",
+    address: "서울 용산구 녹사평대로40나길 38-11 밀밀아",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220630_22%2F1656555905424oCsJo_JPEG%2F10_%25BA%25B9%25BB%25E7%25BA%25BB.jpg",
+    latitude: 37.5362786,
+    longitude: 126.9893522,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/82d5908e6b59488f8d9ac6a312002b96",
+    sourceTitle: "Hidden Archive · 웰니스 스페이스",
+    selectionLabel: "웰니스 공간 5",
   },
   {
-    "id": "naver-18882132",
-    "subjectId": "place:naver:18882132",
-    "naverPlaceId": "18882132",
-    "kind": "event",
-    "group": "event",
-    "category": "박물관",
-    "title": "한성백제박물관",
-    "subtitle": "한성기 백제의 역사 자료를 무료로 보되 1층·로비 개편공사를 알고 방문해야 하는 시립박물관",
-    "location": "서울 송파구",
-    "schedule": "화–목·주말 09:00–19:00 · 금 21:00까지",
-    "price": "관람 무료",
-    "actionText": "예약 없이 관람",
-    "primaryAction": {
-      "label": "공사·전시 확인",
-      "url": "https://baekjemuseum.seoul.go.kr/"
-    },
-    "eventEnd": "2026-09-30T18:00:00+09:00",
-    "images": [
-      "https://baekjemuseum.seoul.go.kr/upfile/popup/1718271080510_0_jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "한성백제박물관 야간 전경",
-        "source": "한성백제박물관 공식",
-        "sourceUrl": "https://baekjemuseum.seoul.go.kr/",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "official_site",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:09.076Z"
-      }
-    ],
-    "latitude": 37.5155718,
-    "longitude": 127.1206146,
-    "status": {
-      "label": "오늘 종료 · 내일 휴관",
-      "tone": "closed"
-    },
-    "official": {
-      "hours": "3–10월 화–목·토·일 09:00–19:00 · 금 09:00–21:00 · 월요일 휴관",
-      "parking": "주차 가능 표시 · 상세 요금은 공식 방문안내 확인",
-      "reservation": "본관 일반 관람은 별도 예약 안내 없음",
-      "sourceUrl": "https://baekjemuseum.seoul.go.kr/contents.jsp?mpid=SBM0106000000"
-    },
-    "programs": [
-      {
-        "title": "폭염 속 박물관 박캉스 무더위 쉼터",
-        "period": "2026.08.06–09.30 · 화–일 09:00–18:00",
-        "price": "무료 · 음료 구매 불필요",
-        "url": "https://baekjemuseum.seoul.go.kr/"
-      }
-    ],
-    "menu": [],
-    "menuMedia": [],
-    "menuCoverage": {
-      "structuredCount": 0,
-      "imageCount": 0,
-      "coverage": "not_applicable"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/place/18882132/home",
-      "observedAt": "2026-08-30T10:18:09.076Z",
-      "officialUrl": "https://baekjemuseum.seoul.go.kr/"
-    },
-    "missing": [
-      "공사 중 정확한 관람 가능 구역",
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 송파구 위례성대로 71",
-    "caveatText": "2026년 5–11월 1층과 로비 개편공사 중입니다. 상설전시 전체가 정상 운영된다고 가정하면 안 됩니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/18882132",
-      "reviews": "https://map.naver.com/p/entry/place/18882132?placePath=/review",
-      "official": "https://baekjemuseum.seoul.go.kr/"
-    },
-    "collectionContext": {
-      "id": "mohae-songpa-culture",
-      "label": "MOHAE 송파 문화",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      82,
-      37
-    ]
+    id: "hidden-the-forest-choso",
+    source: "hidden",
+    naverPlaceId: "1602048207",
+    category: "산책 · 책방 카페",
+    tag: "Hidden Archive",
+    title: "더숲 초소책방",
+    subtitle: "인왕산 옆에서 즐기는 사계절 도시 여행",
+    detailHighlight: "산책 끝에 책과 풍경을 함께 쉬어가는 곳",
+    location: "서울 종로구",
+    address: "서울 종로구 인왕산로 172",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA3MjBfMjUg%2FMDAxNzIxNDYxMTM4NjQ5.wgawJnxAWyIMOqY2qdpt2odtf3To0ZRFzim6dMgMrE0g.ILan9kyYoQZngXzYJH9a35kT80aevMsxgreKMoPWDB8g.JPEG%2F3AC05663-D879-4BD7-91BA-63036E85129A.jpeg%3Ftype%3Dw1500_60_sharpen",
+    latitude: 37.5859415,
+    longitude: 126.964205,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/4305b0625dee450788ba1f84d06348c4",
+    sourceTitle: "Hidden Archive · 자연 속 카페",
+    selectionLabel: "자연 카페 5",
   },
   {
-    "id": "naver-13222642",
-    "subjectId": "place:naver:13222642",
-    "naverPlaceId": "13222642",
-    "kind": "place",
-    "group": "place",
-    "category": "전망공간",
-    "title": "광진교 8번가",
-    "subtitle": "광진교 8번째 교각 아래 유리 전망공간에서 한강을 바라보고 쉬는 무료 문화공간",
-    "location": "서울 강동구",
-    "schedule": "4–10월 12:00–20:00 · 월요일 휴관",
-    "price": "일반 이용 무료",
-    "actionText": "예약 없이 방문",
-    "primaryAction": {
-      "label": "지도에서 입구 확인",
-      "url": "https://map.naver.com/p/entry/place/13222642"
-    },
-    "images": [
-      "https://storage.googleapis.com/cr-resource/image/9feb700a8f95cf74052a8c98d134a91e/riverview8/650/408976473edffacc9269bdadcdd01d8f.jpeg?_1788085081",
-      "https://naverbooking-phinf.pstatic.net/20220406_48/1649195721584vegfP_JPEG/%B4%D9%BF%EE%B7%CE%B5%E55.jpg",
-      "https://naverbooking-phinf.pstatic.net/20220406_79/1649195721758AIPMB_JPEG/%B4%D9%BF%EE%B7%CE%B5%E51.jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "광진교8번가",
-        "source": "광진교8번가 공식",
-        "sourceUrl": "https://www.riverview8.co.kr/",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "official_site",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:09.841Z"
-      },
-      {
-        "title": "광진교8번가",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/13222642/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:09.841Z"
-      },
-      {
-        "title": "광진교8번가",
-        "source": "업체 등록",
-        "sourceUrl": "https://m.place.naver.com/place/13222642/home",
-        "role": "official_photo",
-        "rightsStatus": "unknown",
-        "origin": "merchant_provided_map",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:09.841Z"
-      }
-    ],
-    "latitude": 37.5444771,
-    "longitude": 127.1141474,
-    "status": {
-      "label": "20:00 운영 종료",
-      "tone": "limited"
-    },
-    "official": {
-      "hours": "4–10월 12:00–20:00 / 3·11월 12:00–18:00 · 월요일·설날·추석 당일 휴관",
-      "parking": "전용 주차 정보 미확인",
-      "reservation": "일반 전망·휴식 이용은 예약 불필요 · 대관은 별도 신청·승인",
-      "sourceUrl": "https://hangang.seoul.go.kr/www/contents/799.do?mid=726"
-    },
-    "programs": [],
-    "menu": [],
-    "menuMedia": [],
-    "menuCoverage": {
-      "structuredCount": 0,
-      "imageCount": 0,
-      "coverage": "not_applicable"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/place/13222642/home",
-      "observedAt": "2026-08-30T10:18:09.841Z",
-      "officialUrl": "https://www.riverview8.co.kr/"
-    },
-    "missing": [
-      "전용 주차 정보",
-      "미디어 재사용 권리"
-    ],
-    "address": "서울 강동구 천호동 527-2 광진교 8번째 교각 하부",
-    "caveatText": "2026년 8월 30일 당일 프로그램은 확인되지 않았습니다. 전망공간 자체는 운영 중입니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/13222642",
-      "reviews": "https://map.naver.com/p/entry/place/13222642?placePath=/review",
-      "official": "https://www.riverview8.co.kr/"
-    },
-    "collectionContext": {
-      "id": "mohae-gangdong-outing",
-      "label": "MOHAE 강동 나들이",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      81,
-      31
-    ]
+    id: "hidden-poset-yeonhui",
+    source: "hidden",
+    naverPlaceId: "1239700627",
+    category: "엽서 · 기록 소품",
+    tag: "Hidden Archive",
+    title: "포셋 연희",
+    subtitle: "왔다 내 엽서 도서관",
+    detailHighlight: "수많은 엽서 중 한 장을 고르는 시간",
+    location: "서울 서대문구",
+    address: "서울 서대문구 증가로 18 3층 305호 포셋",
+    image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMDRfNjAg%2FMDAxNzI4MDMzOTc4MjA5.jPmbOMClHzpqd5pyPwpq9wJPBXzzgzdcYuADOB8C95sg.JESoNrUC2MUMv9dQvqrNbs-Xg8S44y4VROwMv945UBgg.JPEG%2F3F9EC46A-56BB-400B-8160-ACB155E55380.jpeg%3Ftype%3Dw1500_60_sharpen",
+    latitude: 37.5700065,
+    longitude: 126.9312814,
+    sourceUrl: "https://naver.me/5EU7YuPO",
+    sourceTitle: "Hidden Archive · 기록 덕후의 문구점",
+    selectionLabel: "기록 공간 8",
   },
   {
-    "id": "naver-20303535",
-    "subjectId": "place:naver:20303535",
-    "naverPlaceId": "20303535",
-    "kind": "place",
-    "group": "place",
-    "category": "산책",
-    "title": "암사초록길",
-    "subtitle": "선사유적지에서 한강까지 보행·자전거길과 6,300㎡ 녹지 덮개로 이어지는 새 연결축",
-    "location": "서울 강동구",
-    "schedule": "2025.04.04 개방 · 일일 운영시간 미공개",
-    "price": "이용료 미확인",
-    "actionText": "지도에서 경로 확인",
-    "primaryAction": {
-      "label": "지도에서 경로 확인",
-      "url": "https://map.naver.com/p/entry/place/20303535"
-    },
-    "images": [
-      "https://mediahub.seoul.go.kr/uploads/mediahub/2025/04/vJFKfvfsWIRzdYBQGsevtuMLfZmanlLp.jpg",
-      "https://mediahub.seoul.go.kr/uploads/mediahub/2025/04/oCAwHuOPCzUrtbfpfwhVLLpdMiGRivBF.jpg",
-      "https://mediahub.seoul.go.kr/uploads/mediahub/2025/04/aQxWTnTgXpCvEvDMptUMAdyiEpChJKUm.jpg"
-    ],
-    "photoMeta": [
-      {
-        "title": "암사동유적 남측의 암사초록길",
-        "source": "내 손안에 서울 · 조수봉",
-        "sourceUrl": "https://mediahub.seoul.go.kr/archives/2014042",
-        "role": "official_editorial",
-        "rightsStatus": "KOGL_TYPE_4_NONCOMMERCIAL_NO_DERIVATIVES",
-        "origin": "licensed_official_editorial",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:15.278Z"
-      },
-      {
-        "title": "보행로와 자전거도로",
-        "source": "내 손안에 서울 · 조수봉",
-        "sourceUrl": "https://mediahub.seoul.go.kr/archives/2014042",
-        "role": "official_editorial",
-        "rightsStatus": "KOGL_TYPE_4_NONCOMMERCIAL_NO_DERIVATIVES",
-        "origin": "licensed_official_editorial",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:15.278Z"
-      },
-      {
-        "title": "상부 쉼터 전망",
-        "source": "내 손안에 서울 · 조수봉",
-        "sourceUrl": "https://mediahub.seoul.go.kr/archives/2014042",
-        "role": "official_editorial",
-        "rightsStatus": "KOGL_TYPE_4_NONCOMMERCIAL_NO_DERIVATIVES",
-        "origin": "licensed_official_editorial",
-        "heroEligible": true,
-        "observedAt": "2026-08-30T10:18:15.278Z"
-      }
-    ],
-    "latitude": 37.5596727,
-    "longitude": 127.1278538,
-    "status": {
-      "label": "운영시간 미공개",
-      "tone": "limited"
-    },
-    "official": {
-      "hours": "2025년 4월 4일 전면 개방 · 일일 운영시간 미공개",
-      "parking": "전용 주차 정보 미확인",
-      "reservation": "공공 보행·자전거길 · 예약 경로 없음",
-      "sourceUrl": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
-    },
-    "programs": [],
-    "menu": [],
-    "menuMedia": [],
-    "menuCoverage": {
-      "structuredCount": 0,
-      "imageCount": 0,
-      "coverage": "not_applicable"
-    },
-    "source": {
-      "naverHome": "https://m.place.naver.com/place/20303535/home",
-      "observedAt": "2026-08-30T10:18:15.278Z",
-      "officialUrl": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
-    },
-    "missing": [
-      "일일 운영시간",
-      "이용료 명시",
-      "전용 주차 정보"
-    ],
-    "address": "서울 강동구 암사동 172-8",
-    "caveatText": "공식 개통자료에 일일 운영시간과 이용료가 명시되지 않았습니다. 사진은 비상업·변경금지 조건의 공공누리 4유형입니다.",
-    "externalLinks": {
-      "map": "https://map.naver.com/p/entry/place/20303535",
-      "reviews": "https://map.naver.com/p/entry/place/20303535?placePath=/review",
-      "official": "https://www.gangdong.go.kr/web/mayor/bbs/hotissue/58295"
-    },
-    "collectionContext": {
-      "id": "mohae-gangdong-outing",
-      "label": "MOHAE 강동 나들이",
-      "kind": "curated_collection",
-      "targetType": "internal_map",
-      "curationStatus": "prototype_curated"
-    },
-    "distance": "",
-    "pin": [
-      84,
-      28
-    ]
-  }
+    id: "hidden-process-itw",
+    source: "hidden",
+    naverPlaceId: "1419063859",
+    category: "전시 · 카페 · 문화",
+    tag: "Hidden Archive",
+    title: "Process ITW",
+    subtitle: "카페부터 전시까지, 올인원 문화 플랫폼",
+    detailHighlight: "하나의 건물에서 전시와 머무름을 잇는 방식",
+    location: "서울 용산구",
+    address: "서울 용산구 우사단로 42",
+    image: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA5MTZfMTc2%2FMDAxNzI2NDk0MDM0NTg2.CLGpRFRooMJ0zzS7WW2cQDpAmp-gt9Z-ylH5XhxFapQg.J_jfGmZM73t3WDwh7mYQU9pXaoVt5FhSK3zuVodtcXQg.JPEG%2F20240916%25A3%25DF144220.jpg",
+    latitude: 37.5338796,
+    longitude: 126.9957861,
+    sourceUrl: "https://map.naver.com/p/favorite/myPlace/folder/7cd2c833501e4059a50ce009cef709c3",
+    sourceTitle: "Hidden Archive · 복합문화공간",
+    selectionLabel: "복합문화공간 5",
+  },
+  {
+    id: "michelin-mingles-2026",
+    source: "michelin",
+    category: "한식 · 파인 다이닝",
+    tag: "미쉐린 3스타",
+    title: "밍글스",
+    subtitle: "한국의 음식문화와 철학을 제철 재료로 현대적으로 풀어내는 다이닝",
+    detailHighlight: "3스타 · 발효와 제철의 현대 한식",
+    location: "서울 강남구",
+    address: "서울 강남구 도산대로67길 19 2층",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/b1998f42d3b642d2bf04ac9156783877.jpg?format=jpeg&w=1000&h=1000",
+    latitude: 37.52535,
+    longitude: 127.04426,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/mingles",
+    sourceTitle: "MICHELIN Guide 2026 · 밍글스",
+    selectionLabel: "3 Stars",
+    signalType: "michelin_star",
+    signalValue: 3,
+    signalUnit: "star",
+    signalDisplay: "credential_chip",
+    statusLabel: "2026 미쉐린 3스타",
+  },
+  {
+    id: "michelin-mosu-2026",
+    source: "michelin",
+    category: "모던 요리 · 파인 다이닝",
+    tag: "미쉐린 2스타",
+    title: "모수",
+    subtitle: "상상력과 정교함을 시그니처 메뉴에 담아낸 모던 다이닝",
+    detailHighlight: "2스타 · 맛을 확장하는 정교함",
+    location: "서울 용산구",
+    address: "서울 용산구 회나무로41길 4",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/5168c29ab38c44f7897be008d2ae20bf.jpeg?format=jpeg&w=1000&h=1000",
+    latitude: 37.54115,
+    longitude: 126.99615,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/mosu",
+    sourceTitle: "MICHELIN Guide 2026 · 모수",
+    selectionLabel: "2 Stars",
+    signalType: "michelin_star",
+    signalValue: 2,
+    signalUnit: "star",
+    signalDisplay: "credential_chip",
+    statusLabel: "2026 미쉐린 2스타",
+  },
+  {
+    id: "michelin-solbam-2026",
+    source: "michelin",
+    category: "컨템퍼러리 · 한식",
+    tag: "미쉐린 1스타",
+    title: "솔밤",
+    subtitle: "한국 제철 식재료를 독창적 구성과 연출로 풀어내는 컨템퍼러리 다이닝",
+    detailHighlight: "1스타 · 제철 재료의 극적인 전개",
+    location: "서울 강남구",
+    address: "서울 강남구 학동로 231 2층",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/ac23cceb0fc64f70bcf5de207a1cf93a.jpeg?format=jpeg&w=1000&h=1000",
+    latitude: 37.51575,
+    longitude: 127.03411,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/solbam",
+    sourceTitle: "MICHELIN Guide 2026 · 솔밤",
+    selectionLabel: "1 Star",
+    signalType: "michelin_star",
+    signalValue: 1,
+    signalUnit: "star",
+    signalDisplay: "credential_chip",
+    statusLabel: "2026 미쉐린 1스타",
+  },
+  {
+    id: "michelin-la-yeon-2026",
+    source: "michelin",
+    category: "한식 · 전망 다이닝",
+    tag: "미쉐린 2스타",
+    title: "라연",
+    subtitle: "한국 전통의 깊이를 현대적으로 다듬어 서울 전망과 함께 내는 한식",
+    detailHighlight: "2스타 · 전통 한식의 가벼운 현대성",
+    location: "서울 중구",
+    address: "서울 중구 동호로 249 신라호텔 23층",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/f9a0825d0a6b4974bb1e8ca3ac276562.jpg?format=jpeg&w=1000&h=1000",
+    latitude: 37.555813,
+    longitude: 127.00517,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/la-yeon",
+    sourceTitle: "MICHELIN Guide 2026 · 라연",
+    selectionLabel: "2 Stars",
+    signalType: "michelin_star",
+    signalValue: 2,
+    signalUnit: "star",
+    signalDisplay: "credential_chip",
+    statusLabel: "2026 미쉐린 2스타",
+  },
+  {
+    id: "michelin-palate-2026",
+    source: "michelin",
+    category: "컨템퍼러리 · 부산",
+    tag: "미쉐린 1스타",
+    title: "팔레트",
+    subtitle: "프렌치 기반에 부산의 감각과 셰프의 경험을 겹친 컨템퍼러리",
+    detailHighlight: "1스타 · 달맞이길의 현대적 프렌치",
+    location: "부산 해운대구",
+    address: "부산 해운대구 달맞이길65번길 154 3층",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/065340b10a8748438c27dfef56f9520a.jpg?format=jpeg&w=1000&h=1000",
+    latitude: 35.15659,
+    longitude: 129.17844,
+    sourceUrl: "https://guide.michelin.com/kr/ko/busan-region/busan_1025838/restaurant/palate",
+    sourceTitle: "MICHELIN Guide 2026 · 팔레트",
+    selectionLabel: "1 Star",
+    signalType: "michelin_star",
+    signalValue: 1,
+    signalUnit: "star",
+    signalDisplay: "credential_chip",
+    statusLabel: "2026 미쉐린 1스타",
+  },
+  {
+    id: "michelin-iwa-2026",
+    source: "michelin",
+    category: "일식 · 숙성 오마카세",
+    tag: "미쉐린 셀렉션",
+    title: "이와",
+    subtitle: "생선마다 숙성 기간을 달리해 스시·사시미·일식 요리를 구성하는 오마카세",
+    detailHighlight: "생선 숙성 특허로 완성하는 오마카세",
+    location: "부산 해운대구",
+    address: "부산 해운대구 해운대해변로209번길 13 2층",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/f51fe21317f7470a8a11adb080989596.jpeg?format=jpeg&w=1000&h=1000",
+    latitude: 35.15959,
+    longitude: 129.15384,
+    sourceUrl: "https://guide.michelin.com/kr/ko/busan-region/busan_1025838/restaurant/iwa",
+    sourceTitle: "MICHELIN Guide 2026 · 이와",
+    selectionLabel: "2026 Selection",
+    signalType: "michelin_guide_selection",
+    signalValue: null,
+    signalUnit: null,
+    signalDisplay: "internal_only",
+  },
+  {
+    id: "michelin-myeongdong-kyoja-2026",
+    source: "michelin",
+    category: "칼국수 · 만두",
+    tag: "미쉐린 가이드",
+    title: "명동교자",
+    subtitle: "1966년부터 칼국수와 만두에 집중해 온 가족 경영 식당",
+    detailHighlight: "메뉴를 줄이고 맛을 지켜온 명동의 한 끼",
+    location: "서울 중구",
+    address: "서울 중구 명동10길 29",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/9a5e035f9d61429e9e2064058132f48e.jpeg?format=jpeg&w=1000&h=1000",
+    latitude: 37.56347,
+    longitude: 126.984552,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/myeongdong-kyoja",
+    sourceTitle: "MICHELIN Guide 2026 · 명동교자",
+    selectionLabel: "2026 Selection",
+    signalType: "michelin_guide_selection",
+    signalValue: null,
+    signalUnit: null,
+    signalDisplay: "internal_only",
+  },
+  {
+    id: "michelin-jinmi-sikdang-2026",
+    source: "michelin",
+    category: "게장 · 한식",
+    tag: "미쉐린 셀렉션",
+    title: "진미식당",
+    subtitle: "서해안 꽃게와 한 가지 메뉴에 집중하는 간장게장 전문점",
+    detailHighlight: "재료의 품질과 변함없는 한 메뉴로 쌓은 신뢰",
+    location: "서울 마포구",
+    address: "서울 마포구 마포대로 186-6",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/37b2ff4cfd5d4225bc397c9eb8be1f8a.jpeg?format=jpeg&w=1000&h=1000",
+    latitude: 37.55055,
+    longitude: 126.95577,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/jinmi-sikdang",
+    sourceTitle: "MICHELIN Guide 2026 · 진미식당",
+    selectionLabel: "2026 Selection",
+    signalType: "michelin_guide_selection",
+    signalValue: null,
+    signalUnit: null,
+    signalDisplay: "internal_only",
+  },
+  {
+    id: "michelin-woo-lae-oak-2026",
+    source: "michelin",
+    category: "평양냉면 · 불고기",
+    tag: "빕 구르망",
+    title: "우래옥",
+    subtitle: "1946년부터 한우 육수 평양냉면의 명맥을 이어온 노포",
+    detailHighlight: "빕 구르망 · 담백한 한우 육수 냉면",
+    location: "서울 중구",
+    address: "서울 중구 창경궁로 62-29",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/b9f21cbd44d340bda27994534abddebf.jpeg?format=jpeg&w=1000&h=1000",
+    latitude: 37.56815,
+    longitude: 126.99866,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/woo-lae-oak",
+    sourceTitle: "MICHELIN Guide 2026 · 우래옥",
+    selectionLabel: "Bib Gourmand",
+    signalType: "michelin_bib_gourmand",
+    signalValue: null,
+    signalUnit: null,
+    signalDisplay: "credential_chip",
+    statusLabel: "2026 빕 구르망",
+  },
+  {
+    id: "michelin-mijin-2026",
+    source: "michelin",
+    category: "메밀국수 · 노포",
+    tag: "빕 구르망",
+    title: "미진",
+    subtitle: "1952년부터 진한 간장 육수와 쫄깃한 면을 내온 한국식 냉메밀집",
+    detailHighlight: "빕 구르망 · 광화문의 한국식 냉메밀",
+    location: "서울 종로구",
+    address: "서울 종로구 종로 19 르메이에르 종로타운 116-2호",
+    image: "https://prod-pics.guide.michelin.com/api/public/content/bb7ad557fe544eac8c3875b5ae2ee6a5.jpeg?format=jpeg&w=1000&h=1000",
+    latitude: 37.5708,
+    longitude: 126.97985,
+    sourceUrl: "https://guide.michelin.com/kr/ko/seoul-capital-area/kr-seoul/restaurant/mijin",
+    sourceTitle: "MICHELIN Guide 2026 · 미진",
+    selectionLabel: "Bib Gourmand",
+    signalType: "michelin_bib_gourmand",
+    signalValue: null,
+    signalUnit: null,
+    signalDisplay: "credential_chip",
+    statusLabel: "2026 빕 구르망",
+  },
 ];
+
+function toOpportunity(item) {
+  const source = SOURCES[item.source];
+  const hidden = item.source === "hidden";
+  const details = NAVER_DETAILS[item.id];
+  const identity = NAVER_IDENTITIES[item.id];
+  const naverPlaceId = details?.naverPlaceId ?? item.naverPlaceId;
+  const mapUrl = naverPlaceId
+    ? `https://map.naver.com/p/entry/place/${naverPlaceId}`
+    : `https://map.naver.com/p/search/${encodeURIComponent(item.title)}`;
+  const caveatText = details?.uncertainty ? `${source.caveat} ${details.uncertainty}` : source.caveat;
+  const signal = {
+    label: item.selectionLabel,
+    provenanceClass: hidden ? "published_coverage" : "issued_credential",
+    signalType: hidden ? "naver_hidden_archive_membership" : item.signalType,
+    targetType: "place",
+    numericValue: hidden ? null : item.signalValue,
+    numericUnit: hidden ? null : item.signalUnit,
+    displayMode: hidden ? "context_chip" : item.signalDisplay,
+  };
+
+  return {
+    id: item.id,
+    ...(naverPlaceId ? {
+      subjectId: `place:naver:${naverPlaceId}`,
+      naverPlaceId,
+    } : {}),
+    kind: "place",
+    group: "place",
+    category: item.category,
+    tag: item.tag,
+    title: item.title,
+    subtitle: item.subtitle,
+    detailHighlight: item.detailHighlight,
+    location: item.location,
+    address: details?.address ?? item.address,
+    distance: "",
+    schedule: details?.schedule ?? "운영시간 미확인",
+    price: details?.price ?? "가격 미확인",
+    latitude: identity?.latitude ?? item.latitude,
+    longitude: identity?.longitude ?? item.longitude,
+    sourceIdentity: {
+      sourceAddress: item.address,
+      sourceLatitude: item.latitude,
+      sourceLongitude: item.longitude,
+      naverAddress: details?.address,
+      naverName: identity?.name,
+      naverLatitude: identity?.latitude,
+      naverLongitude: identity?.longitude,
+      naverMichelin2026: identity?.michelin2026 === true,
+      caveat: identity?.caveat ?? "",
+    },
+    pin: [50, 50],
+    status: {
+      tone: "open",
+      label: item.statusLabel ?? (hidden ? "방문 전 운영 확인" : "2026 미쉐린 셀렉션"),
+    },
+    images: [item.image],
+    photoMeta: [{
+      source: hidden ? "NAVER Hidden Archive" : "MICHELIN Guide",
+      title: `${item.title} 대표 이미지`,
+      sourceUrl: item.sourceUrl,
+      role: hidden ? "source_collection_photo" : "official_guide_photo",
+      rightsStatus: "third_party_reference_only",
+      observedAt: OBSERVED_AT,
+    }],
+    programs: [],
+    menu: (details?.menu ?? []).map((entry) => ({ ...entry, description: "네이버 플레이스 표시" })),
+    menuMedia: [],
+    official: {
+      hours: details?.schedule ?? "운영시간 미확인",
+      sourceUrl: mapUrl,
+    },
+    source: {
+      title: item.sourceTitle,
+      role: source.role,
+      url: item.sourceUrl,
+      observedAt: OBSERVED_AT,
+      caveatText,
+      signal,
+      supporting: naverPlaceId ? [{ role: "current_operations_and_price", url: mapUrl, observedAt: OBSERVED_AT }] : [],
+    },
+    caveatText,
+    externalLinks: { map: mapUrl },
+    evidenceSignals: [{
+      label: item.selectionLabel,
+      description: item.sourceTitle,
+      tone: hidden ? "editorial" : "institution",
+      icon: hidden ? "archive" : "award",
+      sourceLabel: source.label,
+      observedAt: OBSERVED_AT,
+    }],
+    collectionContext: {
+      id: source.id,
+      label: source.label,
+      targetType: "external_source",
+      url: source.url,
+    },
+    selectionContext: signal.displayMode === "internal_only" ? null : {
+      ...signal,
+      tone: hidden ? "editorial" : "institution",
+      icon: hidden ? "archive" : "award",
+    },
+  };
+}
+
+export const opportunities = catalog.map(toOpportunity);

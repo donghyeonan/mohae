@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">MOHAE 장소 후보</title>
+  <desc id="desc">장소 후보에 사용하는 MOHAE 제작 지도 핀 그래픽</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2eadf"/>
+      <stop offset="1" stop-color="#d8e7df"/>
+    </linearGradient>
+    <pattern id="grid" width="90" height="90" patternUnits="userSpaceOnUse">
+      <path d="M90 0H0V90" fill="none" stroke="#24443a" stroke-opacity=".08" stroke-width="3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <path d="M0 660C260 560 430 730 700 610s360-85 500-30v320H0Z" fill="#24443a" fill-opacity=".08"/>
+  <g transform="translate(600 418)">
+    <path d="M0-238c-126 0-228 102-228 228 0 169 228 354 228 354S228 159 228-10C228-136 126-238 0-238Z" fill="#24443a"/>
+    <circle cy="-12" r="82" fill="#f7f2e9"/>
+    <circle cy="-12" r="34" fill="#dd6b4d"/>
+  </g>
+</svg>
